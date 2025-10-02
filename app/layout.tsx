@@ -17,16 +17,15 @@ export const metadata: Metadata = {
   publisher: "Sam4You",
   icons: {
     icon: [
-      { url: "/favicon.svg", sizes: "any", type: "image/svg+xml" },
-      { url: "/icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon s.png", sizes: "any", type: "image/png" },
       { url: "/favicon.ico", sizes: "16x16 32x32", type: "image/x-icon" },
     ],
     apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/favicon s.png", sizes: "180x180", type: "image/png" },
     ],
     shortcut: ["/favicon.ico"],
     other: [
-      { rel: "icon", url: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", url: "/favicon s.png", type: "image/png" },
     ],
   },
   verification: {
