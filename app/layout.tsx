@@ -13,6 +13,8 @@ export const metadata: Metadata = {
     "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Sam4You.",
   keywords: ["web development", "SEO", "AI tools", "automation", "digital agency", "WordPress", "e-commerce"],
   authors: [{ name: "Sam4You" }],
+  creator: "Sam4You",
+  publisher: "Sam4You",
   icons: {
     icon: [
       { url: "/favicon.png", sizes: "any" },
@@ -30,9 +32,16 @@ export const metadata: Metadata = {
     title: "Sam4You - Build Smarter Digital Solutions",
     description: "Professional web development, SEO, AI tools, and automation services.",
     type: "website",
+    siteName: "Sam4You",
     images: [{ url: "/favicon.png" }],
   },
-  generator: "v0.app",
+  twitter: {
+    card: "summary_large_image",
+    title: "Sam4You - Build Smarter Digital Solutions",
+    description: "Professional web development, SEO, AI tools, and automation services.",
+    creator: "@sam4you",
+  },
+  generator: "Sam4You",
 }
 
 export default function RootLayout({
