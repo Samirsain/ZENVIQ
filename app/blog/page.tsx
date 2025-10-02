@@ -76,8 +76,8 @@ export default function BlogPage() {
                 {category.name}
                 <span className="ml-1 px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
                   {category.count}
-                </span>
-              </Button>
+                    </span>
+                    </Button>
             ))}
           </div>
         </div>
@@ -108,9 +108,9 @@ export default function BlogPage() {
                       className="w-full h-40 object-cover"
                     />
                   ) : (
-                    <div className="w-full h-40 bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
-                      <BookOpen className="w-12 h-12 text-white opacity-50" />
-                    </div>
+                  <div className="w-full h-40 bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
+                    <BookOpen className="w-12 h-12 text-white opacity-50" />
+                  </div>
                   )}
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-1 text-xs font-semibold bg-gray-600 text-white rounded-full">

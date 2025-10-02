@@ -61,7 +61,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           <div className="prose prose-lg dark:prose-invert max-w-none">
             <div 
               className="text-gray-700 dark:text-gray-300 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: post.content || `<p>Content coming soon...</p>` }}
             />
           </div>
 
