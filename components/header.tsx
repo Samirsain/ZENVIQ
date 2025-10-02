@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Search } from "lucide-react"
 import Image from "next/image"
-import { ThemeToggle } from "@/components/theme-toggle"
+// Theme toggle removed - using light mode only
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -42,7 +42,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
-        isScrolled ? "bg-background/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-border/50" : "bg-transparent"
+        isScrolled ? "bg-background/90 backdrop-blur-sm border-b border-border/50" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -97,7 +97,6 @@ export default function Header() {
             </div>
 
             <div className="flex items-center gap-2">
-              <ThemeToggle />
               <Button asChild>
                 <Link href="#contact">Get Started</Link>
               </Button>
@@ -130,11 +129,7 @@ export default function Header() {
                 />
               </div>
 
-              {/* Mobile Theme Toggle */}
-              <div className="flex items-center justify-between py-2 px-2 rounded-lg bg-gray-50 dark:bg-gray-800">
-                <span className="text-sm font-medium text-muted-foreground">Theme</span>
-                <ThemeToggle />
-              </div>
+              {/* Theme toggle removed - using light mode only */}
               
               {navLinks.map((link) => (
                 <Link
