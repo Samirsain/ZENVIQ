@@ -3,7 +3,7 @@ module.exports = {
   siteUrl: process.env.SITE_URL || 'https://sam4you.vercel.app',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
-  exclude: ['/api/*', '/admin/*'],
+  exclude: ['/api/*', '/admin/*', '/sitemap.xml'],
   robotsTxtOptions: {
     policies: [
       {
@@ -45,7 +45,7 @@ module.exports = {
       loc: path,
       changefreq: changeFrequency,
       priority: priority,
-      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
+      lastmod: new Date().toISOString(),
     };
   },
 };
