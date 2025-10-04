@@ -77,9 +77,11 @@ export default function Contact() {
                 <CardDescription>Send us an email anytime</CardDescription>
               </CardHeader>
               <CardContent>
-                <a href="mailto:devxmir@gmail.com" className="text-primary hover:underline">
-                  devxmir@gmail.com
-                </a>
+                <Button asChild className="w-full">
+                  <a href="mailto:devxmir@gmail.com" target="_blank" rel="noopener noreferrer">
+                    Send a Mail
+                  </a>
+                </Button>
               </CardContent>
             </Card>
 
@@ -92,14 +94,9 @@ export default function Contact() {
                 <CardDescription>Chat with us instantly</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="mb-3">
-                  <a href="tel:+919352410667" className="text-primary hover:underline text-sm">
-                    +91 9352410667
-                  </a>
-                </div>
-                <Button asChild variant="outline" className="w-full bg-transparent">
+                <Button asChild className="w-full">
                   <a href="https://wa.me/919352410667" target="_blank" rel="noopener noreferrer">
-                    Start Chat
+                    Send a Message
                   </a>
                 </Button>
               </CardContent>
