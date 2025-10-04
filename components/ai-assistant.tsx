@@ -18,7 +18,7 @@ export default function AIAssistant() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hi! I'm your AI assistant. How can I help you today?",
+      text: "Hi! I'm Sam, your AI assistant. How can I help you today?",
       isUser: false,
       timestamp: new Date()
     }
@@ -87,14 +87,14 @@ export default function AIAssistant() {
     }
     
     if (input.includes("hello") || input.includes("hi") || input.includes("hey")) {
-      return "Hello! Welcome to Sam4You. I'm here to help you with information about our services, pricing, or any questions you might have. What would you like to know?"
+      return "Hello! Welcome to Sam4You. I'm Sam, your AI assistant. I'm here to help you with information about our services, pricing, or any questions you might have. What would you like to know?"
     }
     
     if (input.includes("thank") || input.includes("thanks")) {
-      return "You're welcome! Is there anything else I can help you with today?"
+      return "You're welcome! I'm Sam, and I'm here to help. Is there anything else I can assist you with today?"
     }
     
-    return "I understand you're asking about: " + userInput + ". For detailed information about our services, pricing, or to discuss your specific requirements, please use the 'Send a Mail' or 'Send a Message' buttons in our contact section. Our team will provide you with personalized assistance."
+    return "I understand you're asking about: " + userInput + ". I'm Sam, and I'm here to help! For detailed information about our services, pricing, or to discuss your specific requirements, please use the 'Send a Mail' or 'Send a Message' buttons in our contact section. Our team will provide you with personalized assistance."
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -124,7 +124,7 @@ export default function AIAssistant() {
               <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
                 <Bot className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               </div>
-              <CardTitle className="text-sm font-medium">AI Assistant</CardTitle>
+              <CardTitle className="text-sm font-medium">Sam - AI Assistant</CardTitle>
             </div>
             <Button
               variant="ghost"
