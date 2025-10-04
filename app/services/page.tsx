@@ -11,7 +11,7 @@ const services = [
     title: "Web Development",
     description: "Custom websites and web applications built with modern technologies",
     features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Mobile-First"],
-    price: "Starting at ₹49,999",
+    price: "Contact for Pricing",
     color: "from-blue-500 to-blue-600",
     bgColor: "from-blue-50 to-blue-50/50"
   },
@@ -20,7 +20,7 @@ const services = [
     title: "Mobile App Development",
     description: "Native and cross-platform mobile applications for iOS and Android",
     features: ["iOS & Android", "Cross-Platform", "App Store Optimization", "Push Notifications"],
-    price: "Starting at ₹1,49,999",
+    price: "Contact for Pricing",
     color: "from-green-500 to-green-600",
     bgColor: "from-green-50 to-green-50/50"
   },
@@ -29,7 +29,7 @@ const services = [
     title: "SEO Services",
     description: "Comprehensive SEO strategies to improve your website's search rankings",
     features: ["Keyword Research", "On-Page SEO", "Technical SEO", "Link Building"],
-    price: "Starting at ₹24,999/month",
+    price: "Contact for Pricing",
     color: "from-purple-500 to-purple-600",
     bgColor: "from-purple-50 to-purple-50/50"
   },
@@ -38,7 +38,7 @@ const services = [
     title: "Digital Marketing",
     description: "Complete digital marketing solutions to grow your business online",
     features: ["Social Media Marketing", "PPC Advertising", "Content Marketing", "Email Marketing"],
-    price: "Starting at ₹39,999/month",
+    price: "Contact for Pricing",
     color: "from-orange-500 to-orange-600",
     bgColor: "from-orange-50 to-orange-50/50"
   },
@@ -47,7 +47,7 @@ const services = [
     title: "UI/UX Design",
     description: "Beautiful and user-friendly designs that convert visitors into customers",
     features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
-    price: "Starting at ₹34,999",
+    price: "Contact for Pricing",
     color: "from-pink-500 to-pink-600",
     bgColor: "from-pink-50 to-pink-50/50"
   },
@@ -56,7 +56,7 @@ const services = [
     title: "Analytics & Reporting",
     description: "Data-driven insights to optimize your business performance",
     features: ["Google Analytics", "Custom Dashboards", "Performance Reports", "ROI Tracking"],
-    price: "Starting at ₹14,999/month",
+    price: "Contact for Pricing",
     color: "from-indigo-500 to-indigo-600",
     bgColor: "from-indigo-50 to-indigo-50/50"
   },
@@ -65,7 +65,7 @@ const services = [
     title: "E-commerce Development",
     description: "Complete e-commerce solutions with payment integration and inventory management",
     features: ["WooCommerce/Shopify", "Payment Gateway", "Inventory Management", "Order Tracking"],
-    price: "Starting at ₹99,999",
+    price: "Contact for Pricing",
     color: "from-emerald-500 to-emerald-600",
     bgColor: "from-emerald-50 to-emerald-50/50"
   },
@@ -74,7 +74,7 @@ const services = [
     title: "Custom Software Development",
     description: "Tailored software solutions for your specific business needs",
     features: ["Custom Applications", "API Development", "Database Design", "Cloud Integration"],
-    price: "Starting at ₹1,99,999",
+    price: "Contact for Pricing",
     color: "from-teal-500 to-teal-600",
     bgColor: "from-teal-50 to-teal-50/50"
   }
@@ -347,8 +347,7 @@ export default function ServicesPage() {
                 <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Starter</CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-300">Perfect for small businesses</CardDescription>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold text-blue-600 dark:text-blue-400">₹49,999</span>
-                  <span className="text-gray-600 dark:text-gray-300">/project</span>
+                  <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">Contact for Pricing</span>
                 </div>
               </CardHeader>
               <CardContent className="pt-0">
@@ -389,8 +388,7 @@ export default function ServicesPage() {
                 <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Professional</CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-300">Ideal for growing businesses</CardDescription>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold text-blue-600 dark:text-blue-400">₹99,999</span>
-                  <span className="text-gray-600 dark:text-gray-300">/project</span>
+                  <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">Contact for Pricing</span>
                 </div>
               </CardHeader>
               <CardContent className="pt-0">
@@ -432,8 +430,7 @@ export default function ServicesPage() {
                 <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Enterprise</CardTitle>
                 <CardDescription className="text-gray-600 dark:text-gray-300">For large organizations</CardDescription>
                 <div className="mt-4">
-                  <span className="text-4xl font-bold text-blue-600 dark:text-blue-400">₹1,99,999</span>
-                  <span className="text-gray-600 dark:text-gray-300">/project</span>
+                  <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">Contact for Pricing</span>
                 </div>
               </CardHeader>
               <CardContent className="pt-0">
