@@ -2,7 +2,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Check, Star, Zap, Target, Users, Globe, Smartphone, BarChart3, Palette, Code, Megaphone, Search, MessageSquare, Camera, PenTool, Settings, Shield, Clock, Award } from "lucide-react"
+import { ArrowRight, Check, Star, Zap, Target, Users, Globe, Smartphone, BarChart3, Palette, Code, Megaphone, Search, MessageSquare, Camera, PenTool, Settings, Shield, Clock, Award, ShoppingCart } from "lucide-react"
 import Link from "next/link"
 
 const services = [
@@ -11,7 +11,7 @@ const services = [
     title: "Web Development",
     description: "Custom websites and web applications built with modern technologies",
     features: ["Responsive Design", "SEO Optimized", "Fast Loading", "Mobile-First"],
-    price: "Starting at $999",
+    price: "Starting at ₹49,999",
     color: "from-blue-500 to-blue-600",
     bgColor: "from-blue-50 to-blue-50/50"
   },
@@ -20,7 +20,7 @@ const services = [
     title: "Mobile App Development",
     description: "Native and cross-platform mobile applications for iOS and Android",
     features: ["iOS & Android", "Cross-Platform", "App Store Optimization", "Push Notifications"],
-    price: "Starting at $2,999",
+    price: "Starting at ₹1,49,999",
     color: "from-green-500 to-green-600",
     bgColor: "from-green-50 to-green-50/50"
   },
@@ -29,7 +29,7 @@ const services = [
     title: "SEO Services",
     description: "Comprehensive SEO strategies to improve your website's search rankings",
     features: ["Keyword Research", "On-Page SEO", "Technical SEO", "Link Building"],
-    price: "Starting at $499/month",
+    price: "Starting at ₹24,999/month",
     color: "from-purple-500 to-purple-600",
     bgColor: "from-purple-50 to-purple-50/50"
   },
@@ -38,7 +38,7 @@ const services = [
     title: "Digital Marketing",
     description: "Complete digital marketing solutions to grow your business online",
     features: ["Social Media Marketing", "PPC Advertising", "Content Marketing", "Email Marketing"],
-    price: "Starting at $799/month",
+    price: "Starting at ₹39,999/month",
     color: "from-orange-500 to-orange-600",
     bgColor: "from-orange-50 to-orange-50/50"
   },
@@ -47,7 +47,7 @@ const services = [
     title: "UI/UX Design",
     description: "Beautiful and user-friendly designs that convert visitors into customers",
     features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
-    price: "Starting at $699",
+    price: "Starting at ₹34,999",
     color: "from-pink-500 to-pink-600",
     bgColor: "from-pink-50 to-pink-50/50"
   },
@@ -56,9 +56,27 @@ const services = [
     title: "Analytics & Reporting",
     description: "Data-driven insights to optimize your business performance",
     features: ["Google Analytics", "Custom Dashboards", "Performance Reports", "ROI Tracking"],
-    price: "Starting at $299/month",
+    price: "Starting at ₹14,999/month",
     color: "from-indigo-500 to-indigo-600",
     bgColor: "from-indigo-50 to-indigo-50/50"
+  },
+  {
+    icon: ShoppingCart,
+    title: "E-commerce Development",
+    description: "Complete e-commerce solutions with payment integration and inventory management",
+    features: ["WooCommerce/Shopify", "Payment Gateway", "Inventory Management", "Order Tracking"],
+    price: "Starting at ₹99,999",
+    color: "from-emerald-500 to-emerald-600",
+    bgColor: "from-emerald-50 to-emerald-50/50"
+  },
+  {
+    icon: Code,
+    title: "Custom Software Development",
+    description: "Tailored software solutions for your specific business needs",
+    features: ["Custom Applications", "API Development", "Database Design", "Cloud Integration"],
+    price: "Starting at ₹1,99,999",
+    color: "from-teal-500 to-teal-600",
+    bgColor: "from-teal-50 to-teal-50/50"
   }
 ]
 
@@ -187,7 +205,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {services.map((service, index) => {
               const Icon = service.icon
               return (
@@ -306,6 +324,150 @@ export default function ServicesPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Packages Section */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Our <span className="text-primary">Pricing Packages</span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Choose the perfect package for your business needs. All packages include free consultation and 30-day support.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Starter Package */}
+            <Card className="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+              <CardHeader className="text-center pb-4">
+                <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Starter</CardTitle>
+                <CardDescription className="text-gray-600 dark:text-gray-300">Perfect for small businesses</CardDescription>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-blue-600 dark:text-blue-400">₹49,999</span>
+                  <span className="text-gray-600 dark:text-gray-300">/project</span>
+                </div>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">5-10 Pages Website</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Responsive Design</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Basic SEO Setup</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Contact Form</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">30 Days Support</span>
+                  </li>
+                </ul>
+                <Button asChild className="w-full">
+                  <Link href="#contact">Get Started</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Professional Package */}
+            <Card className="relative bg-white dark:bg-gray-800 border-2 border-blue-500 rounded-xl overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 bg-blue-500 text-white text-center py-2 text-sm font-semibold">
+                Most Popular
+              </div>
+              <CardHeader className="text-center pb-4 pt-8">
+                <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Professional</CardTitle>
+                <CardDescription className="text-gray-600 dark:text-gray-300">Ideal for growing businesses</CardDescription>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-blue-600 dark:text-blue-400">₹99,999</span>
+                  <span className="text-gray-600 dark:text-gray-300">/project</span>
+                </div>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">15-25 Pages Website</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">E-commerce Integration</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Advanced SEO</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Payment Gateway</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">90 Days Support</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Analytics Setup</span>
+                  </li>
+                </ul>
+                <Button asChild className="w-full bg-blue-600 hover:bg-blue-700">
+                  <Link href="#contact">Get Started</Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Enterprise Package */}
+            <Card className="relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+              <CardHeader className="text-center pb-4">
+                <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white">Enterprise</CardTitle>
+                <CardDescription className="text-gray-600 dark:text-gray-300">For large organizations</CardDescription>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-blue-600 dark:text-blue-400">₹1,99,999</span>
+                  <span className="text-gray-600 dark:text-gray-300">/project</span>
+                </div>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <ul className="space-y-3 mb-6">
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Unlimited Pages</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Custom Development</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">API Integration</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Multi-language Support</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">1 Year Support</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span className="text-sm text-gray-600 dark:text-gray-300">Priority Support</span>
+                  </li>
+                </ul>
+                <Button asChild className="w-full">
+                  <Link href="#contact">Get Started</Link>
+                </Button>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
