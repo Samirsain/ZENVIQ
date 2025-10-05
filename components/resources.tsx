@@ -16,7 +16,8 @@ const resources = {
       link: "https://chat.openai.com",
       logo: "/logos/chatgpt.svg",
       rating: "4.8★",
-      external: true
+      external: true,
+      detailUrl: "/ai-tools/chatgpt"
     },
     {
       title: "Claude AI",
@@ -25,7 +26,8 @@ const resources = {
       link: "https://claude.ai",
       logo: "/logos/claude.svg",
       rating: "4.7★",
-      external: true
+      external: true,
+      detailUrl: "/ai-tools/claude"
     },
     {
       title: "Google Gemini",
@@ -34,7 +36,8 @@ const resources = {
       link: "https://gemini.google.com",
       logo: "/logos/gemini.svg",
       rating: "4.6★",
-      external: true
+      external: true,
+      detailUrl: "/ai-tools/gemini"
     },
     {
       title: "Midjourney",
@@ -43,7 +46,8 @@ const resources = {
       link: "https://www.midjourney.com",
       logo: "/logos/midjourney.svg",
       rating: "4.9★",
-      external: true
+      external: true,
+      detailUrl: "/ai-tools/midjourney"
     },
     {
       title: "DALL-E 3",
@@ -52,7 +56,8 @@ const resources = {
       link: "https://openai.com/dall-e-3",
       logo: "/logos/dalle.svg",
       rating: "4.5★",
-      external: true
+      external: true,
+      detailUrl: "/ai-tools/dalle"
     },
     {
       title: "GitHub Copilot",
@@ -61,7 +66,8 @@ const resources = {
       link: "https://github.com/features/copilot",
       logo: "/logos/copilot.svg",
       rating: "4.3★",
-      external: true
+      external: true,
+      detailUrl: "/ai-tools/copilot"
     },
   ],
   "Free Tools": [
@@ -253,30 +259,41 @@ export default function Resources() {
                 </CardHeader>
                 
                 <CardContent className="pt-0 pb-4 sm:pb-6 px-4 sm:px-6">
-                  {/* Action Link */}
-                  {resource.external ? (
-                    <a 
-                      href={resource.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center font-medium text-xs sm:text-sm transition-colors group/link text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300"
-                    >
-                      Try Now
-                      <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />
-                    </a>
-                  ) : (
-                    <Link 
-                      href={resource.link}
-                      className={`inline-flex items-center font-medium text-xs sm:text-sm transition-colors group/link ${
-                        resource.link.startsWith('/tools/') 
-                          ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" 
-                          : "text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300"
-                      }`}
-                    >
-                      {resource.link.startsWith('/tools/') ? 'Try Now' : 'Read More'}
-                      <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />
-                    </Link>
-                  )}
+                  {/* Action Links */}
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    {resource.external ? (
+                      <>
+                        <a 
+                          href={resource.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center font-medium text-xs sm:text-sm transition-colors group/link text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 px-3 py-2 rounded-md border border-blue-200 dark:border-blue-800 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                        >
+                          Try Now
+                          <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />
+                        </a>
+                        <Link 
+                          href={resource.detailUrl || '#'}
+                          className="inline-flex items-center justify-center font-medium text-xs sm:text-sm transition-colors group/link text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 px-3 py-2 rounded-md border border-green-200 dark:border-green-800 hover:bg-green-50 dark:hover:bg-green-900/20"
+                        >
+                          View Details
+                          <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />
+                        </Link>
+                      </>
+                    ) : (
+                      <Link 
+                        href={resource.link}
+                        className={`inline-flex items-center justify-center font-medium text-xs sm:text-sm transition-colors group/link ${
+                          resource.link.startsWith('/tools/') 
+                            ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300" 
+                            : "text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300"
+                        }`}
+                      >
+                        {resource.link.startsWith('/tools/') ? 'Try Now' : 'Read More'}
+                        <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />
+                      </Link>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             )
