@@ -7,6 +7,7 @@ import Newsletter from "@/components/newsletter"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import NewsletterSignup from "@/components/newsletter-signup"
+import ToolsCarousel from "@/components/tools-carousel"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Check, Star } from "lucide-react"
@@ -102,7 +103,7 @@ export default function Home() {
       <Testimonials />
       <FAQSection />
       
-      {/* Tools Section - Sahu4You Style */}
+      {/* Tools Section - Carousel */}
       <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -110,22 +111,11 @@ export default function Home() {
               Tools You'll Love
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Download Pinterest Pins with AI-powered Pinterest Downloader
+              Discover our collection of free tools to boost your productivity
             </p>
           </div>
           
-          <div className="max-w-2xl mx-auto text-center">
-            <Button size="lg" asChild className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg">
-              <Link href="/tools/pinterest-downloader">
-                Try Now
-              </Link>
-            </Button>
-            <div className="mt-4">
-              <Link href="/ai-tools" className="text-blue-600 dark:text-blue-400 hover:underline">
-                View All
-              </Link>
-            </div>
-          </div>
+          <ToolsCarousel />
         </div>
       </section>
       
