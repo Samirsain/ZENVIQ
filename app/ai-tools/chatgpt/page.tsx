@@ -104,74 +104,141 @@ export default function ChatGPTPage() {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
+      <section className="pt-20 md:pt-32 pb-16 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             {/* Back Button */}
-            <Link href="/" className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-8 transition-colors">
+            <Link href="/ai-tools" className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-8 transition-colors">
               <ArrowLeft className="w-4 h-4" />
-              Back to Home
+              Back to AI Tools
             </Link>
 
-            <div className="flex flex-col md:flex-row items-start gap-8">
-              {/* Logo and Basic Info */}
-              <div className="flex-shrink-0">
-                <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center">
-                  <Image 
-                    src="/logos/chatgpt.svg" 
-                    alt="ChatGPT logo"
-                    width={96}
-                    height={96}
-                    className="w-full h-full object-contain"
-                  />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Main Content */}
+              <div className="lg:col-span-2">
+                <div className="flex items-start gap-6 mb-6">
+                  {/* Logo */}
+                  <div className="w-20 h-20 rounded-xl overflow-hidden bg-white dark:bg-gray-800 shadow-lg flex items-center justify-center flex-shrink-0">
+                    <Image 
+                      src="/logos/chatgpt.svg" 
+                      alt="ChatGPT logo"
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3 mb-3">
+                      <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                        ChatGPT
+                      </h1>
+                      <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                        <Check className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+
+                    {/* Feature Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      <Badge className="bg-blue-600 text-white">GPT-4 Turbo</Badge>
+                      <div className="flex items-center gap-1">
+                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        <span className="text-sm font-medium">4.8</span>
+                      </div>
+                      <Badge variant="secondary">productivity</Badge>
+                      <Badge variant="outline">Freemium</Badge>
+                    </div>
+
+                    <Button size="lg" asChild className="bg-green-600 hover:bg-green-700">
+                      <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">
+                        Try Now
+                        <ExternalLink className="ml-2 w-4 h-4" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Short Description */}
+                <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                  ChatGPT optimizes language models for dialogue, enhancing the quality and relevance of your chatbot's responses.
+                </p>
+
+                {/* What is ChatGPT Section */}
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                    What is ChatGPT AI?
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    ChatGPT AI is a revolutionary tool developed by OpenAI that specializes in natural language conversations. 
+                    It offers versatile capabilities for answering questions, content generation, and much more. Since its release, 
+                    ChatGPT has been attracting headlines for its much-hyped potential.
+                  </p>
                 </div>
               </div>
 
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
-                    ChatGPT
-                  </h1>
-                  <Badge className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
-                    <Star className="w-3 h-3 mr-1" />
-                    4.8★
-                  </Badge>
-                </div>
-                
-                <p className="text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                  OpenAI's revolutionary conversational AI that can help with writing, coding, analysis, and more. 
-                  The most popular AI tool with over 100 million users worldwide.
-                </p>
+              {/* Sidebar */}
+              <div className="lg:col-span-1">
+                <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 space-y-6">
+                  {/* Tool Overview */}
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Tool Overview</h3>
+                    <div className="space-y-2 text-sm">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600 dark:text-gray-300">Rating</span>
+                        <div className="flex items-center gap-1">
+                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <span className="font-medium">4.8</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600 dark:text-gray-300">Views</span>
+                        <span className="font-medium">125000</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600 dark:text-gray-300">Published</span>
+                        <span className="font-medium">5/6/2024</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-600 dark:text-gray-300">Status</span>
+                        <div className="flex items-center gap-1">
+                          <Check className="w-4 h-4 text-green-500" />
+                          <span className="font-medium text-green-600 dark:text-green-400">Verified</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-                <div className="flex flex-wrap gap-4 mb-8">
-                  <Button size="lg" asChild className="bg-green-600 hover:bg-green-700">
-                    <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">
-                      Try ChatGPT
-                      <ExternalLink className="ml-2 w-4 h-4" />
-                    </a>
-                  </Button>
-                  <Button size="lg" variant="outline" asChild>
-                    <a href="#pricing">View Pricing</a>
-                  </Button>
-                </div>
+                  {/* Mobile Apps */}
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Mobile Apps</h3>
+                    <div className="space-y-2">
+                      <a href="https://apps.apple.com/app/chatgpt/id6448311069" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors">
+                        <Smartphone className="w-4 h-4" />
+                        <span className="text-sm">iOS App</span>
+                      </a>
+                      <a href="https://play.google.com/store/apps/details?id=com.openai.chatgpt" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 transition-colors">
+                        <Smartphone className="w-4 h-4" />
+                        <span className="text-sm">Android App</span>
+                      </a>
+                    </div>
+                  </div>
 
-                {/* Quick Stats */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400">100M+</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Users</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400">175B</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Parameters</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400">2022</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Launched</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400">OpenAI</div>
-                    <div className="text-sm text-gray-600 dark:text-gray-300">Company</div>
+                  {/* Quick Links */}
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">Quick Links</h3>
+                    <div className="space-y-2">
+                      <Button size="sm" asChild className="w-full bg-green-600 hover:bg-green-700">
+                        <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">
+                          Visit Official Website
+                        </a>
+                      </Button>
+                      <Link href="#faq" className="block text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+                        View FAQ
+                      </Link>
+                      <Link href="/ai-tools" className="block text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+                        Related Tools
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
