@@ -66,23 +66,13 @@ export default function Footer() {
                       </Link>
                     </li>
                     <li>
-                      <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
-                        ChatGPT (Free)
+                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                        Free Tools
                       </a>
                     </li>
                     <li>
-                      <a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
-                        Claude AI (Free)
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
-                        Google Gemini
-                      </a>
-                    </li>
-                    <li>
-                      <a href="https://www.canva.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white transition-colors">
-                        Free Templates
+                      <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                        Templates
                       </a>
                     </li>
                   </ul>
