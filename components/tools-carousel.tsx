@@ -93,6 +93,8 @@ const tools = [
 export default function ToolsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
 
   // Auto-play functionality
   useEffect(() => {
@@ -120,10 +122,38 @@ export default function ToolsCarousel() {
     setIsAutoPlaying(false)
   }
 
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe) {
+      nextSlide()
+    } else if (isRightSwipe) {
+      prevSlide()
+    }
+  }
+
   return (
-    <div className="relative max-w-6xl mx-auto">
+    <div className="relative max-w-6xl mx-auto px-2 sm:px-4">
       {/* Carousel Container */}
-      <div className="relative overflow-hidden rounded-2xl">
+      <div 
+        className="relative overflow-hidden rounded-xl sm:rounded-2xl"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div 
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -131,24 +161,24 @@ export default function ToolsCarousel() {
           {tools.map((tool) => {
             const Icon = tool.icon
             return (
-              <div key={tool.id} className="w-full flex-shrink-0 px-4">
+              <div key={tool.id} className="w-full flex-shrink-0 px-2 sm:px-4">
                 <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <CardHeader className="text-center pb-4">
-                    <div className={`w-16 h-16 ${tool.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                      <Icon className="w-8 h-8" />
+                  <CardHeader className="text-center pb-3 sm:pb-4 px-4 sm:px-6">
+                    <div className={`w-12 h-12 sm:w-16 sm:h-16 ${tool.color} rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4`}>
+                      <Icon className="w-6 h-6 sm:w-8 sm:h-8" />
                     </div>
-                    <div className="inline-block px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full mb-2">
+                    <div className="inline-block px-2 py-1 sm:px-3 sm:py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-medium rounded-full mb-2">
                       {tool.badge}
                     </div>
-                    <CardTitle className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    <CardTitle className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-2">
                       {tool.title}
                     </CardTitle>
-                    <CardDescription className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                    <CardDescription className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
                       {tool.description}
                     </CardDescription>
                   </CardHeader>
-                  <CardContent className="text-center pt-0">
-                    <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
+                  <CardContent className="text-center pt-0 px-4 sm:px-6 pb-4 sm:pb-6">
+                    <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 sm:px-8 sm:py-3 text-sm sm:text-lg w-full sm:w-auto">
                       <Link href={tool.link}>
                         Try Now
                       </Link>
@@ -161,32 +191,32 @@ export default function ToolsCarousel() {
         </div>
       </div>
 
-      {/* Navigation Arrows */}
+      {/* Navigation Arrows - Hidden on mobile, visible on larger screens */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 z-10"
+        className="hidden sm:block absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 z-10"
         aria-label="Previous tool"
       >
-        <ChevronLeft className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-300" />
       </button>
 
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 z-10"
+        className="hidden sm:block absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-700 z-10"
         aria-label="Next tool"
       >
-        <ChevronRight className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 dark:text-gray-300" />
       </button>
 
       {/* Dots Indicator */}
-      <div className="flex justify-center mt-8 space-x-2">
+      <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
         {tools.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
               index === currentIndex
-                ? "bg-blue-600 w-8"
+                ? "bg-blue-600 w-6 sm:w-8"
                 : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
             }`}
             aria-label={`Go to slide ${index + 1}`}
@@ -195,8 +225,8 @@ export default function ToolsCarousel() {
       </div>
 
       {/* View All Tools Button */}
-      <div className="text-center mt-8">
-        <Button asChild variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20">
+      <div className="text-center mt-6 sm:mt-8">
+        <Button asChild variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 text-sm sm:text-base px-4 py-2 sm:px-6 sm:py-3">
           <Link href="/ai-tools">
             View All Tools
           </Link>

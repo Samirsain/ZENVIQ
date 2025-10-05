@@ -45,8 +45,8 @@ export default function Header() {
         isScrolled || isMobileMenuOpen ? "bg-background/90 backdrop-blur-sm border-b border-border/50" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="container mx-auto px-3 sm:px-4">
+        <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
           {/* Logo */}
           <Link
             href="/"
@@ -57,7 +57,7 @@ export default function Header() {
               alt="Sam4You Logo"
               width={150}
               height={50}
-              className="object-contain h-10 md:h-12 w-auto"
+              className="object-contain h-8 sm:h-10 md:h-12 w-auto"
             />
           </Link>
 
@@ -105,27 +105,27 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-foreground p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <nav className="flex flex-col gap-4">
+          <div className="md:hidden py-3 border-t border-border">
+            <nav className="flex flex-col gap-3">
               {/* Mobile Search */}
-              <div className="relative">
-                <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <div className="relative px-2">
+                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search services, tools..."
-                  className="w-full h-10 pl-10 pr-4 rounded-full border border-border bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
+                  className="w-full h-9 pl-9 pr-4 rounded-full border border-border bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
                 />
               </div>
 
@@ -135,17 +135,19 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors px-2 py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button asChild className="w-full">
-                <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Get Started
-                </Link>
-              </Button>
+              <div className="px-2 pt-2">
+                <Button asChild className="w-full text-sm">
+                  <Link href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    Get Started
+                  </Link>
+                </Button>
+              </div>
             </nav>
           </div>
         )}
