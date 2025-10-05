@@ -66,8 +66,8 @@ export default function FAQSection() {
   }
 
   return (
-    <section className="py-16 sm:py-20 md:py-32 bg-white dark:bg-gray-900">
-      <div className="container mx-auto px-3 sm:px-4">
+    <section className="py-16 sm:py-20 md:py-32 bg-white dark:bg-gray-900 w-full overflow-hidden">
+      <div className="container mx-auto px-3 sm:px-4 max-w-full">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 text-balance">
             Frequently Asked <span className="text-primary">Questions</span>
@@ -77,16 +77,16 @@ export default function FAQSection() {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-3 sm:space-y-4">
+        <div className="max-w-4xl mx-auto space-y-3 sm:space-y-4 w-full">
           {faqData.map((item) => (
-            <Card key={item.id} className="border-border/50 overflow-hidden">
-              <CardHeader className="pb-2 sm:pb-3 px-4 sm:px-6">
+            <Card key={item.id} className="border-border/50 overflow-hidden w-full">
+              <CardHeader className="pb-2 sm:pb-3 px-3 sm:px-4 md:px-6">
                 <Button
                   variant="ghost"
                   className="w-full justify-between p-0 h-auto text-left hover:bg-transparent"
                   onClick={() => toggleItem(item.id)}
                 >
-                  <CardTitle className="text-base sm:text-lg font-medium pr-2 sm:pr-4 leading-tight">
+                  <CardTitle className="text-sm sm:text-base md:text-lg font-medium pr-2 sm:pr-4 leading-tight text-left">
                     {item.question}
                   </CardTitle>
                   {openItems.includes(item.id) ? (
@@ -97,8 +97,8 @@ export default function FAQSection() {
                 </Button>
               </CardHeader>
               {openItems.includes(item.id) && (
-                <CardContent className="pt-0 px-4 sm:px-6 pb-4 sm:pb-6">
-                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                <CardContent className="pt-0 px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
+                  <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">
                     {item.answer}
                   </p>
                 </CardContent>
