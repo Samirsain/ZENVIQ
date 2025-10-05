@@ -9,54 +9,86 @@ import { useState } from "react"
 const resources = {
   "AI": [
     {
-      title: "What is Artificial Intelligence? Complete Beginner's Guide",
-      description: "Learn everything about AI from basics to advanced concepts. Understand machine learning, deep learning, and how AI is transforming our world.",
-      badge: "AI Basics",
-      link: "/blog/what-is-artificial-intelligence-guide",
+      title: "GitaGPT AI",
+      description: "Ask Krishna questions and get AI-powered answers based on the Bhagavad Gita. Spiritual guidance meets artificial intelligence.",
+      badge: "New",
+      link: "/ai-tools/gitagpt",
     },
     {
-      title: "Top 15 AI Tools Everyone Should Know in 2025",
-      description: "Discover the most powerful AI tools for productivity, creativity, and business. From ChatGPT to Midjourney - complete tool reviews and comparisons.",
+      title: "AI Content Generator",
+      description: "Generate high-quality content for blogs, social media, and marketing with AI-powered tools",
       badge: "AI Tools",
-      link: "/blog/top-15-ai-tools-2025",
+      link: "/tools/content-generator",
     },
     {
-      title: "How AI is Changing Business Operations",
-      description: "Explore how artificial intelligence is revolutionizing business processes, automation, and decision-making across industries.",
-      badge: "Business AI",
-      link: "/blog/ai-changing-business-operations",
+      title: "AI Chatbot Builder",
+      description: "Create intelligent chatbots for your website with our AI-powered chatbot builder",
+      badge: "AI Tools",
+      link: "/tools/chatbot-builder",
     },
     {
-      title: "Machine Learning vs Deep Learning: What's the Difference?",
-      description: "Understand the key differences between machine learning and deep learning. Learn when to use each approach for your projects.",
-      badge: "ML vs DL",
-      link: "/blog/machine-learning-vs-deep-learning",
-    },
-    {
-      title: "AI Ethics and Future Implications",
-      description: "Dive deep into AI ethics, bias, privacy concerns, and what the future holds for artificial intelligence in society.",
-      badge: "AI Ethics",
-      link: "/blog/ai-ethics-future-implications",
-    },
-    {
-      title: "How to Start Learning AI and Machine Learning",
-      description: "Complete roadmap for beginners to start their AI journey. Best courses, resources, and step-by-step learning path.",
-      badge: "Learning AI",
-      link: "/blog/how-to-start-learning-ai-ml",
+      title: "AI Image Generator",
+      description: "Generate stunning images using AI for your projects, social media, and marketing campaigns",
+      badge: "AI Tools",
+      link: "/tools/ai-image-generator",
     },
   ],
-  "Blogs": [
+  "Free Tools": [
     {
-      title: "10 Essential SEO Strategies That Actually Work in 2025",
-      description: "Discover proven SEO techniques that deliver real results. Learn the strategies that top-performing websites use to dominate search rankings.",
-      badge: "SEO",
-      link: "/blog/essential-seo-strategies-2025",
+      title: "Pinterest Downloader",
+      description: "Download Pinterest pins with AI-powered Pinterest Downloader. Save images and videos from Pinterest easily.",
+      badge: "Downloaders",
+      link: "/tools/pinterest-downloader",
     },
     {
-      title: "How AI Tools Are Revolutionizing Content Creation",
-      description: "Explore the latest AI-powered content creation tools and learn how to leverage them for better productivity and quality.",
-      badge: "AI Tools",
-      link: "/blog/ai-content-creation-tools",
+      title: "EMI Calculator",
+      description: "Calculate your loan EMI, interest, and total amount with our free EMI calculator",
+      badge: "Calculators",
+      link: "/tools/emi-calculator",
+    },
+    {
+      title: "GST Calculator",
+      description: "Calculate GST amount, tax rates, and total price with our comprehensive GST calculator",
+      badge: "Calculators",
+      link: "/tools/gst-calculator",
+    },
+    {
+      title: "Percentage Calculator",
+      description: "Calculate percentages, percentage change, and percentage of a number with ease",
+      badge: "Calculators",
+      link: "/tools/percentage-calculator",
+    },
+    {
+      title: "SKU Generator",
+      description: "Generate unique SKU codes for your products with our free SKU generator tool",
+      badge: "Generators",
+      link: "/tools/sku-generator",
+    },
+    {
+      title: "Case Converter",
+      description: "Convert text between different cases - uppercase, lowercase, title case, and more",
+      badge: "Text Tools",
+      link: "/tools/case-converter",
+    },
+    {
+      title: "Word Counter",
+      description: "Count words, characters, sentences, and paragraphs in your text with our word counter",
+      badge: "Text Tools",
+      link: "/tools/word-counter",
+    },
+    {
+      title: "CSS Unit Converter",
+      description: "Convert between different CSS units - px, em, rem, %, vw, vh, and more",
+      badge: "Text Tools",
+      link: "/tools/css-unit-converter",
+    },
+  ],
+  "Blog": [
+    {
+      title: "Supercharge your AI Workflow",
+      description: "Find the right best AI tools for your workflow. Complete guide to AI tools and their applications.",
+      badge: "AI",
+      link: "/blog/ai-workflow-tools",
     },
     {
       title: "Complete Guide to Building a Professional Website",
@@ -70,73 +102,23 @@ const resources = {
       badge: "Marketing",
       link: "/blog/digital-marketing-trends-2025",
     },
-  ],
-  "Tools": [
     {
-      title: "SEO Checker Tool",
-      description: "Analyze your website SEO performance and get actionable insights with our free SEO checker",
-      badge: "SEO Tools",
-      link: "/tools/seo-checker",
-    },
-    {
-      title: "AI Content Generator",
-      description: "Generate high-quality content for blogs, social media, and marketing with AI-powered tools",
+      title: "How AI Tools Are Revolutionizing Content Creation",
+      description: "Explore the latest AI-powered content creation tools and learn how to leverage them for better productivity and quality.",
       badge: "AI Tools",
-      link: "/tools/content-generator",
-    },
-    {
-      title: "Meta Caption Generator",
-      description: "Create engaging social media captions for all platforms instantly with our caption generator",
-      badge: "Social Media",
-      link: "/tools/meta-caption",
-    },
-    {
-      title: "Pinterest Video Downloader",
-      description: "Download videos from Pinterest pins easily and quickly with our free video downloader",
-      badge: "Video Tools",
-      link: "/tools/pinterest-downloader",
-    },
-    {
-      title: "Instagram Tools Suite",
-      description: "Generate Instagram bios, name suggestions, and username ideas all in one place",
-      badge: "Instagram",
-      link: "/tools/instagram-tools",
-    },
-    {
-      title: "Free SEO Tools for Website Analysis",
-      description: "Essential free tools to analyze and improve your website's SEO performance",
-      badge: "SEO Tools",
-      link: "/tools/seo-tools",
-    },
-    {
-      title: "Best Website Speed Testing Tools",
-      description: "Top tools to test and optimize your website loading speed",
-      badge: "Performance",
-      link: "/tools/speed-tools",
-    },
-    {
-      title: "Social Media Management Tools",
-      description: "Best tools for managing and scheduling social media posts across platforms",
-      badge: "Social Media",
-      link: "/tools/social-tools",
-    },
-    {
-      title: "Email Marketing Tools Comparison",
-      description: "Compare the best email marketing platforms for your business needs",
-      badge: "Email",
-      link: "/tools/email-tools",
+      link: "/blog/ai-content-creation-tools",
     },
   ],
 }
 
 const categories = [
   { name: "AI", icon: Lightbulb },
-  { name: "Blogs", icon: FileText },
-  { name: "Tools", icon: Wrench },
+  { name: "Free Tools", icon: Wrench },
+  { name: "Blog", icon: FileText },
 ]
 
 export default function Resources() {
-  const [activeCategory, setActiveCategory] = useState("Blogs")
+  const [activeCategory, setActiveCategory] = useState("AI")
 
   return (
     <section className="py-20 bg-white dark:bg-gray-900">

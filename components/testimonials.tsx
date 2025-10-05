@@ -13,17 +13,27 @@ export default function Testimonials() {
   return (
     <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-4">
-          <span className="inline-block px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">
-            ⭐ Powered by Real Businesses
-          </span>
-        </div>
-
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 text-balance">Trusted by Growing Businesses</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See what real clients have to say about their experience working with us
+            See what real clients have to say about their experience working with us.
           </p>
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
+          <div className="text-center">
+            <div className="text-4xl font-bold text-blue-600 mb-2">200+</div>
+            <div className="text-gray-600">Businesses Transformed</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-blue-600 mb-2">30K+</div>
+            <div className="text-gray-600">GitaGPT Users</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-blue-600 mb-2">250%+</div>
+            <div className="text-gray-600">Avg. Conversion Increase</div>
+          </div>
         </div>
 
         <div className="max-w-4xl mx-auto">
