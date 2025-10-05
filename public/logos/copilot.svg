@@ -1,9 +1,18 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="6" fill="#24292F"/>
-  <path d="M16 8L20 12H16V8ZM12 16H8L12 20V16ZM20 16V20L24 16H20ZM16 20H12V24L16 20ZM8 12H12V8L8 12Z" fill="white"/>
-  <path d="M14 14H18V16H14V14ZM14 18H18V20H14V18Z" fill="white"/>
-  <circle cx="12" cy="14" r="1" fill="white"/>
-  <circle cx="12" cy="18" r="1" fill="white"/>
-  <circle cx="20" cy="14" r="1" fill="white"/>
-  <circle cx="20" cy="18" r="1" fill="white"/>
+  <defs>
+    <linearGradient id="copilot-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#24292F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1B1F23;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="url(#copilot-gradient)"/>
+  <path d="M16 6l4 4h-4V6zm-4 10H8l4 4v-4zm8 0v4l4-4h-4zm-4 4h-4v8l4-8zm-8-8h4V6l-4 4z" fill="white"/>
+  <path d="M12 12h8v2h-8v-2zm0 4h8v2h-8v-2z" fill="white"/>
+  <circle cx="10" cy="13" r="1" fill="white"/>
+  <circle cx="10" cy="17" r="1" fill="white"/>
+  <circle cx="22" cy="13" r="1" fill="white"/>
+  <circle cx="22" cy="17" r="1" fill="white"/>
+  <!-- Blue verification tick -->
+  <circle cx="26" cy="6" r="4" fill="#1DA1F2"/>
+  <path d="M24.5 6l1 1 2-2" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

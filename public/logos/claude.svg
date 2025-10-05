@@ -1,7 +1,16 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="6" fill="#D97706"/>
-  <path d="M8 12H24V14H8V12ZM8 16H24V18H8V16ZM8 20H20V22H8V20Z" fill="white"/>
-  <circle cx="10" cy="13" r="1" fill="white"/>
-  <circle cx="10" cy="17" r="1" fill="white"/>
-  <circle cx="10" cy="21" r="1" fill="white"/>
+  <defs>
+    <linearGradient id="claude-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="url(#claude-gradient)"/>
+  <path d="M6 12h20v2H6v-2zm0 4h20v2H6v-2zm0 4h16v2H6v-2z" fill="white"/>
+  <circle cx="8" cy="13" r="1" fill="white"/>
+  <circle cx="8" cy="17" r="1" fill="white"/>
+  <circle cx="8" cy="21" r="1" fill="white"/>
+  <!-- Blue verification tick -->
+  <circle cx="26" cy="6" r="4" fill="#1DA1F2"/>
+  <path d="M24.5 6l1 1 2-2" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
