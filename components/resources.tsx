@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Star, Lightbulb, Wrench, FileText, Zap, MessageSquare, Brain, ImageIcon, Video, Code } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 
 const resources = {
@@ -13,7 +14,7 @@ const resources = {
       description: "OpenAI's conversational AI that can help with writing, coding, analysis, and more. Most popular AI tool with free tier available.",
       badge: "Free Tier",
       link: "https://chat.openai.com",
-      icon: MessageSquare,
+      logo: "/logos/chatgpt.svg",
       rating: "4.8★",
       external: true
     },
@@ -22,7 +23,7 @@ const resources = {
       description: "Anthropic's AI assistant focused on helpful, harmless, and honest responses. Better context understanding and ethical AI.",
       badge: "Free Tier",
       link: "https://claude.ai",
-      icon: Brain,
+      logo: "/logos/claude.svg",
       rating: "4.7★",
       external: true
     },
@@ -31,7 +32,7 @@ const resources = {
       description: "Google's multimodal AI that can understand text, images, and more. Integrated with Google ecosystem and real-time data.",
       badge: "Free Tier",
       link: "https://gemini.google.com",
-      icon: Brain,
+      logo: "/logos/gemini.svg",
       rating: "4.6★",
       external: true
     },
@@ -40,7 +41,7 @@ const resources = {
       description: "AI image generator that creates stunning artwork and visuals. Best image quality with artistic capabilities.",
       badge: "Premium",
       link: "https://www.midjourney.com",
-      icon: ImageIcon,
+      logo: "/logos/midjourney.svg",
       rating: "4.9★",
       external: true
     },
@@ -49,7 +50,7 @@ const resources = {
       description: "OpenAI's image generator integrated with ChatGPT. Easy to use with good safety measures and commercial usage.",
       badge: "ChatGPT Plus",
       link: "https://openai.com/dall-e-3",
-      icon: ImageIcon,
+      logo: "/logos/dalle.svg",
       rating: "4.5★",
       external: true
     },
@@ -58,7 +59,7 @@ const resources = {
       description: "AI pair programmer that helps write code faster. Excellent for coding with multi-language support and IDE integration.",
       badge: "Free for Students",
       link: "https://github.com/features/copilot",
-      icon: Code,
+      logo: "/logos/copilot.svg",
       rating: "4.3★",
       external: true
     },
@@ -224,13 +225,23 @@ export default function Resources() {
                 </div>
 
                 <CardHeader className="pt-10 sm:pt-12 pb-3 sm:pb-4 px-4 sm:px-6">
-                  {/* Icon and Title */}
+                  {/* Logo/Icon and Title */}
                   <div className="flex items-center gap-3 mb-2 sm:mb-3">
-                    {Icon && (
+                    {resource.logo ? (
+                      <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center flex-shrink-0">
+                        <Image 
+                          src={resource.logo} 
+                          alt={`${resource.title} logo`}
+                          width={32}
+                          height={32}
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                    ) : Icon ? (
                       <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Icon className="w-5 h-5 text-white" />
                       </div>
-                    )}
+                    ) : null}
                     <CardTitle className="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-tight">
                       {resource.title}
                     </CardTitle>
