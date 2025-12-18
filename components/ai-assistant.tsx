@@ -2,9 +2,9 @@
 
 import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { MessageCircle, X, Send, Bot, User } from "lucide-react"
+import { MessageCircle, X, Send, Bot } from "lucide-react"
 
 interface Message {
   id: string
@@ -13,12 +13,45 @@ interface Message {
   timestamp: Date
 }
 
+const SITE_DATA = {
+  agency: {
+    name: "Zenviq",
+    tagline: "Build Smarter Digital Solutions",
+    description: "Zenviq is a modern Web & Marketing Agency that helps individuals, startups, and businesses build premium, fast, and visually powerful digital experiences.",
+    experience: "8+ years",
+    projects: "500+",
+    techStack: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Modern UI/UX Practices"]
+  },
+  services: [
+    { name: "WordPress Development", keywords: ["wordpress", "wp", "blog", "cms"], detail: "Expert WordPress solutions from custom themes to enterprise plugins. We focus on zero bloat and high security." },
+    { name: "AI & Automation", keywords: ["ai", "automation", "chatbots", "workflow"], detail: "Future-proof business with custom AI agents, LLM integrations, and process automation." },
+    { name: "Next.js & React Apps", keywords: ["nextjs", "react", "app", "dashboard"], detail: "Sub-second loading, modern apps built with Next.js 14 for ultimate performance and SEO." },
+    { name: "E-commerce", keywords: ["shop", "ecommerce", "sell", "store", "shopify", "woocommerce"], detail: "High-converting online stores globally optimized for sales and easy management." },
+    { name: "SEO & Content", keywords: ["seo", "traffic", "google", "ranking"], detail: "Data-driven SEO strategies that drive organic traffic and convert visitors into customers." },
+    { name: "UI/UX Design", keywords: ["design", "ui", "ux", "figma", "visual"], detail: "Strategic, user-centric design that balances premium aesthetics with functional experience." }
+  ],
+  tools: [
+    "AI Content Generator", "Image Generator", "SEO Checker", "GST Calculator",
+    "EMI Calculator", "Word Counter", "CSS Unit Converter", "Pinterest Downloader",
+    "Instagram Tools", "Meta Caption Generator", "SKU Generator", "Speed SEO Tools"
+  ],
+  process: [
+    "Discovery & Strategy", "Agile Development (High-frequency sprints)", "Rigorous Testing", "Launch & Evolution"
+  ],
+  contact: {
+    meeting: "https://calendly.com/zenviq/30min",
+    whatsapp: "https://wa.me/919352410667",
+    email: "info@zenviq.com",
+    form: "/contact"
+  }
+}
+
 export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hi! I'm Zen, your AI assistant. How can I help you today?",
+      text: "Hi! I'm your Zenviq AI Assistant. 👋\n\nI can help you build premium, fast, and visually powerful digital experiences. How can I assist you today?",
       isUser: false,
       timestamp: new Date()
     }
@@ -49,52 +82,64 @@ export default function AIAssistant() {
     setInputValue("")
     setIsTyping(true)
 
-    // Simulate AI response
+    // AI Processing
     setTimeout(() => {
-      const aiResponse = generateAIResponse(inputValue)
+      const response = getSmartResponse(inputValue)
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: aiResponse,
+        text: response,
         isUser: false,
         timestamp: new Date()
       }
       setMessages(prev => [...prev, aiMessage])
       setIsTyping(false)
-    }, 1000)
+    }, 800)
   }
 
-  const generateAIResponse = (userInput: string): string => {
+  const getSmartResponse = (userInput: string): string => {
     const input = userInput.toLowerCase()
 
-    if (input.includes("service") || input.includes("price") || input.includes("cost")) {
-      return "We offer web development, SEO, AI tools, and digital marketing services. For pricing details, I recommend booking a 30-minute free consultation here: https://calendly.com/zenviq/30min\n\nAlternatively, you can use the 'Send a Message' button for a quick quote."
+    // Language detection
+    const isHindi = /[अ-ह]/.test(userInput)
+    const isHinglish = /kya|kaise|btao|hai|sakte|ho|nhi|hu|bol|rha|mere|liye|web|site|karna|chah|rha/i.test(input)
+    const lang = isHindi ? "hindi" : (isHinglish ? "hinglish" : "english")
+
+    const findService = SITE_DATA.services.find(s => s.keywords.some(k => input.includes(k)))
+
+    // Pricing queries
+    if (input.includes("price") || input.includes("cost") || input.includes("kitna") || input.includes("paisa") || input.includes("charge")) {
+      if (lang === "english") return "Pricing at Zenviq depends on your project's scope. We offer affordable and flexible custom quotes. Best way is to book a quick 30-min strategy call: " + SITE_DATA.contact.meeting
+      return "Zenviq ki pricing project ke scope par depend karti hai. Hum affordable aur premium solutions dete hain. Sabse sahi rahega ki aap ek small consultation book karein: " + SITE_DATA.contact.meeting
     }
 
-    if (input.includes("contact") || input.includes("reach") || input.includes("phone") || input.includes("book")) {
-      return "You can reach us through:\n• Schedule a Call: https://calendly.com/zenviq/30min (Recommended)\n• WhatsApp: Use the chat button\n• Email: hello@zenviq.com\nWe typically respond to emails within 24 hours."
+    // Tools queries
+    if (input.includes("tool") || input.includes("calculator") || input.includes("generator")) {
+      const toolList = SITE_DATA.tools.slice(0, 5).join(", ") + " and more."
+      if (lang === "english") return `We have built several free tools for the community like: ${toolList}. You can check them all in our Tools section!`
+      return `Humne kaafi saare useful tools banaye hain jaise: ${toolList}. Aap humare tools section mein inhe free use kar sakte hain!`
     }
 
-    if (input.includes("website") || input.includes("development") || input.includes("web")) {
-      return "We specialize in creating modern, responsive websites with:\n• Custom design and development\n• SEO optimization\n• Mobile-first approach\n• Fast loading times\n• E-commerce integration\n\nWould you like to book a call to discuss your project? https://calendly.com/zenviq/30min"
+    // Service specific
+    if (findService) {
+      if (lang === "english") return `${findService.name}: ${findService.detail}\n\nThis would be perfect for your goal. Shall we discuss a strategy for this?`
+      return `${findService.name}: ${findService.detail}\n\nYeh aapke requirements ke liye best option hai. Kya hum iske baare mein aur baat karein?`
     }
 
-    if (input.includes("seo") || input.includes("search") || input.includes("ranking")) {
-      return "Our SEO services include:\n• Keyword research and analysis\n• On-page and technical SEO\n• Content optimization\n• Link building strategies\n\nLet's discuss your SEO strategy: https://calendly.com/zenviq/30min"
+    // Start project / Contact
+    if (input.includes("start") || input.includes("contact") || input.includes("help") || input.includes("baat") || input.includes("kaam")) {
+      if (lang === "english") return `Great! You can start by filling our contact form, chatting on WhatsApp (${SITE_DATA.contact.whatsapp}), or booking a call: ${SITE_DATA.contact.meeting}. What works best for you?`
+      return `Zaroor! Aap project start karne ke liye humara form bhar sakte hain, WhatsApp par message kar sakte hain (${SITE_DATA.contact.whatsapp}), ya directly call schedule kar sakte hain: ${SITE_DATA.contact.meeting}. Aapko kya suit karega?`
     }
 
-    if (input.includes("ai") || input.includes("tools") || input.includes("automation")) {
-      return "We offer various AI tools and automation services:\n• Content generation tools\n• SEO analysis tools\n• Social media automation\n• Custom AI solutions\n\nYou can book an AI consultation here: https://calendly.com/zenviq/30min"
+    // Greetings
+    if (input.includes("hi") || input.includes("hello") || input.includes("hey") || input.includes("namaste")) {
+      if (lang === "english") return "Hello! I'm the Zenviq AI Assistant. How can I help you build your next premium digital experience today?"
+      return "Namaste! Main Zenviq AI Assistant hoon. Kaise help kar sakta hoon aapki digital journey mein?"
     }
 
-    if (input.includes("hello") || input.includes("hi") || input.includes("hey")) {
-      return "Hello! Welcome to Zenviq. I'm Zen, your AI assistant. I'm here to help you with information about our services, pricing, or booking a call. What would you like to know?"
-    }
-
-    if (input.includes("thank") || input.includes("thanks")) {
-      return "You're welcome! I'm Zen, and I'm here to help. Is there anything else I can assist you with today?"
-    }
-
-    return "I understand you're asking about: " + userInput + ". I'm Zen, and I'm here to help! For detailed information about our services, pricing, or to book a call with our experts, please use this link: https://calendly.com/zenviq/30min"
+    // Fallback
+    if (lang === "english") return "I'm trained on all Zenviq data. I can tell you about our WordPress, AI, Next.js services, or our 500+ successful projects. What would you like to build today?"
+    return "Main Zenviq ka intelligent assistant hoon. Hum WordPress, AI automation aur modern Next.js apps banate hain. Aap apna project discuss karne ke liye WhatsApp ya meeting link use kar sakte hain."
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -106,7 +151,6 @@ export default function AIAssistant() {
 
   return (
     <>
-      {/* Chat Button */}
       <Button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-indigo-600 hover:bg-indigo-700"
@@ -115,48 +159,39 @@ export default function AIAssistant() {
         <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
       </Button>
 
-      {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-80 h-[calc(100vh-8rem)] sm:h-96 bg-white dark:bg-gray-900 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col">
-          {/* Header */}
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 sm:pb-3 border-b px-3 sm:px-6">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-80 h-[calc(100vh-8rem)] sm:h-96 bg-white dark:bg-gray-900 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 sm:pb-3 border-b px-3 sm:px-6 bg-indigo-50/50 dark:bg-indigo-900/20">
             <div className="flex items-center gap-2">
               <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
                 <Bot className="w-3 h-3 sm:w-4 sm:h-4 text-indigo-600 dark:text-indigo-400" />
               </div>
-              <CardTitle className="text-xs sm:text-sm font-medium">Zen - AI Assistant</CardTitle>
+              <CardTitle className="text-xs sm:text-sm font-bold tracking-tight">Zenviq AI</CardTitle>
             </div>
             <Button
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(false)}
-              className="h-5 w-5 sm:h-6 sm:w-6 p-0"
+              className="h-5 w-5 sm:h-6 sm:w-6 p-0 rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
             >
               <X className="w-3 h-3 sm:w-4 sm:h-4" />
             </Button>
           </CardHeader>
 
-          {/* Messages */}
-          <CardContent className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-2 sm:space-y-3">
+          <CardContent className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-3 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700">
             {messages.map((message) => (
               <div
                 key={message.id}
                 className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[85%] sm:max-w-[80%] rounded-lg px-2 py-1.5 sm:px-3 sm:py-2 ${message.isUser
-                    ? "bg-indigo-600 text-white"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                  className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 py-2 ${message.isUser
+                    ? "bg-indigo-600 text-white shadow-md rounded-tr-none"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm rounded-tl-none"
                     }`}
                 >
-                  <div className="flex items-start gap-1.5 sm:gap-2">
-                    {!message.isUser && (
-                      <Bot className="w-3 h-3 sm:w-4 sm:h-4 mt-0.5 flex-shrink-0" />
-                    )}
-                    {message.isUser && (
-                      <User className="w-3 h-3 sm:w-4 sm:h-4 mt-0.5 flex-shrink-0" />
-                    )}
-                    <div className="text-xs sm:text-sm whitespace-pre-line leading-relaxed">{message.text}</div>
+                  <div className="text-xs sm:text-sm whitespace-pre-line leading-relaxed font-medium">
+                    {message.text}
                   </div>
                 </div>
               </div>
@@ -164,14 +199,11 @@ export default function AIAssistant() {
 
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 dark:bg-gray-800 rounded-lg px-2 py-1.5 sm:px-3 sm:py-2">
-                  <div className="flex items-center gap-1.5 sm:gap-2">
-                    <Bot className="w-3 h-3 sm:w-4 sm:h-4" />
-                    <div className="flex space-x-1">
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
-                    </div>
+                <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-tl-none px-3 py-2 shadow-sm">
+                  <div className="flex space-x-1">
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
                   </div>
                 </div>
               </div>
@@ -179,26 +211,26 @@ export default function AIAssistant() {
             <div ref={messagesEndRef} />
           </CardContent>
 
-          {/* Input */}
-          <div className="p-2 sm:p-4 border-t">
+          <div className="p-2 sm:p-4 border-t bg-gray-50/50 dark:bg-gray-800/20">
             <div className="flex gap-1.5 sm:gap-2">
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
-                className="flex-1 text-xs sm:text-sm"
+                placeholder="Talk to Zenviq AI..."
+                className="flex-1 text-xs sm:text-sm border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 rounded-xl focus:ring-2 focus:ring-indigo-500 transition-all shadow-inner"
                 disabled={isTyping}
               />
               <Button
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || isTyping}
                 size="sm"
-                className="px-2 sm:px-3 h-8 sm:h-9"
+                className="px-2 sm:px-3 h-8 sm:h-10 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition-all shadow-md group"
               >
-                <Send className="w-3 h-3 sm:w-4 sm:h-4" />
+                <Send className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Button>
             </div>
+            <p className="text-[10px] text-gray-400 text-center mt-2 font-medium">Zenviq AI Assistant • Always Ready to Help</p>
           </div>
         </div>
       )}
