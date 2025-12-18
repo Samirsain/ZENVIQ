@@ -197,7 +197,7 @@ export default function Resources() {
   console.log("Resources for category:", resources[activeCategory])
 
   return (
-    <section className="py-16 sm:py-20 bg-white dark:bg-gray-900">
+    <section className="pt-4 pb-16 sm:pb-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-3 sm:px-4">
         <div className="text-center mb-10 sm:mb-12">
           {/* Top Rated Badge */}

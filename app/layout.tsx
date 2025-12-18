@@ -37,9 +37,6 @@ export const metadata: Metadata = {
     ],
     shortcut: ["/favicon.ico"],
   },
-  verification: {
-    google: "ziDZd_lijC0FXqCM7zawWTZ5IXuosqWYbzNhYhSXNfI",
-  },
   openGraph: {
     title: "Zenviq - Build Smarter Digital Solutions",
     description: "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Zenviq.",
