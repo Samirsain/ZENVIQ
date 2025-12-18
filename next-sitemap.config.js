@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://sam4you.vercel.app',
+  siteUrl: process.env.SITE_URL || 'https://zenviq.com',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   exclude: ['/api/*', '/admin/*', '/sitemap.xml', '/sitemap', '/robots.txt'],
@@ -13,7 +13,7 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      'https://sam4you.vercel.app/sitemap.xml',
+      'https://zenviq.com/sitemap.xml',
     ],
   },
   transform: async (config, path) => {

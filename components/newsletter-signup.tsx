@@ -21,13 +21,13 @@ export default function NewsletterSignup() {
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000))
-      
+
       toast({
         title: "Success!",
         description: "You've been subscribed to our newsletter. Thank you!",
         variant: "success",
       })
-      
+
       setEmail("")
     } catch (error) {
       toast({
@@ -60,12 +60,12 @@ export default function NewsletterSignup() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full"
+              className="w-full rounded-full px-6 py-5"
             />
           </div>
-          <Button 
-            type="submit" 
-            className="w-full" 
+          <Button
+            type="submit"
+            className="w-full"
             disabled={isSubmitting || !email}
           >
             {isSubmitting ? (

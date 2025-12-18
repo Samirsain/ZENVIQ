@@ -9,10 +9,18 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Calculator, Receipt, Percent } from "lucide-react"
 
 export default function GSTCalculator() {
+  interface GSTResult {
+    originalAmount: string
+    gstAmount: string
+    totalAmount: string
+    gstRate: number
+  }
+
   const [amount, setAmount] = useState("")
   const [gstRate, setGstRate] = useState("")
   const [calculationType, setCalculationType] = useState("exclusive")
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState<GSTResult | null>(null)
+
 
   const calculateGST = () => {
     const baseAmount = parseFloat(amount)
@@ -202,7 +210,7 @@ export default function GSTCalculator() {
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none">
               <p>
-                GST (Goods and Services Tax) is a comprehensive indirect tax levied on the supply of goods and services. 
+                GST (Goods and Services Tax) is a comprehensive indirect tax levied on the supply of goods and services.
                 Our GST calculator helps you determine the tax amount and total price for your transactions.
               </p>
               <h3>GST Rates in India:</h3>

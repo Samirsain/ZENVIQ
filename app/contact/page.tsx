@@ -5,13 +5,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, MessageSquare, Send, Calendar } from "lucide-react"
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
         <div className="container mx-auto px-4">
@@ -30,7 +30,7 @@ export default function ContactPage() {
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            
+
             {/* Contact Info Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               <Card className="text-center">
@@ -49,7 +49,7 @@ export default function ContactPage() {
                     <Mail className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
                   <h3 className="font-semibold mb-2">Email</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">info@sam4you.com</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">info@zenviq.com</p>
                 </CardContent>
               </Card>
 
@@ -63,20 +63,22 @@ export default function ContactPage() {
                 </CardContent>
               </Card>
 
-              <Card className="text-center">
-                <CardContent className="pt-6">
-                  <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Clock className="w-6 h-6 text-orange-600 dark:text-orange-400" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Hours</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">Mon - Fri: 9AM - 6PM</p>
-                </CardContent>
-              </Card>
+              <a href="https://calendly.com/zenviq/30min" target="_blank" rel="noopener noreferrer" className="block group">
+                <Card className="text-center hover:border-blue-500 transition-all duration-300 cursor-pointer hover:shadow-lg rounded-2xl">
+                  <CardContent className="pt-6">
+                    <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <Calendar className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                    </div>
+                    <h3 className="font-bold mb-2">Schedule a Call</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">Book a 30-min slot</p>
+                  </CardContent>
+                </Card>
+              </a>
             </div>
 
             {/* Contact Form & Info */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              
+
               {/* Contact Form */}
               <Card>
                 <CardHeader>
@@ -99,21 +101,21 @@ export default function ContactPage() {
                       <Input id="lastName" placeholder="Doe" />
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
                     <Input id="email" type="email" placeholder="john@example.com" />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="phone">Phone</Label>
                     <Input id="phone" placeholder="+91 9876543210" />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="service">Service Interested In</Label>
-                    <select 
-                      id="service" 
+                    <select
+                      id="service"
                       className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                       <option value="">Select a service</option>
@@ -124,17 +126,17 @@ export default function ContactPage() {
                       <option value="other">Other</option>
                     </select>
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="message">Message</Label>
-                    <Textarea 
-                      id="message" 
+                    <Textarea
+                      id="message"
                       placeholder="Tell us about your project requirements..."
                       rows={4}
                     />
                   </div>
-                  
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
+
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 rounded-full py-6 font-bold text-base shadow-lg shadow-blue-100 dark:shadow-none">
                     <Send className="w-4 h-4 mr-2" />
                     Send Message
                   </Button>
@@ -145,7 +147,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Why Choose Sam4You?</CardTitle>
+                    <CardTitle>Why Choose Zenviq?</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-start gap-3">
@@ -190,18 +192,15 @@ export default function ContactPage() {
                       <p className="text-sm text-green-700 dark:text-green-300 mb-4">
                         For instant support and quick queries
                       </p>
-                      <Button 
-                        asChild 
-                        className="bg-green-600 hover:bg-green-700 text-white"
+                      <a
+                        href="https://wa.me/919352410667?text=Hi!%20I%27m%20interested%20in%20your%20services.%20Can%20you%20help%20me?"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 bg-white hover:bg-green-50 transition-all duration-300 text-base font-bold text-green-600 tracking-tight border border-green-200 rounded-full py-4 px-8 shadow-sm hover:shadow-md w-full"
                       >
-                        <a 
-                          href="https://wa.me/919352410667?text=Hi!%20I%27m%20interested%20in%20your%20services.%20Can%20you%20help%20me?" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                        >
-                          Chat on WhatsApp
-                        </a>
-                      </Button>
+                        <MessageSquare className="w-5 h-5" />
+                        <span>Chat on WhatsApp</span>
+                      </a>
                     </div>
                   </CardContent>
                 </Card>

@@ -3,7 +3,7 @@ import Footer from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Check, Star, Zap, Brain, MessageSquare, ImageIcon, Code, TrendingUp, ExternalLink, Smartphone, Globe, HelpCircle } from "lucide-react"
+import { Check, Star, Zap, Brain, MessageSquare, ImageIcon, Code, TrendingUp, ExternalLink, Smartphone, Globe, HelpCircle, BadgeCheck, Calendar } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -12,7 +12,7 @@ export default function AIToolsDirectory() {
     {
       name: "ChatGPT",
       description: "Advanced AI chatbot for writing, coding, and problem-solving assistance",
-      logo: "/logos/chatgpt.svg",
+      logo: "/logos/chat-gpt.png",
       rating: "4.8",
       views: "125000",
       published: "5/6/2024",
@@ -27,7 +27,7 @@ export default function AIToolsDirectory() {
     {
       name: "Claude AI",
       description: "Anthropic's AI assistant for complex reasoning and analysis",
-      logo: "/logos/claude.svg",
+      logo: "/logos/Claude AI logo.ico",
       rating: "4.7",
       views: "98000",
       published: "3/15/2024",
@@ -42,7 +42,7 @@ export default function AIToolsDirectory() {
     {
       name: "Google Gemini",
       description: "Google's multimodal AI that understands text, images, and more",
-      logo: "/logos/gemini.svg",
+      logo: "/logos/gemini logo.webp",
       rating: "4.6",
       views: "87000",
       published: "2/8/2024",
@@ -57,7 +57,7 @@ export default function AIToolsDirectory() {
     {
       name: "Midjourney",
       description: "AI image generation tool for creating stunning visual content",
-      logo: "/logos/midjourney.svg",
+      logo: "/logos/midjourney-logo-icon_1731359952.webp",
       rating: "4.9",
       views: "156000",
       published: "7/12/2022",
@@ -72,7 +72,7 @@ export default function AIToolsDirectory() {
     {
       name: "DALL-E 3",
       description: "OpenAI's image generator integrated with ChatGPT",
-      logo: "/logos/dalle.svg",
+      logo: "/logos/dalle-3.png",
       rating: "4.5",
       views: "92000",
       published: "10/17/2023",
@@ -87,7 +87,7 @@ export default function AIToolsDirectory() {
     {
       name: "GitHub Copilot",
       description: "AI pair programmer that helps write code faster",
-      logo: "/logos/copilot.svg",
+      logo: "/logos/github-copilot.webp",
       rating: "4.3",
       views: "78000",
       published: "6/29/2021",
@@ -104,7 +104,7 @@ export default function AIToolsDirectory() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
         <div className="container mx-auto px-4">
@@ -129,8 +129,8 @@ export default function AIToolsDirectory() {
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
                       <div className="w-12 h-12 rounded-lg overflow-hidden flex items-center justify-center bg-white dark:bg-gray-800 shadow-sm">
-                        <Image 
-                          src={tool.logo} 
+                        <Image
+                          src={tool.logo}
                           alt={`${tool.name} logo`}
                           width={48}
                           height={48}
@@ -138,8 +138,9 @@ export default function AIToolsDirectory() {
                         />
                       </div>
                       <div>
-                        <CardTitle className="text-lg font-bold text-gray-900 dark:text-white">
+                        <CardTitle className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-1">
                           {tool.name}
+                          <BadgeCheck className="w-5 h-5 text-blue-500 fill-blue-500/10" />
                         </CardTitle>
                         <div className="flex items-center gap-2 mt-1">
                           <Badge variant="secondary" className="text-xs">
@@ -155,13 +156,13 @@ export default function AIToolsDirectory() {
                     <Badge className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 text-xs">
                       {tool.status}
                     </Badge>
-          </div>
+                  </div>
 
                   <CardDescription className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
                     {tool.description}
                   </CardDescription>
                 </CardHeader>
-                
+
                 <CardContent className="pt-0">
                   {/* Features */}
                   <div className="flex flex-wrap gap-1 mb-4">
@@ -180,8 +181,8 @@ export default function AIToolsDirectory() {
                     </div>
                     <div className="flex items-center gap-1">
                       <span>{tool.published}</span>
-          </div>
-        </div>
+                    </div>
+                  </div>
 
                   {/* Action Buttons */}
                   <div className="flex gap-2">
@@ -196,7 +197,7 @@ export default function AIToolsDirectory() {
                         Explore
                       </Link>
                     </Button>
-              </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -205,26 +206,23 @@ export default function AIToolsDirectory() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600">
+      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Explore AI Tools?
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            Need Expert AI Consultation?
           </h2>
-          <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
-            Discover the power of AI and transform your productivity with these cutting-edge tools.
+          <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+            Get personalized guidance on how to integrate these AI tools into your business workflow.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" asChild className="bg-white text-blue-600 hover:bg-gray-100">
-              <Link href="/">
-                Back to Home
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white hover:text-blue-600">
-              <a href="https://wa.me/919352410667?text=Hi!%20I%27m%20interested%20in%20AI%20consultation%20and%20tools%20for%20my%20business." target="_blank" rel="noopener noreferrer">
-                Get AI Consultation
-              </a>
-            </Button>
-          </div>
+          <a
+            href="https://calendly.com/zenviq/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-3 bg-white hover:bg-slate-50 transition-all duration-300 text-xl font-bold text-slate-900 tracking-tight border border-slate-200 rounded-full py-6 px-12 shadow-2xl transform hover:scale-105"
+          >
+            <Calendar className="w-6 h-6 text-indigo-600" />
+            <span>Book 1-on-1 Session</span>
+          </a>
         </div>
       </section>
 

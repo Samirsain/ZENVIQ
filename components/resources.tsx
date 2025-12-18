@@ -14,7 +14,7 @@ const resources: { [key: string]: any[] } = {
       description: "OpenAI's conversational AI that can help with writing, coding, analysis, and more. Most popular AI tool with free tier available.",
       badge: "Free Tier",
       link: "https://chat.openai.com",
-      logo: "/logos/chatgpt.svg",
+      logo: "/logos/chat-gpt.png",
       rating: "4.8★",
       external: true,
       detailUrl: "/ai-tools/chatgpt"
@@ -24,7 +24,7 @@ const resources: { [key: string]: any[] } = {
       description: "Anthropic's AI assistant focused on helpful, harmless, and honest responses. Better context understanding and ethical AI.",
       badge: "Free Tier",
       link: "https://claude.ai",
-      logo: "/logos/claude.svg",
+      logo: "/logos/Claude AI logo.ico",
       rating: "4.7★",
       external: true,
       detailUrl: "/ai-tools/claude"
@@ -34,7 +34,7 @@ const resources: { [key: string]: any[] } = {
       description: "Google's multimodal AI that can understand text, images, and more. Integrated with Google ecosystem and real-time data.",
       badge: "Free Tier",
       link: "https://gemini.google.com",
-      logo: "/logos/gemini.svg",
+      logo: "/logos/gemini logo.webp",
       rating: "4.6★",
       external: true,
       detailUrl: "/ai-tools/gemini"
@@ -44,7 +44,7 @@ const resources: { [key: string]: any[] } = {
       description: "AI image generator that creates stunning artwork and visuals. Best image quality with artistic capabilities.",
       badge: "Premium",
       link: "https://www.midjourney.com",
-      logo: "/logos/midjourney.svg",
+      logo: "/logos/midjourney-logo-icon_1731359952.webp",
       rating: "4.9★",
       external: true,
       detailUrl: "/ai-tools/midjourney"
@@ -54,7 +54,7 @@ const resources: { [key: string]: any[] } = {
       description: "OpenAI's image generator integrated with ChatGPT. Easy to use with good safety measures and commercial usage.",
       badge: "ChatGPT Plus",
       link: "https://openai.com/dall-e-3",
-      logo: "/logos/dalle.svg",
+      logo: "/logos/dalle-3.png",
       rating: "4.5★",
       external: true,
       detailUrl: "/ai-tools/dalle"
@@ -64,7 +64,7 @@ const resources: { [key: string]: any[] } = {
       description: "AI pair programmer that helps write code faster. Excellent for coding with multi-language support and IDE integration.",
       badge: "Free for Students",
       link: "https://github.com/features/copilot",
-      logo: "/logos/copilot.svg",
+      logo: "/logos/github-copilot.webp",
       rating: "4.3★",
       external: true,
       detailUrl: "/ai-tools/copilot"
@@ -192,7 +192,7 @@ const categories = [
 
 export default function Resources() {
   const [activeCategory, setActiveCategory] = useState("AI")
-  
+
   console.log("Active category:", activeCategory)
   console.log("Resources for category:", resources[activeCategory])
 
@@ -205,7 +205,7 @@ export default function Resources() {
             <Star className="w-3 h-3 sm:w-4 sm:h-4" />
             Top Rated!
           </div>
-          
+
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
             Resources for You
           </h2>
@@ -225,11 +225,10 @@ export default function Resources() {
                   console.log("Category clicked:", category.name)
                   setActiveCategory(category.name)
                 }}
-                className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
-                  activeCategory === category.name
-                    ? "bg-black dark:bg-white text-white dark:text-black border border-black dark:border-white"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent"
-                }`}
+                className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${activeCategory === category.name
+                  ? "bg-black dark:bg-white text-white dark:text-black border border-black dark:border-white"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-transparent"
+                  }`}
               >
                 <Icon className="w-3 h-3 sm:w-4 sm:h-4" />
                 {category.name}
@@ -278,8 +277,8 @@ export default function Resources() {
                   <div className="flex items-center gap-3 mb-2 sm:mb-3">
                     {resource.logo ? (
                       <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center flex-shrink-0">
-                        <Image 
-                          src={resource.logo} 
+                        <Image
+                          src={resource.logo}
                           alt={`${resource.title} logo`}
                           width={32}
                           height={32}
@@ -291,8 +290,13 @@ export default function Resources() {
                         <Icon className="w-5 h-5 text-white" />
                       </div>
                     ) : null}
-                    <CardTitle className="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-tight">
+                    <CardTitle className="text-base sm:text-lg font-bold text-gray-900 dark:text-white leading-tight flex items-center gap-1">
                       {resource.title}
+                      {["ChatGPT", "Claude AI", "Google Gemini", "Midjourney", "DALL-E 3", "GitHub Copilot"].includes(resource.title) && (
+                        <div className="text-blue-500">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-badge-check fill-blue-500/10"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.78 4.78 4 4 0 0 1-6.74 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.74Z" /><path d="m9 12 2 2 4-4" /></svg>
+                        </div>
+                      )}
                     </CardTitle>
                   </div>
 
@@ -300,13 +304,13 @@ export default function Resources() {
                     {resource.description}
                   </CardDescription>
                 </CardHeader>
-                
+
                 <CardContent className="pt-0 pb-4 sm:pb-6 px-4 sm:px-6">
                   {/* Action Links */}
                   <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                     {resource.external ? (
                       <>
-                        <button 
+                        <button
                           onClick={(e) => {
                             e.stopPropagation()
                             window.open(resource.link, '_blank', 'noopener,noreferrer')
@@ -330,16 +334,15 @@ export default function Resources() {
                         </button>
                       </>
                     ) : (
-                      <button 
+                      <button
                         onClick={(e) => {
                           e.stopPropagation()
                           window.location.href = resource.link
                         }}
-                        className={`inline-flex items-center justify-center font-medium text-xs sm:text-sm transition-colors group/link px-3 py-2 rounded-md border ${
-                          resource.link.startsWith('/tools/') 
-                            ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 border-blue-200 dark:border-blue-800 hover:bg-blue-50 dark:hover:bg-blue-900/20" 
-                            : "text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 border-green-200 dark:border-green-800 hover:bg-green-50 dark:hover:bg-green-900/20"
-                        }`}
+                        className={`inline-flex items-center justify-center font-medium text-xs sm:text-sm transition-colors group/link px-3 py-2 rounded-md border ${resource.link.startsWith('/tools/')
+                          ? "text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 border-blue-200 dark:border-blue-800 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                          : "text-green-600 dark:text-green-400 hover:text-green-700 dark:hover:text-green-300 border-green-200 dark:border-green-800 hover:bg-green-50 dark:hover:bg-green-900/20"
+                          }`}
                       >
                         {resource.link.startsWith('/tools/') ? 'Try Now' : 'Read More'}
                         <ArrowRight className="ml-1 w-3 h-3 sm:w-4 sm:h-4 group-hover/link:translate-x-1 transition-transform" />

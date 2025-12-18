@@ -18,7 +18,7 @@ export default function AIAssistant() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hi! I'm Sam, your AI assistant. How can I help you today?",
+      text: "Hi! I'm Zen, your AI assistant. How can I help you today?",
       isUser: false,
       timestamp: new Date()
     }
@@ -65,36 +65,36 @@ export default function AIAssistant() {
 
   const generateAIResponse = (userInput: string): string => {
     const input = userInput.toLowerCase()
-    
+
     if (input.includes("service") || input.includes("price") || input.includes("cost")) {
-      return "We offer web development, SEO, AI tools, and digital marketing services. For pricing details, please use the 'Send a Mail' or 'Send a Message' buttons in our contact section. We'll provide you with a customized quote based on your requirements."
+      return "We offer web development, SEO, AI tools, and digital marketing services. For pricing details, I recommend booking a 30-minute free consultation here: https://calendly.com/zenviq/30min\n\nAlternatively, you can use the 'Send a Message' button for a quick quote."
     }
-    
-    if (input.includes("contact") || input.includes("reach") || input.includes("phone")) {
-      return "You can contact us through:\n• Email: Use the 'Send a Mail' button\n• WhatsApp: Use the 'Send a Message' button\n• Contact form: Fill out the form on our website\nWe typically respond within 24 hours."
+
+    if (input.includes("contact") || input.includes("reach") || input.includes("phone") || input.includes("book")) {
+      return "You can reach us through:\n• Schedule a Call: https://calendly.com/zenviq/30min (Recommended)\n• WhatsApp: Use the chat button\n• Email: hello@zenviq.com\nWe typically respond to emails within 24 hours."
     }
-    
+
     if (input.includes("website") || input.includes("development") || input.includes("web")) {
-      return "We specialize in creating modern, responsive websites with:\n• Custom design and development\n• SEO optimization\n• Mobile-first approach\n• Fast loading times\n• E-commerce integration\nWould you like to discuss your project requirements?"
+      return "We specialize in creating modern, responsive websites with:\n• Custom design and development\n• SEO optimization\n• Mobile-first approach\n• Fast loading times\n• E-commerce integration\n\nWould you like to book a call to discuss your project? https://calendly.com/zenviq/30min"
     }
-    
+
     if (input.includes("seo") || input.includes("search") || input.includes("ranking")) {
-      return "Our SEO services include:\n• Keyword research and analysis\n• On-page and technical SEO\n• Content optimization\n• Link building strategies\n• Local SEO for businesses\n• Monthly reporting and analytics"
+      return "Our SEO services include:\n• Keyword research and analysis\n• On-page and technical SEO\n• Content optimization\n• Link building strategies\n\nLet's discuss your SEO strategy: https://calendly.com/zenviq/30min"
     }
-    
+
     if (input.includes("ai") || input.includes("tools") || input.includes("automation")) {
-      return "We offer various AI tools and automation services:\n• Content generation tools\n• SEO analysis tools\n• Social media automation\n• Email marketing automation\n• Custom AI solutions\nVisit our AI Tools page to explore our free tools."
+      return "We offer various AI tools and automation services:\n• Content generation tools\n• SEO analysis tools\n• Social media automation\n• Custom AI solutions\n\nYou can book an AI consultation here: https://calendly.com/zenviq/30min"
     }
-    
+
     if (input.includes("hello") || input.includes("hi") || input.includes("hey")) {
-      return "Hello! Welcome to Sam4You. I'm Sam, your AI assistant. I'm here to help you with information about our services, pricing, or any questions you might have. What would you like to know?"
+      return "Hello! Welcome to Zenviq. I'm Zen, your AI assistant. I'm here to help you with information about our services, pricing, or booking a call. What would you like to know?"
     }
-    
+
     if (input.includes("thank") || input.includes("thanks")) {
-      return "You're welcome! I'm Sam, and I'm here to help. Is there anything else I can assist you with today?"
+      return "You're welcome! I'm Zen, and I'm here to help. Is there anything else I can assist you with today?"
     }
-    
-    return "I understand you're asking about: " + userInput + ". I'm Sam, and I'm here to help! For detailed information about our services, pricing, or to discuss your specific requirements, please use the 'Send a Mail' or 'Send a Message' buttons in our contact section. Our team will provide you with personalized assistance."
+
+    return "I understand you're asking about: " + userInput + ". I'm Zen, and I'm here to help! For detailed information about our services, pricing, or to book a call with our experts, please use this link: https://calendly.com/zenviq/30min"
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -109,7 +109,7 @@ export default function AIAssistant() {
       {/* Chat Button */}
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-blue-600 hover:bg-blue-700"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-indigo-600 hover:bg-indigo-700"
         size="lg"
       >
         <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -121,10 +121,10 @@ export default function AIAssistant() {
           {/* Header */}
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 sm:pb-3 border-b px-3 sm:px-6">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                <Bot className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
+              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
+                <Bot className="w-3 h-3 sm:w-4 sm:h-4 text-indigo-600 dark:text-indigo-400" />
               </div>
-              <CardTitle className="text-xs sm:text-sm font-medium">Sam - AI Assistant</CardTitle>
+              <CardTitle className="text-xs sm:text-sm font-medium">Zen - AI Assistant</CardTitle>
             </div>
             <Button
               variant="ghost"
@@ -144,11 +144,10 @@ export default function AIAssistant() {
                 className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[85%] sm:max-w-[80%] rounded-lg px-2 py-1.5 sm:px-3 sm:py-2 ${
-                    message.isUser
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
-                  }`}
+                  className={`max-w-[85%] sm:max-w-[80%] rounded-lg px-2 py-1.5 sm:px-3 sm:py-2 ${message.isUser
+                    ? "bg-indigo-600 text-white"
+                    : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+                    }`}
                 >
                   <div className="flex items-start gap-1.5 sm:gap-2">
                     {!message.isUser && (
@@ -162,7 +161,7 @@ export default function AIAssistant() {
                 </div>
               </div>
             ))}
-            
+
             {isTyping && (
               <div className="flex justify-start">
                 <div className="bg-gray-100 dark:bg-gray-800 rounded-lg px-2 py-1.5 sm:px-3 sm:py-2">

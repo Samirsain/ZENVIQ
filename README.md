@@ -1,9 +1,9 @@
-# 🚀 Sam4You – Premium Digital Agency Website
+# 🚀 Zenviq – Premium Digital Agency Website
 
-Sam4You is a modern, high-performance digital agency website built to help businesses grow through premium web development, branding, SEO, and creative digital solutions.  
+Zenviq is a modern, high-performance digital agency website built to help businesses grow through premium web development, branding, SEO, and creative digital solutions.  
 Designed with a **sleek modern UI**, **strong animations**, and **enterprise-level structure**, this website delivers both style and performance.
 
-🔗 **Live Website:** https://sam4you.vercel.app/
+🔗 **Live Website:** https://zenviq.com/
 
 ---
 
@@ -45,7 +45,7 @@ Designed with a **sleek modern UI**, **strong animations**, and **enterprise-lev
 ## 📦 Project Structure
 
 ```bash
-sam4you/
+zenviq/
 ├── app/
 │   ├── layout.tsx
 │   ├── page.tsx
@@ -124,7 +124,7 @@ To customize the agency website:
 
 1️⃣ Update brand name
 
-Search for "Sam4You" and replace with your brand.
+Search for "Zenviq" and replace with your brand.
 
 Edit:
 
@@ -158,7 +158,7 @@ For updates, custom development or improvements:
 
 📱 WhatsApp: +91 9352410667
 
-🌐 Website: https://sam4you.vercel.app/
+🌐 Website: https://zenviq.com/
 
 ```
 🚀 Deployment

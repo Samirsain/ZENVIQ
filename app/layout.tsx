@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
+import { Jost } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Suspense } from "react"
@@ -10,54 +11,58 @@ import AIAssistant from "@/components/ai-assistant"
 import { Toaster } from "@/components/toaster"
 import "./globals.css"
 
+const jost = Jost({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-jost",
+  display: "swap",
+})
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sam4you.vercel.app"),
-  title: "Sam4You - Build Smarter Digital Solutions",
+  metadataBase: new URL("https://zenviq.com"),
+  title: "Zenviq - Build Smarter Digital Solutions",
   description:
-    "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Sam4You.",
+    "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Zenviq.",
   keywords: ["web development", "SEO", "AI tools", "automation", "digital agency", "WordPress", "e-commerce"],
-  authors: [{ name: "Sam4You" }],
-  creator: "Sam4You",
-  publisher: "Sam4You",
+  authors: [{ name: "Zenviq" }],
+  creator: "Zenviq",
+  publisher: "Zenviq",
   icons: {
     icon: [
-      { url: "/favicon s.png", sizes: "any", type: "image/png" },
-      { url: "/favicon.ico", sizes: "16x16 32x32", type: "image/x-icon" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.svg", type: "image/svg+xml" },
     ],
     apple: [
-      { url: "/favicon s.png", sizes: "180x180", type: "image/png" },
+      { url: "/logo.svg", type: "image/svg+xml" },
     ],
     shortcut: ["/favicon.ico"],
-    other: [
-      { rel: "icon", url: "/favicon s.png", type: "image/png" },
-    ],
   },
   verification: {
     google: "ziDZd_lijC0FXqCM7zawWTZ5IXuosqWYbzNhYhSXNfI",
   },
   openGraph: {
-    title: "Sam4You - Build Smarter Digital Solutions",
-    description: "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Sam4You.",
+    title: "Zenviq - Build Smarter Digital Solutions",
+    description: "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Zenviq.",
     type: "website",
-    siteName: "Sam4You",
-    url: "https://sam4you.vercel.app",
+    siteName: "Zenviq",
+    url: "https://zenviq.com",
     images: [
       {
         url: "/professional-corporate-business-website--hero-sect.jpg",
         width: 1200,
         height: 630,
-        alt: "Sam4You - Professional Digital Solutions",
+        alt: "Zenviq - Professional Digital Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sam4You - Build Smarter Digital Solutions",
-    description: "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Sam4You.",
-    creator: "@codexmir",
+    title: "Zenviq - Build Smarter Digital Solutions",
+    description: "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Zenviq.",
+    creator: "@zenviq",
     images: ["/professional-corporate-business-website--hero-sect.jpg"],
   },
-  generator: "Sam4You",
+  generator: "Zenviq",
 }
 
 export default function RootLayout({
@@ -67,7 +72,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${jost.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

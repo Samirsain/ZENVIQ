@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, MessageCircle, CheckCircle, AlertCircle } from "lucide-react"
+import { Mail, MessageCircle, CheckCircle, AlertCircle, Calendar } from "lucide-react"
 import { useState } from "react"
 import { useToast } from "@/components/ui/use-toast"
 
@@ -89,8 +89,8 @@ export default function Contact() {
                 <CardDescription>Send us an email anytime</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button asChild className="w-full">
-                  <a href="mailto:devxmir@gmail.com" target="_blank" rel="noopener noreferrer">
+                <Button asChild className="w-full bg-indigo-600 hover:bg-indigo-700">
+                  <a href="mailto:hello@zenviq.com" target="_blank" rel="noopener noreferrer">
                     Send a Mail
                   </a>
                 </Button>
@@ -106,11 +106,31 @@ export default function Contact() {
                 <CardDescription>Chat with us instantly</CardDescription>
               </CardHeader>
               <CardContent>
-                <Button asChild className="w-full">
+                <Button asChild className="w-full bg-indigo-600 hover:bg-indigo-700">
                   <a href="https://wa.me/919352410667" target="_blank" rel="noopener noreferrer">
                     Send a Message
                   </a>
                 </Button>
+              </CardContent>
+            </Card>
+            <Card className="hover:border-primary/50 transition-colors">
+              <CardHeader>
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <Calendar className="w-6 h-6 text-primary" />
+                </div>
+                <CardTitle>Schedule a Call</CardTitle>
+                <CardDescription>Book a 30-minute consultation</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <a
+                  href="https://calendly.com/zenviq/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 transition-all duration-300 text-sm font-bold text-slate-900 tracking-tight border border-slate-200 rounded-full py-3 px-6 shadow-sm hover:shadow-md"
+                >
+                  <Calendar className="w-4 h-4 text-indigo-600" />
+                  <span>Book a Meeting</span>
+                </a>
               </CardContent>
             </Card>
           </div>
@@ -178,10 +198,10 @@ export default function Contact() {
                   </div>
                 )}
 
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full" 
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}

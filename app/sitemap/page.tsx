@@ -5,7 +5,19 @@ import { ArrowLeft, ExternalLink } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function SitemapPage() {
-  const pages = [
+  interface SitemapLink {
+    name: string
+    url: string
+    description: string
+    external?: boolean
+  }
+
+  interface SitemapSection {
+    category: string
+    links: SitemapLink[]
+  }
+
+  const pages: SitemapSection[] = [
     {
       category: "Main Pages",
       links: [
@@ -41,10 +53,11 @@ export default function SitemapPage() {
     }
   ]
 
+
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20">
         <div className="container mx-auto px-4">
@@ -55,7 +68,7 @@ export default function SitemapPage() {
                 Back to Home
               </Link>
             </Button>
-            
+
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
               Site <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Map</span>
             </h1>
@@ -70,13 +83,13 @@ export default function SitemapPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            
+
             {pages.map((section, index) => (
               <div key={index} className="mb-12">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                   {section.category}
                 </h2>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {section.links.map((link, linkIndex) => (
                     <div key={linkIndex} className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
@@ -88,13 +101,13 @@ export default function SitemapPage() {
                           <ExternalLink className="w-4 h-4 text-gray-400 flex-shrink-0 ml-2" />
                         )}
                       </div>
-                      
+
                       <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed">
                         {link.description}
                       </p>
-                      
-                      <Link 
-                        href={link.url} 
+
+                      <Link
+                        href={link.url}
                         target={link.external ? "_blank" : undefined}
                         rel={link.external ? "noopener noreferrer" : undefined}
                         className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-medium text-sm transition-colors"
@@ -113,7 +126,7 @@ export default function SitemapPage() {
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                 Website Statistics
               </h2>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div>
                   <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">12+</div>

@@ -9,11 +9,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Calculator, Percent, TrendingUp, TrendingDown } from "lucide-react"
 
 export default function PercentageCalculator() {
+  type PercentageResult =
+    | { type: "percentage"; original: number; percentage: number; result: string; total: string }
+    | { type: "change"; original: number; new: number; change: string; isIncrease: boolean }
+    | { type: "find"; part: number; whole: number; percentage: string }
+
   const [value1, setValue1] = useState("")
   const [value2, setValue2] = useState("")
   const [percentage, setPercentage] = useState("")
   const [calculationType, setCalculationType] = useState("percentage")
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState<PercentageResult | null>(null)
+
 
   const calculatePercentage = () => {
     const v1 = parseFloat(value1)

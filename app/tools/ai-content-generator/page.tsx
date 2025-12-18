@@ -55,13 +55,13 @@ export default function AIContentGenerator() {
     }
 
     setIsGenerating(true)
-    
+
     // Simulate AI content generation
     setTimeout(() => {
       const content = generateMockContent(contentType, topic, keywords, tone, length)
       setGeneratedContent(content)
       setIsGenerating(false)
-      
+
       toast({
         title: "Success!",
         description: "Content generated successfully",
@@ -69,8 +69,10 @@ export default function AIContentGenerator() {
     }, 2000)
   }
 
-  const generateMockContent = (type, topic, keywords, tone, length) => {
-    const templates = {
+  type ContentType = "blog" | "social" | "marketing" | "seo" | "creative"
+
+  const generateMockContent = (type: string, topic: string, keywords: string, tone: string, length: string) => {
+    const templates: Record<string, string> = {
       blog: `# ${topic}
 
 ${keywords ? `**Keywords:** ${keywords}` : ''}
@@ -131,6 +133,7 @@ Are you ready to take your business to the next level? Our ${topic} solution is 
 ✅ Competitive pricing and value
 
 **What You'll Get:**
+
 - Comprehensive strategy and implementation
 - Ongoing support and optimization
 - Measurable results and ROI
@@ -242,13 +245,15 @@ The story of ${topic} continues to unfold, with new chapters being written every
     return templates[type] || templates.blog
   }
 
-  const copyToClipboard = (text) => {
+
+  const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
     toast({
       title: "Copied!",
       description: "Content copied to clipboard",
     })
   }
+
 
   const clearContent = () => {
     setTopic("")
@@ -372,8 +377,8 @@ The story of ${topic} continues to unfold, with new chapters being written every
                 </div>
 
                 <div className="flex gap-3">
-                  <Button 
-                    onClick={generateContent} 
+                  <Button
+                    onClick={generateContent}
                     disabled={isGenerating}
                     className="flex-1 bg-purple-600 hover:bg-purple-700"
                   >
@@ -415,7 +420,7 @@ The story of ${topic} continues to unfold, with new chapters being written every
                         {generatedContent}
                       </div>
                     </div>
-                    
+
                     <Button
                       onClick={() => copyToClipboard(generatedContent)}
                       className="w-full bg-purple-600 hover:bg-purple-700"
@@ -443,8 +448,8 @@ The story of ${topic} continues to unfold, with new chapters being written every
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none">
               <p>
-                Our AI Content Generator uses advanced artificial intelligence to create high-quality, 
-                engaging content for various purposes. Whether you need blog posts, social media content, 
+                Our AI Content Generator uses advanced artificial intelligence to create high-quality,
+                engaging content for various purposes. Whether you need blog posts, social media content,
                 or marketing copy, our tool can help you generate professional content quickly.
               </p>
               <h3>Content Types:</h3>

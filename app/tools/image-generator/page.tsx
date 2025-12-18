@@ -33,7 +33,7 @@ export default function ImageGeneratorPage() {
     try {
       // Simulate API call - replace with actual AI service
       await new Promise(resolve => setTimeout(resolve, 3000))
-      
+
       // For demo purposes, use a placeholder image
       const placeholderImages = [
         "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1024&h=1024&fit=crop",
@@ -42,7 +42,7 @@ export default function ImageGeneratorPage() {
         "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1024&h=1024&fit=crop",
         "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1024&h=1024&fit=crop"
       ]
-      
+
       const randomImage = placeholderImages[Math.floor(Math.random() * placeholderImages.length)]
       setGeneratedImage(randomImage)
     } catch (err) {
@@ -83,7 +83,7 @@ export default function ImageGeneratorPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1 pt-20">
         {/* Hero Section */}
         <section className="py-16 sm:py-20 bg-gradient-to-br from-purple-50 via-white to-pink-50">
@@ -93,16 +93,16 @@ export default function ImageGeneratorPage() {
                 <Sparkles className="w-4 h-4 text-purple-600" />
                 <span className="text-sm font-medium text-purple-700">AI-Powered Image Generation</span>
               </div>
-              
+
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 AI Image Generator
               </h1>
-              
+
               <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Transform your ideas into stunning visuals with our advanced AI image generator. 
+                Transform your ideas into stunning visuals with our advanced AI image generator.
                 Create professional-quality images from simple text descriptions.
               </p>
-              
+
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 <Badge variant="secondary" className="px-4 py-2">
                   <Image className="w-4 h-4 mr-2" />
@@ -134,7 +134,7 @@ export default function ImageGeneratorPage() {
                     Describe what you want to create and let AI bring your vision to life
                   </CardDescription>
                 </CardHeader>
-                
+
                 <CardContent className="space-y-6">
                   {/* Input Form */}
                   <div className="space-y-4">
@@ -151,14 +151,16 @@ export default function ImageGeneratorPage() {
                       />
                       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="style" className="block text-sm font-medium text-gray-700 mb-2">
                           Style
                         </label>
-                        <select 
-                          id="style" 
+                        <select
+                          id="style"
+                          value={style}
+                          onChange={(e) => setStyle(e.target.value)}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                         >
                           <option value="realistic">Photorealistic</option>
@@ -169,13 +171,15 @@ export default function ImageGeneratorPage() {
                           <option value="watercolor">Watercolor</option>
                         </select>
                       </div>
-                      
+
                       <div>
                         <label htmlFor="size" className="block text-sm font-medium text-gray-700 mb-2">
                           Image Size
                         </label>
-                        <select 
-                          id="size" 
+                        <select
+                          id="size"
+                          value={size}
+                          onChange={(e) => setSize(e.target.value)}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
                         >
                           <option value="1024x1024">Square (1024x1024)</option>
@@ -184,41 +188,94 @@ export default function ImageGeneratorPage() {
                         </select>
                       </div>
                     </div>
-                    
-                    <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 text-lg font-medium">
-                      <Sparkles className="w-5 h-5 mr-2" />
-                      Generate Image
+
+                    <Button
+                      onClick={handleGenerate}
+                      disabled={isGenerating}
+                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 text-lg font-medium"
+                    >
+                      {isGenerating ? (
+                        <>
+                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                          Generating...
+                        </>
+                      ) : (
+                        <>
+                          <Sparkles className="w-5 h-5 mr-2" />
+                          Generate Image
+                        </>
+                      )}
                     </Button>
                   </div>
-                  
+
                   {/* Generated Image Display */}
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                    <Image className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-500 mb-4">Your generated image will appear here</p>
-                    <p className="text-sm text-gray-400">
-                      Generated images are typically ready in 10-30 seconds
-                    </p>
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center min-h-[400px] flex flex-col items-center justify-center">
+                    {generatedImage ? (
+                      <div className="relative group w-full h-full">
+                        <img
+                          src={generatedImage}
+                          alt={prompt}
+                          className="mx-auto rounded-lg shadow-lg max-w-full h-auto"
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <Image className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+                        <p className="text-gray-500 mb-4">
+                          {isGenerating ? "AI is creating your masterpiece..." : "Your generated image will appear here"}
+                        </p>
+                        <p className="text-sm text-gray-400">
+                          Generated images are typically ready in 10-30 seconds
+                        </p>
+                      </>
+                    )}
                   </div>
-                  
+
                   {/* Action Buttons */}
                   <div className="flex flex-wrap gap-3 justify-center">
-                    <Button variant="outline" className="flex items-center gap-2">
+                    <Button
+                      variant="outline"
+                      onClick={handleDownload}
+                      disabled={!generatedImage}
+                      className="flex items-center gap-2"
+                    >
                       <Download className="w-4 h-4" />
                       Download
                     </Button>
-                    <Button variant="outline" className="flex items-center gap-2">
+                    <Button
+                      variant="outline"
+                      onClick={handleShare}
+                      disabled={!generatedImage}
+                      className="flex items-center gap-2"
+                    >
                       <Share2 className="w-4 h-4" />
                       Share
                     </Button>
-                    <Button variant="outline" className="flex items-center gap-2">
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        navigator.clipboard.writeText(window.location.href)
+                        alert('Link copied to clipboard!')
+                      }}
+                      disabled={!generatedImage}
+                      className="flex items-center gap-2"
+                    >
                       <Copy className="w-4 h-4" />
                       Copy Link
                     </Button>
-                    <Button variant="outline" className="flex items-center gap-2">
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        setGeneratedImage("")
+                        setPrompt("")
+                      }}
+                      className="flex items-center gap-2"
+                    >
                       <RefreshCw className="w-4 h-4" />
                       Generate New
                     </Button>
                   </div>
+
                 </CardContent>
               </Card>
             </div>
@@ -237,7 +294,7 @@ export default function ImageGeneratorPage() {
                   Experience the power of cutting-edge AI technology for creating stunning visuals
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <Card className="text-center p-6 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
@@ -250,7 +307,7 @@ export default function ImageGeneratorPage() {
                     </p>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center p-6 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -262,7 +319,7 @@ export default function ImageGeneratorPage() {
                     </p>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center p-6 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
                     <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -291,7 +348,7 @@ export default function ImageGeneratorPage() {
                   Get the most out of your AI image generation with these helpful tips
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Card className="p-6">
                   <CardContent className="pt-6">
@@ -301,13 +358,13 @@ export default function ImageGeneratorPage() {
                     </p>
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="text-sm text-gray-700 italic">
-                        "A majestic lion sitting on a rock at sunset, golden hour lighting, 
+                        "A majestic lion sitting on a rock at sunset, golden hour lighting,
                         photorealistic style, detailed fur texture"
                       </p>
                     </div>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="p-6">
                   <CardContent className="pt-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-3">Use Style Keywords</h3>
@@ -316,7 +373,7 @@ export default function ImageGeneratorPage() {
                     </p>
                     <div className="bg-gray-50 p-3 rounded-lg">
                       <p className="text-sm text-gray-700 italic">
-                        "Modern minimalist logo design, clean lines, professional, 
+                        "Modern minimalist logo design, clean lines, professional,
                         vector style, blue and white colors"
                       </p>
                     </div>
@@ -355,7 +412,7 @@ export default function ImageGeneratorPage() {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   )

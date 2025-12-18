@@ -11,13 +11,25 @@ import { Copy, Download, Package, Hash } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
 export default function SKUGenerator() {
+  interface GeneratedSKU {
+    id: number
+    sku: string
+    format: string
+    details: {
+      category: string
+      brand: string
+      color: string
+      size: string
+    }
+  }
+
   const [productName, setProductName] = useState("")
   const [category, setCategory] = useState("")
   const [brand, setBrand] = useState("")
   const [color, setColor] = useState("")
   const [size, setSize] = useState("")
   const [skuFormat, setSkuFormat] = useState("category-brand-name")
-  const [generatedSKUs, setGeneratedSKUs] = useState([])
+  const [generatedSKUs, setGeneratedSKUs] = useState<GeneratedSKU[]>([])
   const { toast } = useToast()
 
   const generateSKU = () => {
@@ -30,12 +42,8 @@ export default function SKUGenerator() {
       return
     }
 
-    const skus = []
+    const skus: GeneratedSKU[] = []
     const baseName = productName.toLowerCase().replace(/[^a-z0-9]/g, '')
-    const baseCategory = category.toLowerCase().replace(/[^a-z0-9]/g, '')
-    const baseBrand = brand.toLowerCase().replace(/[^a-z0-9]/g, '')
-    const baseColor = color.toLowerCase().replace(/[^a-z0-9]/g, '')
-    const baseSize = size.toLowerCase().replace(/[^a-z0-9]/g, '')
 
     // Generate multiple SKU variations
     const variations = [
@@ -46,7 +54,7 @@ export default function SKUGenerator() {
 
     variations.forEach((variation, index) => {
       let sku = ""
-      
+
       switch (skuFormat) {
         case "category-brand-name":
           sku = `${variation.category || "CAT"}-${variation.brand || "BRAND"}-${baseName}`
@@ -81,7 +89,7 @@ export default function SKUGenerator() {
     setGeneratedSKUs(skus)
   }
 
-  const copyToClipboard = (text) => {
+  const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
     toast({
       title: "Copied!",
@@ -100,7 +108,7 @@ export default function SKUGenerator() {
     a.click()
     document.body.removeChild(a)
     URL.revokeObjectURL(url)
-    
+
     toast({
       title: "Downloaded!",
       description: "SKU list downloaded successfully",
@@ -116,6 +124,7 @@ export default function SKUGenerator() {
     setSkuFormat("category-brand-name")
     setGeneratedSKUs([])
   }
+
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12">
@@ -298,7 +307,7 @@ export default function SKUGenerator() {
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none">
               <p>
-                SKU (Stock Keeping Unit) is a unique identifier for products in inventory management. 
+                SKU (Stock Keeping Unit) is a unique identifier for products in inventory management.
                 Our SKU generator helps you create consistent, unique codes for your products.
               </p>
               <h3>SKU Format Options:</h3>

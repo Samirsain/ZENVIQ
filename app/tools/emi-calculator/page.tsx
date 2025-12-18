@@ -8,10 +8,17 @@ import { Label } from "@/components/ui/label"
 import { Calculator, TrendingUp, DollarSign } from "lucide-react"
 
 export default function EMICalculator() {
+  interface EMIResult {
+    emi: string
+    totalAmount: string
+    totalInterest: string
+  }
+
   const [principal, setPrincipal] = useState("")
   const [rate, setRate] = useState("")
   const [time, setTime] = useState("")
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState<EMIResult | null>(null)
+
 
   const calculateEMI = () => {
     const P = parseFloat(principal)
@@ -184,7 +191,7 @@ export default function EMICalculator() {
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none">
               <p>
-                An EMI (Equated Monthly Installment) calculator helps you determine the monthly payment amount for a loan. 
+                An EMI (Equated Monthly Installment) calculator helps you determine the monthly payment amount for a loan.
                 It calculates the fixed payment amount that includes both principal and interest components.
               </p>
               <h3>How EMI is Calculated:</h3>

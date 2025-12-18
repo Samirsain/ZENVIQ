@@ -1,9 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ChevronDown, ChevronUp } from "lucide-react"
+import { MessageCircle, Plus, Minus } from "lucide-react"
+import Link from "next/link"
 
 interface FAQItem {
   id: string
@@ -55,65 +54,80 @@ const faqData: FAQItem[] = [
 ]
 
 export default function FAQSection() {
-  const [openItems, setOpenItems] = useState<string[]>([])
+  const [openId, setOpenId] = useState<string | null>("1")
 
   const toggleItem = (id: string) => {
-    setOpenItems(prev => 
-      prev.includes(id) 
-        ? prev.filter(item => item !== id)
-        : [...prev, id]
-    )
+    setOpenId(openId === id ? null : id)
   }
 
   return (
-    <section className="py-16 sm:py-20 md:py-32 bg-white dark:bg-gray-900 w-full overflow-hidden">
-      <div className="container mx-auto px-3 sm:px-4 max-w-full">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 sm:mb-4 text-balance">
-            Frequently Asked <span className="text-primary">Questions</span>
-          </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto px-2">
-            Find answers to common questions about our services, process, and pricing
-          </p>
+    <section id="faq" className="max-w-7xl sm:px-6 sm:mt-20 mt-8 mx-auto px-4 mb-20">
+      <div className="relative overflow-hidden rounded-[40px] border border-gray-100 dark:border-white/10 bg-white dark:bg-gray-900 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 dark:from-white/5 to-transparent"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-3 sm:space-y-4 w-full">
-          {faqData.map((item) => (
-            <Card key={item.id} className="border-border/50 overflow-hidden w-full">
-              <CardHeader className="pb-2 sm:pb-3 px-3 sm:px-4 md:px-6">
-                <Button
-                  variant="ghost"
-                  className="w-full justify-between p-0 h-auto text-left hover:bg-transparent"
-                  onClick={() => toggleItem(item.id)}
-                >
-                  <CardTitle className="text-sm sm:text-base md:text-lg font-medium pr-2 sm:pr-4 leading-tight text-left">
-                    {item.question}
-                  </CardTitle>
-                  {openItems.includes(item.id) ? (
-                    <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
-                  ) : (
-                    <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground flex-shrink-0" />
-                  )}
-                </Button>
-              </CardHeader>
-              {openItems.includes(item.id) && (
-                <CardContent className="pt-0 px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
-                  <p className="text-xs sm:text-sm md:text-base text-muted-foreground leading-relaxed">
-                    {item.answer}
-                  </p>
-                </CardContent>
-              )}
-            </Card>
-          ))}
-        </div>
+        <div className="relative sm:p-12 p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            {/* Intro */}
+            <div className="lg:col-span-5">
+              <h2 className="text-5xl sm:text-7xl font-bold text-gray-900 dark:text-white tracking-tighter leading-none mb-6">
+                Questions.
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-sm mb-8">
+                Find answers to common questions about our services, processes, and how we can help transform your brand.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10 transition-colors shadow-sm"
+              >
+                Get in touch
+                <MessageCircle className="w-4 h-4" />
+              </Link>
+            </div>
 
-        <div className="text-center mt-10 sm:mt-12">
-          <p className="text-sm sm:text-base text-muted-foreground mb-4 px-2">
-            Still have questions? We're here to help!
-          </p>
-          <Button asChild className="text-sm sm:text-base">
-            <a href="#contact">Contact Us</a>
-          </Button>
+            {/* Accordion */}
+            <div className="lg:col-span-7">
+              <div className="space-y-4">
+                {faqData.map((item) => {
+                  const isOpen = openId === item.id
+                  return (
+                    <div
+                      key={item.id}
+                      className={`rounded-2xl border transition-all duration-300 ${isOpen
+                        ? "border-indigo-100 bg-indigo-50/30 dark:border-indigo-500/30 dark:bg-indigo-500/5 shadow-sm"
+                        : "border-gray-100 dark:border-white/5 bg-white dark:bg-white/5"
+                        }`}
+                    >
+                      <button
+                        type="button"
+                        className="w-full flex items-center justify-between gap-4 p-5 text-left group"
+                        onClick={() => toggleItem(item.id)}
+                        aria-expanded={isOpen}
+                      >
+                        <span className={`text-base sm:text-lg font-bold tracking-tight transition-colors ${isOpen ? "text-indigo-600 dark:text-indigo-400" : "text-gray-900 dark:text-gray-200"
+                          }`}>
+                          {item.question}
+                        </span>
+                        <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? "bg-indigo-600 dark:bg-indigo-500 text-white rotate-180" : "bg-gray-100 dark:bg-white/10 text-gray-500"
+                          }`}>
+                          {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                        </span>
+                      </button>
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+                          }`}
+                      >
+                        <div className="px-5 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
+                          {item.answer}
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

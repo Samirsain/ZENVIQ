@@ -13,7 +13,7 @@ export default function CaseConverter() {
   const [conversionType, setConversionType] = useState("uppercase")
   const { toast } = useToast()
 
-  const convertText = (type) => {
+  const convertText = (type: string) => {
     if (!inputText.trim()) {
       toast({
         title: "Error",
@@ -24,7 +24,7 @@ export default function CaseConverter() {
     }
 
     let result = ""
-    
+
     switch (type) {
       case "uppercase":
         result = inputText.toUpperCase()
@@ -51,12 +51,12 @@ export default function CaseConverter() {
         result = inputText.toLowerCase().replace(/(^\w|\.\s+\w)/g, l => l.toUpperCase())
         break
       case "alternating":
-        result = inputText.split('').map((char, index) => 
+        result = inputText.split('').map((char, index) =>
           index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
         ).join('')
         break
       case "inverse":
-        result = inputText.split('').map(char => 
+        result = inputText.split('').map(char =>
           char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()
         ).join('')
         break
@@ -68,13 +68,14 @@ export default function CaseConverter() {
     setConversionType(type)
   }
 
-  const copyToClipboard = (text) => {
+  const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
     toast({
       title: "Copied!",
       description: "Text copied to clipboard",
     })
   }
+
 
   const clearText = () => {
     setInputText("")
@@ -213,7 +214,7 @@ export default function CaseConverter() {
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none">
               <p>
-                A case converter is a tool that transforms text between different letter cases. 
+                A case converter is a tool that transforms text between different letter cases.
                 This is useful for formatting text, programming, and content creation.
               </p>
               <h3>Case Types:</h3>

@@ -3,15 +3,15 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { 
-  Sparkles, 
-  Download, 
-  Calculator, 
-  Hash, 
-  Package, 
-  Type, 
-  FileText, 
-  Code, 
+import {
+  Sparkles,
+  Download,
+  Calculator,
+  Hash,
+  Package,
+  Type,
+  FileText,
+  Code,
   Image,
   Search,
   Mail,
@@ -23,7 +23,7 @@ import {
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Free Tools - AI & Productivity Tools | Sam4You",
+  title: "Free Tools - AI & Productivity Tools | Zenviq",
   description: "Access our collection of free AI tools, calculators, generators, and productivity tools. Boost your workflow with our comprehensive toolkit.",
   keywords: "free tools, AI tools, calculators, generators, productivity tools, online tools",
 }
@@ -179,7 +179,7 @@ export default function ToolsPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1 pt-20">
         {/* Hero Section */}
         <section className="py-16 sm:py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50">
@@ -189,16 +189,16 @@ export default function ToolsPage() {
                 <Zap className="w-4 h-4 text-blue-600" />
                 <span className="text-sm font-medium text-blue-700">Free Productivity Tools</span>
               </div>
-              
+
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
                 Free Tools Collection
               </h1>
-              
+
               <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                Boost your productivity with our comprehensive collection of free AI tools, 
+                Boost your productivity with our comprehensive collection of free AI tools,
                 calculators, generators, and utilities. Everything you need in one place.
               </p>
-              
+
               <div className="flex flex-wrap justify-center gap-4 mb-12">
                 <Badge variant="secondary" className="px-4 py-2">
                   <Sparkles className="w-4 h-4 mr-2" />
@@ -233,7 +233,7 @@ export default function ToolsPage() {
                   Choose from our wide range of free tools designed to enhance your workflow and productivity
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {tools.map((tool) => {
                   const Icon = tool.icon
@@ -277,7 +277,7 @@ export default function ToolsPage() {
                   Our tools are designed with user experience and functionality in mind
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <Card className="text-center p-6 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
@@ -290,7 +290,7 @@ export default function ToolsPage() {
                     </p>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center p-6 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
                     <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -302,7 +302,7 @@ export default function ToolsPage() {
                     </p>
                   </CardContent>
                 </Card>
-                
+
                 <Card className="text-center p-6 hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6">
                     <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -329,8 +329,8 @@ export default function ToolsPage() {
               <p className="text-xl text-blue-100 mb-8">
                 Start using our free tools today and experience the difference
               </p>
-              <Link 
-                href="#tools" 
+              <Link
+                href="#tools"
                 className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition-colors"
               >
                 <Zap className="w-5 h-5" />
@@ -340,7 +340,7 @@ export default function ToolsPage() {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </div>
   )

@@ -3,8 +3,22 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Search, ArrowRight, ChevronDown, BarChart3, Smartphone, Link as LinkIcon, FileText, Globe, Code } from "lucide-react"
+import { Menu, X, Search, ArrowRight, ChevronDown, BarChart3, Smartphone, Link as LinkIcon, FileText, Globe, Code, Brain, Zap, ShoppingCart, Palette } from "lucide-react"
 import Image from "next/image"
+import { Logo } from "@/components/logo"
+
+// Search data - moved outside component to avoid dependency issues
+const searchData = [
+  { title: "ChatGPT", url: "/ai-tools/chatgpt", category: "AI Tools", description: "OpenAI's conversational AI" },
+  { title: "Claude AI", url: "/ai-tools/claude", category: "AI Tools", description: "Anthropic's AI assistant" },
+  { title: "Web Development", url: "/services", category: "Services", description: "Custom website development" },
+  { title: "AI Consultation", url: "/services", category: "Services", description: "AI implementation guidance" },
+  { title: "Blog", url: "/blog", category: "Content", description: "Latest articles and guides" },
+  { title: "Free AI Tools Guide", url: "/blog/free-ai-tools-guide", category: "Content", description: "Comprehensive AI tools review" },
+  { title: "Contact Us", url: "/contact", category: "Support", description: "Get in touch with our team" },
+  { title: "Privacy Policy", url: "/privacy", category: "Legal", description: "Privacy and data protection" },
+  { title: "Terms of Service", url: "/terms", category: "Legal", description: "Terms and conditions" },
+]
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -19,7 +33,7 @@ export default function Header() {
 
   useEffect(() => {
     let ticking = false
-    
+
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
@@ -29,7 +43,7 @@ export default function Header() {
         ticking = true
       }
     }
-    
+
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -46,72 +60,48 @@ export default function Header() {
 
   const servicesDropdown = [
     {
-      icon: Search,
-      title: "SEO & Content Strategy",
-      description: "Content, keywords, structure",
-      href: "/services"
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile SEO",
-      description: "Mobile-first indexing, UX",
-      href: "/services"
-    },
-    {
-      icon: LinkIcon,
-      title: "Link Building",
-      description: "Earn quality backlinks",
-      href: "/services"
-    },
-    {
-      icon: FileText,
-      title: "Content Marketing",
-      description: "Create content that ranks",
-      href: "/services"
-    },
-    {
-      icon: BarChart3,
-      title: "On-Page SEO",
-      description: "Titles, schema, links, speed",
-      href: "/services"
-    },
-    {
-      icon: Search,
-      title: "Local SEO",
-      description: "Win nearby customers",
-      href: "/services"
-    },
-    {
       icon: Globe,
-      title: "International SEO",
-      description: "Reach global markets",
-      href: "/services"
+      title: "WordPress Development",
+      description: "Custom themes & plugins",
+      href: "/services#service-wordpress"
     },
     {
-      icon: Code,
-      title: "Web Design",
-      description: "Fast, responsive websites",
-      href: "/services"
+      icon: Brain,
+      title: "AI Integration",
+      description: "Smart agents & automation",
+      href: "/services#service-ai"
+    },
+    {
+      icon: Zap,
+      title: "Next.js & Modern Apps",
+      description: "Fast, scalable web apps",
+      href: "/services#service-nextjs"
+    },
+    {
+      icon: ShoppingCart,
+      title: "E-commerce Solutions",
+      description: "Conversion-optimized stores",
+      href: "/services#service-ecommerce"
+    },
+    {
+      icon: Search,
+      title: "SEO & Strategy",
+      description: "Search engine dominance",
+      href: "/services#service-seo"
+    },
+    {
+      icon: Palette,
+      title: "UI/UX Design",
+      description: "Intuitive user experiences",
+      href: "/services#service-uiux"
     }
   ]
 
-  // Search data
-  const searchData = [
-    { title: "ChatGPT", url: "/ai-tools/chatgpt", category: "AI Tools", description: "OpenAI's conversational AI" },
-    { title: "Claude AI", url: "/ai-tools/claude", category: "AI Tools", description: "Anthropic's AI assistant" },
-    { title: "Web Development", url: "/services", category: "Services", description: "Custom website development" },
-    { title: "AI Consultation", url: "/services", category: "Services", description: "AI implementation guidance" },
-    { title: "Blog", url: "/blog", category: "Content", description: "Latest articles and guides" },
-    { title: "Free AI Tools Guide", url: "/blog/free-ai-tools-guide", category: "Content", description: "Comprehensive AI tools review" },
-    { title: "Contact Us", url: "/contact", category: "Support", description: "Get in touch with our team" },
-    { title: "Privacy Policy", url: "/privacy", category: "Legal", description: "Privacy and data protection" },
-    { title: "Terms of Service", url: "/terms", category: "Legal", description: "Terms and conditions" },
-  ]
 
   // Search functionality
   useEffect(() => {
     if (searchQuery.length > 0) {
-      const results = searchData.filter(item => 
+      const results = searchData.filter(item =>
         item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         item.category.toLowerCase().includes(searchQuery.toLowerCase())
@@ -141,24 +131,17 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
-        isScrolled || isMobileMenuOpen ? "bg-background/90 backdrop-blur-sm border-b border-border/50" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${isScrolled || isMobileMenuOpen ? "bg-background/90 backdrop-blur-sm border-b border-border/50" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-3 sm:px-4">
         <div className="flex items-center justify-between h-14 sm:h-16 md:h-20">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            className="flex items-center"
           >
-            <Image
-              src="/Sam4You.svg"
-              alt="Sam4You Logo"
-              width={150}
-              height={50}
-              className="object-contain h-8 sm:h-10 md:h-12 w-auto"
-            />
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}
@@ -182,10 +165,10 @@ export default function Header() {
                     {link.label}
                   </Link>
                 )}
-                
+
                 {/* Services Dropdown */}
                 {link.hasDropdown && isServicesDropdownOpen && (
-                  <div 
+                  <div
                     className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-200 rounded-lg shadow-lg z-50"
                     onMouseEnter={() => setIsServicesDropdownOpen(true)}
                     onMouseLeave={() => setIsServicesDropdownOpen(false)}
@@ -240,7 +223,7 @@ export default function Header() {
                     className="w-full h-10 pl-10 pr-4 rounded-full border border-border bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
                     autoFocus
                   />
-                  
+
                   {/* Search Results Dropdown */}
                   {showResults && searchResults.length > 0 && (
                     <div className="absolute top-12 left-0 right-0 bg-white dark:bg-gray-900 border border-border rounded-lg shadow-lg max-h-80 overflow-y-auto z-50">
@@ -269,7 +252,7 @@ export default function Header() {
                       ))}
                     </div>
                   )}
-                  
+
                   {/* No Results */}
                   {showResults && searchResults.length === 0 && searchQuery.length > 0 && (
                     <div className="absolute top-12 left-0 right-0 bg-white dark:bg-gray-900 border border-border rounded-lg shadow-lg p-4 z-50">
@@ -313,7 +296,7 @@ export default function Header() {
                   placeholder="Search services, tools..."
                   className="w-full h-9 pl-9 pr-4 rounded-full border border-border bg-background/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all text-sm"
                 />
-                
+
                 {/* Mobile Search Results */}
                 {showResults && searchResults.length > 0 && (
                   <div className="absolute top-10 left-2 right-2 bg-white dark:bg-gray-900 border border-border rounded-lg shadow-lg max-h-60 overflow-y-auto z-50">
@@ -345,7 +328,7 @@ export default function Header() {
               </div>
 
               {/* Theme toggle removed - using light mode only */}
-              
+
               {navLinks.map((link) => (
                 <div key={link.href}>
                   {link.hasDropdown ? (
@@ -357,7 +340,7 @@ export default function Header() {
                         {link.label}
                         <ChevronDown size={14} className={`transition-transform ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
                       </button>
-                      
+
                       {/* Mobile Services Dropdown */}
                       {isServicesDropdownOpen && (
                         <div className="ml-4 mt-2 space-y-1">

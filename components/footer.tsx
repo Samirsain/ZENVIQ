@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Twitter, Github, Linkedin, ArrowRight, Heart, Mail, Phone, MapPin, Zap, Star, Globe, Shield, Award, Users, TrendingUp, Sparkles } from "lucide-react"
+import { Logo } from "@/components/logo"
+import { Twitter, Github, Linkedin, ArrowRight, Heart, Mail, Phone, MapPin, Zap, Star, Globe, Shield, Award, Users, TrendingUp, Sparkles, Calendar } from "lucide-react"
 import { useState } from "react"
 
 export default function Footer() {
@@ -17,12 +18,36 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-slate-50 via-white to-indigo-50 overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"></div>
-      <div className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full opacity-30 blur-3xl"></div>
-      <div className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-br from-pink-100 to-blue-100 rounded-full opacity-30 blur-2xl"></div>
-      
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-black/10"></div>
+      <div className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-indigo-100 to-violet-100 rounded-full opacity-30 blur-3xl"></div>
+      <div className="absolute bottom-20 left-10 w-24 h-24 bg-gradient-to-br from-violet-100 to-indigo-100 rounded-full opacity-30 blur-2xl"></div>
+
+      {/* Minimal CTA Section */}
+      <div className="relative border-b border-black/5 bg-white/50 backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-1">Ready to start your next project?</h3>
+              <p className="text-gray-600 text-sm">Let's build something amazing together.</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <a
+                href="https://calendly.com/zenviq/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 transition-all duration-200 text-sm font-bold text-slate-900 tracking-tight border border-slate-200 rounded-full py-2.5 px-6 shadow-sm hover:shadow-md"
+              >
+                <Calendar className="w-4 h-4 text-indigo-600" />
+                <span>Book a Meeting</span>
+                <ArrowRight className="ml-1 w-4 h-4 text-slate-400" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Top Section with Company Info */}
       <div className="relative container mx-auto px-4 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
@@ -30,26 +55,20 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-8">
             {/* Logo and Brand */}
             <div className="space-y-4">
-              <Image
-                src="/Sam4You.svg"
-                alt="Sam4You Logo"
-                width={140}
-                height={50}
-                className="h-14 w-auto"
-              />
-              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full">
-                <Sparkles className="w-4 h-4 text-blue-600" />
-                <span className="text-sm font-medium text-blue-800">India's Leading AI & Web Solutions</span>
+              <Logo iconSize={60} />
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-100 to-violet-100 px-4 py-2 rounded-full font-semibold border border-indigo-200/50">
+                <Sparkles className="w-4 h-4 text-indigo-600" />
+                <span className="text-sm font-medium text-indigo-800">India's Leading AI & Web Solutions</span>
               </div>
             </div>
 
             {/* Description */}
             <div className="space-y-6">
               <p className="text-gray-700 leading-relaxed text-lg">
-                We design systems that grow while you sleep. Transforming businesses through innovative digital solutions, 
+                We design systems that grow while you sleep. Transforming businesses through innovative digital solutions,
                 AI-powered tools, and strategic growth marketing.
               </p>
-              
+
               {/* Premium Stats */}
               <div className="grid grid-cols-3 gap-6">
                 <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
@@ -79,7 +98,7 @@ export default function Footer() {
             {/* Premium Newsletter */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-violet-600 rounded-xl flex items-center justify-center">
                   <Mail className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -88,16 +107,16 @@ export default function Footer() {
                 </div>
               </div>
               <form onSubmit={handleNewsletterSubmit} className="flex gap-3">
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
-                  className="flex-1 px-5 py-4 border-2 border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500 transition-all"
+                  className="flex-1 px-5 py-4 border-2 border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-indigo-100 focus:border-indigo-500 transition-all font-medium"
                 />
-                <button 
+                <button
                   type="submit"
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="px-8 py-4 bg-gradient-to-r from-indigo-600 via-violet-600 to-indigo-600 hover:brightness-110 text-white rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-indigo-200 shadow-indigo-100 transform hover:-translate-y-0.5"
                 >
                   <ArrowRight className="w-5 h-5" />
                 </button>
@@ -119,8 +138,8 @@ export default function Footer() {
             </div>
             <div className="space-y-3">
               <Link href="/services" className="group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300">
-                <div className="w-8 h-8 bg-blue-100 group-hover:bg-blue-500 rounded-lg flex items-center justify-center transition-colors">
-                  <Zap className="w-4 h-4 text-blue-600 group-hover:text-white transition-colors" />
+                <div className="w-8 h-8 bg-indigo-100 group-hover:bg-indigo-600 rounded-lg flex items-center justify-center transition-colors">
+                  <Zap className="w-4 h-4 text-indigo-600 group-hover:text-white transition-colors" />
                 </div>
                 <span className="font-medium text-gray-700 group-hover:text-gray-900">Premium Services</span>
               </Link>
@@ -134,7 +153,7 @@ export default function Footer() {
                 <div className="w-8 h-8 bg-pink-100 group-hover:bg-pink-500 rounded-lg flex items-center justify-center transition-colors">
                   <Sparkles className="w-4 h-4 text-pink-600 group-hover:text-white transition-colors" />
                 </div>
-                <span className="font-medium text-gray-700 group-hover:text-gray-900">AI Tools</span>
+                <span className="font-medium text-gray-700 group-hover:text-indigo-600 transition-colors">AI Tools</span>
               </Link>
               <Link href="/blog" className="group flex items-center gap-3 p-3 rounded-lg hover:bg-white hover:shadow-md transition-all duration-300">
                 <div className="w-8 h-8 bg-green-100 group-hover:bg-green-500 rounded-lg flex items-center justify-center transition-colors">
@@ -148,20 +167,20 @@ export default function Footer() {
           {/* Premium Contact Info */}
           <div className="space-y-8">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-violet-500 rounded-lg flex items-center justify-center">
                 <Phone className="w-4 h-4 text-white" />
               </div>
               <h4 className="font-bold text-gray-900 text-xl">Connect</h4>
             </div>
             <div className="space-y-6">
               <div className="group flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center">
                   <Phone className="w-6 h-6 text-white" />
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">Call Us</p>
                   <p className="text-sm text-gray-600">+91 9352410667</p>
-                  <p className="text-xs text-blue-600 font-medium">Available 24/7</p>
+                  <p className="text-xs text-indigo-600 font-bold">Available 24/7</p>
                 </div>
               </div>
               <div className="group flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all">
@@ -170,7 +189,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900">Email Us</p>
-                  <p className="text-sm text-gray-600">hello@sam4you.com</p>
+                  <p className="text-sm text-gray-600">hello@zenviq.com</p>
                   <p className="text-xs text-green-600 font-medium">Quick Response</p>
                 </div>
               </div>
@@ -196,7 +215,7 @@ export default function Footer() {
             {/* Premium Copyright */}
             <div className="text-center lg:text-left space-y-2">
               <p className="text-gray-700 font-medium">
-                © {currentYear} Sam4You. All rights reserved.
+                © {currentYear} Zenviq. All rights reserved.
               </p>
               <p className="text-sm text-gray-500 flex items-center gap-2">
                 <Heart className="w-4 h-4 text-red-500" />
@@ -208,16 +227,16 @@ export default function Footer() {
             <div className="flex items-center gap-8">
               <span className="text-sm text-gray-700 font-semibold">Follow Our Journey:</span>
               <div className="flex gap-4">
-                <a href="https://twitter.com/sam4you" target="_blank" rel="noopener noreferrer" 
-                   className="group w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <a href="https://twitter.com/zenviq" target="_blank" rel="noopener noreferrer"
+                  className="group w-12 h-12 bg-gradient-to-br from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                   <Twitter className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="https://github.com/Samirsain" target="_blank" rel="noopener noreferrer" 
-                   className="group w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <a href="https://github.com/Samirsain" target="_blank" rel="noopener noreferrer"
+                  className="group w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 hover:from-gray-800 hover:to-black rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                   <Github className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                 </a>
-                <a href="https://linkedin.com/in/samirsain" target="_blank" rel="noopener noreferrer" 
-                   className="group w-12 h-12 bg-gradient-to-br from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <a href="https://linkedin.com/in/samirsain" target="_blank" rel="noopener noreferrer"
+                  className="group w-12 h-12 bg-gradient-to-br from-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                   <Linkedin className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
                 </a>
               </div>
@@ -225,13 +244,13 @@ export default function Footer() {
 
             {/* Premium Legal Links */}
             <div className="flex flex-wrap justify-center gap-6 text-sm">
-              <Link href="/privacy" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              <Link href="/privacy" className="text-gray-600 hover:text-indigo-600 transition-colors font-semibold">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              <Link href="/terms" className="text-gray-600 hover:text-indigo-600 transition-colors font-semibold">
                 Terms of Service
               </Link>
-              <Link href="/refund" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+              <Link href="/refund" className="text-gray-600 hover:text-indigo-600 transition-colors font-semibold">
                 Refund Policy
               </Link>
               <Link href="/sitemap" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">

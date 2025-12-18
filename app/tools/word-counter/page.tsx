@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Textarea } from "@/components/ui/textarea"
 import { FileText, Hash, Clock, Eye } from "lucide-react"
@@ -16,11 +16,8 @@ export default function WordCounter() {
     readingTime: 0
   })
 
-  useEffect(() => {
-    calculateStats()
-  }, [text])
 
-  const calculateStats = () => {
+  const calculateStats = useCallback(() => {
     const characters = text.length
     const charactersNoSpaces = text.replace(/\s/g, '').length
     const words = text.trim() ? text.trim().split(/\s+/).length : 0
@@ -36,7 +33,12 @@ export default function WordCounter() {
       paragraphs,
       readingTime
     })
-  }
+  }, [text])
+
+  useEffect(() => {
+    calculateStats()
+  }, [calculateStats])
+
 
   const clearText = () => {
     setText("")
@@ -169,8 +171,8 @@ export default function WordCounter() {
                   <div className="text-sm text-green-700 dark:text-green-300">
                     {stats.words > 0 ? (
                       stats.words < 100 ? "Short" :
-                      stats.words < 500 ? "Medium" :
-                      stats.words < 1000 ? "Long" : "Very Long"
+                        stats.words < 500 ? "Medium" :
+                          stats.words < 1000 ? "Long" : "Very Long"
                     ) : "No text"}
                   </div>
                 </div>
@@ -185,7 +187,7 @@ export default function WordCounter() {
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none">
               <p>
-                A word counter is an essential tool for writers, students, and content creators. 
+                A word counter is an essential tool for writers, students, and content creators.
                 It helps you track the length and structure of your text for various purposes.
               </p>
               <h3>What We Count:</h3>
@@ -208,7 +210,7 @@ export default function WordCounter() {
               </ul>
               <h3>Reading Time Calculation:</h3>
               <p>
-                Reading time is calculated based on the average reading speed of 200 words per minute. 
+                Reading time is calculated based on the average reading speed of 200 words per minute.
                 This is a standard metric used by most content platforms and tools.
               </p>
             </CardContent>

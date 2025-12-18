@@ -7,7 +7,7 @@ export default function RefundPolicy() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
         <div className="container mx-auto px-4">
@@ -26,7 +26,7 @@ export default function RefundPolicy() {
       <section className="py-20 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            
+
             {/* Refund Policy */}
             <Card className="mb-8">
               <CardHeader>
@@ -108,7 +108,7 @@ export default function RefundPolicy() {
                     <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
                     <div>
                       <h3 className="font-semibold mb-1">Contact Support</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">Email us at support@sam4you.com or call +91 9352410667</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">Email us at support@zenviq.com or call +91 9352410667</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">

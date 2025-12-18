@@ -1,10 +1,10 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
-// Updated FAQ content for Sam4You
+// Updated FAQ content for Zenviq
 
 const faqs = [
   {
-    question: "What kind of businesses can benefit from Sam4You?",
+    question: "What kind of businesses can benefit from Zenviq?",
     answer:
       "Whether you’re a startup, small business, or an established brand, our solutions are designed to help you scale, automate workflows, and grow faster with digital innovation and AI-powered strategies.",
   },
@@ -34,7 +34,7 @@ const faqs = [
       "Yes. We specialize in redesigning websites, fixing performance issues, and optimizing SEO & marketing campaigns to help you reach a wider audience and maximize ROI.",
   },
   {
-    question: "How do I get started with Sam4You?",
+    question: "How do I get started with Zenviq?",
     answer:
       "Simply contact us or book a free consultation. We’ll understand your business goals and provide a step-by-step roadmap to help you achieve them.",
   },

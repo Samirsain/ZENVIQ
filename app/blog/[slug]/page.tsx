@@ -12,8 +12,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPostsFull.find((p) => p.slug === params.slug)
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = blogPostsFull.find((p) => p.slug === slug)
 
   if (!post) {
     notFound()
@@ -22,7 +23,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
-      
+
       <article className="pt-20 md:pt-32 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">
           {/* Back Button */}
@@ -40,7 +41,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 {post.category}
               </span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
               {post.title}
             </h1>
@@ -59,7 +60,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
           {/* Post Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none">
-            <div 
+            <div
               className="text-gray-700 dark:text-gray-300 leading-relaxed"
               dangerouslySetInnerHTML={{ __html: post.content || `<p>Content coming soon...</p>` }}
             />

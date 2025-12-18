@@ -123,13 +123,14 @@ export default function CSSUnitConverter() {
     setResult(result.toFixed(4))
   }
 
-  const copyToClipboard = (text) => {
+  const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
     toast({
       title: "Copied!",
       description: "Value copied to clipboard",
     })
   }
+
 
   const resetConverter = () => {
     setInputValue("")
@@ -330,7 +331,7 @@ export default function CSSUnitConverter() {
             </CardHeader>
             <CardContent className="prose dark:prose-invert max-w-none">
               <p>
-                CSS units are used to specify measurements in CSS properties. Understanding and converting 
+                CSS units are used to specify measurements in CSS properties. Understanding and converting
                 between different units is essential for responsive web design and consistent styling.
               </p>
               <h3>Unit Categories:</h3>

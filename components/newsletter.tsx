@@ -53,14 +53,14 @@ export default function Newsletter() {
             <Mail className="w-4 h-4" />
             Newsletter
           </div>
-          
+
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Stay Updated with Our Latest Posts
           </h2>
           <p className="text-lg text-blue-100 mb-8 leading-relaxed">
             Subscribe to our newsletter and never miss out on the latest insights, tips, and strategies for digital success.
           </p>
-          
+
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
             <div className="flex-1 w-full">
               <Input
@@ -68,13 +68,13 @@ export default function Newsletter() {
                 placeholder="Enter your email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white/50 bg-white/90 text-gray-900 placeholder-gray-500"
+                className="w-full px-6 py-4 rounded-full border-0 focus:ring-2 focus:ring-white/50 bg-white/90 text-gray-900 placeholder-gray-500 shadow-inner"
                 required
               />
             </div>
-            <Button 
-              type="submit" 
-              size="lg" 
+            <Button
+              type="submit"
+              size="lg"
               className="bg-white text-blue-600 hover:bg-gray-100 px-8 flex items-center gap-2"
               disabled={isSubmitting}
             >

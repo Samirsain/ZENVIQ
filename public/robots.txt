@@ -5,7 +5,7 @@ Disallow: /api/
 Disallow: /admin/
 
 # Host
-Host: https://sam4you.vercel.app
+Host: https://zenviq.com
 
 # Sitemaps
-Sitemap: https://sam4you.vercel.app/sitemap.xml
+Sitemap: https://zenviq.com/sitemap.xml
