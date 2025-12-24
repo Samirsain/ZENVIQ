@@ -46,6 +46,11 @@ const SITE_DATA = {
   }
 }
 
+// ... existing imports
+import { Calendar, ArrowUpRight } from "lucide-react"
+
+// ... existing interface and SITE_DATA
+
 export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
@@ -66,7 +71,7 @@ export default function AIAssistant() {
 
   useEffect(() => {
     scrollToBottom()
-  }, [messages])
+  }, [messages, isTyping])
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return
@@ -82,64 +87,34 @@ export default function AIAssistant() {
     setInputValue("")
     setIsTyping(true)
 
-    // AI Processing
-    setTimeout(() => {
-      const response = getSmartResponse(inputValue)
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage.text })
+      })
+
+      const data = await response.json()
+
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: response,
+        text: data.text || "I'm having a little trouble thinking clearly. Please try again.",
         isUser: false,
         timestamp: new Date()
       }
       setMessages(prev => [...prev, aiMessage])
+    } catch (error) {
+      console.error(error)
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "Connection error. Please check your internet or try again later.",
+        isUser: false,
+        timestamp: new Date()
+      }
+      setMessages(prev => [...prev, errorMessage])
+    } finally {
       setIsTyping(false)
-    }, 800)
-  }
-
-  const getSmartResponse = (userInput: string): string => {
-    const input = userInput.toLowerCase()
-
-    // Language detection
-    const isHindi = /[अ-ह]/.test(userInput)
-    const isHinglish = /kya|kaise|btao|hai|sakte|ho|nhi|hu|bol|rha|mere|liye|web|site|karna|chah|rha/i.test(input)
-    const lang = isHindi ? "hindi" : (isHinglish ? "hinglish" : "english")
-
-    const findService = SITE_DATA.services.find(s => s.keywords.some(k => input.includes(k)))
-
-    // Pricing queries
-    if (input.includes("price") || input.includes("cost") || input.includes("kitna") || input.includes("paisa") || input.includes("charge")) {
-      if (lang === "english") return "Pricing at Zenviq depends on your project's scope. We offer affordable and flexible custom quotes. Best way is to book a quick 30-min strategy call: " + SITE_DATA.contact.meeting
-      return "Zenviq ki pricing project ke scope par depend karti hai. Hum affordable aur premium solutions dete hain. Sabse sahi rahega ki aap ek small consultation book karein: " + SITE_DATA.contact.meeting
     }
-
-    // Tools queries
-    if (input.includes("tool") || input.includes("calculator") || input.includes("generator")) {
-      const toolList = SITE_DATA.tools.slice(0, 5).join(", ") + " and more."
-      if (lang === "english") return `We have built several free tools for the community like: ${toolList}. You can check them all in our Tools section!`
-      return `Humne kaafi saare useful tools banaye hain jaise: ${toolList}. Aap humare tools section mein inhe free use kar sakte hain!`
-    }
-
-    // Service specific
-    if (findService) {
-      if (lang === "english") return `${findService.name}: ${findService.detail}\n\nThis would be perfect for your goal. Shall we discuss a strategy for this?`
-      return `${findService.name}: ${findService.detail}\n\nYeh aapke requirements ke liye best option hai. Kya hum iske baare mein aur baat karein?`
-    }
-
-    // Start project / Contact
-    if (input.includes("start") || input.includes("contact") || input.includes("help") || input.includes("baat") || input.includes("kaam")) {
-      if (lang === "english") return `Great! You can start by filling our contact form, chatting on WhatsApp (${SITE_DATA.contact.whatsapp}), or booking a call: ${SITE_DATA.contact.meeting}. What works best for you?`
-      return `Zaroor! Aap project start karne ke liye humara form bhar sakte hain, WhatsApp par message kar sakte hain (${SITE_DATA.contact.whatsapp}), ya directly call schedule kar sakte hain: ${SITE_DATA.contact.meeting}. Aapko kya suit karega?`
-    }
-
-    // Greetings
-    if (input.includes("hi") || input.includes("hello") || input.includes("hey") || input.includes("namaste")) {
-      if (lang === "english") return "Hello! I'm the Zenviq AI Assistant. How can I help you build your next premium digital experience today?"
-      return "Namaste! Main Zenviq AI Assistant hoon. Kaise help kar sakta hoon aapki digital journey mein?"
-    }
-
-    // Fallback
-    if (lang === "english") return "I'm trained on all Zenviq data. I can tell you about our WordPress, AI, Next.js services, or our 500+ successful projects. What would you like to build today?"
-    return "Main Zenviq ka intelligent assistant hoon. Hum WordPress, AI automation aur modern Next.js apps banate hain. Aap apna project discuss karne ke liye WhatsApp ya meeting link use kar sakte hain."
   }
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -149,61 +124,129 @@ export default function AIAssistant() {
     }
   }
 
+  // Helper to render formatted text
+  const renderFormattedText = (text: string) => {
+    // 1. Handle Bullet Points (lines starting with - or 1.)
+    const lines = text.split('\n');
+    return lines.map((line, i) => {
+      // Bold parsing: **text**
+      const parts = line.split(/(\*\*.*?\*\*)/g);
+
+      const content = parts.map((part, j) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+          return <strong key={j} className="text-indigo-700 dark:text-indigo-300 font-bold">{part.slice(2, -2)}</strong>;
+        }
+        // Link parsing: [text](url)
+        const linkParts = part.split(/\[(.*?)\]\((.*?)\)/g);
+        if (linkParts.length > 2) {
+          const result = [];
+          for (let k = 0; k < linkParts.length; k += 3) {
+            result.push(linkParts[k]); // text before
+            if (k + 1 < linkParts.length) {
+              result.push(
+                <a key={k} href={linkParts[k + 2]} target="_blank" rel="noopener noreferrer" className="text-blue-600 underline hover:text-blue-800">
+                  {linkParts[k + 1]} <ArrowUpRight className="inline w-3 h-3 mb-0.5" />
+                </a>
+              );
+            }
+          }
+          return <span key={j}>{result}</span>
+        }
+        return <span key={j}>{part}</span>;
+      });
+
+      if (line.trim().startsWith('- ') || line.trim().match(/^\d+\./)) {
+        return <div key={i} className="pl-4 mb-1">• {content}</div>
+      }
+      return <div key={i} className={`min-h-[1.2em] ${line === "" ? "h-2" : ""}`}>{content}</div>;
+    });
+  }
+
+  // Check if message implies a meeting invite
+  const hasMeetingInvoke = (text: string) => text.includes("calendly.com/zenviq");
+
   return (
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-indigo-600 hover:bg-indigo-700"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-indigo-600 hover:bg-indigo-700 animate-in zoom-in duration-300"
         size="lg"
       >
         <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
       </Button>
 
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-80 h-[calc(100vh-8rem)] sm:h-96 bg-white dark:bg-gray-900 rounded-lg shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 sm:pb-3 border-b px-3 sm:px-6 bg-indigo-50/50 dark:bg-indigo-900/20">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-indigo-100 dark:bg-indigo-900 flex items-center justify-center">
-                <Bot className="w-3 h-3 sm:w-4 sm:h-4 text-indigo-600 dark:text-indigo-400" />
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-96 h-[calc(100vh-8rem)] sm:h-[32rem] bg-white dark:bg-slate-950 rounded-2xl shadow-2xl border border-indigo-100 dark:border-indigo-900 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 ring-4 ring-indigo-500/10">
+          {/* Header */}
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 py-3 px-4 border-b bg-white/50 backdrop-blur-xl dark:bg-slate-900/50 sticky top-0 z-10">
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <div className="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center shadow-md">
+                  <Bot className="w-5 h-5 text-white" />
+                </div>
+                <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></div>
               </div>
-              <CardTitle className="text-xs sm:text-sm font-bold tracking-tight">Zenviq AI</CardTitle>
+              <div className="flex flex-col">
+                <CardTitle className="text-sm font-bold tracking-tight text-slate-900 dark:text-white">Zenviq AI</CardTitle>
+                <span className="text-[10px] text-slate-500 font-medium">Digital Consultant • Online</span>
+              </div>
             </div>
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={() => setIsOpen(false)}
-              className="h-5 w-5 sm:h-6 sm:w-6 p-0 rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
+              className="h-8 w-8 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500"
             >
-              <X className="w-3 h-3 sm:w-4 sm:h-4" />
+              <X className="w-4 h-4" />
             </Button>
           </CardHeader>
 
-          <CardContent className="flex-1 overflow-y-auto p-2 sm:p-4 space-y-3 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700">
+          {/* Messages */}
+          <CardContent className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50/50 dark:bg-slate-950/50 scrollbar-thin scrollbar-thumb-indigo-200 dark:scrollbar-thumb-slate-700">
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex ${message.isUser ? "justify-end" : "justify-start"}`}
+                className={`flex flex-col ${message.isUser ? "items-end" : "items-start"}`}
               >
                 <div
-                  className={`max-w-[85%] sm:max-w-[80%] rounded-2xl px-3 py-2 ${message.isUser
-                    ? "bg-indigo-600 text-white shadow-md rounded-tr-none"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-sm rounded-tl-none"
+                  className={`max-w-[85%] rounded-2xl px-4 py-3 shadow-sm ${message.isUser
+                    ? "bg-indigo-600 text-white rounded-tr-sm"
+                    : "bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 rounded-tl-sm"
                     }`}
                 >
-                  <div className="text-xs sm:text-sm whitespace-pre-line leading-relaxed font-medium">
-                    {message.text}
+                  <div className={`text-sm leading-relaxed ${!message.isUser ? "prose-sm" : ""}`}>
+                    {message.isUser ? message.text : renderFormattedText(message.text)}
                   </div>
                 </div>
+
+                {/* Smart Action Button for AI Messages */}
+                {!message.isUser && hasMeetingInvoke(message.text) && (
+                  <div className="mt-2 ml-1 animate-in slide-in-from-left-2 duration-500">
+                    <a
+                      href="https://calendly.com/zenviq/30min"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 hover:bg-indigo-200 text-indigo-700 text-xs font-bold rounded-xl transition-colors cursor-pointer border border-indigo-200"
+                    >
+                      <Calendar className="w-3.5 h-3.5" />
+                      Book Strategy Call
+                    </a>
+                  </div>
+                )}
+
+                <span className="text-[10px] text-slate-400 mt-1 px-1">
+                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </span>
               </div>
             ))}
 
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl rounded-tl-none px-3 py-2 shadow-sm">
-                  <div className="flex space-x-1">
-                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-400 rounded-full animate-bounce"></div>
-                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
-                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
+                <div className="bg-white dark:bg-slate-900 border border-slate-100 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm">
+                  <div className="flex space-x-1.5">
+                    <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce"></div>
+                    <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce text-indigo-500" style={{ animationDelay: "0.1s" }}></div>
+                    <div className="w-1.5 h-1.5 bg-indigo-400 rounded-full animate-bounce text-indigo-600" style={{ animationDelay: "0.2s" }}></div>
                   </div>
                 </div>
               </div>
@@ -211,26 +254,31 @@ export default function AIAssistant() {
             <div ref={messagesEndRef} />
           </CardContent>
 
-          <div className="p-2 sm:p-4 border-t bg-gray-50/50 dark:bg-gray-800/20">
-            <div className="flex gap-1.5 sm:gap-2">
+          {/* Input Area */}
+          <div className="p-3 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+            <div className="relative flex items-center gap-2">
               <Input
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Talk to Zenviq AI..."
-                className="flex-1 text-xs sm:text-sm border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 rounded-xl focus:ring-2 focus:ring-indigo-500 transition-all shadow-inner"
+                placeholder="Ask about web, AI, or pricing..."
+                className="pr-12 text-sm bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 rounded-xl focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 py-6 shadow-sm"
                 disabled={isTyping}
               />
               <Button
                 onClick={handleSendMessage}
                 disabled={!inputValue.trim() || isTyping}
-                size="sm"
-                className="px-2 sm:px-3 h-8 sm:h-10 rounded-xl bg-indigo-600 hover:bg-indigo-700 transition-all shadow-md group"
+                size="icon"
+                className="absolute right-1.5 w-9 h-9 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all hover:scale-105"
               >
-                <Send className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <Send className="w-4 h-4" />
               </Button>
             </div>
-            <p className="text-[10px] text-gray-400 text-center mt-2 font-medium">Zenviq AI Assistant • Always Ready to Help</p>
+            <div className="text-center mt-2">
+              <span className="text-[10px] text-slate-400 flex items-center justify-center gap-1">
+                Powered by <span className="font-semibold text-indigo-500">Zenviq Intelligence</span>
+              </span>
+            </div>
           </div>
         </div>
       )}

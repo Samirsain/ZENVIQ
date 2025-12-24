@@ -1,6 +1,5 @@
 import { Metadata } from "next"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -178,7 +177,7 @@ const tools = [
 export default function ToolsPage() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
+
 
       <main className="flex-1 pt-20">
         {/* Hero Section */}
@@ -341,7 +340,7 @@ export default function ToolsPage() {
         </section>
       </main>
 
-      <Footer />
+
     </div>
   )
 }

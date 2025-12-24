@@ -1,60 +1,57 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import Newsletter from "@/components/newsletter"
+import { Metadata } from "next"
 import { Button } from "@/components/ui/button"
+
+export const metadata: Metadata = {
+  title: "Blog & Insights",
+  description: "Stay ahead of the curve with Zenviq's latest insights on AI trends, modern web development, and actionable SEO strategies for 2025.",
+  keywords: ["AI trends 2025", "web development blog", "SEO strategies", "digital agency insights"],
+  openGraph: {
+    title: "Zenviq Blog | Master the Digital Landscape",
+    description: "Expert advice and deep dives into the technologies driving the future of business and web development.",
+  }
+}
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Calendar, Clock, User, Tag, Search, Filter, TrendingUp, BookOpen, PenTool, Code, Megaphone, Target, Globe, Smartphone, Zap, Star } from "lucide-react"
+import { ArrowRight, Calendar, Clock, User, BookOpen, Search } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import blogPosts from "@/content/blog-posts.json"
-
-const categories = [
-  { name: "All", icon: BookOpen, count: 12 },
-  { name: "AI", icon: TrendingUp, count: 1 },
-  { name: "AI Tools", icon: Target, count: 1 },
-  { name: "SEO", icon: Search, count: 1 },
-  { name: "Web Development", icon: Code, count: 1 },
-  { name: "Marketing", icon: Megaphone, count: 1 },
-  { name: "Social Media", icon: Globe, count: 1 },
-  { name: "Performance", icon: Smartphone, count: 1 },
-  { name: "Business AI", icon: PenTool, count: 1 },
-  { name: "Machine Learning", icon: Zap, count: 1 },
-  { name: "AI Ethics", icon: Star, count: 1 },
-  { name: "Learning AI", icon: BookOpen, count: 1 }
-]
+import Newsletter from "@/components/newsletter"
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      <Header />
-      
+    <div className="min-h-screen bg-white dark:bg-gray-900 pt-20">
+      {/* 
+        NOTE: Header and Footer are provided globally in app/layout.tsx. 
+        Removing them here prevents runtime evaluation errors (TypeError).
+      */}
+
       {/* Hero Section */}
-      <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+      <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-indigo-50/50 to-purple-50/50 dark:from-indigo-900/10 dark:to-purple-900/10 border-b border-slate-100 dark:border-slate-800">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 px-4 py-2 rounded-full text-sm font-bold mb-6">
               <BookOpen className="w-4 h-4" />
-              Blog & Resources
+              Insights & Resources
             </div>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
-              Latest <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Insights</span> & <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Guides</span>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-6 text-slate-900 dark:text-white leading-tight tracking-tight">
+              Master the digital <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent underline decoration-indigo-200/50">landscape</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Stay ahead with expert insights, practical guides, and the latest trends in digital marketing, web development, and AI tools.
+            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-10 max-w-3xl mx-auto leading-relaxed font-medium">
+              Simple, actionable guides on AI, Web Dev, and SEO designed to help your business scale faster.
             </p>
-            
-            {/* Search Bar */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto mb-8">
+
+            {/* Search Bar - Visual Component */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-lg mx-auto mb-4">
               <div className="relative flex-1 w-full">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
                 <input
                   type="text"
-                  placeholder="Search articles..."
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  placeholder="What are you looking for?"
+                  className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition-all shadow-sm"
                 />
               </div>
-              <Button size="lg" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto h-[60px] rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-10 shadow-lg shadow-indigo-600/10 transition-all hover:scale-105 active:scale-95">
                 Search
               </Button>
             </div>
@@ -62,115 +59,96 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Categories Filter */}
-      <section className="py-8 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                className="flex items-center gap-2 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 dark:hover:bg-blue-900/20 dark:hover:border-blue-600 dark:hover:text-blue-400"
-              >
-                <category.icon className="w-4 h-4" />
-                {category.name}
-                <span className="ml-1 px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
-                  {category.count}
-                    </span>
-                    </Button>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Blog Posts Grid */}
-      <section className="py-16 md:py-20">
+      <section className="py-20 md:py-28 bg-white dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              All Articles
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Explore our complete collection of articles covering various topics in digital marketing and technology.
-            </p>
-          </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-16">
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-4">
+                Latest Articles
+              </h2>
+              <p className="text-lg text-slate-600 dark:text-slate-300 font-medium">
+                Deep dives and expert advice from the Zenviq design and engineering teams.
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {blogPosts.map((post) => (
-              <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-0 bg-white dark:bg-gray-800">
-                <div className="relative overflow-hidden rounded-t-lg">
-                  {post.image ? (
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      width={400}
-                      height={160}
-                      className="w-full h-40 object-cover"
-                    />
-                  ) : (
-                  <div className="w-full h-40 bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center">
-                    <BookOpen className="w-12 h-12 text-white opacity-50" />
-                  </div>
-                  )}
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 text-xs font-semibold bg-gray-600 text-white rounded-full">
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
-                
-                <CardHeader>
-                  <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-2">
-                    <Calendar className="w-4 h-4" />
-                    {new Date(post.date).toLocaleDateString()}
-                    <Clock className="w-4 h-4 ml-4" />
-                    {post.readTime}
-                  </div>
-                  <CardTitle className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 transition-colors">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
-                    {post.excerpt}
-                  </CardDescription>
-                </CardHeader>
-                
-                <CardContent>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <User className="w-4 h-4 text-gray-500" />
-                      <span className="text-sm text-gray-600 dark:text-gray-300">{post.author}</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+              {blogPosts.length > 0 ? (
+                blogPosts.map((post: any) => (
+                  <Card key={post.id} className="group flex flex-col h-full hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-2 border-0 bg-white dark:bg-gray-800 rounded-3xl overflow-hidden ring-1 ring-slate-100 dark:ring-slate-700 shadow-sm shadow-slate-200/50">
+                    <div className="relative overflow-hidden aspect-[16/9] w-full">
+                      {post.image ? (
+                        <Image
+                          src={post.image}
+                          alt={post.title}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-slate-100 to-indigo-50 flex items-center justify-center">
+                          <BookOpen className="w-12 h-12 text-slate-300" />
+                        </div>
+                      )}
+                      <div className="absolute top-4 left-4">
+                        <span className="px-4 py-1.5 text-xs font-bold bg-white/90 backdrop-blur-md text-indigo-600 rounded-full shadow-sm">
+                          {post.category}
+                        </span>
+                      </div>
                     </div>
-                    <Button asChild variant="ghost" size="sm" className="group-hover:bg-blue-50 group-hover:text-blue-600">
-                      <Link href={`/blog/${post.slug}`}>
-                        Read More
-                        <ArrowRight className="ml-1 w-3 h-3" />
-                      </Link>
-                    </Button>
+
+                    <CardHeader className="flex-1 p-6 sm:p-8">
+                      <div className="flex items-center gap-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4">
+                        <div className="flex items-center gap-1.5">
+                          <Calendar className="w-3.5 h-3.5 text-indigo-500" />
+                          {new Date(post.date).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <Clock className="w-3.5 h-3.5 text-indigo-500" />
+                          {post.readTime}
+                        </div>
+                      </div>
+                      <CardTitle className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white mb-4 leading-tight group-hover:text-indigo-600 transition-colors line-clamp-2 tracking-tight">
+                        {post.title}
+                      </CardTitle>
+                      <CardDescription className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm sm:text-base line-clamp-3 font-medium">
+                        {post.excerpt}
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="px-6 pb-6 sm:px-8 sm:pb-8 pt-0">
+                      <div className="pt-6 border-t border-slate-50 dark:border-slate-700/50 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
+                            <User className="w-4 h-4 text-indigo-600" />
+                          </div>
+                          <span className="text-sm font-bold text-slate-700 dark:text-slate-300">{post.author}</span>
+                        </div>
+                        <Link
+                          href={`/blog/${post.slug}`}
+                          className="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-700 flex items-center justify-center text-slate-400 hover:bg-indigo-600 hover:text-white transition-all transform hover:rotate-[-45deg] group-hover:bg-indigo-600 group-hover:text-white"
+                        >
+                          <ArrowRight className="w-5 h-5" />
+                        </Link>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              ) : (
+                <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-20 bg-slate-50 dark:bg-slate-800/50 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-700">
+                  <div className="w-16 h-16 bg-white dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+                    <BookOpen className="w-8 h-8 text-slate-400" />
                   </div>
-                  
-                  <div className="flex flex-wrap gap-1 mt-3">
-                    {post.tags.slice(0, 2).map((tag, index) => (
-                      <span key={index} className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">
-                        #{tag}
-                      </span>
-                    ))}
-                    {post.tags.length > 2 && (
-                      <span className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded">
-                        +{post.tags.length - 2}
-                      </span>
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">No articles found</h3>
+                  <p className="text-slate-600 dark:text-slate-400 font-medium">We're currently working on new content. Please check back later!</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Newsletter Section */}
       <Newsletter />
-
-      <Footer />
     </div>
   )
 }

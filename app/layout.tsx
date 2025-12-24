@@ -10,6 +10,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Script from "next/script"
 import AIAssistant from "@/components/ai-assistant"
 import { Toaster } from "@/components/toaster"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
 import "./globals.css"
 
 const jost = Jost({
@@ -19,48 +21,137 @@ const jost = Jost({
   display: "swap",
 })
 
+import JsonLd from "@/components/json-ld"
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://zenviq.com"),
-  title: "Zenviq - Build Smarter Digital Solutions",
+  title: {
+    default: "Zenviq | Premium Web Development & Digital Solutions Agency",
+    template: "%s | Zenviq",
+  },
   description:
-    "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Zenviq.",
-  keywords: ["web development", "SEO", "AI tools", "automation", "digital agency", "WordPress", "e-commerce"],
-  authors: [{ name: "Zenviq" }],
+    "Zenviq builds smarter digital solutions. We specialize in premium web development, UI/UX design, SEO, and AI-driven automation to help your business scale.",
+  keywords: [
+    "Zenviq",
+    "digital agency",
+    "web development services",
+    "UI/UX design agency",
+    "premium SEO solutions",
+    "AI automation business",
+    "performance optimization",
+    "Next.js developers",
+    "custom software development",
+  ],
+  authors: [{ name: "Zenviq", url: "https://zenviq.com" }],
   creator: "Zenviq",
   publisher: "Zenviq",
+  alternates: {
+    canonical: "https://zenviq.com",
+  },
+  manifest: "/site.webmanifest",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
       { url: "/logo.svg", type: "image/svg+xml" },
     ],
+    shortcut: [{ url: "/favicon.ico" }],
     apple: [
-      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", sizes: "180x180", type: "image/png" },
     ],
-    shortcut: ["/favicon.ico"],
+    other: [
+      {
+        rel: "icon",
+        url: "/favicon.ico",
+      },
+    ],
   },
   openGraph: {
-    title: "Zenviq - Build Smarter Digital Solutions",
-    description: "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Zenviq.",
+    title: "Zenviq | Premium Digital Solutions Agency",
+    description:
+      "Transform your digital presence with Zenviq's expert web development, AI automation, and SEO services. Build smarter, scale faster.",
     type: "website",
     siteName: "Zenviq",
     url: "https://zenviq.com",
+    locale: "en_US",
     images: [
       {
-        url: "/professional-corporate-business-website--hero-sect.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Zenviq - Professional Digital Solutions",
+        alt: "Zenviq - Professional Digital Solutions Agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zenviq - Build Smarter Digital Solutions",
-    description: "Professional web development, SEO, AI tools, and automation services. Transform your digital presence with Zenviq.",
+    title: "Zenviq | Premium Digital Solutions Agency",
+    description:
+      "Transform your digital presence with Zenviq's expert web development, AI automation, and SEO services.",
+    site: "@zenviq",
     creator: "@zenviq",
-    images: ["/professional-corporate-business-website--hero-sect.jpg"],
+    images: ["/og-image.jpg"],
   },
-  generator: "Zenviq",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+}
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Zenviq",
+  "url": "https://zenviq.com",
+  "logo": "https://zenviq.com/logo.svg",
+  "sameAs": [
+    "https://twitter.com/zenviq",
+    "https://linkedin.com/company/zenviq",
+    "https://github.com/zenviq"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-9352410667",
+    "contactType": "customer service"
+  }
+}
+
+const siteNavigationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {
+      "@type": "SiteNavigationElement",
+      "position": 1,
+      "name": "Home",
+      "url": "https://zenviq.com"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 2,
+      "name": "Services",
+      "url": "https://zenviq.com/services"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 3,
+      "name": "Blog",
+      "url": "https://zenviq.com/blog"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 4,
+      "name": "AI Tools",
+      "url": "https://zenviq.com/ai-tools"
+    }
+  ]
 }
 
 export default function RootLayout({
@@ -70,7 +161,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${jost.variable} antialiased`}>
+      <body className={`font-sans ${GeistMono.variable} ${jost.variable} antialiased`}>
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={siteNavigationSchema} />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-DMSQMC1Q80"
@@ -107,10 +200,12 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
-          enableSystem={false}
+          enableSystem={true}
           disableTransitionOnChange={false}
         >
+          <Header />
           <Suspense fallback={null}>{children}</Suspense>
+          <Footer />
           <AIAssistant />
           <Toaster />
           <Analytics />

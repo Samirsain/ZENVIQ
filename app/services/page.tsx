@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, Check, Star, Zap, Target, Users, Globe, Smartphone, BarChart3, Palette, Code, Megaphone, Search, MessageSquare, Camera, PenTool, Settings, Shield, Clock, Award, ShoppingCart, Brain, Rocket, Sparkles, Database, Laptop } from "lucide-react"
@@ -199,7 +198,7 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-[#fafbfc] dark:bg-slate-950">
-      <Header />
+
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-20 md:pt-36 md:pb-28 overflow-hidden">
@@ -419,7 +418,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <Footer />
+
     </div>
   )
 }

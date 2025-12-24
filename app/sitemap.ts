@@ -1,10 +1,11 @@
 import { MetadataRoute } from 'next'
+import blogPosts from '@/content/blog-posts.json'
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://zenviq.com'
 
     // Static routes
-    const routes = [
+    const staticRoutes = [
         '',
         '/about',
         '/services',
@@ -23,9 +24,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route === '' ? 1 : 0.8,
     }))
 
-    // Add specific tools and blog posts if they are many, 
-    // but for now, we'll keep it simple and sustainable.
-    // You can fetch these from your DB or file system here.
+    // Dynamic blog routes
+    const blogRoutes = blogPosts.map((post) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: new Date(post.date || new Date()),
+        changeFrequency: 'weekly' as const,
+        priority: 0.7,
+    }))
 
-    return [...routes]
+    // You can add more dynamic routes like /tools/[slug] or /ai-tools/[slug] here
+
+    return [...staticRoutes, ...blogRoutes]
 }

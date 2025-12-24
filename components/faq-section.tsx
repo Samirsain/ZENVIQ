@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { MessageCircle, Plus, Minus } from "lucide-react"
 import Link from "next/link"
+import JsonLd from "@/components/json-ld"
 
 interface FAQItem {
   id: string
@@ -60,8 +61,22 @@ export default function FAQSection() {
     setOpenId(openId === id ? null : id)
   }
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  }
+
   return (
     <section id="faq" className="max-w-7xl sm:px-6 sm:mt-20 mt-8 mx-auto px-4 mb-20">
+      <JsonLd data={faqSchema} />
       <div className="relative overflow-hidden rounded-[40px] border border-gray-100 dark:border-white/10 bg-white dark:bg-gray-900 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 dark:from-white/5 to-transparent"></div>

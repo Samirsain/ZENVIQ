@@ -1,5 +1,5 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -10,7 +10,7 @@ import { Phone, Mail, MapPin, Clock, MessageSquare, Send, Calendar } from "lucid
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <Header />
+
 
       {/* Hero Section */}
       <section className="pt-20 pb-10 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
@@ -210,7 +210,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Footer />
+
     </div>
   )
 }

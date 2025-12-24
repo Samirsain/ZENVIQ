@@ -6,45 +6,45 @@ import { Star } from "lucide-react"
 const testimonials = [
     {
         id: 1,
-        name: "Priya Sharma",
-        role: "Founder, TechVenture",
-        content: "They transformed our online presence completely. Our website now converts visitors at 3x the rate, and we couldn't be happier with the results.",
-        image: "/professional-indian-woman-entrepreneur-headshot--b.jpg"
+        name: "Aarav Sharma",
+        role: "Founder, TechScale India",
+        content: "Yar, Zenviq ne humara kaam aasan kar diya. The automated chatbot they built handles 80% of our customer queries automatically. Service ekdum top-notch thi!",
+        image: "/professional-indian-male-ceo-headshot--confident-s.jpg"
     },
     {
         id: 2,
-        name: "Ravi Patel",
-        role: "CEO, GrowthEngine",
-        content: "Working with this team was a game-changer. They didn't just build a website - they built a growth engine. Our sales have doubled in 6 months.",
-        image: "/professional-indian-male-ceo-headshot--confident-s.jpg"
-    },
-    {
-        id: 3,
-        name: "Anjali Desai",
-        role: "Marketing Head, EcoShop",
-        content: "The AI chatbot they integrated saves us 20+ hours per week. It's like having a 24/7 customer service team that never sleeps.",
-        image: "/professional-indian-woman-marketing-executive-head.jpg"
-    },
-    {
-        id: 4,
-        name: "Arjun Mehta",
-        role: "Co-Founder, SaaSFlow",
-        content: "The design speed and code quality are unmatched. We ported our entire marketing site in just 2 weeks. Highly recommended for startups.",
-        image: "/professional-indian-male-ceo-headshot--confident-s.jpg"
-    },
-    {
-        id: 5,
-        name: "Neha Gupta",
-        role: "Product Manager, CreativeLab",
-        content: "Incredible attention to detail. The new UI is so smooth and intuitive that our user engagement metrics jumped by 45% instantly.",
+        name: "Priya Venkatesh",
+        role: "Marketing Head, Mumbai Trends",
+        content: "Honestly, SEO results were slow initially, but after 3 months, our organic traffic skyrocketed. They know their craft properly. Highly recommended for long-term growth.",
         image: "/professional-indian-woman-entrepreneur-headshot--b.jpg"
     },
     {
-        id: 6,
-        name: "Vikram Singh",
-        role: "Director, Singh Logistics",
-        content: "Finally, a technical partner who understands business. They delivered a complex dashboard that simplified our operations.",
+        id: 3,
+        name: "Rohan Das",
+        role: "CEO, Bengaluru Logistics",
+        content: "We needed a custom dashboard for our fleet. Their Next.js implementation is super fast. Professional team, deadlines meet karte hain, amazing experience.",
         image: "/professional-indian-male-ceo-headshot--confident-s.jpg"
+    },
+    {
+        id: 4,
+        name: "Ishita Malhotra",
+        role: "Co-Founder, ArtIsLife",
+        content: "Design aesthetics are beautiful! They understood our brand voice perfectly. The new website looks premium and loads instantly on mobile.",
+        image: "/professional-indian-woman-marketing-executive-head.jpg"
+    },
+    {
+        id: 5,
+        name: "Vikram Singh",
+        role: "Director, Singh Exports",
+        content: "Kaafi agencies try kari thi pehle, but simple aur clear process bas yahan mila. No hidden charges, just pure work. Business inquiries 2x ho gayi hain.",
+        image: "/professional-indian-male-ceo-headshot--confident-s.jpg"
+    },
+    {
+        id: 6,
+        name: "Ananya Reddy",
+        role: "Product Lead, InnovateHub",
+        content: "The best part is their support. Any minor issue, and they fix it within hours. Technical expertise is solid, especially in modern web apps.",
+        image: "/professional-indian-woman-entrepreneur-headshot--b.jpg"
     }
 ]
 

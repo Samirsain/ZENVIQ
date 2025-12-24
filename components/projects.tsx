@@ -45,6 +45,19 @@ const projects = [
         image: "/samirsain-portfolio-v2.png",
         color: "from-indigo-600 to-violet-600",
         liveUrl: "https://samirsain.com"
+    },
+    {
+        title: "Norvia Dashboard",
+        category: "SaaS Platform",
+        description: "A comprehensive analytics dashboard with real-time data visualization and modern UI architecture.",
+        longDescription: "Norvia Dashboard is a powerful analytics platform designed for clarity and performance. It features a clean, responsive interface with interactive charts, detailed revenue metrics, and user management tools. The light-themed design ensures readability for data-heavy applications.",
+        results: ["Real-time Data", "Clean UI Architecture", "Mobile Responsive"],
+        tech: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
+        challenge: "Designing a data-rich dashboard that avoids visual clutter while providing deep analytical insights.",
+        solution: "Implemented a modular card-based layout with clear visual hierarchy and performant charting components.",
+        image: "/norvia-dashboard.png",
+        color: "from-slate-500 to-zinc-600",
+        liveUrl: "https://norvia-dashboard.vercel.app/"
     }
 ]
 
@@ -125,15 +138,14 @@ export default function Projects() {
                     ))}
                 </div>
 
-                {/* trust indicators */}
                 <div className="mt-20 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                    <div className="flex items-center gap-2 font-black text-2xl text-slate-400">
+                    <div className="flex items-center gap-2 font-semibold text-2xl text-slate-400">
                         <ShieldCheck className="w-6 h-6" /> TRUSTED
                     </div>
-                    <div className="flex items-center gap-2 font-black text-2xl text-slate-400">
+                    <div className="flex items-center gap-2 font-semibold text-2xl text-slate-400">
                         <TrendingUp className="w-6 h-6" /> RESULTS
                     </div>
-                    <div className="flex items-center gap-2 font-black text-2xl text-slate-400">
+                    <div className="flex items-center gap-2 font-semibold text-2xl text-slate-400">
                         100% SUCCESS
                     </div>
                 </div>
@@ -177,7 +189,7 @@ export default function Projects() {
                                 <span className="px-3 py-1 sm:px-4 sm:py-1.5 bg-indigo-50 text-indigo-600 text-[10px] sm:text-xs font-bold rounded-full mb-3 sm:mb-4 inline-block">
                                     {selectedProject.category}
                                 </span>
-                                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mb-3 sm:mb-4 tracking-tight leading-tight">
+                                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-3 sm:mb-4 tracking-tight leading-tight">
                                     {selectedProject.title}
                                 </h3>
                                 <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-medium">
