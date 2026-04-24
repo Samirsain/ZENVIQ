@@ -35,7 +35,7 @@ export default function Footer() {
       {/* Massive Background Typography */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none opacity-[0.04]">
         <h1 className="text-[15vw] font-black text-slate-950 leading-none tracking-tighter text-center whitespace-nowrap">
-          ZENVIQ AGENCY
+          ZENVIQ DIGITAL
         </h1>
       </div>
 
@@ -57,7 +57,7 @@ export default function Footer() {
                 Let&apos;s build something <span className="text-indigo-100">extraordinary.</span>
               </h2>
               <p className="text-indigo-50/90 text-lg md:text-xl font-medium">
-                Join hundreds of businesses transforming with Zenviq&apos;s AI‑driven digital solutions.
+                Join hundreds of businesses transforming with ZENVIQ Digital&apos;s AI‑driven digital solutions.
               </p>
             </div>
 

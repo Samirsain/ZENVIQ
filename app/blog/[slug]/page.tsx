@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: post.content?.replace(/<[^>]*>/g, "").substring(0, 160),
       type: "article",
       publishedTime: post.date,
-      authors: ["Zenviq"],
+      authors: ["ZENVIQ Digital"],
       images: [post.image],
     },
     twitter: {
@@ -61,19 +61,19 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,
-    "image": [`https://zenviq.com${post.image}`],
+    "image": [`https://www.zenviqdigital.in${post.image}`],
     "datePublished": post.date,
     "author": {
       "@type": "Organization",
-      "name": "Zenviq",
-      "url": "https://zenviq.com"
+      "name": "ZENVIQ Digital",
+      "url": "https://www.zenviqdigital.in"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "Zenviq",
+      "name": "ZENVIQ Digital",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://zenviq.com/logo.svg"
+        "url": "https://www.zenviqdigital.in/logo.svg"
       }
     },
     "description": post.excerpt || post.content?.replace(/<[^>]*>/g, "").substring(0, 160)
@@ -132,7 +132,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
               Ready to scale your business?
             </h3>
             <p className="text-slate-600 dark:text-slate-300 mb-8 font-medium text-lg">
-              Our team at Zenviq specializes in implementing these strategies to drive real results. Let's talk about your project.
+              Our team at ZENVIQ Digital specializes in implementing these strategies to drive real results. Let's talk about your project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" asChild className="bg-indigo-600 hover:bg-indigo-700 h-14 rounded-2xl px-10 font-bold text-white shadow-lg shadow-indigo-600/20 transition-all hover:scale-105 active:scale-95">

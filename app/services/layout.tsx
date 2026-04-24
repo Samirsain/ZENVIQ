@@ -1,12 +1,12 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Premium Services",
-    description: "Explore Zenviq's high-performance services: WordPress development, Next.js apps, AI integration, SEO strategy, and UI/UX design. Build a scalable digital empire.",
-    keywords: ["WordPress development", "Next.js services", "AI business integration", "premium SEO services", "UI/UX design agency"],
+    title: "Our Services | Premium Web & AI Solutions",
+    description: "Explore ZENVIQ Digital's high-performance services: WordPress development, Next.js apps, AI integration, SEO strategy, and UI/UX design. Build your digital empire with us.",
+    keywords: ["WordPress development India", "Next.js services", "AI business integration", "premium SEO services India", "UI/UX design agency", "digital marketing services"],
     openGraph: {
-        title: "Zenviq Services | High-Performance Digital Solutions",
-        description: "From custom web development to AI-driven automation, discover how Zenviq helps businesses scale in the digital age.",
+        title: "ZENVIQ Services | High-Performance Digital Solutions",
+        description: "From custom web development to AI-driven automation, discover how ZENVIQ Digital helps businesses scale in the digital age.",
     }
 }
 

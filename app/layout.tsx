@@ -24,35 +24,37 @@ const jost = Jost({
 import JsonLd from "@/components/json-ld"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://zenviq.com"),
+  metadataBase: new URL("https://www.zenviqdigital.in"),
   title: {
-    default: "Zenviq | Premium Web Development & Digital Solutions Agency",
-    template: "%s | Zenviq",
+    default: "ZENVIQ | Premium Web Development & AI Digital Agency",
+    template: "%s | ZENVIQ Digital",
   },
   description:
-    "Zenviq builds smarter digital solutions. We specialize in premium web development, UI/UX design, SEO, and AI-driven automation to help your business scale.",
+    "ZENVIQ is a leading digital agency in India specializing in premium web development, Next.js applications, AI-driven automation, and result-oriented SEO solutions. Transform your digital presence today.",
   keywords: [
-    "Zenviq",
-    "digital agency",
+    "ZENVIQ Digital",
+    "digital agency India",
     "web development services",
+    "Next.js developers India",
+    "AI automation solutions",
     "UI/UX design agency",
-    "premium SEO solutions",
-    "AI automation business",
-    "performance optimization",
-    "Next.js developers",
+    "premium SEO agency",
+    "WordPress development India",
     "custom software development",
+    "digital transformation agency",
   ],
-  authors: [{ name: "Zenviq", url: "https://zenviq.com" }],
-  creator: "Zenviq",
-  publisher: "Zenviq",
+  authors: [{ name: "ZENVIQ", url: "https://www.zenviqdigital.in" }],
+  creator: "ZENVIQ Digital",
+  publisher: "ZENVIQ Digital",
   alternates: {
-    canonical: "https://zenviq.com",
+    canonical: "https://www.zenviqdigital.in",
   },
   manifest: "/site.webmanifest",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "48x48" },
       { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/logo.svg", type: "image/svg+xml" },
     ],
     shortcut: [{ url: "/favicon.ico" }],
@@ -64,30 +66,35 @@ export const metadata: Metadata = {
         rel: "icon",
         url: "/favicon.ico",
       },
+      {
+        rel: "icon",
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+      },
     ],
   },
   openGraph: {
-    title: "Zenviq | Premium Digital Solutions Agency",
+    title: "ZENVIQ | Premium Digital Solutions & AI Agency",
     description:
-      "Transform your digital presence with Zenviq's expert web development, AI automation, and SEO services. Build smarter, scale faster.",
+      "Transform your digital presence with ZENVIQ's expert web development, AI automation, and SEO services. We build high-performance digital products for global businesses.",
     type: "website",
-    siteName: "Zenviq",
-    url: "https://zenviq.com",
+    siteName: "ZENVIQ Digital",
+    url: "https://www.zenviqdigital.in",
     locale: "en_US",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Zenviq - Professional Digital Solutions Agency",
+        alt: "ZENVIQ - Premium Digital Solutions Agency",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Zenviq | Premium Digital Solutions Agency",
+    title: "ZENVIQ | Leading Web Development & AI Agency",
     description:
-      "Transform your digital presence with Zenviq's expert web development, AI automation, and SEO services.",
+      "Elevate your business with ZENVIQ's high-performance web solutions and AI-driven automation.",
     site: "@zenviq",
     creator: "@zenviq",
     images: ["/og-image.jpg"],
@@ -103,23 +110,31 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  category: "technology",
 }
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Zenviq",
-  "url": "https://zenviq.com",
-  "logo": "https://zenviq.com/logo.svg",
+  "name": "ZENVIQ Digital",
+  "url": "https://www.zenviqdigital.in",
+  "logo": "https://www.zenviqdigital.in/logo.svg",
   "sameAs": [
     "https://twitter.com/zenviq",
     "https://linkedin.com/company/zenviq",
-    "https://github.com/zenviq"
+    "https://github.com/zenviq",
+    "https://instagram.com/zenviq"
   ],
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+91-9352410667",
-    "contactType": "customer service"
+    "contactType": "customer service",
+    "areaServed": "IN",
+    "availableLanguage": "en"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "IN"
   }
 }
 
@@ -131,25 +146,31 @@ const siteNavigationSchema = {
       "@type": "SiteNavigationElement",
       "position": 1,
       "name": "Home",
-      "url": "https://zenviq.com"
+      "url": "https://www.zenviqdigital.in"
     },
     {
       "@type": "SiteNavigationElement",
       "position": 2,
       "name": "Services",
-      "url": "https://zenviq.com/services"
+      "url": "https://www.zenviqdigital.in/services"
     },
     {
       "@type": "SiteNavigationElement",
       "position": 3,
       "name": "Blog",
-      "url": "https://zenviq.com/blog"
+      "url": "https://www.zenviqdigital.in/blog"
     },
     {
       "@type": "SiteNavigationElement",
       "position": 4,
       "name": "AI Tools",
-      "url": "https://zenviq.com/ai-tools"
+      "url": "https://www.zenviqdigital.in/ai-tools"
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "position": 5,
+      "name": "Contact",
+      "url": "https://www.zenviqdigital.in/contact"
     }
   ]
 }

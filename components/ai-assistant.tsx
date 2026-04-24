@@ -15,9 +15,9 @@ interface Message {
 
 const SITE_DATA = {
   agency: {
-    name: "Zenviq",
+    name: "ZENVIQ Digital",
     tagline: "Build Smarter Digital Solutions",
-    description: "Zenviq is a modern Web & Marketing Agency that helps individuals, startups, and businesses build premium, fast, and visually powerful digital experiences.",
+    description: "ZENVIQ Digital is a modern Web & Marketing Agency in India that helps individuals, startups, and businesses build premium, fast, and visually powerful digital experiences.",
     experience: "8+ years",
     projects: "500+",
     techStack: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Modern UI/UX Practices"]
@@ -41,7 +41,7 @@ const SITE_DATA = {
   contact: {
     meeting: "https://calendly.com/zenviq/30min",
     whatsapp: "https://wa.me/919352410667",
-    email: "info@zenviq.com",
+    email: "info@zenviqdigital.in",
     form: "/contact"
   }
 }

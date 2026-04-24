@@ -30,12 +30,12 @@ export default function Hero() {
 
             {/* Headline */}
             <h1 className="text-4xl md:text-6xl lg:text-[4.2rem] font-bold tracking-tight text-slate-900 mb-6 leading-[1.1]">
-              We Build <span className="gradient-text">High-Performance</span> Websites That Grow Your Business
+              We Build <span className="gradient-text">High-Performance</span> Digital Solutions for Global Brands
             </h1>
 
             {/* Subheadline */}
             <p className="text-base md:text-lg text-slate-500 font-normal max-w-xl mb-10 leading-relaxed">
-              Premium UI/UX design, modern web development, and scalable digital solutions. We turn complex ideas into elegant, conversion-driven reality.
+              ZENVIQ Digital is a premium web development and AI automation agency. We specialize in high-converting Next.js applications, custom AI agents, and result-oriented SEO strategies.
             </p>
 
             {/* CTA Buttons */}
@@ -153,7 +153,7 @@ export default function Hero() {
                 </div>
                 <div>
                   <div className="text-[8px] sm:text-[10px] font-semibold text-slate-900 uppercase">Live Ready</div>
-                  <div className="text-[8px] sm:text-[10px] text-slate-500">Optimized by Zenviq</div>
+                  <div className="text-[8px] sm:text-[10px] text-slate-500">Optimized by ZENVIQ Digital</div>
                 </div>
               </div>
 

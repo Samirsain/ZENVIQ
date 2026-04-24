@@ -219,7 +219,7 @@ export default function AboutPage() {
                       { icon: Instagram, href: "https://instagram.com/codexmir", color: "hover:text-pink-500" },
                       { icon: Linkedin, href: "https://linkedin.com/in/samirsain", color: "hover:text-blue-500" },
                       { icon: Github, href: "https://github.com/samirsain", color: "hover:text-primary" },
-                      { icon: Mail, href: "mailto:hello@zenviq.com", color: "hover:text-primary" }
+                      { icon: Mail, href: "mailto:hello@zenviqdigital.in", color: "hover:text-primary" }
                     ].map((social, i) => (
                       <a
                         key={i}

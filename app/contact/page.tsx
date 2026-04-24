@@ -49,7 +49,7 @@ export default function ContactPage() {
                     <Mail className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
                   <h3 className="font-semibold mb-2">Email</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">info@zenviq.com</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">info@zenviqdigital.in</p>
                 </CardContent>
               </Card>
 
@@ -104,7 +104,7 @@ export default function ContactPage() {
 
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" defaultValue="samir@zenviq.com" />
+                    <Input id="email" type="email" defaultValue="samir@zenviqdigital.in" />
                   </div>
 
                   <div className="space-y-2">
@@ -147,7 +147,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Why Choose Zenviq?</CardTitle>
+                    <CardTitle>Why Choose ZENVIQ Digital?</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-start gap-3">
