@@ -111,6 +111,9 @@ export const metadata: Metadata = {
     },
   },
   category: "technology",
+  verification: {
+    google: "5sxqpCrLHhb7nFlCL_f4kw9ubhs91zFx7BdY290Df08",
+  },
 }
 
 const organizationSchema = {
