@@ -1,13 +1,31 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Our Services | Premium Web & AI Solutions",
-    description: "Explore ZENVIQ Digital's high-performance services: WordPress development, Next.js apps, AI integration, SEO strategy, and UI/UX design. Build your digital empire with us.",
-    keywords: ["WordPress development India", "Next.js services", "AI business integration", "premium SEO services India", "UI/UX design agency", "digital marketing services"],
+    title: "Web Development & SEO Services in Hanumangarh | ZENVIQ Digital Agency",
+    description: "ZENVIQ offers premium web development, SEO services, AI automation, e-commerce solutions, and digital marketing in Hanumangarh, Rajasthan. Best website developer in Hanumangarh. Get a free quote today.",
+    keywords: [
+        "web development Hanumangarh",
+        "SEO services Hanumangarh",
+        "website developer Hanumangarh",
+        "digital marketing Hanumangarh",
+        "best web design company Hanumangarh",
+        "ecommerce website Hanumangarh",
+        "WordPress development Rajasthan",
+        "Next.js developer India",
+        "AI automation services Rajasthan",
+        "SEO company Hanumangarh",
+        "website design Hanumangarh Rajasthan",
+        "digital agency services Rajasthan",
+        "affordable web development Hanumangarh",
+        "social media marketing Hanumangarh",
+    ],
     openGraph: {
-        title: "ZENVIQ Services | High-Performance Digital Solutions",
-        description: "From custom web development to AI-driven automation, discover how ZENVIQ Digital helps businesses scale in the digital age.",
-    }
+        title: "Web Development & Digital Marketing Services in Hanumangarh | ZENVIQ",
+        description: "Premium web development, SEO, AI automation & e-commerce services by Hanumangarh's #1 digital agency. Transform your business online with ZENVIQ Digital.",
+    },
+    alternates: {
+        canonical: "https://www.zenviqdigital.in/services",
+    },
 }
 
 export default function ServicesLayout({

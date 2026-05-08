@@ -1,236 +1,382 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, ExternalLink, CheckCircle2, X, Code2, Rocket } from "lucide-react"
+import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
+import { X, ZoomIn, Star, ExternalLink, ArrowRight } from "lucide-react"
 
-const projects = [
-    {
-        title: "Credify",
-        category: "FinTech",
-        description: "A modern AI-powered finance platform for effortless expense tracking, budget optimization, and wealth growth.",
-        longDescription: "Credify is a cutting-edge fintech solution that combines AI-driven insights with seamless finance management. It features a sleek dark-mode interface, interactive credit card displays, and integrations with major payment providers like Stripe, PayPal, and Apple Pay.",
-        results: ["10M+ Users", "Secure Payments", "AI-Driven Insights"],
-        tech: ["Next.js", "React", "Tailwind CSS", "Stripe API", "AI/ML"],
-        challenge: "Building a trustworthy and premium interface for a finance platform that millions of users would feel confident using with their sensitive financial data.",
-        solution: "We designed a dark-themed, glassmorphic UI with subtle animations and clear data visualization, combined with enterprise-grade security integrations.",
-        image: "/credify-hero.png",
-        color: "from-emerald-500 to-teal-600",
-        liveUrl: "https://credify-fintech.vercel.app/"
-    },
-    {
-        title: "NuroxFit Clothing",
-        category: "E-commerce",
-        description: "A high-performance Shopify store for fitness apparel with custom theme optimization and high conversion rates.",
-        longDescription: "NuroxFit is a modern fitness apparel brand. We developed a custom Shopify theme focused on high-speed performance and conversion-driven design. The store features a seamless mobile shopping experience and an optimized checkout flow.",
-        results: ["200% Sales Increase", "0.8s Load Speed", "95% Positive Feedback"],
-        tech: ["Shopify", "Liquid", "JavaScript", "SEO"],
-        challenge: "The original store had high drop-off rates due to slow theme performance and a cluttered mobile interface.",
-        solution: "We rebuilt the theme using Liquid best practices and implemented an advanced mobile navigation system to simplify the buying journey.",
-        image: "/nuroxfit-hero-v2.png",
-        color: "from-blue-500 to-indigo-600",
-        liveUrl: "https://nuroxfit.myshopify.com/"
-    },
-    {
-        title: "Samirsain Portfolio",
-        category: "Personal Branding",
-        description: "A flagship personal brand portal showcasing 8+ years of full-stack expertise and digital solutions.",
-        longDescription: "The Samirsain Portfolio serves as a high-conversion digital hub, integrating a blog, resume tracker, and interactive project vault. Built with a focus on speed and SEO, it provides a seamless experience for visitors looking to understand Samir's full technical capabilities.",
-        results: ["High SEO Visibility", "99/100 Perf Score", "Integrated Blog Hub"],
-        tech: ["Next.js", "TypeScript", "Tailwind CSS", "App Router"],
-        challenge: "Effectively showcasing a decade of diverse technical work in a single, cohesive, and easy-to-navigate interface.",
-        solution: "Designed a clean, modular UI with smooth interactive elements that balance professional information with personal brand aesthetics.",
-        image: "/samirsain-portfolio-v2.png",
-        color: "from-indigo-600 to-violet-600",
-        liveUrl: "https://samirsain.com"
-    },
-    {
-        title: "Norvia Dashboard",
-        category: "SaaS Platform",
-        description: "A comprehensive analytics dashboard with real-time data visualization and modern UI architecture.",
-        longDescription: "Norvia Dashboard is a powerful analytics platform designed for clarity and performance. It features a clean, responsive interface with interactive charts, detailed revenue metrics, and user management tools. The light-themed design ensures readability for data-heavy applications.",
-        results: ["Real-time Data", "Clean UI Architecture", "Mobile Responsive"],
-        tech: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts"],
-        challenge: "Designing a data-rich dashboard that avoids visual clutter while providing deep analytical insights.",
-        solution: "Implemented a modular card-based layout with clear visual hierarchy and performant charting components.",
-        image: "/norvia-dashboard.png",
-        color: "from-slate-500 to-zinc-600",
-        liveUrl: "https://norvia-dashboard.vercel.app/"
-    }
+interface Project {
+  src: string
+  alt: string
+  category: string
+  href: string
+}
+
+const projects: Project[] = [
+  {
+    src: "/project/antiquity.png",
+    alt: "Antiquity Digital — Marketing Agency",
+    category: "Digital Agency",
+    href: "https://www.antiquitydigital.online/",
+  },
+  {
+    src: "/project/scrollinpanda.png",
+    alt: "ScrollinPanda — Refurbished Laptops",
+    category: "E-Commerce",
+    href: "https://www.scrollinpanda.com/",
+  },
+  {
+    src: "/project/eliteballondecor.png",
+    alt: "Elite Decors — Balloon & Floral",
+    category: "Event Decor",
+    href: "https://www.eliteballondecor.com/",
+  },
+  {
+    src: "/project/halpinghand.png",
+    alt: "Helping Hands — Animal Welfare NGO",
+    category: "Nonprofit",
+    href: "https://www.helpinghandsfoundations.org/",
+  },
+  {
+    src: "/project/gmresort.png",
+    alt: "GM Resort — Premium Stay",
+    category: "Hospitality",
+    href: "https://gmresort.vercel.app/",
+  },
+  {
+    src: "/project/dantel.png",
+    alt: "Dantel — Creative Website",
+    category: "Web Design",
+    href: "https://dantel-delta.vercel.app/",
+  },
+  {
+    src: "/project/relible.png",
+    alt: "Reliable Diagnostics Centre",
+    category: "Healthcare",
+    href: "https://reliable-diagnostics-centre-4ou3.vercel.app/",
+  },
+  {
+    src: "/project/typewriter.png",
+    alt: "Typewriter — Interactive Tool",
+    category: "Web App",
+    href: "https://typewriter-virid.vercel.app/",
+  },
+  {
+    src: "/project/wish.png",
+    alt: "Wish Card — Digital Greetings",
+    category: "Greeting",
+    href: "https://wish-devsamir.vercel.app/",
+  },
+  {
+    src: "/project/meme.png",
+    alt: "ZENVIQ Meme — Meme Generator",
+    category: "Entertainment",
+    href: "https://zenviq-meme.vercel.app/",
+  },
 ]
 
+const categories = ["All", ...Array.from(new Set(projects.map((p) => p.category)))]
+
 export default function GalleryPage() {
-    const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null)
+  const [lightbox, setLightbox] = useState<number | null>(null)
+  const [activeCategory, setActiveCategory] = useState("All")
 
-    // Prevent scrolling when modal is open
-    useEffect(() => {
-        if (selectedProject) {
-            document.body.style.overflow = "hidden"
-        } else {
-            document.body.style.overflow = "auto"
-        }
-    }, [selectedProject])
+  const filteredProjects =
+    activeCategory === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory)
 
-    return (
-        <div className="min-h-screen bg-background font-jost pt-24 pb-20">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">
-                        Our <span className="text-indigo-600">Work</span>
-                    </h1>
-                    <p className="text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-                        A showcase of our recent projects and digital solutions.
-                    </p>
-                </div>
+  const closeLightbox = useCallback(() => setLightbox(null), [])
+  const goNext = useCallback(
+    () =>
+      setLightbox((prev) =>
+        prev !== null ? (prev + 1) % filteredProjects.length : null
+      ),
+    [filteredProjects.length]
+  )
+  const goPrev = useCallback(
+    () =>
+      setLightbox((prev) =>
+        prev !== null
+          ? (prev - 1 + filteredProjects.length) % filteredProjects.length
+          : null
+      ),
+    [filteredProjects.length]
+  )
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    {projects.map((project, index) => (
-                        <Card key={index} className="group relative bg-slate-50 border-none rounded-[2.5rem] overflow-hidden hover:shadow-2xl hover:shadow-indigo-100 transition-all duration-500 flex flex-col">
-                            <div className="relative h-64 w-full overflow-hidden">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="absolute top-6 left-6">
-                                    <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md text-indigo-600 text-xs font-bold rounded-full shadow-lg">
-                                        {project.category}
-                                    </span>
-                                </div>
-                            </div>
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (lightbox === null) return
+      if (e.key === "Escape") closeLightbox()
+      if (e.key === "ArrowRight") goNext()
+      if (e.key === "ArrowLeft") goPrev()
+    }
+    window.addEventListener("keydown", handler)
+    return () => window.removeEventListener("keydown", handler)
+  }, [lightbox, closeLightbox, goNext, goPrev])
 
-                            <CardHeader className="pt-8 pb-4">
-                                <CardTitle className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
-                                    {project.title}
-                                </CardTitle>
-                                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                                    {project.description}
-                                </p>
-                            </CardHeader>
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero */}
+      <section className="pt-36 sm:pt-44 pb-12 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-indigo-500/5 rounded-full blur-[120px]" />
+        </div>
 
-                            <CardContent className="pb-10 pt-0 flex-grow flex flex-col justify-between">
-                                <div className="space-y-3 mb-8">
-                                    {project.results.map((result, idx) => (
-                                        <div key={idx} className="flex items-center gap-2 text-sm text-slate-700 font-semibold bg-white/50 p-2.5 rounded-2xl border border-slate-100">
-                                            <CheckCircle2 className="w-4 h-4 text-emerald-500" strokeWidth={3} />
-                                            {result}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <button
-                                    onClick={() => setSelectedProject(project)}
-                                    className="inline-flex items-center text-indigo-600 font-bold hover:gap-3 transition-all cursor-pointer group/link"
-                                >
-                                    View Full Details
-                                    <ArrowRight className="ml-2 w-5 h-5 group-hover/link:translate-x-1" />
-                                </button>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-2xl mx-auto text-center"
+          >
+            <div className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-xs font-bold mb-6 border border-indigo-100">
+              <Star className="w-4 h-4 fill-current" />
+              Our Portfolio
             </div>
 
-            {/* Premium Project Modal */}
-            {selectedProject && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 lg:p-10 animate-in fade-in duration-300">
-                    <div
-                        className="absolute inset-0 bg-slate-900/40 backdrop-blur-md transition-opacity"
-                        onClick={() => setSelectedProject(null)}
-                    />
+            <h1
+              className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4 leading-[1.08] tracking-tight"
+              style={{ letterSpacing: "-1.5px" }}
+            >
+              Projects We&apos;ve{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text text-transparent">
+                Delivered
+              </span>
+            </h1>
 
-                    <div className="relative w-full max-w-5xl max-h-[90vh] bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row transform animate-in slide-in-from-bottom-8 duration-500">
-                        {/* Close Button */}
-                        <button
-                            onClick={() => setSelectedProject(null)}
-                            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-30 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg hover:bg-slate-50 transition-colors border border-slate-100"
-                        >
-                            <X className="w-5 h-5 sm:w-6 sm:h-6 text-slate-900" />
-                        </button>
+            <p className="text-base sm:text-lg text-slate-500 leading-relaxed max-w-lg mx-auto mb-8">
+              Real websites built for real businesses — from local startups in Hanumangarh to brands across India.
+            </p>
 
-                        {/* Modal Visual Component */}
-                        <div className="w-full lg:w-1/2 relative h-[250px] sm:h-[350px] md:h-[450px] lg:h-auto bg-[#F9F6F1] border-b lg:border-b-0 lg:border-r border-slate-100 p-4 sm:p-8 flex items-center justify-center">
-                            <div className="relative w-full h-full shadow-2xl rounded-xl overflow-hidden">
-                                <Image
-                                    src={selectedProject.image}
-                                    alt={selectedProject.title}
-                                    fill
-                                    className="object-contain"
-                                    priority
-                                    sizes="(max-width: 1024px) 100vw, 50vw"
-                                />
-                            </div>
-                            <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-slate-900/5 to-transparent pointer-events-none" />
-                        </div>
-
-                        {/* Modal Content */}
-                        <div className="w-full lg:w-1/2 p-6 sm:p-10 lg:p-12 overflow-y-auto">
-                            <div className="mb-6 sm:mb-8">
-                                <span className="px-3 py-1 sm:px-4 sm:py-1.5 bg-indigo-50 text-indigo-600 text-[10px] sm:text-xs font-bold rounded-full mb-3 sm:mb-4 inline-block">
-                                    {selectedProject.category}
-                                </span>
-                                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 mb-3 sm:mb-4 tracking-tight leading-tight">
-                                    {selectedProject.title}
-                                </h3>
-                                <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-medium">
-                                    {selectedProject.longDescription}
-                                </p>
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10">
-                                <div className="space-y-3 sm:space-y-4">
-                                    <div className="flex items-center gap-2 text-indigo-600 font-bold uppercase text-[10px] sm:text-xs tracking-widest">
-                                        <Code2 className="w-4 h-4" /> The Challenge
-                                    </div>
-                                    <p className="text-slate-600 text-sm leading-relaxed">{selectedProject.challenge}</p>
-                                </div>
-                                <div className="space-y-3 sm:space-y-4">
-                                    <div className="flex items-center gap-2 text-indigo-600 font-bold uppercase text-[10px] sm:text-xs tracking-widest">
-                                        <Rocket className="w-4 h-4" /> Our Solution
-                                    </div>
-                                    <p className="text-slate-600 text-sm leading-relaxed">{selectedProject.solution}</p>
-                                </div>
-                            </div>
-
-                            <div className="flex flex-wrap gap-2 mb-8 sm:mb-10">
-                                {selectedProject.tech.map((t, i) => (
-                                    <span key={i} className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[10px] sm:text-xs font-semibold rounded-lg uppercase tracking-wider">
-                                        {t}
-                                    </span>
-                                ))}
-                            </div>
-
-                            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                                {selectedProject.liveUrl ? (
-                                    <Button
-                                        asChild
-                                        size="lg"
-                                        className="rounded-full w-full sm:w-auto px-8 py-6 font-bold shadow-lg shadow-indigo-100"
-                                    >
-                                        <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer">
-                                            Live Preview <ExternalLink className="ml-2 w-4 h-4" />
-                                        </a>
-                                    </Button>
-                                ) : (
-                                    <Button
-                                        size="lg"
-                                        className="rounded-full w-full sm:w-auto px-8 py-6 font-bold shadow-lg shadow-indigo-100"
-                                    >
-                                        Live Preview <ExternalLink className="ml-2 w-4 h-4" />
-                                    </Button>
-                                )}
-                                <Button variant="outline" size="lg" className="rounded-full w-full sm:w-auto px-8 py-6 font-bold border-2" onClick={() => setSelectedProject(null)}>
-                                    Back to Projects
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
+            {/* Category Filter */}
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setActiveCategory(cat)
+                    setLightbox(null)
+                  }}
+                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 border ${
+                    activeCategory === cat
+                      ? "bg-indigo-600 text-white border-indigo-600 shadow-lg shadow-indigo-600/20"
+                      : "bg-white text-slate-500 border-slate-200 hover:border-indigo-200 hover:text-indigo-600"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </motion.div>
         </div>
-    )
+      </section>
+
+      {/* Gallery Grid */}
+      <section className="pb-20 sm:pb-28">
+        <div className="container mx-auto px-4">
+          <motion.div
+            layout
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, i) => (
+                <motion.div
+                  key={project.src}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.35, delay: i * 0.05 }}
+                  className="group"
+                >
+                  <div className="relative rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:border-indigo-100">
+                    {/* Image */}
+                    <button
+                      onClick={() => setLightbox(i)}
+                      className="relative w-full aspect-[16/10] overflow-hidden cursor-zoom-in block"
+                    >
+                      <Image
+                        src={project.src}
+                        alt={project.alt}
+                        width={800}
+                        height={500}
+                        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      />
+
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/40 transition-all duration-300 flex items-center justify-center">
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="w-11 h-11 rounded-full bg-white/90 flex items-center justify-center backdrop-blur-sm">
+                            <ZoomIn className="w-5 h-5 text-slate-900" />
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+
+                    {/* Info */}
+                    <div className="p-4 sm:p-5">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-widest bg-indigo-50 px-2.5 py-1 rounded-full">
+                          {project.category}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-bold text-slate-900 leading-tight tracking-tight mb-3">
+                        {project.alt}
+                      </h3>
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition-colors group/link"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        Visit Live Site
+                        <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-0.5" />
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 sm:mt-20 max-w-4xl mx-auto"
+          >
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {[
+                { value: "50+", label: "Projects Delivered" },
+                { value: "10+", label: "Industries Served" },
+                { value: "98%", label: "Client Satisfaction" },
+                { value: "30+", label: "Happy Clients" },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  className="text-center p-5 rounded-2xl bg-slate-50 border border-slate-100"
+                >
+                  <p className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-blue-600 bg-clip-text text-transparent">
+                    {stat.value}
+                  </p>
+                  <p className="text-xs text-slate-500 font-medium mt-1">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+            onClick={closeLightbox}
+          >
+            {/* Close */}
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Prev */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                goPrev()
+              }}
+              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <motion.div
+              key={lightbox}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="relative max-w-5xl max-h-[85vh] w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={filteredProjects[lightbox].src}
+                alt={filteredProjects[lightbox].alt}
+                width={1400}
+                height={900}
+                className="w-full h-auto max-h-[85vh] object-contain rounded-xl"
+                priority
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900/80 to-transparent rounded-b-xl">
+                <p className="text-white text-sm font-semibold text-center">
+                  {filteredProjects[lightbox].alt}
+                </p>
+                <div className="flex items-center justify-center gap-3 mt-2">
+                  <span className="text-white/40 text-xs">
+                    {lightbox + 1} / {filteredProjects.length}
+                  </span>
+                  <a
+                    href={filteredProjects[lightbox].href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs text-indigo-300 hover:text-indigo-200 font-semibold"
+                  >
+                    <ExternalLink className="w-3 h-3" />
+                    Visit Site
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Next */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                goNext()
+              }}
+              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-colors"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
 }

@@ -1,13 +1,27 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Free Digital Tools | Productivity Boosters by ZENVIQ",
-    description: "Boost your productivity with ZENVIQ Digital's collection of free tools: SEO checkers, image generators, unit converters, and more. High-performance tools for modern creators.",
-    keywords: ["free SEO tools India", "online image generator", "CSS unit converter", "productivity tools online", "ZENVIQ tools", "web tools for developers"],
+    title: "Free Online Tools | Social Media Downloader, SEO Tools & More | ZENVIQ",
+    description: "Free online tools by ZENVIQ Digital — Social media downloader (Instagram, TikTok, Twitter), content generators, SEO tools, and productivity utilities. No signup required.",
+    keywords: [
+        "free online tools",
+        "social media downloader",
+        "Instagram downloader free",
+        "TikTok video downloader",
+        "Twitter video downloader",
+        "Pinterest image downloader",
+        "free SEO tools",
+        "content generator",
+        "online tools ZENVIQ",
+        "free productivity tools India",
+    ],
     openGraph: {
-        title: "ZENVIQ Tools | Professional Resources for Digital Creators",
-        description: "Access a powerful ecosystem of free tools designed to simplify your workflow and enhance your digital output.",
-    }
+        title: "Free Online Tools by ZENVIQ | Download, Generate & Optimize",
+        description: "Access free social media downloaders, content generators, and SEO tools built by ZENVIQ Digital. No signup, no ads.",
+    },
+    alternates: {
+        canonical: "https://www.zenviqdigital.in/tools",
+    },
 }
 
 export default function ToolsLayout({

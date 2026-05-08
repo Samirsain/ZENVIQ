@@ -136,12 +136,35 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* Lenis handles smooth scrolling — do not use scroll-behavior: smooth */
+  }
+
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
   }
 }
 
-/* Added gradient text utility for premium look */
+/* ============================================
+   DESIGN SYSTEM UTILITIES
+   Stripe-inspired blue-tinted shadows,
+   Vercel-style precision, Linear surface hierarchy
+   ============================================ */
+
 @layer utilities {
+
+  /* Brand Gradient Text — Signature accent */
   .gradient-text {
     @apply bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text text-transparent;
   }
@@ -152,6 +175,7 @@
     font-style: normal;
   }
 
+  /* Tech Grid — Subtle engineering background */
   .tech-grid {
     background-size: 50px 50px;
     background-image: linear-gradient(to right, rgba(203, 213, 225, 0.3) 1px, transparent 1px),
@@ -159,6 +183,7 @@
     mask-image: radial-gradient(circle at 50% 50%, black 40%, transparent 100%);
   }
 
+  /* Glass Panel — Glassmorphism for floating navigation */
   .glass-panel {
     background-color: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(24px);
@@ -167,12 +192,50 @@
     box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
   }
 
+  /* Stripe-Inspired Blue-Tinted Shadow System */
+  .shadow-stripe-sm {
+    box-shadow: rgba(50, 50, 93, 0.06) 0px 3px 6px;
+  }
+
+  .shadow-stripe {
+    box-shadow: rgba(50, 50, 93, 0.08) 0px 15px 35px,
+                rgba(0, 0, 0, 0.04) 0px 5px 15px;
+  }
+
+  .shadow-stripe-lg {
+    box-shadow: rgba(50, 50, 93, 0.15) 0px 30px 45px -30px,
+                rgba(0, 0, 0, 0.08) 0px 18px 36px -18px;
+  }
+
+  .shadow-stripe-xl {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                rgba(0, 0, 0, 0.1) 0px 30px 60px -30px;
+  }
+
+  /* Neon Glow — Special emphasis */
   .neon-glow {
     box-shadow: 0 20px 60px -20px rgba(59, 130, 246, 0.15);
   }
+
+  /* Indigo Glow — CTA emphasis */
+  .shadow-indigo-glow {
+    box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.25);
+  }
+
+  /* Hide scrollbar for horizontal carousels */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-/* Custom Hero Gradient Animations */
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+
 @keyframes float {
 
   0%,

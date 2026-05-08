@@ -89,7 +89,7 @@ export default function InfiniteTestimonials() {
 
 function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
     return (
-        <div className="w-[380px] sm:w-[500px] bg-slate-50/50 border border-slate-200 p-8 sm:p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:bg-white hover:border-indigo-200 transition-all duration-500 shrink-0 flex flex-col justify-between h-[300px] group">
+        <div className="w-[380px] sm:w-[500px] bg-slate-50/50 border border-slate-200 p-8 sm:p-10 rounded-2xl shadow-stripe-sm hover:shadow-stripe-lg hover:bg-white hover:border-indigo-200 transition-all duration-300 shrink-0 flex flex-col justify-between h-[300px] group">
             <div className="space-y-6">
                 <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
@@ -102,7 +102,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
             </div>
 
             <div className="flex items-center gap-5 pt-6 border-t border-slate-200/60">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-sm shrink-0 group-hover:scale-110 transition-transform duration-500">
+                <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-stripe-sm shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <Image
                         src={testimonial.image}
                         alt={testimonial.name}

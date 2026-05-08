@@ -91,7 +91,7 @@ export default function Projects() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {projects.map((project, index) => (
-                        <Card key={index} className="group relative bg-slate-50 border-none rounded-[2.5rem] overflow-hidden hover:shadow-2xl hover:shadow-indigo-100 transition-all duration-500 flex flex-col">
+                        <Card key={index} className="group relative bg-slate-50 border-none rounded-3xl overflow-hidden hover:shadow-stripe-lg transition-all duration-300 flex flex-col">
                             <div className="relative h-64 w-full overflow-hidden">
                                 <Image
                                     src={project.image}
@@ -159,7 +159,7 @@ export default function Projects() {
                         onClick={() => setSelectedProject(null)}
                     />
 
-                    <div className="relative w-full max-w-5xl max-h-[90vh] bg-white rounded-[3rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row transform animate-in slide-in-from-bottom-8 duration-500">
+                    <div className="relative w-full max-w-5xl max-h-[90vh] bg-white rounded-3xl shadow-stripe-xl overflow-hidden flex flex-col lg:flex-row transform animate-in slide-in-from-bottom-8 duration-500">
                         {/* Close Button */}
                         <button
                             onClick={() => setSelectedProject(null)}
@@ -225,7 +225,7 @@ export default function Projects() {
                                     <Button
                                         asChild
                                         size="lg"
-                                        className="rounded-full w-full sm:w-auto px-8 py-6 font-bold shadow-lg shadow-indigo-100"
+                                        className="rounded-full w-full sm:w-auto px-8 py-6 font-bold shadow-indigo-glow"
                                     >
                                         <a href={selectedProject.liveUrl} target="_blank" rel="noopener noreferrer">
                                             Live Preview <ExternalLink className="ml-2 w-4 h-4" />

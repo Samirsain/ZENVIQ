@@ -1,379 +1,488 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowLeft, Video, Download, RefreshCw, Eye, Heart, Share2, AlertCircle, CheckCircle } from "lucide-react"
+import {
+  Download,
+  RefreshCw,
+  AlertCircle,
+  CheckCircle,
+  ArrowLeft,
+  Image as ImageIcon,
+  Video,
+  Link2,
+  Clipboard,
+  Sparkles,
+  Shield,
+  Zap,
+  X,
+  ExternalLink,
+} from "lucide-react"
 import Link from "next/link"
 
-interface VideoDownloadRequest {
-  url: string
-  platform: string
+interface MediaResult {
+  title: string
+  type: "video" | "image"
+  thumbnail: string
+  downloadUrl: string
+  allImages: string[]
+  size: string
+  pinId: string
+  filename: string
 }
 
 export default function PinterestDownloaderPage() {
-  const [downloadRequest, setDownloadRequest] = useState<VideoDownloadRequest>({
-    url: '',
-    platform: 'pinterest'
-  })
-  const [isDownloading, setIsDownloading] = useState(false)
-  const [downloadError, setDownloadError] = useState("")
-  const [downloadSuccess, setDownloadSuccess] = useState("")
-  const [videoInfo, setVideoInfo] = useState<{
-    title: string
-    thumbnail: string
-    duration: string
-    size: string
-  } | null>(null)
+  const [url, setUrl] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
+  const [result, setResult] = useState<MediaResult | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
-  const downloadVideo = async (url?: string) => {
-    const urlToProcess = url || downloadRequest.url
-    
-    if (!urlToProcess.trim()) {
-      setDownloadError("Please enter a valid Pinterest URL")
+  const isValidUrl = (u: string) =>
+    u.includes("pinterest.com") || u.includes("pin.it/")
+
+  const fetchMedia = async (inputUrl?: string) => {
+    const target = inputUrl || url
+    if (!target.trim()) {
+      setError("Please paste a Pinterest URL")
+      return
+    }
+    if (!isValidUrl(target)) {
+      setError("Please enter a valid Pinterest URL (pinterest.com or pin.it)")
       return
     }
 
-    // Check for both full Pinterest URLs and shortened pin.it URLs
-    const isValidPinterestUrl = urlToProcess.includes('pinterest.com') || 
-                               urlToProcess.includes('pin.it/')
-    
-    if (!isValidPinterestUrl) {
-      setDownloadError("Please enter a valid Pinterest URL (pinterest.com or pin.it)")
-      return
-    }
-
-    setIsDownloading(true)
-    setDownloadError("")
-    setDownloadSuccess("")
-    setVideoInfo(null)
+    setLoading(true)
+    setError("")
+    setResult(null)
 
     try {
-      // Try to use the API first
-      const response = await fetch('/api/download-pinterest', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ url: urlToProcess }),
+      const res = await fetch("/api/download-pinterest", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: target }),
       })
 
-      if (response.ok) {
-        const data = await response.json()
-        
-        if (data.error) {
-          throw new Error(data.error)
-        }
+      const data = await res.json()
 
-        // Set video info
-        setVideoInfo({
-          title: data.title || "Pinterest Video",
-          thumbnail: data.thumbnail || "/placeholder-video.jpg",
-          duration: data.duration || "Unknown",
-          size: data.size || "Unknown"
-        })
-
-        // Create download link
-        if (data.downloadUrl) {
-          // Create a temporary link and trigger download
-          const link = document.createElement('a')
-          link.href = data.downloadUrl
-          link.download = data.filename || 'pinterest-video.mp4'
-          document.body.appendChild(link)
-          link.click()
-          document.body.removeChild(link)
-          
-          setDownloadSuccess("Video downloaded successfully! Check your downloads folder.")
-        } else {
-          setDownloadError("No video found in this Pinterest post.")
-        }
-      } else {
-        // Fallback: Show instructions for manual download
-        setVideoInfo({
-          title: "Pinterest Video Download Instructions",
-          thumbnail: "/placeholder-video.jpg",
-          duration: "N/A",
-          size: "N/A"
-        })
-        
-        setDownloadSuccess(`To download this Pinterest video manually:
-        
-1. Right-click on the video in Pinterest
-2. Select "Save video as..." or "Download video"
-3. Or use browser extensions like "Video DownloadHelper"
-
-Alternative: Copy the video URL and use online video downloaders like:
-- y2mate.com
-- savefrom.net
-- videodownloader.net`)
+      if (!res.ok || data.error) {
+        throw new Error(data.error || "Failed to fetch media")
       }
-      
-    } catch (err) {
-      // Show helpful error message with alternatives
-      setDownloadError(`Download failed: ${err instanceof Error ? err.message : 'Unknown error'}
 
-Try these alternatives:
-• Right-click the video on Pinterest → "Save video as"
-• Use browser extensions (Video DownloadHelper, etc.)
-• Copy URL and use online downloaders (y2mate, savefrom.net)
-• Pinterest mobile app allows saving videos`)
+      setResult(data)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.")
     } finally {
-      setIsDownloading(false)
+      setLoading(false)
     }
   }
 
-  // Auto-download when URL is entered
-  const handleUrlChange = (url: string) => {
-    setDownloadRequest(prev => ({ ...prev, url }))
-    
-    // Auto-download if URL is valid and complete
-    if (url.trim() && (url.includes('pinterest.com') || url.includes('pin.it/'))) {
-      // Small delay to ensure URL is fully entered
-      setTimeout(() => {
-        downloadVideo(url)
-      }, 1000)
+  const handlePaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText()
+      setUrl(text)
+      if (isValidUrl(text)) {
+        fetchMedia(text)
+      }
+    } catch {
+      inputRef.current?.focus()
     }
+  }
+
+  const handleDownload = (downloadUrl: string, filename: string) => {
+    const proxyUrl = `/api/download-pinterest/proxy?url=${encodeURIComponent(downloadUrl)}&filename=${encodeURIComponent(filename)}`
+    const link = document.createElement("a")
+    link.href = proxyUrl
+    link.download = filename
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   const clearAll = () => {
-    setDownloadRequest(prev => ({ ...prev, url: '' }))
-    setDownloadSuccess("")
-    setDownloadError("")
-    setVideoInfo(null)
+    setUrl("")
+    setError("")
+    setResult(null)
   }
 
+  const features = [
+    { icon: Zap, title: "Lightning Fast", desc: "Download in seconds with our optimized pipeline", gradient: "from-amber-500 to-orange-600" },
+    { icon: ImageIcon, title: "Images & Videos", desc: "Supports both Pinterest images and video pins", gradient: "from-rose-500 to-pink-600" },
+    { icon: Shield, title: "Safe & Private", desc: "No data stored — your privacy is fully protected", gradient: "from-emerald-500 to-green-600" },
+  ]
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
-      <div className="container mx-auto px-4 max-w-4xl">
-        {/* Header */}
-        <div className="mb-8">
-          <Button asChild variant="ghost" className="mb-4">
-            <Link href="/">
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Back to Home
+    <div className="min-h-screen pt-24 pb-16 relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-rose-50/20">
+      {/* Background */}
+      <div className="absolute inset-0 tech-grid opacity-15" />
+      <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-rose-200/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-200/15 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container relative z-10 mx-auto px-4 max-w-4xl">
+        {/* Back Button */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="mb-8"
+        >
+          <Button asChild variant="ghost" className="text-slate-500 hover:text-slate-800 gap-2 rounded-full">
+            <Link href="/tools">
+              <ArrowLeft className="w-4 h-4" />
+              All Tools
             </Link>
           </Button>
-          
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
-              Pinterest Video Downloader
-            </h1>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Download videos from Pinterest pins easily and quickly
-            </p>
-          </div>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Input Section */}
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Video className="w-5 h-5" />
-                  Video Downloader
-                </CardTitle>
-                <CardDescription>
-                  Download videos from Pinterest pins
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Pinterest Video URL *</label>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-12"
+        >
+          <div className="inline-flex items-center gap-2 bg-rose-100/80 backdrop-blur-sm px-4 py-1.5 rounded-full mb-5">
+            <Download className="w-3.5 h-3.5 text-rose-600" />
+            <span className="text-xs font-semibold text-rose-700 tracking-wide uppercase">Free Tool</span>
+          </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
+            Pinterest{" "}
+            <span className="bg-gradient-to-r from-rose-600 via-pink-600 to-red-600 bg-clip-text text-transparent">
+              Downloader
+            </span>{" "}
+            <span className="inline-block animate-float">📌</span>
+          </h1>
+
+          <p className="text-base sm:text-lg text-slate-500 max-w-xl mx-auto leading-relaxed">
+            Paste any Pinterest link to{" "}
+            <span className="font-semibold text-slate-700">preview & download</span>{" "}
+            images and videos instantly
+          </p>
+        </motion.div>
+
+        {/* Input Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mb-8"
+        >
+          <Card className="border-0 bg-white/90 backdrop-blur-sm shadow-stripe overflow-hidden">
+            <CardContent className="p-6 sm:p-8">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="relative flex-1">
+                  <Link2 className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                   <Input
+                    ref={inputRef}
                     placeholder="https://www.pinterest.com/pin/... or https://pin.it/..."
-                    value={downloadRequest.url}
-                    onChange={(e) => handleUrlChange(e.target.value)}
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && fetchMedia()}
+                    className="pl-10 pr-10 h-12 rounded-xl border-slate-200 text-sm focus:ring-2 focus:ring-rose-500/20 focus:border-rose-400"
                   />
-                  <div className="flex items-center gap-2 mt-1">
-                    <p className="text-xs text-muted-foreground">
-                      Paste the Pinterest pin URL (full URL or shortened pin.it link) containing the video you want to download
-                    </p>
-                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                      Auto-download
-                    </span>
-                  </div>
-                </div>
-
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                  <h4 className="font-medium mb-2 flex items-center gap-2">
-                    <Eye className="w-4 h-4" />
-                    How to use:
-                  </h4>
-                  <ol className="text-sm space-y-1 list-decimal list-inside">
-                    <li>Go to Pinterest and find the video you want to download</li>
-                    <li>Click on the pin to open it</li>
-                    <li>Copy the URL from your browser's address bar</li>
-                    <li>Paste the URL in the field above (supports both full URLs and pin.it shortened links)</li>
-                    <li><strong>Download starts automatically!</strong> No need to click any button</li>
-                  </ol>
-                </div>
-
-                <Button 
-                  onClick={() => downloadVideo()} 
-                  disabled={isDownloading || !downloadRequest.url.trim()}
-                  className="w-full"
-                >
-                  {isDownloading ? (
-                    <>
-                      <RefreshCw className="mr-2 w-4 h-4 animate-spin" />
-                      Downloading Video...
-                    </>
-                  ) : (
-                    <>
-                      <Download className="mr-2 w-4 h-4" />
-                      Download Video (Auto-download enabled)
-                    </>
+                  {url && (
+                    <button
+                      onClick={clearAll}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
                   )}
-                </Button>
+                </div>
 
-                {downloadError && (
-                  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 p-3 rounded-lg">
-                    <div className="flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 text-red-600" />
-                      <p className="text-red-600 dark:text-red-400 text-sm">{downloadError}</p>
-                    </div>
+                <div className="flex gap-2">
+                  <Button
+                    onClick={handlePaste}
+                    variant="outline"
+                    className="h-12 px-4 rounded-xl border-slate-200 hover:border-rose-300 hover:bg-rose-50 gap-2"
+                  >
+                    <Clipboard className="w-4 h-4" />
+                    <span className="hidden sm:inline">Paste</span>
+                  </Button>
+                  <Button
+                    onClick={() => fetchMedia()}
+                    disabled={loading || !url.trim()}
+                    className="h-12 px-6 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white shadow-lg gap-2 min-w-[140px]"
+                  >
+                    {loading ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 animate-spin" />
+                        Fetching...
+                      </>
+                    ) : (
+                      <>
+                        <Download className="w-4 h-4" />
+                        Fetch Media
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </div>
+
+              {/* How to steps */}
+              <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400">
+                <span className="flex items-center gap-1"><span className="w-4 h-4 rounded-full bg-rose-100 text-rose-600 text-[10px] font-bold flex items-center justify-center">1</span> Copy Pinterest link</span>
+                <span className="text-slate-300">→</span>
+                <span className="flex items-center gap-1"><span className="w-4 h-4 rounded-full bg-rose-100 text-rose-600 text-[10px] font-bold flex items-center justify-center">2</span> Paste above</span>
+                <span className="text-slate-300">→</span>
+                <span className="flex items-center gap-1"><span className="w-4 h-4 rounded-full bg-rose-100 text-rose-600 text-[10px] font-bold flex items-center justify-center">3</span> Download!</span>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Error */}
+        <AnimatePresence>
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="mb-6"
+            >
+              <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium text-red-700">Download Error</p>
+                  <p className="text-sm text-red-600 mt-0.5">{error}</p>
+                </div>
+                <button onClick={() => setError("")} className="ml-auto text-red-400 hover:text-red-600">
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Result Preview */}
+        <AnimatePresence>
+          {result && (
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 120, damping: 16 }}
+              className="mb-10"
+            >
+              <Card className="border-0 bg-white/90 backdrop-blur-sm shadow-stripe-lg overflow-hidden">
+                <CardContent className="p-0">
+                  {/* Success banner */}
+                  <div className="bg-gradient-to-r from-emerald-500 to-green-500 px-6 py-3 flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-white" />
+                    <span className="text-sm font-semibold text-white">
+                      {result.type === "video" ? "Video" : "Image"} found — Ready to download!
+                    </span>
+                    <Badge className="ml-auto bg-white/20 text-white border-0 text-[10px]">
+                      {result.size}
+                    </Badge>
                   </div>
-                )}
 
-                {downloadSuccess && (
-                  <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-3 rounded-lg">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-600" />
-                      <p className="text-green-600 dark:text-green-400 text-sm">{downloadSuccess}</p>
-                    </div>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+                  <div className="p-6 sm:p-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* Preview */}
+                      <div className="relative rounded-xl overflow-hidden bg-slate-100 aspect-square flex items-center justify-center group">
+                        {result.type === "video" ? (
+                          <video
+                            src={result.downloadUrl}
+                            poster={result.thumbnail}
+                            controls
+                            className="w-full h-full object-contain bg-black rounded-xl"
+                            preload="metadata"
+                          />
+                        ) : (
+                          <img
+                            src={result.thumbnail || result.downloadUrl}
+                            alt={result.title}
+                            className="w-full h-full object-contain rounded-xl"
+                          />
+                        )}
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Heart className="w-5 h-5" />
-                  Important Notes
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="text-sm space-y-2 list-disc list-inside">
-                  <li>Only download videos that you have permission to use</li>
-                  <li>Respect copyright and intellectual property rights</li>
-                  <li>This tool is for personal use only</li>
-                  <li>Downloaded videos will be saved to your default downloads folder</li>
-                  <li>Some videos may be protected and cannot be downloaded</li>
-                  <li>Always give credit to the original creator when sharing</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Video Info & Status */}
-          <div>
-            {videoInfo ? (
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Share2 className="w-5 h-5" />
-                    Video Information
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 text-center">
-                      <div className="w-full h-32 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center mb-3">
-                        <Video className="w-8 h-8 text-gray-400" />
-                      </div>
-                      <h3 className="font-medium">{videoInfo.title}</h3>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex justify-between">
-                        <span className="text-sm text-muted-foreground">Duration:</span>
-                        <span className="text-sm font-medium">{videoInfo.duration}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-muted-foreground">File Size:</span>
-                        <span className="text-sm font-medium">{videoInfo.size}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-sm text-muted-foreground">Platform:</span>
-                        <span className="text-sm font-medium">Pinterest</span>
-                      </div>
-                    </div>
-
-                    {downloadSuccess && (
-                      <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-3 rounded-lg">
-                        <div className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-600" />
-                          <p className="text-green-600 dark:text-green-400 text-sm">Download completed successfully!</p>
+                        {/* Media type badge */}
+                        <div className="absolute top-3 left-3">
+                          <Badge className={`gap-1 border-0 text-white text-[10px] ${result.type === "video" ? "bg-violet-600" : "bg-rose-600"}`}>
+                            {result.type === "video" ? <Video className="w-3 h-3" /> : <ImageIcon className="w-3 h-3" />}
+                            {result.type === "video" ? "Video" : "Image"}
+                          </Badge>
                         </div>
                       </div>
-                    )}
+
+                      {/* Info + Actions */}
+                      <div className="flex flex-col justify-between gap-4">
+                        <div>
+                          <h3 className="text-lg font-bold text-slate-900 mb-2 leading-snug line-clamp-2">
+                            {result.title}
+                          </h3>
+
+                          <div className="space-y-2 mb-6">
+                            <div className="flex items-center justify-between text-sm py-2 border-b border-slate-100">
+                              <span className="text-slate-500">Type</span>
+                              <span className="font-medium text-slate-800 capitalize">{result.type}</span>
+                            </div>
+                            <div className="flex items-center justify-between text-sm py-2 border-b border-slate-100">
+                              <span className="text-slate-500">File Size</span>
+                              <span className="font-medium text-slate-800">{result.size}</span>
+                            </div>
+                            <div className="flex items-center justify-between text-sm py-2 border-b border-slate-100">
+                              <span className="text-slate-500">Platform</span>
+                              <span className="font-medium text-slate-800">Pinterest</span>
+                            </div>
+                            {result.pinId && (
+                              <div className="flex items-center justify-between text-sm py-2 border-b border-slate-100">
+                                <span className="text-slate-500">Pin ID</span>
+                                <span className="font-mono text-xs text-slate-600">{result.pinId}</span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Download buttons */}
+                        <div className="space-y-3">
+                          <Button
+                            onClick={() => handleDownload(result.downloadUrl, result.filename)}
+                            className="w-full h-12 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white shadow-lg gap-2 text-sm font-semibold"
+                          >
+                            <Download className="w-4 h-4" />
+                            Download {result.type === "video" ? "Video" : "Image"}
+                          </Button>
+
+                          <Button
+                            asChild
+                            variant="outline"
+                            className="w-full h-10 rounded-xl border-slate-200 gap-2 text-sm"
+                          >
+                            <a href={result.downloadUrl} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="w-3.5 h-3.5" />
+                              Open in New Tab
+                            </a>
+                          </Button>
+
+                          {/* Alternative resolutions for images */}
+                          {result.type === "image" && result.allImages && result.allImages.length > 1 && (
+                            <div className="pt-2">
+                              <p className="text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wide">
+                                Other Resolutions
+                              </p>
+                              <div className="flex flex-wrap gap-2">
+                                {result.allImages.slice(0, 4).map((imgUrl, i) => {
+                                  const sizeLabel = imgUrl.includes("originals") ? "Original" :
+                                    imgUrl.includes("1200x") ? "1200px" :
+                                    imgUrl.includes("736x") ? "736px" :
+                                    imgUrl.includes("564x") ? "564px" :
+                                    imgUrl.includes("474x") ? "474px" : `Size ${i + 1}`
+                                  return (
+                                    <button
+                                      key={i}
+                                      onClick={() => handleDownload(imgUrl, `pinterest_${result.pinId}_${sizeLabel}.jpg`)}
+                                      className="px-3 py-1.5 text-[11px] font-medium bg-slate-100 hover:bg-rose-100 hover:text-rose-700 text-slate-600 rounded-lg transition-colors"
+                                    >
+                                      {sizeLabel}
+                                    </button>
+                                  )
+                                })}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
-            ) : (
-              <Card>
-                <CardContent className="flex items-center justify-center h-96">
-                  <div className="text-center text-muted-foreground">
-                    <Video className="w-12 h-12 mx-auto mb-4 opacity-50" />
-                    <p>Video information will appear here</p>
-                    <p className="text-sm">Enter a Pinterest URL and click "Download Video"</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Empty state */}
+        {!result && !loading && !error && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            <Card className="border-0 bg-white/60 backdrop-blur-sm shadow-stripe-sm mb-10">
+              <CardContent className="flex flex-col items-center justify-center py-16 text-center">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center mb-4 shadow-lg">
+                  <Download className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-800 mb-1">Ready to Download</h3>
+                <p className="text-sm text-slate-500 max-w-sm">
+                  Paste any Pinterest image or video link above and click &quot;Fetch Media&quot; to preview & download
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {/* Loading */}
+        {loading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <Card className="border-0 bg-white/60 backdrop-blur-sm shadow-stripe-sm mb-10">
+              <CardContent className="flex flex-col items-center justify-center py-16">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-600 flex items-center justify-center mb-4 shadow-lg animate-pulse">
+                  <RefreshCw className="w-8 h-8 text-white animate-spin" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-800 mb-1">Fetching Media...</h3>
+                <p className="text-sm text-slate-500">Extracting content from Pinterest</p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        {/* Feature Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10"
+        >
+          {features.map((f, i) => (
+            <motion.div
+              key={f.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45 + i * 0.1 }}
+            >
+              <Card className="border-0 bg-white/70 backdrop-blur-sm shadow-stripe-sm hover:shadow-stripe transition-all duration-300 h-full">
+                <CardContent className="p-5 flex flex-col items-center text-center gap-3">
+                  <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${f.gradient} flex items-center justify-center shadow-md`}>
+                    <f.icon className="w-5 h-5 text-white" />
                   </div>
+                  <h3 className="text-sm font-bold text-slate-800">{f.title}</h3>
+                  <p className="text-xs text-slate-500 leading-relaxed">{f.desc}</p>
                 </CardContent>
               </Card>
-            )}
-          </div>
-        </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-        {/* Features Section */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold text-center mb-8">Why Choose Our Pinterest Downloader?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Download className="w-6 h-6 text-blue-600" />
+        {/* Disclaimer */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          <Card className="border-0 bg-amber-50/80 backdrop-blur-sm shadow-none">
+            <CardContent className="p-5">
+              <div className="flex items-start gap-3">
+                <Shield className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-xs font-semibold text-amber-800 mb-1.5">Usage Notice</p>
+                  <ul className="text-[11px] text-amber-700 space-y-1 leading-relaxed">
+                    <li>• Only download content you have permission to use</li>
+                    <li>• Respect copyright and intellectual property rights</li>
+                    <li>• This tool is for personal use only — always credit the original creator</li>
+                  </ul>
                 </div>
-                <h3 className="font-semibold mb-2">Fast Download</h3>
-                <p className="text-sm text-muted-foreground">Download Pinterest videos quickly and efficiently</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Eye className="w-6 h-6 text-blue-600" />
-                </div>
-                <h3 className="font-semibold mb-2">Easy to Use</h3>
-                <p className="text-sm text-muted-foreground">Simple interface - just paste the URL and download</p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Heart className="w-6 h-6 text-blue-600" />
-                </div>
-                <h3 className="font-semibold mb-2">Safe & Secure</h3>
-                <p className="text-sm text-muted-foreground">Your privacy is protected - no data is stored</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="mt-8 flex justify-center gap-4">
-          <Button asChild>
-            <Link href="#contact">
-              Get Professional Video Help
-            </Link>
-          </Button>
-          <Button variant="outline" onClick={clearAll}>
-            Clear All
-          </Button>
-        </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
     </div>
   )

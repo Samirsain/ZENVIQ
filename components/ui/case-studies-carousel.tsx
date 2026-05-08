@@ -1,0 +1,243 @@
+"use client";
+
+import * as React from "react";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, ArrowRight, Zap, Star } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+export interface CaseStudy {
+  id: string;
+  imageSrc: string;
+  imageAlt: string;
+  tag: string;
+  title: string;
+  description: string;
+  brandLogoSrc: string;
+  brandName: string;
+  metric?: string;
+  href: string;
+}
+
+const caseStudies: CaseStudy[] = [
+  {
+    id: "antiquity",
+    imageSrc: "/project/antiquity.png",
+    imageAlt: "Antiquity Digital Agency Website",
+    tag: "Digital Agency",
+    title: "Antiquity Digital — Full Brand Website",
+    description: "Complete agency website with SEO analytics dashboard and conversion tracking.",
+    brandLogoSrc: "/project/antiquity.png",
+    brandName: "Antiquity Digital",
+    metric: "+284% Traffic",
+    href: "https://www.antiquitydigital.online/",
+  },
+  {
+    id: "scrollinpanda",
+    imageSrc: "/project/scrollinpanda.png",
+    imageAlt: "ScrollinPanda E-commerce Store",
+    tag: "E-commerce",
+    title: "ScrollinPanda — Refurbished Laptops",
+    description: "Full e-commerce store with product catalog, search, and cart functionality.",
+    brandLogoSrc: "/project/scrollinpanda.png",
+    brandName: "ScrollinPanda",
+    metric: "500+ Products",
+    href: "https://www.scrollinpanda.com/",
+  },
+  {
+    id: "eliteballondecor",
+    imageSrc: "/project/eliteballondecor.png",
+    imageAlt: "Elite Balloon Decor Website",
+    tag: "Event Decor",
+    title: "Elite Decors — Balloon & Floral",
+    description: "Premium event decor website with gallery, booking, and 50+ themed packages.",
+    brandLogoSrc: "/project/eliteballondecor.png",
+    brandName: "Elite Decors",
+    metric: "5000+ Events",
+    href: "https://www.eliteballondecor.com/",
+  },
+  {
+    id: "helpinghands",
+    imageSrc: "/project/halpinghand.png",
+    imageAlt: "Helping Hands NGO Website",
+    tag: "NGO / Nonprofit",
+    title: "Helping Hands — Animal Welfare",
+    description: "Donation platform with Razorpay integration and 80G tax receipt system.",
+    brandLogoSrc: "/project/halpinghand.png",
+    brandName: "Helping Hands",
+    metric: "₹8.2L Raised",
+    href: "https://www.helpinghandsfoundations.org/",
+  },
+  {
+    id: "gmresort",
+    imageSrc: "/project/gmresort.png",
+    imageAlt: "GM Resort Website",
+    tag: "Hospitality",
+    title: "GM Resort — Premium Stay Experience",
+    description: "Resort booking website with room gallery, amenities, and contact system.",
+    brandLogoSrc: "/project/gmresort.png",
+    brandName: "GM Resort",
+    metric: "4.9★ Rating",
+    href: "https://gmresort.vercel.app/",
+  },
+  {
+    id: "reliable",
+    imageSrc: "/project/relible.png",
+    imageAlt: "Reliable Diagnostics Centre Website",
+    tag: "Healthcare",
+    title: "Reliable Diagnostics Centre",
+    description: "Medical diagnostics center with test catalog, booking, and report access.",
+    brandLogoSrc: "/project/relible.png",
+    brandName: "Reliable Diagnostics",
+    metric: "100+ Tests",
+    href: "https://reliable-diagnostics-centre-4ou3.vercel.app/",
+  },
+];
+
+interface CaseStudyCardProps {
+  study: CaseStudy;
+}
+
+const CaseStudyCard = React.forwardRef<HTMLAnchorElement, CaseStudyCardProps>(
+  ({ study }, ref) => (
+    <motion.a
+      ref={ref}
+      href={study.href}
+      target={study.href.startsWith("http") ? "_blank" : undefined}
+      rel={study.href.startsWith("http") ? "noopener noreferrer" : undefined}
+      className="relative flex-shrink-0 w-[300px] h-[420px] rounded-2xl overflow-hidden group snap-start block bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-shadow"
+      whileHover={{ y: -8 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+    >
+      {/* Image */}
+      <div className="w-full h-[52%] overflow-hidden">
+        <img
+          src={study.imageSrc}
+          alt={study.imageAlt}
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-white p-5 flex flex-col justify-between border-t border-slate-100">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2 text-xs text-slate-500">
+            <Zap className="w-3.5 h-3.5 text-indigo-500" />
+            <span className="font-semibold uppercase tracking-wider">{study.tag}</span>
+          </div>
+          <h3 className="text-lg font-bold text-slate-900 leading-tight tracking-tight">
+            {study.title}
+          </h3>
+          <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">
+            {study.description}
+          </p>
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+          <div className="flex items-center gap-2.5">
+            <img
+              src={study.brandLogoSrc}
+              alt={study.brandName}
+              className="w-7 h-7 rounded-full object-contain bg-slate-100 p-0.5"
+            />
+            <div>
+              <p className="text-xs font-bold text-slate-900">{study.brandName}</p>
+              {study.metric && (
+                <p className="text-[10px] text-indigo-600 font-semibold">{study.metric}</p>
+              )}
+            </div>
+          </div>
+          <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 transition-all duration-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:-rotate-45">
+            <ArrowRight className="w-4 h-4" />
+          </div>
+        </div>
+      </div>
+    </motion.a>
+  )
+);
+CaseStudyCard.displayName = "CaseStudyCard";
+
+export function CaseStudiesCarousel({ className }: { className?: string }) {
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const amount = scrollRef.current.clientWidth * 0.75;
+    scrollRef.current.scrollBy({
+      left: dir === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <section id="case-studies" className={cn("py-20 sm:py-28 bg-white", className)}>
+      <div className="container mx-auto px-4">
+        {/* Header */}
+        <div className="mb-10 sm:mb-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+          <div className="flex flex-col gap-4">
+            <div className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-xs font-bold w-fit border border-indigo-100">
+              <Star className="w-4 h-4 fill-current" />
+              Our Work
+            </div>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 tracking-tight"
+              style={{ letterSpacing: "-1.5px" }}
+            >
+              Case Studies
+            </h2>
+            <p className="max-w-lg text-slate-500 text-base sm:text-lg leading-relaxed">
+              See how we helped businesses scale with modern technology and strategic design.
+            </p>
+          </div>
+
+          {/* Desktop Arrows */}
+          <div className="hidden md:flex shrink-0 gap-2">
+            <button
+              onClick={() => scroll("left")}
+              className="w-12 h-12 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 flex items-center justify-center transition-all"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5 text-slate-600" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="w-12 h-12 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 flex items-center justify-center transition-all"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5 text-slate-600" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Carousel */}
+      <div className="relative group">
+        {/* Mobile Arrows */}
+        <button
+          onClick={() => scroll("left")}
+          className="md:hidden absolute top-1/2 -translate-y-1/2 left-2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        <div
+          ref={scrollRef}
+          className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide px-4 sm:px-[max(1rem,calc(50vw-640px))]"
+        >
+          {caseStudies.map((study) => (
+            <CaseStudyCard key={study.id} study={study} />
+          ))}
+        </div>
+
+        <button
+          onClick={() => scroll("right")}
+          className="md:hidden absolute top-1/2 -translate-y-1/2 right-2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+    </section>
+  );
+}

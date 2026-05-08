@@ -1,8 +1,15 @@
 "use client"
 
-import { useState } from "react"
-import { MessageCircle, Plus, Minus } from "lucide-react"
+import { motion } from "framer-motion"
+import { MessageCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import JsonLd from "@/components/json-ld"
 
 interface FAQItem {
@@ -14,53 +21,37 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     id: "1",
-    question: "What services do you offer?",
-    answer: "We offer comprehensive web development, SEO optimization, AI tools development, digital marketing, and automation services. Our team specializes in creating modern, responsive websites and digital solutions tailored to your business needs."
+    question: "What services does ZENVIQ offer?",
+    answer: "ZENVIQ is a full-service digital agency based in Hanumangarh, Rajasthan. We offer premium web development (Next.js, React, WordPress), UI/UX design, AI-powered automation, e-commerce solutions, SEO, and digital marketing — everything your brand needs to dominate online."
   },
   {
     id: "2",
-    question: "How long does it take to complete a project?",
-    answer: "Project timelines vary based on complexity and requirements. Simple websites typically take 1-2 weeks, while complex applications may take 4-8 weeks. We provide detailed timelines during the consultation phase and keep you updated throughout the development process."
+    question: "How long does it take to build a website?",
+    answer: "It depends on your project scope. A professional business website takes 1–2 weeks, while complex web applications or e-commerce stores may take 4–8 weeks. We share a clear timeline during our initial strategy call and keep you updated at every milestone."
   },
   {
     id: "3",
-    question: "Do you provide ongoing support after project completion?",
-    answer: "Yes! We offer comprehensive maintenance and support packages. This includes regular updates, security patches, performance monitoring, and technical support. We believe in building long-term relationships with our clients."
+    question: "Do you provide support after the project is delivered?",
+    answer: "Absolutely. We offer ongoing maintenance packages that include security updates, performance monitoring, content changes, and priority support. We believe in long-term partnerships, not one-time transactions."
   },
   {
     id: "4",
-    question: "What is your pricing structure?",
-    answer: "Our pricing is project-based and depends on the scope, complexity, and requirements. We offer competitive rates and provide detailed quotes after understanding your specific needs. Contact us for a personalized quote."
+    question: "How much does a website or digital project cost?",
+    answer: "Our pricing is transparent and project-based — no hidden fees. Costs vary based on scope, features, and complexity. We offer competitive rates for businesses in Hanumangarh and across India. Book a free consultation and we'll provide a detailed, no-obligation quote."
   },
   {
     id: "5",
-    question: "Do you work with clients globally?",
-    answer: "Absolutely! We work with clients worldwide. Our team is experienced in remote collaboration and can accommodate different time zones. We use modern communication tools to ensure smooth project management."
+    question: "Do you work with clients outside Hanumangarh?",
+    answer: "Yes! While we're proudly based in Hanumangarh, we serve clients across Rajasthan, India, and internationally. Our team is experienced in remote collaboration using modern tools to ensure seamless communication regardless of location."
   },
   {
     id: "6",
-    question: "What technologies do you use?",
-    answer: "We use modern technologies including React, Next.js, Node.js, Python, and various AI/ML frameworks. We stay updated with the latest trends and choose the best technology stack for each project's specific requirements."
+    question: "What technologies does ZENVIQ use?",
+    answer: "We use cutting-edge technologies including Next.js, React, TypeScript, Node.js, Python, and modern AI/ML frameworks. We always choose the best tech stack for your specific project to ensure speed, scalability, and future-proof performance."
   },
-  {
-    id: "7",
-    question: "Can you help with SEO and digital marketing?",
-    answer: "Yes! We offer comprehensive SEO services including keyword research, on-page optimization, technical SEO, and content strategy. We also provide digital marketing services to help grow your online presence and reach your target audience."
-  },
-  {
-    id: "8",
-    question: "Do you offer custom AI solutions?",
-    answer: "Absolutely! We develop custom AI tools and automation solutions tailored to your business needs. From chatbots to data analysis tools, we can create AI-powered solutions that streamline your operations and improve efficiency."
-  }
 ]
 
 export default function FAQSection() {
-  const [openId, setOpenId] = useState<string | null>("1")
-
-  const toggleItem = (id: string) => {
-    setOpenId(openId === id ? null : id)
-  }
-
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -75,75 +66,76 @@ export default function FAQSection() {
   }
 
   return (
-    <section id="faq" className="max-w-7xl sm:px-6 sm:mt-20 mt-8 mx-auto px-4 mb-20">
+    <section id="faq" className="py-20 sm:py-24 bg-white">
       <JsonLd data={faqSchema} />
-      <div className="relative overflow-hidden rounded-[40px] border border-gray-100 dark:border-white/10 bg-white dark:bg-gray-900 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)]">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 dark:from-white/5 to-transparent"></div>
-        </div>
 
-        <div className="relative sm:p-12 p-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Intro */}
-            <div className="lg:col-span-5">
-              <h2 className="text-5xl sm:text-7xl font-bold text-gray-900 dark:text-white tracking-tighter leading-none mb-6">
-                Questions.
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-sm mb-8">
-                Find answers to common questions about our services, processes, and how we can help transform your brand.
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10 transition-colors shadow-sm"
-              >
-                Get in touch
-                <MessageCircle className="w-4 h-4" />
-              </Link>
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto"
+        >
+          {/* Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-600 px-4 py-2 rounded-full text-xs font-bold mb-6 border border-indigo-100 shadow-stripe-sm">
+              <MessageCircle className="w-4 h-4" />
+              FAQ
             </div>
-
-            {/* Accordion */}
-            <div className="lg:col-span-7">
-              <div className="space-y-4">
-                {faqData.map((item) => {
-                  const isOpen = openId === item.id
-                  return (
-                    <div
-                      key={item.id}
-                      className={`rounded-2xl border transition-all duration-300 ${isOpen
-                        ? "border-indigo-100 bg-indigo-50/30 dark:border-indigo-500/30 dark:bg-indigo-500/5 shadow-sm"
-                        : "border-gray-100 dark:border-white/5 bg-white dark:bg-white/5"
-                        }`}
-                    >
-                      <button
-                        type="button"
-                        className="w-full flex items-center justify-between gap-4 p-5 text-left group"
-                        onClick={() => toggleItem(item.id)}
-                        aria-expanded={isOpen}
-                      >
-                        <span className={`text-base sm:text-lg font-bold tracking-tight transition-colors ${isOpen ? "text-indigo-600 dark:text-indigo-400" : "text-gray-900 dark:text-gray-200"
-                          }`}>
-                          {item.question}
-                        </span>
-                        <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? "bg-indigo-600 dark:bg-indigo-500 text-white rotate-180" : "bg-gray-100 dark:bg-white/10 text-gray-500"
-                          }`}>
-                          {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                        </span>
-                      </button>
-                      <div
-                        className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-                          }`}
-                      >
-                        <div className="px-5 pb-5 text-gray-600 dark:text-gray-400 leading-relaxed">
-                          {item.answer}
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
+            <h2
+              className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-3"
+              style={{ letterSpacing: "-1px" }}
+            >
+              Frequently Asked Questions
+            </h2>
+            <p className="text-slate-500 text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
+              Quick answers to help you understand how we work.
+            </p>
           </div>
-        </div>
+
+          {/* Accordion */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-white rounded-2xl border border-slate-200 shadow-stripe-lg overflow-hidden"
+          >
+            <Accordion type="single" collapsible defaultValue="1" className="w-full">
+              {faqData.map((item) => (
+                <AccordionItem
+                  key={item.id}
+                  value={item.id}
+                  className="border-b border-slate-100 last:border-b-0 px-6"
+                >
+                  <AccordionTrigger className="py-5 text-base font-semibold text-slate-900 hover:text-indigo-600 hover:no-underline transition-colors [&[data-state=open]]:text-indigo-600">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-slate-500 text-sm leading-relaxed pb-5">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="mt-8 text-center flex flex-col sm:flex-row items-center justify-center gap-3"
+          >
+            <span className="text-sm text-slate-500">Still have questions?</span>
+            <Button asChild variant="outline" className="rounded-full px-5 font-semibold border-slate-200 hover:border-indigo-200 hover:text-indigo-600 transition-all">
+              <Link href="/contact" className="flex items-center gap-2">
+                Get in touch
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </Button>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

@@ -107,8 +107,8 @@ export default function Header() {
           transition-all duration-300
           border border-white/20
           ${isScrolled || isMobileMenuOpen
-            ? "bg-white/70 backdrop-blur-md shadow-lg translate-y-0"
-            : "bg-white/50 backdrop-blur-sm shadow-md"}
+            ? "bg-white/70 backdrop-blur-md shadow-stripe-lg translate-y-0"
+            : "bg-white/50 backdrop-blur-sm shadow-stripe"}
         `}
       >
         {/* Logo */}
@@ -144,7 +144,7 @@ export default function Header() {
               {/* Services Dropdown */}
               {link.hasDropdown && isServicesDropdownOpen && (
                 <div
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white border border-slate-200 rounded-xl shadow-stripe-lg z-50 overflow-hidden"
                   onMouseEnter={() => setIsServicesDropdownOpen(true)}
                   onMouseLeave={() => setIsServicesDropdownOpen(false)}
                 >
@@ -190,7 +190,7 @@ export default function Header() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <Button asChild className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 font-semibold shadow-lg shadow-indigo-900/20">
+          <Button asChild className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 font-semibold shadow-indigo-glow transition-all duration-300">
             <Link href="/contact">Get a Quote</Link>
           </Button>
         </div>
@@ -207,7 +207,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden mt-2 w-full max-w-7xl bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-gray-200 overflow-hidden py-4 px-2 animate-in slide-in-from-top-2">
+        <div className="md:hidden mt-2 w-full max-w-7xl bg-white/95 backdrop-blur-md rounded-2xl shadow-stripe-lg border border-slate-200 overflow-hidden py-4 px-2 animate-in slide-in-from-top-2">
           <nav className="flex flex-col gap-3">
 
 
