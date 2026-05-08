@@ -1,13 +1,19 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Terms of Service — ZENVIQ Digital",
+  description: "Review the terms and conditions for using ZENVIQ Digital's web development, SEO, and digital marketing services.",
+  alternates: {
+    canonical: "https://www.zenviqdigital.in/terms",
+  },
+}
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      <Header />
+    <div className="min-h-screen bg-white">
 
       {/* Hero Section */}
       <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20">
@@ -160,7 +166,6 @@ export default function TermsPage() {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

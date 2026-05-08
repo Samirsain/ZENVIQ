@@ -4,19 +4,22 @@ import blogPosts from '@/content/blog-posts.json'
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://www.zenviqdigital.in'
 
+    // Use a stable date — only update when content actually changes
+    const lastUpdated = new Date('2026-05-08')
+
     // Core pages — highest priority
     const corePages = [
-        { route: '', priority: 1.0, changeFrequency: 'daily' as const },
+        { route: '', priority: 1.0, changeFrequency: 'weekly' as const },
         { route: '/services', priority: 0.95, changeFrequency: 'weekly' as const },
         { route: '/about', priority: 0.9, changeFrequency: 'monthly' as const },
         { route: '/contact', priority: 0.9, changeFrequency: 'monthly' as const },
         { route: '/gallery', priority: 0.85, changeFrequency: 'weekly' as const },
-        { route: '/blog', priority: 0.85, changeFrequency: 'daily' as const },
+        { route: '/blog', priority: 0.85, changeFrequency: 'weekly' as const },
         { route: '/tools', priority: 0.8, changeFrequency: 'weekly' as const },
         { route: '/ai-tools', priority: 0.8, changeFrequency: 'weekly' as const },
     ].map((page) => ({
         url: `${baseUrl}${page.route}`,
-        lastModified: new Date(),
+        lastModified: lastUpdated,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
     }))
@@ -30,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/services/ui-ux-design',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
+        lastModified: lastUpdated,
         changeFrequency: 'monthly' as const,
         priority: 0.9,
     }))
@@ -42,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/web-development-bathinda',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
+        lastModified: lastUpdated,
         changeFrequency: 'monthly' as const,
         priority: 0.9,
     }))
@@ -53,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/ai-tools/claude',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
+        lastModified: lastUpdated,
         changeFrequency: 'monthly' as const,
         priority: 0.75,
     }))
@@ -81,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/tools/word-counter',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
+        lastModified: lastUpdated,
         changeFrequency: 'weekly' as const,
         priority: 0.75,
     }))
@@ -93,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/refund',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
-        lastModified: new Date(),
+        lastModified: lastUpdated,
         changeFrequency: 'yearly' as const,
         priority: 0.3,
     }))
@@ -101,8 +104,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Dynamic blog routes
     const blogRoutes = blogPosts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(post.date || new Date()),
-        changeFrequency: 'weekly' as const,
+        lastModified: new Date(post.date || '2026-05-01'),
+        changeFrequency: 'monthly' as const,
         priority: 0.7,
     }))
 

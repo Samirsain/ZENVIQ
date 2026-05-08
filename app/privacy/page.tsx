@@ -1,13 +1,19 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Privacy Policy — ZENVIQ Digital",
+  description: "Learn how ZENVIQ Digital collects, uses, and protects your personal information. Read our full privacy policy.",
+  alternates: {
+    canonical: "https://www.zenviqdigital.in/privacy",
+  },
+}
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      <Header />
+    <div className="min-h-screen bg-white">
       
       {/* Hero Section */}
       <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
@@ -124,7 +130,7 @@ export default function PrivacyPage() {
                 <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
                   <p><strong>Email:</strong> devxmir@gmail.com</p>
                   <p><strong>WhatsApp:</strong> +91 9352410667</p>
-                  <p><strong>Website:</strong> <Link href="/" className="text-blue-600 dark:text-blue-400 hover:underline">same4you.com</Link></p>
+                  <p><strong>Website:</strong> <Link href="/" className="text-blue-600 dark:text-blue-400 hover:underline">zenviqdigital.in</Link></p>
                 </div>
               </div>
 
@@ -133,7 +139,6 @@ export default function PrivacyPage() {
       </div>
       </section>
 
-      <Footer />
     </div>
   )
 }

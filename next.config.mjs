@@ -38,6 +38,10 @@ const nextConfig = {
           key: 'Referrer-Policy',
           value: 'strict-origin-when-cross-origin',
         },
+        {
+          key: 'X-Robots-Tag',
+          value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+        },
       ],
     },
     {

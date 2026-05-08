@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, ArrowRight, Zap, Star } from "lucide-react";
+import { ArrowRight, Zap, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -98,104 +98,126 @@ interface CaseStudyCardProps {
   study: CaseStudy;
 }
 
-const CaseStudyCard = React.forwardRef<HTMLAnchorElement, CaseStudyCardProps>(
-  ({ study }, ref) => (
-    <motion.a
-      ref={ref}
-      href={study.href}
-      target={study.href.startsWith("http") ? "_blank" : undefined}
-      rel={study.href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="relative flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden group snap-start block bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-shadow"
-      whileHover={{ y: -8 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    >
-      {/* Image */}
-      <div className="w-full aspect-[16/10] overflow-hidden relative">
-        <Image
-          src={study.imageSrc}
-          alt={study.imageAlt}
-          fill
-          sizes="(max-width: 640px) 280px, 320px"
-          className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-        />
+const CaseStudyCard = React.memo(({ study }: CaseStudyCardProps) => (
+  <motion.a
+    href={study.href}
+    target={study.href.startsWith("http") ? "_blank" : undefined}
+    rel={study.href.startsWith("http") ? "noopener noreferrer" : undefined}
+    className="relative flex-shrink-0 w-[280px] sm:w-[340px] rounded-2xl overflow-hidden group block bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-shadow duration-300"
+    whileHover={{ y: -8 }}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  >
+    {/* Image */}
+    <div className="w-full aspect-[16/10] overflow-hidden relative">
+      <Image
+        src={study.imageSrc}
+        alt={study.imageAlt}
+        fill
+        sizes="(max-width: 640px) 280px, 340px"
+        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+      />
+    </div>
+
+    {/* Content */}
+    <div className="p-4 sm:p-5 flex flex-col gap-3 border-t border-slate-100">
+      <div className="space-y-1.5">
+        <div className="flex items-center gap-2 text-xs text-slate-500">
+          <Zap className="w-3.5 h-3.5 text-indigo-500" />
+          <span className="font-semibold uppercase tracking-wider">{study.tag}</span>
+        </div>
+        <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-tight tracking-tight">
+          {study.title}
+        </h3>
+        <p className="text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-2">
+          {study.description}
+        </p>
       </div>
 
-      {/* Content */}
-      <div className="p-4 sm:p-5 flex flex-col gap-3 border-t border-slate-100">
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2 text-xs text-slate-500">
-            <Zap className="w-3.5 h-3.5 text-indigo-500" />
-            <span className="font-semibold uppercase tracking-wider">{study.tag}</span>
+      {/* Footer */}
+      <div className="flex items-center justify-between pt-3 border-t border-slate-100">
+        <div className="flex items-center gap-2.5">
+          <Image
+            src={study.brandLogoSrc}
+            alt={study.brandName}
+            width={28}
+            height={28}
+            className="rounded-full object-cover bg-slate-100 p-0.5"
+          />
+          <div>
+            <p className="text-xs font-bold text-slate-900">{study.brandName}</p>
+            {study.metric && (
+              <p className="text-[10px] text-indigo-600 font-semibold">{study.metric}</p>
+            )}
           </div>
-          <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-tight tracking-tight">
-            {study.title}
-          </h3>
-          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-2">
-            {study.description}
-          </p>
         </div>
-
-        {/* Footer */}
-        <div className="flex items-center justify-between pt-3 border-t border-slate-100">
-          <div className="flex items-center gap-2.5">
-            <Image
-              src={study.brandLogoSrc}
-              alt={study.brandName}
-              width={28}
-              height={28}
-              className="rounded-full object-cover bg-slate-100 p-0.5"
-            />
-            <div>
-              <p className="text-xs font-bold text-slate-900">{study.brandName}</p>
-              {study.metric && (
-                <p className="text-[10px] text-indigo-600 font-semibold">{study.metric}</p>
-              )}
-            </div>
-          </div>
-          <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 transition-all duration-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:-rotate-45">
-            <ArrowRight className="w-4 h-4" />
-          </div>
+        <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 transition-all duration-300 group-hover:bg-indigo-600 group-hover:text-white group-hover:-rotate-45">
+          <ArrowRight className="w-4 h-4" />
         </div>
       </div>
-    </motion.a>
-  )
-);
+    </div>
+  </motion.a>
+));
 CaseStudyCard.displayName = "CaseStudyCard";
 
+// Continuous smooth scrolling speed (px/s)
+const SCROLL_SPEED = 40;
+
 export function CaseStudiesCarousel({ className }: { className?: string }) {
-  const scrollRef = React.useRef<HTMLDivElement>(null);
+  const trackRef = React.useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = React.useState(false);
+  const animationRef = React.useRef<number | null>(null);
+  const lastTimeRef = React.useRef<number>(0);
+  const scrollPositionRef = React.useRef<number>(0);
 
-  const scroll = (dir: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const amount = scrollRef.current.clientWidth * 0.75;
-    scrollRef.current.scrollBy({
-      left: dir === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
-  };
+  // Duplicate items for seamless infinite loop
+  const items = React.useMemo(() => [...caseStudies, ...caseStudies], []);
 
-  // Auto-scroll every 4 seconds
   React.useEffect(() => {
-    if (isPaused) return;
+    const track = trackRef.current;
+    if (!track) return;
 
-    const interval = setInterval(() => {
-      if (!scrollRef.current) return;
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 10;
-
-      if (isAtEnd) {
-        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollRef.current.scrollBy({ left: 330, behavior: "smooth" });
+    // Calculate half-width (original set width) for seamless reset
+    const getHalfWidth = () => {
+      const children = Array.from(track.children);
+      const half = children.length / 2;
+      let width = 0;
+      for (let i = 0; i < half; i++) {
+        const child = children[i] as HTMLElement;
+        width += child.offsetWidth + 20; // 20px = gap-5
       }
-    }, 4000);
+      return width;
+    };
 
-    return () => clearInterval(interval);
+    const animate = (timestamp: number) => {
+      if (!lastTimeRef.current) lastTimeRef.current = timestamp;
+      const delta = timestamp - lastTimeRef.current;
+      lastTimeRef.current = timestamp;
+
+      if (!isPaused) {
+        scrollPositionRef.current += (SCROLL_SPEED * delta) / 1000;
+
+        const halfWidth = getHalfWidth();
+        if (scrollPositionRef.current >= halfWidth) {
+          scrollPositionRef.current -= halfWidth;
+        }
+
+        track.style.transform = `translateX(-${scrollPositionRef.current}px)`;
+      }
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
   }, [isPaused]);
 
   return (
-    <section id="case-studies" className={cn("py-20 sm:py-28 bg-white", className)}>
+    <section id="case-studies" className={cn("py-20 sm:py-28 bg-white overflow-hidden", className)}>
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-10 sm:mb-14 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
@@ -214,58 +236,33 @@ export function CaseStudiesCarousel({ className }: { className?: string }) {
               See how we helped businesses scale with modern technology and strategic design.
             </p>
           </div>
-
-          {/* Desktop Arrows */}
-          <div className="hidden md:flex shrink-0 gap-2">
-            <button
-              onClick={() => scroll("left")}
-              className="w-12 h-12 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 flex items-center justify-center transition-all"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-5 h-5 text-slate-600" />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              className="w-12 h-12 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-slate-50 flex items-center justify-center transition-all"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-5 h-5 text-slate-600" />
-            </button>
-          </div>
         </div>
       </div>
 
-      {/* Carousel */}
+      {/* Infinite Scrolling Carousel */}
       <div
-        className="relative group"
+        className="relative cursor-grab active:cursor-grabbing"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
       >
-        {/* Mobile Arrows */}
-        <button
-          onClick={() => scroll("left")}
-          className="md:hidden absolute top-1/2 -translate-y-1/2 left-2 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 shadow-sm flex items-center justify-center"
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
+        {/* Left fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
 
+        {/* Right fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+        {/* Track */}
         <div
-          ref={scrollRef}
-          className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide px-4 sm:px-[max(1rem,calc(50vw-640px))]"
+          ref={trackRef}
+          className="flex gap-5 will-change-transform"
+          style={{ width: "max-content" }}
         >
-          {caseStudies.map((study) => (
-            <CaseStudyCard key={study.id} study={study} />
+          {items.map((study, i) => (
+            <CaseStudyCard key={`${study.id}-${i}`} study={study} />
           ))}
         </div>
-
-        <button
-          onClick={() => scroll("right")}
-          className="md:hidden absolute top-1/2 -translate-y-1/2 right-2 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 shadow-sm flex items-center justify-center"
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
       </div>
     </section>
   );

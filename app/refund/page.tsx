@@ -1,12 +1,18 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, X, AlertTriangle } from "lucide-react"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Refund & Cancellation Policy — ZENVIQ Digital",
+  description: "Read ZENVIQ Digital's transparent refund and cancellation policy for all web development, SEO, and digital marketing services.",
+  alternates: {
+    canonical: "https://www.zenviqdigital.in/refund",
+  },
+}
 
 export default function RefundPolicy() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
-      <Header />
+    <div className="min-h-screen bg-white">
 
       {/* Hero Section */}
       <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
@@ -167,7 +173,6 @@ export default function RefundPolicy() {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }
