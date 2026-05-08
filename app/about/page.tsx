@@ -222,7 +222,7 @@ export default function AboutPage() {
             </h2>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Samir Sain */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -297,6 +297,45 @@ export default function AboutPage() {
                     </Link>
                     <Link href="https://zenviqdigital.in" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center hover:bg-indigo-600 transition-colors">
                       <Globe className="w-3.5 h-3.5 text-white" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Aditya Raj */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-lg transition-all duration-300"
+            >
+              <div className="flex items-start gap-5">
+                <div className="w-20 h-20 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
+                  <Image
+                    src="/team/aditya.png"
+                    alt="Aditya Raj — Product Engineer"
+                    width={80}
+                    height={80}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-bold text-slate-900 tracking-tight">Aditya Raj</h3>
+                  <p className="text-sm font-medium text-indigo-600 mb-2">Product Engineer</p>
+                  <p className="text-xs text-slate-500 leading-relaxed mb-3">
+                    Independent product engineer. Specializes in SaaS systems, AI workflows, automation & scalable web experiences. Ships fast.
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <Link href="https://adityaraj.info" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                      <Globe className="w-3.5 h-3.5 text-white" />
+                    </Link>
+                    <Link href="https://github.com/adityaraj" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                      <Github className="w-3.5 h-3.5 text-white" />
+                    </Link>
+                    <Link href="https://linkedin.com/in/adityaraj" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-slate-900 flex items-center justify-center hover:bg-indigo-600 transition-colors">
+                      <Linkedin className="w-3.5 h-3.5 text-white" />
                     </Link>
                   </div>
                 </div>
