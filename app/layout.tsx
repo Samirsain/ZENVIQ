@@ -118,11 +118,11 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://www.zenviqdigital.in/og-image.jpg",
+        url: "https://www.zenviqdigital.in/og-image.webp",
         width: 1200,
         height: 630,
         alt: "ZENVIQ Digital — #1 Web & AI Agency in Hanumangarh, Rajasthan",
-        type: "image/jpeg",
+        type: "image/webp",
       },
     ],
   },
@@ -133,7 +133,7 @@ export const metadata: Metadata = {
       "Best web development & digital marketing in Hanumangarh, Rajasthan. SEO, AI automation & WhatsApp marketing. Get free quote.",
     site: "@zenviq",
     creator: "@zenviq",
-    images: ["https://www.zenviqdigital.in/og-image.jpg"],
+    images: ["https://www.zenviqdigital.in/og-image.webp"],
   },
   robots: {
     index: true,
