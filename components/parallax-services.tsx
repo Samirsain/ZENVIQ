@@ -189,7 +189,7 @@ export default function ParallaxServices() {
                     href={`/services#${service.title.toLowerCase().replace(/[&\s]+/g, "-")}`}
                     className="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition-colors group/link"
                   >
-                    Learn more
+                    Explore {service.title}
                     <ArrowRight className="ml-1.5 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </CardContent>

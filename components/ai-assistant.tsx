@@ -171,6 +171,7 @@ export default function AIAssistant() {
         onClick={() => setIsOpen(true)}
         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-indigo-600 hover:bg-indigo-700 animate-in zoom-in duration-300"
         size="lg"
+        aria-label="Open AI assistant chat"
       >
         <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
       </Button>

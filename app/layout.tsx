@@ -28,11 +28,11 @@ import JsonLd from "@/components/json-ld"
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.zenviqdigital.in"),
   title: {
-    default: "ZENVIQ Digital | #1 Web Development & AI Agency in Hanumangarh",
+    default: "ZENVIQ Digital | Best Web & AI Agency Hanumangarh",
     template: "%s | ZENVIQ Digital — Hanumangarh",
   },
   description:
-    "ZENVIQ Digital is the best website development company in Hanumangarh, Rajasthan. We offer web development, SEO, digital marketing, Google promotion, WhatsApp marketing, AI automation & e-commerce solutions. Trusted by 50+ businesses across Hanumangarh, Ganganagar & Bathinda.",
+    "ZENVIQ Digital — Hanumangarh's #1 web development, SEO & AI automation agency. Premium websites, e-commerce & digital marketing. Trusted by 50+ businesses.",
   keywords: [
     // Brand
     "ZENVIQ Digital",
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     "best website developer near me",
     "hire web developer Hanumangarh",
   ],
-  authors: [{ name: "Samir Sain", url: "https://samirsain.com" }, { name: "ZENVIQ", url: "https://www.zenviqdigital.in" }],
+  authors: [{ name: "Samir Sain", url: "https://samirsain.com" }],
   creator: "ZENVIQ Digital",
   publisher: "ZENVIQ Digital",
   alternates: {
@@ -102,25 +102,16 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/logo.svg", type: "image/svg+xml" },
-    ],
-    shortcut: [{ url: "/favicon.svg" }],
-    apple: [
+      { url: "/favicon.ico", sizes: "48x48" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    other: [
-      {
-        rel: "icon",
-        url: "/favicon.svg",
-        type: "image/svg+xml",
-      },
-    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon.svg",
   },
   openGraph: {
-    title: "ZENVIQ Digital | #1 Web Development & AI Agency in Hanumangarh",
+    title: "ZENVIQ Digital | Best Web & AI Agency Hanumangarh",
     description:
-      "Best website development company in Hanumangarh, Rajasthan. Web development, SEO, Google promotion, WhatsApp marketing, AI chatbots & e-commerce. Trusted by 50+ businesses.",
+      "Hanumangarh's #1 web development, SEO & AI agency. Premium websites, e-commerce & digital marketing. Trusted by 50+ businesses.",
     type: "website",
     siteName: "ZENVIQ Digital",
     url: "https://www.zenviqdigital.in",
@@ -136,9 +127,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZENVIQ Digital | #1 Web Development & AI Agency in Hanumangarh",
+    title: "ZENVIQ Digital | Best Web & AI Agency Hanumangarh",
     description:
-      "Best web development & digital marketing company in Hanumangarh, Rajasthan. Website design, SEO, Google Ads, AI automation & WhatsApp marketing. Get free quote.",
+      "Best web development & digital marketing in Hanumangarh, Rajasthan. SEO, AI automation & WhatsApp marketing. Get free quote.",
     site: "@zenviq",
     creator: "@zenviq",
     images: ["/og-image.jpg"],
@@ -341,16 +332,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`font-sans ${GeistMono.variable} ${jost.variable} antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className={`font-sans ${GeistMono.variable} ${jost.variable} antialiased`} suppressHydrationWarning>
         <JsonLd data={organizationSchema} />
         <JsonLd data={siteNavigationSchema} />
         <JsonLd data={websiteSchema} />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-DMSQMC1Q80"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -359,7 +355,7 @@ export default function RootLayout({
             gtag('config', 'G-DMSQMC1Q80');
           `}
         </Script>
-        <Script id="google-tag-manager" strategy="afterInteractive">
+        <Script id="google-tag-manager" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -383,18 +379,18 @@ export default function RootLayout({
             defaultTheme="light"
             forcedTheme="light"
             enableSystem={false}
-            disableTransitionOnChange={false}
+            disableTransitionOnChange
           >
-          <LenisProvider>
-          <Header />
-          <Suspense fallback={null}>{children}</Suspense>
-          <Footer />
-          </LenisProvider>
-          <AIAssistant />
-          <Toaster />
-          <Analytics />
-          <SpeedInsights />
-        </ThemeProvider>
+            <LenisProvider>
+              <Header />
+              <Suspense fallback={null}>{children}</Suspense>
+              <Footer />
+            </LenisProvider>
+            <AIAssistant />
+            <Toaster />
+            <Analytics />
+            <SpeedInsights />
+          </ThemeProvider>
       </body>
     </html>
   )

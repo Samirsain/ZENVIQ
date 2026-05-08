@@ -17,6 +17,7 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
   },
   headers: async () => [
     {
@@ -41,6 +42,10 @@ const nextConfig = {
         {
           key: 'X-Robots-Tag',
           value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+        },
+        {
+          key: 'Content-Security-Policy',
+          value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://va.vercel-scripts.com; frame-src https://www.googletagmanager.com https://calendly.com;",
         },
       ],
     },
@@ -75,3 +80,4 @@ const nextConfig = {
 }
 
 export default nextConfig
+

@@ -34,9 +34,9 @@ export default function Footer() {
 
       {/* Massive Background Typography */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none opacity-[0.04]">
-        <h1 className="text-[15vw] font-black text-slate-950 leading-none tracking-tighter text-center whitespace-nowrap">
+        <div className="text-[15vw] font-black text-slate-950 leading-none tracking-tighter text-center whitespace-nowrap" aria-hidden="true">
           ZENVIQ DIGITAL
-        </h1>
+        </div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10 pt-24 pb-12">
@@ -53,9 +53,9 @@ export default function Footer() {
                 <Sparkles className="w-3 h-3 text-yellow-300" />
                 Ready to grow your brand?
               </div>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
+              <div className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight leading-tight">
                 Let&apos;s build something <span className="text-indigo-100">your competitors will envy.</span>
-              </h2>
+              </div>
               <p className="text-indigo-50/90 text-lg md:text-xl font-medium">
                 Partner with Hanumangarh&apos;s most trusted digital agency and transform your online presence into a growth engine.
               </p>
@@ -91,12 +91,12 @@ export default function Footer() {
             </div>
             <div className="flex gap-4">
               {[
-                { icon: Twitter, href: "https://twitter.com/zenviq", color: "hover:bg-sky-500" },
-                { icon: Github, href: "https://github.com/Samirsain", color: "hover:bg-slate-900" },
-                { icon: Linkedin, href: "https://linkedin.com/in/samirsain", color: "hover:bg-blue-600" },
-                { icon: Instagram, href: "https://instagram.com/zenviq", color: "hover:bg-pink-600" }
+                { icon: Twitter, href: "https://twitter.com/zenviq", color: "hover:bg-sky-500", label: "Twitter" },
+                { icon: Github, href: "https://github.com/Samirsain", color: "hover:bg-slate-900", label: "GitHub" },
+                { icon: Linkedin, href: "https://linkedin.com/in/samirsain", color: "hover:bg-blue-600", label: "LinkedIn" },
+                { icon: Instagram, href: "https://instagram.com/zenviq", color: "hover:bg-pink-600", label: "Instagram" }
               ].map((social, i) => (
-                <a key={i} href={social.href} className={`w-11 h-11 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-stripe-sm ${social.color}`}>
+                <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className={`w-11 h-11 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-stripe-sm ${social.color}`}>
                   <social.icon className="w-5 h-5" />
                 </a>
               ))}
@@ -106,7 +106,7 @@ export default function Footer() {
           {/* Navigation Columns */}
           <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-12 text-slate-950">
             <div className="space-y-6">
-              <h4 className="font-bold tracking-tight text-lg">Services</h4>
+              <h3 className="font-bold tracking-tight text-lg">Services</h3>
               <ul className="space-y-4 font-medium">
                 <li><Link href="/services/web-development" className="text-slate-600 hover:text-indigo-600 transition-colors">Web Development</Link></li>
                 <li><Link href="/services/ai-automation" className="text-slate-600 hover:text-indigo-600 transition-colors">AI Automation</Link></li>
@@ -116,7 +116,7 @@ export default function Footer() {
               </ul>
             </div>
             <div className="space-y-6">
-              <h4 className="font-bold tracking-tight text-lg">Agency</h4>
+              <h3 className="font-bold tracking-tight text-lg">Agency</h3>
               <ul className="space-y-4 font-medium">
                 <li><Link href="/about" className="text-slate-600 hover:text-indigo-600 transition-colors">About Us</Link></li>
                 <li><Link href="/gallery" className="text-slate-600 hover:text-indigo-600 transition-colors">Work</Link></li>
@@ -125,12 +125,13 @@ export default function Footer() {
               </ul>
             </div>
             <div className="space-y-6 col-span-2 md:col-span-1">
-              <h4 className="font-bold tracking-tight text-lg">Stay Sharp</h4>
+              <h3 className="font-bold tracking-tight text-lg">Stay Sharp</h3>
               <p className="text-slate-600 text-sm font-medium">Get weekly growth tips, design trends & digital insights.</p>
               <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-3">
                 <input
                   type="email"
                   placeholder="hello@world.com"
+                  aria-label="Email address for newsletter"
                   className="bg-slate-100 border-none rounded-2xl px-5 py-4 text-sm w-full focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:bg-white transition-all duration-300 shadow-inner"
                   required
                 />

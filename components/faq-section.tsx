@@ -10,7 +10,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import JsonLd from "@/components/json-ld"
 
 interface FAQItem {
   id: string
@@ -81,23 +80,30 @@ const faqData: FAQItem[] = [
   },
 ]
 
-export default function FAQSection() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
+export { faqData }
 
+export default function FAQSection() {
   return (
     <section id="faq" className="py-20 sm:py-24 bg-white">
-      <JsonLd data={faqSchema} />
+      {/* FAQ Schema — rendered as static script to ensure crawlers always see it */}
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqData.map(item => ({
+              "@type": "Question",
+              "name": item.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+              }
+            }))
+          })
+        }}
+      />
 
       <div className="container mx-auto px-4">
         <motion.div
@@ -123,7 +129,7 @@ export default function FAQSection() {
             </p>
           </div>
 
-          {/* Accordion */}
+          {/* Accordion — all 12 items rendered for schema/content parity */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}

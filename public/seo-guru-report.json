@@ -1,0 +1,1903 @@
+{
+  "url": "http://localhost:3001/",
+  "timestamp": 1778248422596,
+  "favicon": "http://localhost:3001/favicon.svg",
+  "overallScore": 74,
+  "grade": {
+    "grade": "B",
+    "label": "Good",
+    "color": "ok"
+  },
+  "issueCounts": {
+    "errors": 6,
+    "warnings": 19,
+    "passed": 30
+  },
+  "modules": {
+    "meta": {
+      "name": "meta",
+      "score": 84,
+      "data": {
+        "title": {
+          "value": "ZENVIQ Digital | #1 Web Development & AI Agency in Hanumangarh",
+          "length": 62,
+          "status": "warning"
+        },
+        "description": {
+          "value": "ZENVIQ Digital is the best website development company in Hanumangarh, Rajasthan. We offer web development, SEO, digital marketing, Google promotion, WhatsApp marketing, AI automation & e-commerce solutions. Trusted by 50+ businesses across Hanumangarh, Ganganagar & Bathinda.",
+          "length": 276,
+          "status": "warning"
+        },
+        "canonical": {
+          "value": "https://www.zenviqdigital.in",
+          "status": "pass"
+        },
+        "robots": {
+          "value": "index, follow",
+          "status": "pass"
+        },
+        "viewport": {
+          "value": "width=device-width, initial-scale=1",
+          "status": "pass"
+        },
+        "charset": {
+          "value": "utf-8",
+          "status": "pass"
+        },
+        "lang": {
+          "value": "en",
+          "status": "pass"
+        },
+        "favicon": {
+          "value": "/favicon.svg",
+          "status": "pass"
+        }
+      },
+      "issues": [
+        {
+          "severity": "warning",
+          "message": "Title is too long (62 chars). May be truncated in search results. Aim for 50-60 characters."
+        },
+        {
+          "severity": "warning",
+          "message": "Meta description is long (276 chars). May be truncated. Aim for 150-160 characters."
+        },
+        {
+          "severity": "pass",
+          "message": "Robots directive: index, follow"
+        },
+        {
+          "severity": "pass",
+          "message": "Viewport meta tag is properly configured"
+        },
+        {
+          "severity": "pass",
+          "message": "Canonical URL: https://www.zenviqdigital.in"
+        },
+        {
+          "severity": "pass",
+          "message": "Charset is UTF-8"
+        },
+        {
+          "severity": "pass",
+          "message": "Language: en"
+        },
+        {
+          "severity": "pass",
+          "message": "Favicon found"
+        },
+        {
+          "severity": "warning",
+          "message": "Duplicate meta tags found: author",
+          "details": [
+            "author"
+          ]
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 3,
+        "passed": 6,
+        "info": 0
+      },
+      "displayName": "Meta Tags",
+      "status": "ok"
+    },
+    "content": {
+      "name": "content",
+      "score": 69,
+      "data": {
+        "wordCount": 1232,
+        "readability": {
+          "fleschScore": 0,
+          "grade": "College graduate"
+        },
+        "paragraphs": {
+          "count": 91,
+          "avgLength": 10
+        },
+        "textToHtmlRatio": "3%",
+        "emphasis": {
+          "strong": 19,
+          "em": 0,
+          "b": 0,
+          "i": 0
+        }
+      },
+      "issues": [
+        {
+          "severity": "pass",
+          "message": "Good content length: 1232 words"
+        },
+        {
+          "severity": "warning",
+          "message": "Content is very difficult to read (Flesch score: 0, ~College graduate). Simplify for wider audience."
+        },
+        {
+          "severity": "pass",
+          "message": "91 paragraphs, avg 10 words each"
+        },
+        {
+          "severity": "warning",
+          "message": "Low text-to-HTML ratio (3%). Page may be bloated with code. Aim for 25%+."
+        },
+        {
+          "severity": "pass",
+          "message": "Emphasis tags used: 19 total (strong: 19, em: 0)"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 2,
+        "passed": 3,
+        "info": 0
+      },
+      "displayName": "Content",
+      "status": "warn"
+    },
+    "headings": {
+      "name": "headings",
+      "score": 71,
+      "data": {
+        "h1Count": 2,
+        "totalHeadings": 66,
+        "hierarchy": false,
+        "outline": [
+          {
+            "level": 1,
+            "text": "We Craft Premium Digital Experiences in Hanumangarh",
+            "indent": ""
+          },
+          {
+            "level": 2,
+            "text": "Everything Your Brand Needs to Grow",
+            "indent": "  "
+          },
+          {
+            "level": 3,
+            "text": "Web Development",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "UI/UX Design",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "AI & Automation",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Software Development",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "E-commerce Solutions",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Marketing & SEO",
+            "indent": "    "
+          },
+          {
+            "level": 2,
+            "text": "Case Studies",
+            "indent": "  "
+          },
+          {
+            "level": 3,
+            "text": "Antiquity Digital — Full Brand Website",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "ScrollinPanda — Refurbished Laptops",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Elite Decors — Balloon & Floral",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Helping Hands — Animal Welfare",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "GM Resort — Premium Stay Experience",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Reliable Diagnostics Centre",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Antiquity Digital — Full Brand Website",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "ScrollinPanda — Refurbished Laptops",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Elite Decors — Balloon & Floral",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Helping Hands — Animal Welfare",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "GM Resort — Premium Stay Experience",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Reliable Diagnostics Centre",
+            "indent": "    "
+          },
+          {
+            "level": 2,
+            "text": "What Our Clients Are Saying",
+            "indent": "  "
+          },
+          {
+            "level": 3,
+            "text": "Aarav Sharma",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Priya Venkatesh",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Rohan Das",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Ishita Malhotra",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Vikram Singh",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Ananya Reddy",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Siddharth Gupta",
+            "indent": "    "
+          },
+          {
+            "level": 2,
+            "text": "Frequently Asked Questions",
+            "indent": "  "
+          },
+          {
+            "level": 3,
+            "text": "What services does ZENVIQ offer?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "How long does it take to build a website?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Do you provide support after the project is delivered?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "How much does a website or digital project cost?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Do you work with clients outside Hanumangarh?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "What technologies does ZENVIQ use?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Who is the best website developer in Hanumangarh?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "How much does a website cost in Hanumangarh?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Which is the best digital marketing agency in Hanumangarh?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Do you provide SEO services in Hanumangarh?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Can ZENVIQ build an e-commerce website in Hanumangarh?",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Does ZENVIQ offer social media marketing in Hanumangarh?",
+            "indent": "    "
+          },
+          {
+            "level": 2,
+            "text": "रुद्रा — Rudra",
+            "indent": "  "
+          },
+          {
+            "level": 2,
+            "text": "Tools You'll Love 🛠️",
+            "indent": "  "
+          },
+          {
+            "level": 3,
+            "text": "Social Media Downloader",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "AI Content Generator",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Pinterest Downloader",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "EMI Calculator",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "GST Calculator",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Percentage Calculator",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "SKU Generator",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Case Converter",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Word Counter",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "AI Image Generator",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "CSS Unit Converter",
+            "indent": "    "
+          },
+          {
+            "level": 2,
+            "text": "Built With the Best Tools",
+            "indent": "  "
+          },
+          {
+            "level": 2,
+            "text": "Meet the Humans Behind ZENVIQ",
+            "indent": "  "
+          },
+          {
+            "level": 3,
+            "text": "Samir Sain",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Aditya Raj",
+            "indent": "    "
+          },
+          {
+            "level": 3,
+            "text": "Yogi Sahu",
+            "indent": "    "
+          },
+          {
+            "level": 2,
+            "text": "Best Digital Agency in Hanumangarh, Rajasthan",
+            "indent": "  "
+          },
+          {
+            "level": 1,
+            "text": "ZENVIQ DIGITAL",
+            "indent": ""
+          },
+          {
+            "level": 2,
+            "text": "Let's build something your competitors will envy.",
+            "indent": "  "
+          },
+          {
+            "level": 4,
+            "text": "Services",
+            "indent": "      "
+          },
+          {
+            "level": 4,
+            "text": "Agency",
+            "indent": "      "
+          },
+          {
+            "level": 4,
+            "text": "Stay Sharp",
+            "indent": "      "
+          }
+        ],
+        "headingCounts": {
+          "h1": 2,
+          "h2": 10,
+          "h3": 51,
+          "h4": 3,
+          "h5": 0,
+          "h6": 0
+        }
+      },
+      "issues": [
+        {
+          "severity": "warning",
+          "message": "Multiple H1 tags found (2). Use exactly one H1 per page.",
+          "details": [
+            "We Craft Premium Digital Experiences in Hanumangarh",
+            "ZENVIQ DIGITAL"
+          ]
+        },
+        {
+          "severity": "warning",
+          "message": "Skipped heading level: H2 → H4 (missing H3)"
+        },
+        {
+          "severity": "pass",
+          "message": "No empty headings"
+        },
+        {
+          "severity": "pass",
+          "message": "All headings are concise (≤70 chars)"
+        },
+        {
+          "severity": "info",
+          "message": "66 headings found",
+          "details": {
+            "h1": 2,
+            "h2": 10,
+            "h3": 51,
+            "h4": 3
+          }
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 2,
+        "passed": 2,
+        "info": 1
+      },
+      "displayName": "Headings",
+      "status": "ok"
+    },
+    "links": {
+      "name": "links",
+      "score": 63,
+      "data": {
+        "total": 85,
+        "internal": 55,
+        "external": 30,
+        "nofollow": 0,
+        "emptyAnchors": 14,
+        "genericAnchors": 6,
+        "jsLinks": 0
+      },
+      "issues": [
+        {
+          "severity": "pass",
+          "message": "55 internal links found"
+        },
+        {
+          "severity": "info",
+          "message": "30 external link(s) found"
+        },
+        {
+          "severity": "warning",
+          "message": "14 link(s) with no visible text or image. Add descriptive anchor text."
+        },
+        {
+          "severity": "warning",
+          "message": "6 link(s) use generic text (\"click here\", \"read more\"). Use descriptive anchor text.",
+          "details": [
+            {
+              "text": "Learn more",
+              "href": "/services#web-development"
+            },
+            {
+              "text": "Learn more",
+              "href": "/services#ui/ux-design"
+            },
+            {
+              "text": "Learn more",
+              "href": "/services#ai-automation"
+            },
+            {
+              "text": "Learn more",
+              "href": "/services#software-development"
+            },
+            {
+              "text": "Learn more",
+              "href": "/services#e-commerce-solutions"
+            }
+          ]
+        },
+        {
+          "severity": "warning",
+          "message": "2 link(s) open in new tab without rel=\"noopener noreferrer\". Security risk."
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 3,
+        "passed": 1,
+        "info": 1
+      },
+      "displayName": "Links",
+      "status": "warn"
+    },
+    "images": {
+      "name": "images",
+      "score": 80,
+      "data": {
+        "totalImages": 37,
+        "missingAlt": 0,
+        "emptyAlt": 1,
+        "modernFormat": 0,
+        "legacyFormat": 1,
+        "lazyLoaded": 34,
+        "missingDimensions": 13,
+        "srcset": 34,
+        "pictureElements": 0
+      },
+      "issues": [
+        {
+          "severity": "pass",
+          "message": "All images have alt attributes"
+        },
+        {
+          "severity": "warning",
+          "message": "1 image(s) have empty alt text. Ensure intentional (decorative) or add descriptions."
+        },
+        {
+          "severity": "warning",
+          "message": "All 1 images use legacy formats. Consider WebP or AVIF for smaller file sizes."
+        },
+        {
+          "severity": "warning",
+          "message": "2 below-fold image(s) not using loading=\"lazy\". Lazy loading improves page speed."
+        },
+        {
+          "severity": "warning",
+          "message": "13 image(s) missing explicit width/height. This can cause layout shifts (CLS)."
+        },
+        {
+          "severity": "pass",
+          "message": "Responsive images: 34 srcset, 0 <picture> elements"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 4,
+        "passed": 2,
+        "info": 0
+      },
+      "displayName": "Images",
+      "status": "ok"
+    },
+    "schema": {
+      "name": "schema",
+      "score": 100,
+      "data": {
+        "totalSchemas": 4,
+        "schemas": [
+          {
+            "type": "Organization",
+            "format": "JSON-LD",
+            "valid": true
+          },
+          {
+            "type": "ItemList",
+            "format": "JSON-LD",
+            "valid": true
+          },
+          {
+            "type": "WebSite",
+            "format": "JSON-LD",
+            "valid": true
+          },
+          {
+            "type": "FAQPage",
+            "format": "JSON-LD",
+            "valid": true
+          }
+        ],
+        "opportunities": [
+          "Consider adding BreadcrumbList schema for navigation breadcrumbs"
+        ]
+      },
+      "issues": [
+        {
+          "severity": "pass",
+          "message": "Organization schema has all required properties"
+        },
+        {
+          "severity": "pass",
+          "message": "ItemList schema detected (JSON-LD)"
+        },
+        {
+          "severity": "pass",
+          "message": "WebSite schema has all required properties"
+        },
+        {
+          "severity": "pass",
+          "message": "FAQPage schema has all required properties"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 0,
+        "passed": 4,
+        "info": 0
+      },
+      "displayName": "Schema",
+      "status": "pass"
+    },
+    "keywords": {
+      "name": "keywords",
+      "score": 100,
+      "data": {
+        "totalWords": 935,
+        "topKeywords": [
+          {
+            "term": "digital",
+            "count": 26,
+            "density": 2.8
+          },
+          {
+            "term": "hanumangarh",
+            "count": 16,
+            "density": 1.7
+          },
+          {
+            "term": "website",
+            "count": 15,
+            "density": 1.6
+          },
+          {
+            "term": "agency",
+            "count": 12,
+            "density": 1.3
+          },
+          {
+            "term": "zenviq",
+            "count": 12,
+            "density": 1.3
+          },
+          {
+            "term": "seo",
+            "count": 10,
+            "density": 1.1
+          },
+          {
+            "term": "brand",
+            "count": 8,
+            "density": 0.9
+          },
+          {
+            "term": "premium",
+            "count": 7,
+            "density": 0.7
+          },
+          {
+            "term": "e-commerce",
+            "count": 7,
+            "density": 0.7
+          },
+          {
+            "term": "marketing",
+            "count": 7,
+            "density": 0.7
+          }
+        ],
+        "topBigrams": [
+          {
+            "term": "digital agency",
+            "count": 7,
+            "density": 0.7
+          },
+          {
+            "term": "web development",
+            "count": 4,
+            "density": 0.4
+          },
+          {
+            "term": "agency hanumangarh",
+            "count": 4,
+            "density": 0.4
+          },
+          {
+            "term": "e-commerce store",
+            "count": 3,
+            "density": 0.3
+          },
+          {
+            "term": "digital marketing",
+            "count": 3,
+            "density": 0.3
+          }
+        ],
+        "topTrigrams": [
+          {
+            "term": "leading digital agency",
+            "count": 2,
+            "density": 0.2
+          },
+          {
+            "term": "modern technology strategic",
+            "count": 2,
+            "density": 0.2
+          },
+          {
+            "term": "technology strategic design",
+            "count": 2,
+            "density": 0.2
+          },
+          {
+            "term": "agencyantiquity digital full",
+            "count": 2,
+            "density": 0.2
+          },
+          {
+            "term": "digital full brand",
+            "count": 2,
+            "density": 0.2
+          }
+        ]
+      },
+      "issues": [
+        {
+          "severity": "pass",
+          "message": "No keyword stuffing detected"
+        },
+        {
+          "severity": "pass",
+          "message": "Top keyword \"digital\" placement: 5/6 key positions"
+        },
+        {
+          "severity": "pass",
+          "message": "Good keyword variety: 5 meaningful 2-word phrases detected"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 0,
+        "passed": 3,
+        "info": 0
+      },
+      "displayName": "Keywords",
+      "status": "pass"
+    },
+    "speed": {
+      "name": "speed",
+      "score": 47,
+      "data": {
+        "metrics": {
+          "ttfb": 21983,
+          "fcp": 22488,
+          "lcp": null,
+          "domNodes": 1708
+        },
+        "resources": {
+          "scripts": 82,
+          "externalScripts": 4,
+          "stylesheets": 1,
+          "total": 18
+        }
+      },
+      "issues": [
+        {
+          "severity": "error",
+          "message": "Very slow TTFB: 21983ms — server response is too slow"
+        },
+        {
+          "severity": "error",
+          "message": "Poor FCP: 22488ms — page content appears too slowly"
+        },
+        {
+          "severity": "warning",
+          "message": "Large DOM: 1708 nodes — may affect performance. Aim for under 1500."
+        },
+        {
+          "severity": "warning",
+          "message": "82 scripts on page — consider reducing or deferring"
+        },
+        {
+          "severity": "info",
+          "message": "4 third-party scripts"
+        },
+        {
+          "severity": "pass",
+          "message": "1 stylesheet(s)"
+        }
+      ],
+      "counts": {
+        "errors": 2,
+        "warnings": 2,
+        "passed": 1,
+        "info": 1
+      },
+      "displayName": "Speed",
+      "status": "fail"
+    },
+    "social": {
+      "name": "social",
+      "score": 100,
+      "data": {
+        "og": {
+          "title": "ZENVIQ Digital | #1 Web Development & AI Agency in Hanumangarh",
+          "description": "Best website development company in Hanumangarh, Rajasthan. Web development, SEO, Google promotion, WhatsApp marketing, AI chatbots & e-commerce. Trusted by 50+ businesses.",
+          "image": "https://www.zenviqdigital.in/og-image.jpg",
+          "url": "https://www.zenviqdigital.in",
+          "type": "website",
+          "totalTags": 10
+        },
+        "twitter": {
+          "card": "summary_large_image",
+          "title": "ZENVIQ Digital | #1 Web Development & AI Agency in Hanumangarh",
+          "description": "Best web development & digital marketing company in Hanumangarh, Rajasthan. Website design, SEO, Google Ads, AI automation & WhatsApp marketing. Get free quote.",
+          "image": "https://www.zenviqdigital.in/og-image.jpg",
+          "totalTags": 6
+        }
+      },
+      "issues": [
+        {
+          "severity": "pass",
+          "message": "All essential Open Graph tags present"
+        },
+        {
+          "severity": "warning",
+          "message": "og:title is long (62 chars) — may be truncated on social platforms"
+        },
+        {
+          "severity": "pass",
+          "message": "og:image set: https://www.zenviqdigital.in/og-image.jpg"
+        },
+        {
+          "severity": "pass",
+          "message": "Twitter Card tags complete (type: summary_large_image)"
+        },
+        {
+          "severity": "pass",
+          "message": "Twitter image set"
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 1,
+        "passed": 4,
+        "info": 0
+      },
+      "displayName": "Social",
+      "status": "pass"
+    },
+    "security": {
+      "name": "security",
+      "score": 30,
+      "data": {
+        "isHttps": false,
+        "mixedContent": [],
+        "insecureForms": [
+          "http://localhost:3001/"
+        ],
+        "headers": {
+          "csp": null,
+          "xfo": "DENY",
+          "sts": null,
+          "xcto": "nosniff"
+        }
+      },
+      "issues": [
+        {
+          "severity": "error",
+          "message": "Page is not using HTTPS. Insecure connection."
+        },
+        {
+          "severity": "error",
+          "message": "Found 1 form(s) submitting to insecure HTTP endpoints."
+        },
+        {
+          "severity": "warning",
+          "message": "Content-Security-Policy header is missing."
+        }
+      ],
+      "counts": {
+        "errors": 2,
+        "warnings": 1,
+        "passed": 0,
+        "info": 0
+      },
+      "displayName": "Security",
+      "status": "fail"
+    },
+    "mobile": {
+      "name": "mobile",
+      "score": 80,
+      "data": {
+        "clickables": [
+          {
+            "tag": "a",
+            "text": "",
+            "width": 120,
+            "height": 36.708335876464844,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Home",
+            "width": 38.5,
+            "height": 18.666667938232422,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Services",
+            "width": 51.625,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Our Work",
+            "width": 61.84375,
+            "height": 18.666667938232422,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Tools",
+            "width": 32.78125,
+            "height": 18.666667938232422,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Blog",
+            "width": 28.916667938232422,
+            "height": 18.666667938232422,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "About Us",
+            "width": 59.15625,
+            "height": 18.666667938232422,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Contact Us",
+            "width": 68.96875,
+            "height": 18.666667938232422,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Get a Quote",
+            "width": 124.79167175292969,
+            "height": 40,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "About us",
+            "width": 75.47917175292969,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Book a Free Call",
+            "width": 188.1875,
+            "height": 52,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Explore Services",
+            "width": 190.67709350585938,
+            "height": 52,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Learn more",
+            "width": 94.05208587646484,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Learn more",
+            "width": 94.05208587646484,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Learn more",
+            "width": 94.05208587646484,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Learn more",
+            "width": 94.05208587646484,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Learn more",
+            "width": 94.05208587646484,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Learn more",
+            "width": 94.05208587646484,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "DIGITAL AGENCY\nAntiquity Digit",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "E-COMMERCE\nScrollinPanda — Ref",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "EVENT DECOR\nElite Decors — Bal",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "NGO / NONPROFIT\nHelping Hands",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "HOSPITALITY\nGM Resort — Premiu",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "HEALTHCARE\nReliable Diagnostic",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "DIGITAL AGENCY\nAntiquity Digit",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "E-COMMERCE\nScrollinPanda — Ref",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "EVENT DECOR\nElite Decors — Bal",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "NGO / NONPROFIT\nHelping Hands",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "HOSPITALITY\nGM Resort — Premiu",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "HEALTHCARE\nReliable Diagnostic",
+            "width": 340,
+            "height": 428.8333435058594,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "What services does ZENVIQ offe",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "How long does it take to build",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "Do you provide support after t",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "How much does a website or dig",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "Do you work with clients outsi",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "What technologies does ZENVIQ",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "Who is the best website develo",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "How much does a website cost i",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "Which is the best digital mark",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "Do you provide SEO services in",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "Can ZENVIQ build an e-commerce",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "Does ZENVIQ offer social media",
+            "width": 718.6666870117188,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Get in touch",
+            "width": 143.3541717529297,
+            "height": 40,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Visit Rudra",
+            "width": 165.05209350585938,
+            "height": 48,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "View Source",
+            "width": 151.08334350585938,
+            "height": 48,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Popular\nSocial Media Downloade",
+            "width": 219.0046844482422,
+            "height": 289.5130310058594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "AI Tools\nAI Content Generator",
+            "width": 219.00469970703125,
+            "height": 270.9876403808594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Downloaders\nPinterest Download",
+            "width": 219.004638671875,
+            "height": 270.9876403808594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Calculators\nEMI Calculator\n\nCa",
+            "width": 219.004638671875,
+            "height": 270.9876403808594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Calculators\nGST Calculator\n\nCa",
+            "width": 219.004638671875,
+            "height": 270.9876403808594,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Calculators\nPercentage Calcula",
+            "width": 219.0046844482422,
+            "height": 270.98699951171875,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Generators\nSKU Generator\n\nGene",
+            "width": 219.00469970703125,
+            "height": 270.98699951171875,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Text Tools\nCase Converter\n\nTra",
+            "width": 219.004638671875,
+            "height": 270.98699951171875,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Text Tools\nWord Counter\n\nCount",
+            "width": 219.004638671875,
+            "height": 270.98699951171875,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "AI Tools\nAI Image Generator\n\nC",
+            "width": 219.004638671875,
+            "height": 270.98699951171875,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Dev Tools\nCSS Unit Converter",
+            "width": 219.0046844482422,
+            "height": 270.98699951171875,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Explore All Tools",
+            "width": 200.40625,
+            "height": 48,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Start a Project",
+            "width": 150.375,
+            "height": 48,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "View Services",
+            "width": 147.77084350585938,
+            "height": 48,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 36,
+            "height": 36,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Learn more about us",
+            "width": 203.28125,
+            "height": 44,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "free consultation",
+            "width": 122.51042175292969,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Web Development Hanumangarh",
+            "width": 192.73959350585938,
+            "height": 29.83333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "SEO Services Rajasthan",
+            "width": 140.42709350585938,
+            "height": 29.83333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Digital Marketing Hanumangarh",
+            "width": 186.95834350585938,
+            "height": 29.83333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "E-commerce Website",
+            "width": 130.7291717529297,
+            "height": 29.83333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "AI Automation",
+            "width": 98.55208587646484,
+            "height": 29.83333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "WordPress Developer",
+            "width": 132.6666717529297,
+            "height": 29.83333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "UI/UX Design",
+            "width": 92.79167175292969,
+            "height": 29.83333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Social Media Marketing",
+            "width": 143.15625,
+            "height": 29.83333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Book Strategy Call",
+            "width": 192.9375,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Explore Services",
+            "width": 183.7291717529297,
+            "height": 64,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 44,
+            "height": 44,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 44,
+            "height": 44,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 44,
+            "height": 44,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "",
+            "width": 44,
+            "height": 44,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Web Development",
+            "width": 135.21875,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "AI Automation",
+            "width": 106.5,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "SEO Services",
+            "width": 92.47917175292969,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "E-commerce",
+            "width": 90.4375,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "UI/UX Design",
+            "width": 98.125,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "About Us",
+            "width": 67.60417175292969,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Work",
+            "width": 38.927085876464844,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Insights",
+            "width": 56.71875,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Contact",
+            "width": 56.270835876464844,
+            "height": 21.33333396911621,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "Subscribe",
+            "width": 231.2604217529297,
+            "height": 52,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 44.90625,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 37.427085876464844,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "a",
+            "text": "Refund",
+            "width": 45.38541793823242,
+            "height": 20,
+            "hidden": false
+          },
+          {
+            "tag": "button",
+            "text": "",
+            "width": 56,
+            "height": 56,
+            "hidden": false
+          }
+        ],
+        "viewportWidth": 1280,
+        "bodyScrollWidth": 1265,
+        "hasHorizontalScroll": false
+      },
+      "issues": [
+        {
+          "severity": "pass",
+          "message": "Responsive viewport meta tag is properly configured."
+        },
+        {
+          "severity": "pass",
+          "message": "Content fits within the viewport."
+        },
+        {
+          "severity": "warning",
+          "message": "Found 46 clickable element(s) with tap targets smaller than 40x40px. These can be hard to tap on mobile."
+        }
+      ],
+      "counts": {
+        "errors": 0,
+        "warnings": 1,
+        "passed": 2,
+        "info": 0
+      },
+      "displayName": "Mobile",
+      "status": "ok"
+    },
+    "accessibility": {
+      "name": "accessibility",
+      "score": 90,
+      "data": {
+        "inputs": [
+          {
+            "type": "email",
+            "name": "unknown",
+            "hasAccessibleName": false,
+            "hidden": false
+          }
+        ],
+        "buttons": [
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": true,
+            "hidden": false
+          },
+          {
+            "hasAccessibleName": false,
+            "hidden": false
+          }
+        ],
+        "positiveTabIndexCount": 0
+      },
+      "issues": [
+        {
+          "severity": "pass",
+          "message": "HTML lang attribute is set (en)."
+        },
+        {
+          "severity": "error",
+          "message": "Found 1 form input(s) missing an associated <label> or aria-label."
+        },
+        {
+          "severity": "error",
+          "message": "Found 1 button(s) missing an accessible name (empty text, no aria-label)."
+        },
+        {
+          "severity": "pass",
+          "message": "All images have an alt attribute."
+        }
+      ],
+      "counts": {
+        "errors": 2,
+        "warnings": 0,
+        "passed": 2,
+        "info": 0
+      },
+      "displayName": "Accessibility",
+      "status": "pass"
+    }
+  },
+  "rawBodyText": "HomeServicesOur WorkToolsBlogAbout UsContact UsGet a Quote#1 Digital Agency in HanumangarhAbout usWe Craft Premium Digital Experiences in HanumangarhZENVIQ is Hanumangarh's leading digital agency — crafting stunning websites, intelligent AI automation, and SEO strategies that put your brand ahead of the competition.Book a Free CallExplore Services*Free strategy consultation — No commitment required50+ Projects Delivered30+ Happy Clients98% Client RetentionEmpowering Businesses Across RajasthanEverything Your Brand Needs to GrowFrom idea to execution, ZENVIQ delivers end-to-end digital solutions with industry-leading precision — so you can focus on what matters most.Proven SolutionsWeb DevelopmentBlazing-fast Next.js websites and WordPress solutions engineered for performance, scalability, and conversions — tailored to your brand.Next.js & ReactWordPress & ShopifyPerformance OptimizedLearn moreDesign-FirstUI/UX DesignUser-centric interfaces backed by research, strategy, and pixel-perfect execution that turn visitors into loyal customers.Product StrategyInteractive PrototypesDesign SystemsLearn moreAI-Powered GrowthAI & AutomationIntelligent chatbots, workflow automation, and custom AI agents that save time, cut costs, and accelerate growth — 24/7.Custom ChatbotsProcess AutomationAI IntegrationLearn moreFuture-proof TechSoftware DevelopmentEnterprise-grade SaaS platforms, cloud-native APIs, and scalable architectures built with TypeScript and modern tooling.SaaS & CloudAPI DevelopmentScalable ArchitectureLearn moreBoost Sales 200%+E-commerce SolutionsRevenue-driving online stores on Shopify, WooCommerce, and custom platforms — designed to convert browsers into buyers.Shopify & WooCommercePayment IntegrationConversion OptimizedLearn moreOrganic GrowthMarketing & SEOData-driven SEO, content marketing, and branding strategies that dominate search rankings and deliver measurable ROI.Technical SEOContent StrategyBrand IdentityLearn moreOur WorkCase StudiesSee how we helped businesses scale with modern technology and strategic design.Digital AgencyAntiquity Digital — Full Brand WebsiteComplete agency website with SEO analytics dashboard and conversion tracking.Antiquity Digital+284% TrafficE-commerceScrollinPanda — Refurbished LaptopsFull e-commerce store with product catalog, search, and cart functionality.ScrollinPanda500+ ProductsEvent DecorElite Decors — Balloon & FloralPremium event decor website with gallery, booking, and 50+ themed packages.Elite Decors5000+ EventsNGO / NonprofitHelping Hands — Animal WelfareDonation platform with Razorpay integration and 80G tax receipt system.Helping Hands₹8.2L RaisedHospitalityGM Resort — Premium Stay ExperienceResort booking website with room gallery, amenities, and contact system.GM Resort4.9★ RatingHealthcareReliable Diagnostics CentreMedical diagnostics center with test catalog, booking, and report access.Reliable Diagnostics100+ TestsDigital AgencyAntiquity Digital — Full Brand WebsiteComplete agency website with SEO analytics dashboard and conversion tracking.Antiquity Digital+284% TrafficE-commerceScrollinPanda — Refurbished LaptopsFull e-commerce store with product catalog, search, and cart functionality.ScrollinPanda500+ ProductsEvent DecorElite Decors — Balloon & FloralPremium event decor website with gallery, booking, and 50+ themed packages.Elite Decors5000+ EventsNGO / NonprofitHelping Hands — Animal WelfareDonation platform with Razorpay integration and 80G tax receipt system.Helping Hands₹8.2L RaisedHospitalityGM Resort — Premium Stay ExperienceResort booking website with room gallery, amenities, and contact system.GM Resort4.9★ RatingHealthcareReliable Diagnostics CentreMedical diagnostics center with test catalog, booking, and report access.Reliable Diagnostics100+ TestsTrusted by Industry LeadersWhat Our Clients Are SayingReal feedback from businesses we've helped grow with modern technology and strategic design.“ZENVIQ ne humara kaam aasan kar diya. The automated chatbot they built handles 80% of our customer queries automatically. Service ekdum top-notch thi!”Aarav SharmaFounder, TechScale India“SEO results were slow initially, but after 3 months, our organic traffic skyrocketed. They know their craft properly. Highly recommended for long-term growth.”Priya VenkateshMarketing Head, Mumbai Trends“Their Next.js implementation is super fast. Professional team, deadlines meet karte hain, amazing experience overall.”Rohan DasCEO, Bengaluru Logistics“Design aesthetics are beautiful! They understood our brand voice perfectly. The new website looks premium and loads instantly.”Ishita MalhotraCo-Founder, ArtIsLife“No hidden charges, just pure work. Business inquiries 2x ho gayi hain. Best agency we've worked with.”Vikram SinghDirector, Singh Exports“ZENVIQ has been a key partner in our growth journey. Their support is exceptional — any issue fixed within hours.”Ananya ReddyProduct Lead, InnovateHub“ZENVIQ has been a true game-changer for us. Their exceptional service, combined with their deep expertise and commitment to excellence, has made a significant impact on our business.”Siddharth GuptaCTO, CloudNine SystemsFAQFrequently Asked QuestionsQuick answers to help you understand how we work.What services does ZENVIQ offer?ZENVIQ is a full-service digital agency based in Hanumangarh, Rajasthan. We offer premium web development (Next.js, React, WordPress), UI/UX design, AI-powered automation, e-commerce solutions, SEO, and digital marketing — everything your brand needs to dominate online.How long does it take to build a website?Do you provide support after the project is delivered?How much does a website or digital project cost?Do you work with clients outside Hanumangarh?What technologies does ZENVIQ use?Who is the best website developer in Hanumangarh?How much does a website cost in Hanumangarh?Which is the best digital marketing agency in Hanumangarh?Do you provide SEO services in Hanumangarh?Can ZENVIQ build an e-commerce website in Hanumangarh?Does ZENVIQ offer social media marketing in Hanumangarh?Still have questions?Get in touch🕉️📚🪷Our Own Productरुद्रा — Rudra Digital Museum of Timeless Wisdom — Preserving and connecting ancient Indian culture rooted in सनातन धर्म10+ Sacred TextsAI Spiritual GuideMulti-Script SupportDark ModeFully ResponsiveCinematic UINext.js 16TypeScriptTailwind CSSSupabaseGemini AIFramer MotionVisit RudraView SourceFree & PowerfulTools You'll Love 🛠️Discover our collection of free tools designed to supercharge your productivity🛠️⚡🚀PopularSocial Media DownloaderDownload from YouTube, Instagram, TikTok, Twitter & 10+ platformsTry NowAI ToolsAI Content GeneratorGenerate high-quality content for blogs, social media & marketingTry NowDownloadersPinterest DownloaderSave images & videos from Pinterest instantly with one clickTry NowCalculatorsEMI CalculatorCalculate loan EMI, interest rates & total repayment amountTry NowCalculatorsGST CalculatorCalculate GST amounts, tax rates & inclusive/exclusive pricingTry NowCalculatorsPercentage CalculatorCompute percentages, changes, discounts & markups instantlyTry NowGeneratorsSKU GeneratorGenerate unique product SKU codes for inventory managementTry NowText ToolsCase ConverterTransform text between upper, lower, title & sentence casesTry NowText ToolsWord CounterCount words, characters, sentences & reading time instantlyTry NowAI ToolsAI Image GeneratorCreate stunning images from text descriptions with AI magicTry NowDev ToolsCSS Unit ConverterConvert px, em, rem, %, vw, vh & other CSS units effortlesslyTry NowExplore All ToolsOur Tech StackBuilt With the Best ToolsWe leverage cutting-edge technologies to build fast, scalable, and beautiful digital products that drive real business results.Start a ProjectView ServicesThe Crew✨Meet the Humans Behind ZENVIQA tight-knit team of builders, designers & engineers who turn ideas into premium digital products.🚀Samir SainFounder & CEOFull-stack dev & AI specialist. Builds world-class digital products from strategy to ship.⚡Aditya RajProduct EngineerSaaS systems, AI workflows & automation. Designs, codes, ships, repeats.🎨Yogi SahuFrontend DeveloperPixel-perfect UIs with React & Next.js. Open source lover & CSS wizard.Learn more about usBest Digital Agency in Hanumangarh, RajasthanZENVIQ Digital is the leading digital agency in Hanumangarh, Rajasthan — trusted by businesses across the region for premium web development, SEO services, AI automation, and digital marketing. Whether you need a stunning business website, an e-commerce store, or want to dominate Google search results — ZENVIQ is your go-to partner.As the best website developer in Hanumangarh, we specialize in modern technologies like Next.js, React, WordPress, and Shopify to build fast, responsive, and SEO-optimized websites. Our SEO services in Hanumangarh include technical SEO audits, keyword research, on-page optimization, link building, and content strategy — all designed to get your business to page 1 of Google.We also offer social media marketing in Hanumangarh, e-commerce website development, UI/UX design, and custom AI chatbot development. From local shops in Hanumangarh to brands scaling across Rajasthan and India — ZENVIQ delivers digital solutions that convert visitors into customers.Looking for a web design company in Hanumangarh? Book a free consultation today and let's build something your competitors will envy.Web Development HanumangarhSEO Services RajasthanDigital Marketing HanumangarhE-commerce WebsiteAI AutomationWordPress DeveloperUI/UX DesignSocial Media MarketingZENVIQ DIGITALReady to grow your brand?Let's build something your competitors will envy.Partner with Hanumangarh's most trusted digital agency and transform your online presence into a growth engine.Book Strategy CallExplore ServicesHanumangarh's premier digital agency. We don't just build websites — we engineer brands that lead, convert, and inspire.ServicesWeb DevelopmentAI AutomationSEO ServicesE-commerceUI/UX DesignAgencyAbout UsWorkInsightsContactStay SharpGet weekly growth tips, design trends & digital insights.Subscribe© 2026 ZENVIQ. All rights reserved.PrivacyTermsRefundZENVIQ Digital | #1 Web Development & AI Agency in Hanumangarh",
+  "rawLinks": [
+    {
+      "rel": "stylesheet",
+      "href": "/_next/static/css/app/layout.css?v=1778248406632",
+      "type": "",
+      "sizes": ""
+    },
+    {
+      "rel": "preload",
+      "href": "/_next/static/chunks/webpack.js?v=1778248406632",
+      "type": "",
+      "sizes": ""
+    },
+    {
+      "rel": "preload",
+      "href": "https://www.googletagmanager.com/gtag/js?id=G-DMSQMC1Q80",
+      "type": "",
+      "sizes": ""
+    },
+    {
+      "rel": "icon",
+      "href": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": ""
+    },
+    {
+      "rel": "icon",
+      "href": "/logo.svg",
+      "type": "image/svg+xml",
+      "sizes": ""
+    },
+    {
+      "rel": "apple-touch-icon",
+      "href": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": ""
+    },
+    {
+      "rel": "icon",
+      "href": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": ""
+    },
+    {
+      "rel": "preload",
+      "href": "/logo.svg",
+      "type": "",
+      "sizes": ""
+    },
+    {
+      "rel": "author",
+      "href": "https://samirsain.com",
+      "type": "",
+      "sizes": ""
+    },
+    {
+      "rel": "author",
+      "href": "https://www.zenviqdigital.in",
+      "type": "",
+      "sizes": ""
+    },
+    {
+      "rel": "manifest",
+      "href": "/site.webmanifest",
+      "type": "",
+      "sizes": ""
+    },
+    {
+      "rel": "canonical",
+      "href": "https://www.zenviqdigital.in",
+      "type": "",
+      "sizes": ""
+    },
+    {
+      "rel": "shortcut icon",
+      "href": "/favicon.svg",
+      "type": "",
+      "sizes": ""
+    }
+  ]
+}
