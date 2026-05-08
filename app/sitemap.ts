@@ -21,6 +21,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: page.priority,
     }))
 
+    // Individual service pages — high SEO value
+    const servicePages = [
+        '/services/web-development',
+        '/services/seo-optimization',
+        '/services/ai-automation',
+        '/services/ecommerce-development',
+        '/services/ui-ux-design',
+    ].map((route) => ({
+        url: `${baseUrl}${route}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.9,
+    }))
+
+    // City landing pages — critical for local SEO
+    const cityPages = [
+        '/web-development-hanumangarh',
+        '/web-development-ganganagar',
+        '/web-development-bathinda',
+    ].map((route) => ({
+        url: `${baseUrl}${route}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.9,
+    }))
+
     // Tool pages — high value for organic traffic
     const toolPages = [
         '/tools/social-downloader',
@@ -56,5 +82,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }))
 
-    return [...corePages, ...toolPages, ...legalPages, ...blogRoutes]
+    return [...corePages, ...servicePages, ...cityPages, ...toolPages, ...legalPages, ...blogRoutes]
 }

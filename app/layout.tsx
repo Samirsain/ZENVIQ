@@ -31,38 +31,68 @@ export const metadata: Metadata = {
     template: "%s | ZENVIQ Digital — Hanumangarh",
   },
   description:
-    "ZENVIQ is Hanumangarh's top-rated digital agency delivering premium websites, AI-powered automation, and result-driven SEO. From local startups to national brands — we craft digital experiences that convert.",
+    "ZENVIQ Digital is the best website development company in Hanumangarh, Rajasthan. We offer web development, SEO, digital marketing, Google promotion, WhatsApp marketing, AI automation & e-commerce solutions. Trusted by 50+ businesses across Hanumangarh, Ganganagar & Bathinda.",
   keywords: [
+    // Brand
     "ZENVIQ Digital",
-    "digital agency Hanumangarh",
+    "ZENVIQ",
+    "zenviq digital agency",
+    // Primary — Hanumangarh (beat Dextor Labs)
+    "best website development company in Hanumangarh",
+    "website development company in Hanumangarh",
     "web development Hanumangarh",
+    "website developer Hanumangarh",
     "website design Hanumangarh",
-    "best website developer Hanumangarh",
-    "website developer Hanumangarh Rajasthan",
+    "web design company Hanumangarh",
+    "best digital marketing agency in Hanumangarh",
+    "digital marketing company Hanumangarh",
     "SEO services Hanumangarh",
     "SEO company Hanumangarh",
-    "best SEO company Hanumangarh Rajasthan",
-    "digital marketing Hanumangarh",
-    "digital marketing agency Rajasthan",
+    "best SEO company Hanumangarh",
+    "local SEO Hanumangarh",
     "social media marketing Hanumangarh",
-    "best digital marketing company Hanumangarh",
     "ecommerce website Hanumangarh",
-    "web design company Hanumangarh",
-    "affordable web development Hanumangarh",
-    "AI automation agency India",
+    "IT company Hanumangarh",
+    "app development Hanumangarh",
+    "mobile app development Hanumangarh",
+    "WhatsApp marketing Hanumangarh",
+    "Google promotion Hanumangarh",
+    // City-wise (Dextor Labs strategy — steal it)
+    "website development company Ganganagar",
+    "digital marketing company Ganganagar",
+    "web developer Sri Ganganagar",
+    "website development company Bathinda",
+    "digital marketing company Bathinda",
+    "SEO services Rajasthan",
+    "web development company Rajasthan",
+    "digital marketing agency Rajasthan",
+    // Technology keywords (beat all competitors)
     "Next.js developer India",
+    "React developer Hanumangarh",
     "WordPress developer Hanumangarh",
     "Shopify developer Rajasthan",
-    "IT company Hanumangarh",
-    "graphic design Hanumangarh",
-    "PPC advertising Rajasthan",
+    "custom website development India",
+    // Service keywords (from InstaVyapar & OmSoft)
+    "Google first page promotion",
     "Google Ads management Hanumangarh",
-    "local SEO Hanumangarh",
-    "app development Hanumangarh",
-    "web development company Rajasthan",
+    "PPC advertising Rajasthan",
+    "SMO services Hanumangarh",
+    "content marketing Hanumangarh",
+    // AI advantage (no competitor has this)
+    "AI automation agency India",
+    "AI chatbot development India",
+    "business automation Rajasthan",
+    // Design keywords
     "UI/UX design agency Rajasthan",
+    "graphic design Hanumangarh",
+    "logo design Hanumangarh",
+    // High-intent buyer keywords
+    "affordable web development Hanumangarh",
+    "website cost Hanumangarh",
+    "best website developer near me",
+    "hire web developer Hanumangarh",
   ],
-  authors: [{ name: "ZENVIQ", url: "https://www.zenviqdigital.in" }],
+  authors: [{ name: "Samir Sain", url: "https://samirsain.com" }, { name: "ZENVIQ", url: "https://www.zenviqdigital.in" }],
   creator: "ZENVIQ Digital",
   publisher: "ZENVIQ Digital",
   alternates: {
@@ -71,20 +101,14 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/logo.svg", type: "image/svg+xml" },
     ],
-    shortcut: [{ url: "/favicon.ico" }],
+    shortcut: [{ url: "/favicon.svg" }],
     apple: [
-      { url: "/favicon.png", sizes: "180x180", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
     other: [
-      {
-        rel: "icon",
-        url: "/favicon.ico",
-      },
       {
         rel: "icon",
         url: "/favicon.svg",
@@ -93,9 +117,9 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "ZENVIQ Digital | Hanumangarh's Premier Web & AI Agency",
+    title: "ZENVIQ Digital | #1 Web Development & AI Agency in Hanumangarh",
     description:
-      "From stunning websites to intelligent automation — ZENVIQ is the digital partner businesses in Hanumangarh and beyond trust for results that matter.",
+      "Best website development company in Hanumangarh, Rajasthan. Web development, SEO, Google promotion, WhatsApp marketing, AI chatbots & e-commerce. Trusted by 50+ businesses.",
     type: "website",
     siteName: "ZENVIQ Digital",
     url: "https://www.zenviqdigital.in",
@@ -111,9 +135,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ZENVIQ Digital | Best Web Development Agency in Hanumangarh",
+    title: "ZENVIQ Digital | #1 Web Development & AI Agency in Hanumangarh",
     description:
-      "Premium websites, AI automation & SEO by Hanumangarh's most trusted digital agency. Let's grow your brand together.",
+      "Best web development & digital marketing company in Hanumangarh, Rajasthan. Website design, SEO, Google Ads, AI automation & WhatsApp marketing. Get free quote.",
     site: "@zenviq",
     creator: "@zenviq",
     images: ["/og-image.jpg"],
@@ -192,6 +216,10 @@ const organizationSchema = {
   },
   "areaServed": [
     { "@type": "City", "name": "Hanumangarh" },
+    { "@type": "City", "name": "Sri Ganganagar" },
+    { "@type": "City", "name": "Bathinda" },
+    { "@type": "City", "name": "Nohar" },
+    { "@type": "City", "name": "Bikaner" },
     { "@type": "State", "name": "Rajasthan" },
     { "@type": "Country", "name": "India" }
   ],
@@ -203,24 +231,27 @@ const organizationSchema = {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Web Development in Hanumangarh",
-          "description": "Custom website design and development using Next.js, WordPress, and modern frameworks for businesses in Hanumangarh and Rajasthan."
+          "name": "Website Development in Hanumangarh",
+          "description": "Custom website design and development using Next.js, WordPress, React, and Shopify for businesses in Hanumangarh, Ganganagar, and Rajasthan.",
+          "url": "https://www.zenviqdigital.in/services/web-development"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "SEO Services Hanumangarh",
-          "description": "Search engine optimization, keyword research, on-page SEO, technical SEO, and local SEO services for businesses in Hanumangarh."
+          "name": "SEO Services in Hanumangarh",
+          "description": "Technical SEO audits, keyword research, on-page optimization, link building, local SEO, and Google first page promotion for businesses in Hanumangarh.",
+          "url": "https://www.zenviqdigital.in/services/seo-optimization"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Digital Marketing Hanumangarh",
-          "description": "Social media marketing, content marketing, Google Ads, and brand strategy for businesses in Hanumangarh and Rajasthan."
+          "name": "Digital Marketing & Google Promotion",
+          "description": "Social media marketing, Google Ads, PPC, content marketing, WhatsApp marketing, and brand strategy for businesses in Hanumangarh and Rajasthan.",
+          "url": "https://www.zenviqdigital.in/services"
         }
       },
       {
@@ -228,15 +259,34 @@ const organizationSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "AI Automation & Chatbot Development",
-          "description": "Custom AI chatbots, workflow automation, and intelligent business solutions."
+          "description": "Custom AI chatbots, WhatsApp automation, workflow automation, and intelligent business solutions for 24/7 customer support.",
+          "url": "https://www.zenviqdigital.in/services/ai-automation"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "E-commerce Website Development",
-          "description": "Shopify, WooCommerce, and custom e-commerce store development for online selling."
+          "name": "E-commerce Website Development in Hanumangarh",
+          "description": "Shopify, WooCommerce, and custom e-commerce stores with Razorpay, UPI payment integration for online selling in India.",
+          "url": "https://www.zenviqdigital.in/services/ecommerce-development"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "UI/UX Design Services in Hanumangarh",
+          "description": "Premium user interface and experience design, wireframing, prototyping, and design systems for websites and mobile apps.",
+          "url": "https://www.zenviqdigital.in/services/ui-ux-design"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mobile App Development in Hanumangarh",
+          "description": "Custom mobile app development using React Native and Flutter for businesses in Hanumangarh and Rajasthan."
         }
       }
     ]
@@ -281,60 +331,7 @@ const websiteSchema = {
     "query-input": "required name=search_term_string"
   }
 }
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Who is the best website developer in Hanumangarh?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ZENVIQ Digital is Hanumangarh's top-rated website developer. We specialize in Next.js, WordPress, Shopify, and custom web development. Our team has delivered 50+ projects for businesses across Rajasthan with a 98% client retention rate."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does a website cost in Hanumangarh?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Website costs in Hanumangarh range from ₹5,000 for a basic business website to ₹50,000+ for custom e-commerce stores and web applications. ZENVIQ offers competitive, transparent pricing with no hidden fees. Contact us for a free quote."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which is the best digital marketing agency in Hanumangarh?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ZENVIQ Digital is the best digital marketing agency in Hanumangarh, offering SEO, social media marketing, Google Ads, content marketing, and brand strategy. We help local businesses rank on page 1 of Google and grow their online presence."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you provide SEO services in Hanumangarh?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! ZENVIQ provides comprehensive SEO services in Hanumangarh including technical SEO audits, keyword research, on-page optimization, link building, local SEO, and content strategy. We've helped dozens of businesses achieve page 1 rankings on Google."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can ZENVIQ build an e-commerce website in Hanumangarh?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Absolutely! ZENVIQ builds high-converting e-commerce websites using Shopify, WooCommerce, and custom platforms. We handle everything from product setup and payment integration to SEO optimization and mobile-responsive design."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does ZENVIQ offer social media marketing in Hanumangarh?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, we provide full social media marketing services in Hanumangarh including Instagram marketing, Facebook Ads, content creation, community management, and brand awareness campaigns for businesses across Rajasthan."
-      }
-    }
-  ]
-}
+
 
 export default function RootLayout({
   children,
@@ -347,7 +344,6 @@ export default function RootLayout({
         <JsonLd data={organizationSchema} />
         <JsonLd data={siteNavigationSchema} />
         <JsonLd data={websiteSchema} />
-        <JsonLd data={faqSchema} />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-DMSQMC1Q80"

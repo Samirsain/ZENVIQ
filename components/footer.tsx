@@ -108,10 +108,11 @@ export default function Footer() {
             <div className="space-y-6">
               <h4 className="font-bold tracking-tight text-lg">Services</h4>
               <ul className="space-y-4 font-medium">
-                <li><Link href="/services" className="text-slate-600 hover:text-indigo-600 transition-colors">Web Design</Link></li>
-                <li><Link href="/services" className="text-slate-600 hover:text-indigo-600 transition-colors">AI Automation</Link></li>
-                <li><Link href="/services" className="text-slate-600 hover:text-indigo-600 transition-colors">SEO Growth</Link></li>
-                <li><Link href="/services" className="text-slate-600 hover:text-indigo-600 transition-colors">Branding</Link></li>
+                <li><Link href="/services/web-development" className="text-slate-600 hover:text-indigo-600 transition-colors">Web Development</Link></li>
+                <li><Link href="/services/ai-automation" className="text-slate-600 hover:text-indigo-600 transition-colors">AI Automation</Link></li>
+                <li><Link href="/services/seo-optimization" className="text-slate-600 hover:text-indigo-600 transition-colors">SEO Services</Link></li>
+                <li><Link href="/services/ecommerce-development" className="text-slate-600 hover:text-indigo-600 transition-colors">E-commerce</Link></li>
+                <li><Link href="/services/ui-ux-design" className="text-slate-600 hover:text-indigo-600 transition-colors">UI/UX Design</Link></li>
               </ul>
             </div>
             <div className="space-y-6">
@@ -147,7 +148,7 @@ export default function Footer() {
           <div className="flex gap-10">
             <Link href="/privacy" className="hover:text-indigo-600 transition-colors">Privacy</Link>
             <Link href="/terms" className="hover:text-indigo-600 transition-colors">Terms</Link>
-            <Link href="/cookies" className="hover:text-indigo-600 transition-colors">Cookies</Link>
+            <Link href="/refund" className="hover:text-indigo-600 transition-colors">Refund</Link>
           </div>
         </div>
 

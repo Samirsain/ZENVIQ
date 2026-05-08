@@ -1,19 +1,12 @@
 import ParallaxServices from "@/components/parallax-services"
 import ClientFeedback from "@/components/ui/testimonial"
 import FAQSection from "@/components/faq-section"
-import Newsletter from "@/components/newsletter"
-import Contact from "@/components/contact"
-
-import NewsletterSignup from "@/components/newsletter-signup"
 import ToolsCarousel from "@/components/tools-carousel"
 import Link from "next/link"
-import Image from "next/image"
 import HeroSection from "@/components/ui/hero-section"
-import { Button } from "@/components/ui/button"
 import { Sparkles } from "lucide-react"
 import { CaseStudiesCarousel } from "@/components/ui/case-studies-carousel"
 import StackFeatureSection from "@/components/ui/stack-feature-section"
-import GsapShowcase from "@/components/gsap-showcase"
 import RudraShowcase from "@/components/rudra-showcase"
 
 export default function Home() {
@@ -24,7 +17,6 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <ParallaxServices />
-        <GsapShowcase />
         <CaseStudiesCarousel />
         <ClientFeedback />
         <FAQSection />

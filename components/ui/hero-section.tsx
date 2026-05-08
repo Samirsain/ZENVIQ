@@ -1,93 +1,86 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useMotionTemplate, useAnimationFrame, MotionValue } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Sparkles, CheckCircle } from 'lucide-react';
 
-interface ProgramCard {
-  image: string;
-  category: string;
-  title: string;
-  href: string;
-}
-
-const programs: ProgramCard[] = [
-  {
-    image: '/project/antiquity.png',
-    category: 'DIGITAL AGENCY',
-    title: 'Antiquity Digital — Marketing Agency',
-    href: 'https://www.antiquitydigital.online/',
-  },
-  {
-    image: '/project/scrollinpanda.png',
-    category: 'E-COMMERCE',
-    title: 'ScrollinPanda — Refurbished Laptops',
-    href: 'https://www.scrollinpanda.com/',
-  },
-  {
-    image: '/project/eliteballondecor.png',
-    category: 'EVENT DECOR',
-    title: 'Elite Decors — Balloon & Floral',
-    href: 'https://www.eliteballondecor.com/',
-  },
-  {
-    image: '/project/halpinghand.png',
-    category: 'NGO / NONPROFIT',
-    title: 'Helping Hands — Animal Welfare',
-    href: 'https://www.helpinghandsfoundations.org/',
-  },
-  {
-    image: '/project/gmresort.png',
-    category: 'HOSPITALITY',
-    title: 'GM Resort — Premium Stay',
-    href: 'https://gmresort.vercel.app/',
-  },
-  {
-    image: '/project/dantel.png',
-    category: 'WEB DESIGN',
-    title: 'Dantel — Creative Website',
-    href: 'https://dantel-delta.vercel.app/',
-  },
-  {
-    image: '/project/relible.png',
-    category: 'HEALTHCARE',
-    title: 'Reliable Diagnostics Centre',
-    href: 'https://reliable-diagnostics-centre-4ou3.vercel.app/',
-  },
-  {
-    image: '/project/typewriter.png',
-    category: 'WEB APP',
-    title: 'Typewriter — Interactive Tool',
-    href: 'https://typewriter-virid.vercel.app/',
-  },
-  {
-    image: '/project/wish.png',
-    category: 'GREETING',
-    title: 'Wish Card — Digital Greetings',
-    href: 'https://wish-devsamir.vercel.app/',
-  },
-  {
-    image: '/project/meme.png',
-    category: 'ENTERTAINMENT',
-    title: 'ZENVIQ Meme — Meme Generator',
-    href: 'https://zenviq-meme.vercel.app/',
-  },
-];
+/* ── Animated Grid Pattern ── */
+const GridPattern = ({ offsetX, offsetY }: { offsetX: MotionValue<number>; offsetY: MotionValue<number> }) => (
+  <svg className="w-full h-full">
+    <defs>
+      <motion.pattern
+        id="hero-grid"
+        width="40"
+        height="40"
+        patternUnits="userSpaceOnUse"
+        x={offsetX}
+        y={offsetY}
+      >
+        <path
+          d="M 40 0 L 0 0 0 40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          className="text-slate-400"
+        />
+      </motion.pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#hero-grid)" />
+  </svg>
+);
 
 export default function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const gridOffsetX = useMotionValue(0);
+  const gridOffsetY = useMotionValue(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { left, top } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
+  };
+
+  useAnimationFrame(() => {
+    gridOffsetX.set((gridOffsetX.get() + 0.4) % 40);
+    gridOffsetY.set((gridOffsetY.get() + 0.4) % 40);
+  });
+
+  const maskImage = useMotionTemplate`radial-gradient(350px circle at ${mouseX}px ${mouseY}px, black, transparent)`;
+
   return (
     <section
       id="home"
-      className="relative w-full min-h-screen flex flex-col overflow-hidden"
-      style={{
-        background: 'linear-gradient(180deg, #E8F0FF 0%, #F5F9FF 50%, #FFFFFF 100%)',
-      }}
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      className="relative w-full flex flex-col overflow-hidden bg-white"
     >
+      {/* Grid — subtle base layer */}
+      <div className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none">
+        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+      </div>
+
+      {/* Grid — mouse-reveal layer */}
+      <motion.div
+        className="absolute inset-0 z-0 opacity-30 pointer-events-none"
+        style={{ maskImage, WebkitMaskImage: maskImage }}
+      >
+        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+      </motion.div>
+
+      {/* Color Glows */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <div className="absolute right-[-15%] top-[-15%] w-[35%] h-[35%] rounded-full bg-indigo-500/25 blur-[120px]" />
+        <div className="absolute right-[10%] top-[-5%] w-[20%] h-[20%] rounded-full bg-blue-500/20 blur-[100px]" />
+        <div className="absolute left-[-10%] bottom-[-15%] w-[30%] h-[30%] rounded-full bg-cyan-500/15 blur-[120px]" />
+      </div>
+
       {/* Main Content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 pt-40 md:pt-36 pb-8">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 pt-36 sm:pt-40 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -124,7 +117,7 @@ export default function HeroSection() {
             <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text text-transparent">
               Premium Digital
             </span>{' '}
-            Experiences
+            Experiences in Hanumangarh
           </h1>
 
           {/* Subtitle */}
@@ -179,15 +172,14 @@ export default function HeroSection() {
             *Free strategy consultation — No commitment required
           </motion.p>
 
-          {/* Social Proof — Premium Stats + Trusted Logos */}
+          {/* Stats Row */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             className="w-full max-w-2xl"
           >
-            {/* Stats Row */}
-            <div className="flex items-center justify-center gap-4 sm:gap-6 mb-8">
+            <div className="flex items-center justify-center gap-4 sm:gap-6">
               {[
                 { value: "50+", label: "Projects Delivered", icon: <Sparkles className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />, gradient: "from-amber-50 to-orange-50", border: "border-amber-200/60" },
                 { value: "30+", label: "Happy Clients", icon: <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />, gradient: "from-emerald-50 to-green-50", border: "border-emerald-200/60" },
@@ -208,30 +200,6 @@ export default function HeroSection() {
                   </div>
                 </motion.div>
               ))}
-            </div>
-
-            {/* Trusted By Logos */}
-            <div className="text-center">
-              <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-[0.2em] mb-4">
-                Trusted by leading brands
-              </p>
-              <div className="flex items-center justify-center gap-8 sm:gap-12">
-                {[
-                  { src: "/trustedby/client-1.png", alt: "Premium Client" },
-                  { src: "/trustedby/client-2.png", alt: "Hotel Gill Tower" },
-                  { src: "/trustedby/client-3.png", alt: "Lab Client" },
-                ].map((logo, i) => (
-                  <motion.img
-                    key={i}
-                    src={logo.src}
-                    alt={logo.alt}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1 + i * 0.12 }}
-                    className="h-8 sm:h-10 w-auto object-contain grayscale opacity-35 hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer"
-                  />
-                ))}
-              </div>
             </div>
           </motion.div>
         </motion.div>

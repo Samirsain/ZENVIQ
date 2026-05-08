@@ -47,37 +47,37 @@ export default function Header() {
       icon: Code,
       title: "Web Development",
       description: "E-commerce, Custom Apps, & Enterprise Solutions",
-      href: "/services#web-development"
+      href: "/services/web-development"
     },
     {
       icon: Palette,
       title: "UI/UX Design",
       description: "Product Design, Strategy, & User Research",
-      href: "/services#ui-ux-design"
+      href: "/services/ui-ux-design"
     },
     {
-      icon: Terminal,
-      title: "Software Development",
-      description: "SaaS, Cloud Solutions, & API Integration",
-      href: "/services#software-development"
+      icon: ShoppingCart,
+      title: "E-commerce Development",
+      description: "Shopify, WooCommerce, & Custom Stores",
+      href: "/services/ecommerce-development"
     },
     {
       icon: Smartphone,
-      title: "Mobile App Development",
-      description: "iOS, Android, & Cross-Platform Apps",
-      href: "/services#app-development"
+      title: "SEO & Google Ranking",
+      description: "Technical SEO, Local SEO, & Content Strategy",
+      href: "/services/seo-optimization"
     },
     {
       icon: Brain,
       title: "AI & Business Automation",
       description: "Chatbots, Data Intelligence, & Process Automation",
-      href: "/services#ai-automation"
+      href: "/services/ai-automation"
     },
     {
       icon: BarChart3,
-      title: "Marketing & SEO",
-      description: "SEO, Social Media, & Branding",
-      href: "/services#marketing-seo"
+      title: "Digital Marketing",
+      description: "Google Ads, Social Media, & WhatsApp Marketing",
+      href: "/services"
     }
   ]
 

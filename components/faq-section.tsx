@@ -49,6 +49,36 @@ const faqData: FAQItem[] = [
     question: "What technologies does ZENVIQ use?",
     answer: "We use cutting-edge technologies including Next.js, React, TypeScript, Node.js, Python, and modern AI/ML frameworks. We always choose the best tech stack for your specific project to ensure speed, scalability, and future-proof performance."
   },
+  {
+    id: "7",
+    question: "Who is the best website developer in Hanumangarh?",
+    answer: "ZENVIQ Digital is Hanumangarh's top-rated website developer. We specialize in Next.js, WordPress, Shopify, and custom web development. Our team has delivered 50+ projects for businesses across Rajasthan with a 98% client retention rate."
+  },
+  {
+    id: "8",
+    question: "How much does a website cost in Hanumangarh?",
+    answer: "Website costs in Hanumangarh range from ₹5,000 for a basic business website to ₹50,000+ for custom e-commerce stores and web applications. ZENVIQ offers competitive, transparent pricing with no hidden fees. Contact us for a free quote."
+  },
+  {
+    id: "9",
+    question: "Which is the best digital marketing agency in Hanumangarh?",
+    answer: "ZENVIQ Digital is the best digital marketing agency in Hanumangarh, offering SEO, social media marketing, Google Ads, content marketing, and brand strategy. We help local businesses rank on page 1 of Google and grow their online presence."
+  },
+  {
+    id: "10",
+    question: "Do you provide SEO services in Hanumangarh?",
+    answer: "Yes! ZENVIQ provides comprehensive SEO services in Hanumangarh including technical SEO audits, keyword research, on-page optimization, link building, local SEO, and content strategy. We've helped dozens of businesses achieve page 1 rankings on Google."
+  },
+  {
+    id: "11",
+    question: "Can ZENVIQ build an e-commerce website in Hanumangarh?",
+    answer: "Absolutely! ZENVIQ builds high-converting e-commerce websites using Shopify, WooCommerce, and custom platforms. We handle everything from product setup and payment integration to SEO optimization and mobile-responsive design."
+  },
+  {
+    id: "12",
+    question: "Does ZENVIQ offer social media marketing in Hanumangarh?",
+    answer: "Yes, we provide full social media marketing services in Hanumangarh including Instagram marketing, Facebook Ads, content creation, community management, and brand awareness campaigns for businesses across Rajasthan."
+  },
 ]
 
 export default function FAQSection() {

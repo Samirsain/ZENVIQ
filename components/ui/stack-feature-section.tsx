@@ -89,8 +89,8 @@ export default function StackFeatureSection() {
                   .slice(orbitIdx * iconsPerOrbit, orbitIdx * iconsPerOrbit + iconsPerOrbit)
                   .map((cfg, iconIdx) => {
                     const angle = iconIdx * angleStep;
-                    const x = 50 + 50 * Math.cos(angle);
-                    const y = 50 + 50 * Math.sin(angle);
+                    const x = Math.round((50 + 50 * Math.cos(angle)) * 100) / 100;
+                    const y = Math.round((50 + 50 * Math.sin(angle)) * 100) / 100;
 
                     return (
                       <div
@@ -100,7 +100,11 @@ export default function StackFeatureSection() {
                           left: `${x}%`,
                           top: `${y}%`,
                           transform: "translate(-50%, -50%)",
-                          animation: `stack-counter-spin ${14 + orbitIdx * 8}s linear infinite${orbitIdx % 2 === 1 ? ' reverse' : ''}`,
+                          animationName: "stack-counter-spin",
+                          animationDuration: `${14 + orbitIdx * 8}s`,
+                          animationTimingFunction: "linear",
+                          animationIterationCount: "infinite",
+                          animationDirection: orbitIdx % 2 === 1 ? "reverse" : "normal",
                         }}
                       >
                         <cfg.Icon className="w-6 h-6 sm:w-8 sm:h-8" style={{ color: cfg.color }} />
