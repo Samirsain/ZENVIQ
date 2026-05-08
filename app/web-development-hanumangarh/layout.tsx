@@ -55,7 +55,6 @@ const localBusinessSchema = {
   geo: { "@type": "GeoCoordinates", latitude: "29.5815", longitude: "74.3294" },
   areaServed: { "@type": "City", name: "Hanumangarh" },
   priceRange: "₹₹",
-  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "30", bestRating: "5" },
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {

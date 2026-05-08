@@ -118,10 +118,11 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://www.zenviqdigital.in/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ZENVIQ Digital — #1 Agency in Hanumangarh",
+        alt: "ZENVIQ Digital — #1 Web & AI Agency in Hanumangarh, Rajasthan",
+        type: "image/jpeg",
       },
     ],
   },
@@ -132,7 +133,7 @@ export const metadata: Metadata = {
       "Best web development & digital marketing in Hanumangarh, Rajasthan. SEO, AI automation & WhatsApp marketing. Get free quote.",
     site: "@zenviq",
     creator: "@zenviq",
-    images: ["/og-image.jpg"],
+    images: ["https://www.zenviqdigital.in/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -282,13 +283,6 @@ const organizationSchema = {
         }
       }
     ]
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "30",
-    "bestRating": "5",
-    "worstRating": "1"
   }
 }
 

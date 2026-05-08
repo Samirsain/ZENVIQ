@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import JsonLd from "@/components/json-ld"
 
 export const metadata: Metadata = {
     title: "Web Development & SEO Services in Hanumangarh | ZENVIQ Digital Agency",
@@ -28,10 +29,24 @@ export const metadata: Metadata = {
     },
 }
 
+const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.zenviqdigital.in" },
+        { "@type": "ListItem", position: 2, name: "Services", item: "https://www.zenviqdigital.in/services" },
+    ],
+}
+
 export default function ServicesLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
-    return <>{children}</>
+    return (
+        <>
+            <JsonLd data={breadcrumbSchema} />
+            {children}
+        </>
+    )
 }
