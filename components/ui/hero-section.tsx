@@ -131,18 +131,18 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.35 }}
-            className="flex flex-col sm:flex-row items-center gap-3"
+            className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto"
           >
             <Button
               asChild
               size="lg"
-              className="h-14 px-8 rounded-full bg-slate-900 hover:bg-slate-800 text-white shadow-xl shadow-slate-200 transition-all duration-300 font-semibold text-base"
+              className="w-full sm:w-auto h-11 sm:h-13 px-6 sm:px-8 rounded-full bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white shadow-lg shadow-slate-300/40 hover:shadow-xl hover:shadow-slate-400/30 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] font-semibold text-sm sm:text-base"
             >
               <a
                 href="https://calendly.com/zenviq/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2"
+                className="flex items-center justify-center gap-2"
               >
                 Book a Free Call
                 <Calendar className="w-4 h-4" />
@@ -153,11 +153,11 @@ export default function HeroSection() {
               asChild
               variant="outline"
               size="lg"
-              className="h-14 px-8 rounded-full border border-slate-200 hover:border-slate-300 bg-white/80 text-slate-700 shadow-stripe-sm transition-all duration-300 font-medium text-base"
+              className="w-full sm:w-auto h-11 sm:h-13 px-6 sm:px-8 rounded-full border border-slate-200 hover:border-indigo-200 bg-white/80 hover:bg-indigo-50/50 text-slate-700 hover:text-indigo-700 shadow-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] font-medium text-sm sm:text-base"
             >
-              <Link href="/services" className="flex items-center gap-2">
+              <Link href="/services" className="flex items-center justify-center gap-2">
                 Explore Services
-                <ArrowRight className="w-4 h-4 text-slate-400" />
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
           </motion.div>

@@ -17,9 +17,10 @@ import "./globals.css"
 
 const jost = Jost({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-jost",
   display: "swap",
+  preload: true,
 })
 
 import JsonLd from "@/components/json-ld"

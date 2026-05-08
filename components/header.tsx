@@ -14,6 +14,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false)
   const servicesRef = useRef<HTMLDivElement>(null)
+  const mobileServicesRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     let ticking = false
@@ -85,7 +86,12 @@ export default function Header() {
   // Close services dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+      const target = event.target as Node
+      const isOutsideDesktop = servicesRef.current && !servicesRef.current.contains(target)
+      const isOutsideMobile = mobileServicesRef.current && !mobileServicesRef.current.contains(target)
+      
+      // Only close if click is outside BOTH desktop and mobile refs
+      if (isOutsideDesktop && isOutsideMobile) {
         setIsServicesDropdownOpen(false)
       }
     }
@@ -122,14 +128,18 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <div key={link.href} className="relative" ref={link.hasDropdown ? servicesRef : null}>
+            <div
+              key={link.href}
+              className="relative"
+              ref={link.hasDropdown ? servicesRef : null}
+              onMouseEnter={link.hasDropdown ? () => setIsServicesDropdownOpen(true) : undefined}
+              onMouseLeave={link.hasDropdown ? () => setIsServicesDropdownOpen(false) : undefined}
+            >
               {link.hasDropdown ? (
                 <div
-                  className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                  onMouseEnter={() => setIsServicesDropdownOpen(true)}
-                  onMouseLeave={() => setIsServicesDropdownOpen(false)}
+                  className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer py-2"
                 >
-                  {link.label}
+                  <Link href={link.href}>{link.label}</Link>
                   <ChevronDown size={14} className={`transition-transform ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
                 </div>
               ) : (
@@ -144,10 +154,9 @@ export default function Header() {
               {/* Services Dropdown */}
               {link.hasDropdown && isServicesDropdownOpen && (
                 <div
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[600px] bg-white border border-slate-200 rounded-xl shadow-stripe-lg z-50 overflow-hidden"
-                  onMouseEnter={() => setIsServicesDropdownOpen(true)}
-                  onMouseLeave={() => setIsServicesDropdownOpen(false)}
+                  className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[600px] z-50"
                 >
+                  <div className="bg-white border border-slate-200 rounded-xl shadow-stripe-lg overflow-hidden">
                   <div className="p-6">
                     <div className="grid grid-cols-2 gap-4">
                       {servicesDropdown.map((service, index) => (
@@ -182,6 +191,7 @@ export default function Header() {
                       </Link>
                     </div>
                   </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -207,7 +217,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden mt-2 w-full max-w-7xl bg-white/95 backdrop-blur-md rounded-2xl shadow-stripe-lg border border-slate-200 overflow-hidden py-4 px-2 animate-in slide-in-from-top-2">
+        <div className="md:hidden mt-2 w-full max-w-7xl bg-white/95 backdrop-blur-md rounded-2xl shadow-stripe-lg border border-slate-200 overflow-y-auto max-h-[80vh] py-4 px-2 animate-in slide-in-from-top-2">
           <nav className="flex flex-col gap-3">
 
 
@@ -216,7 +226,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <div key={link.href}>
                 {link.hasDropdown ? (
-                  <div className="px-2">
+                  <div className="px-2" ref={mobileServicesRef}>
                     <button
                       className="flex items-center justify-between w-full text-sm text-muted-foreground hover:text-foreground transition-colors py-2"
                       onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
@@ -227,25 +237,35 @@ export default function Header() {
 
                     {/* Mobile Services Dropdown */}
                     {isServicesDropdownOpen && (
-                      <div className="ml-4 mt-2 space-y-1">
+                      <div className="ml-2 mt-1 space-y-1 pb-2">
+                        <Link
+                          href="/services"
+                          className="flex items-center gap-2 p-2.5 rounded-lg bg-indigo-50 border border-indigo-100 mb-2"
+                          onClick={() => {
+                            setIsMobileMenuOpen(false)
+                            setIsServicesDropdownOpen(false)
+                          }}
+                        >
+                          <span className="text-xs font-bold text-indigo-600">View All Services →</span>
+                        </Link>
                         {servicesDropdown.map((service, index) => (
                           <Link
                             key={index}
                             href={service.href}
-                            className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-50 transition-colors"
+                            className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-gray-50 active:bg-gray-100 transition-colors"
                             onClick={() => {
                               setIsMobileMenuOpen(false)
                               setIsServicesDropdownOpen(false)
                             }}
                           >
-                            <div className="w-5 h-5 bg-gray-100 rounded flex items-center justify-center flex-shrink-0">
-                              <service.icon size={10} className="text-gray-600" />
+                            <div className="w-7 h-7 bg-indigo-50 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <service.icon size={14} className="text-indigo-600" />
                             </div>
                             <div className="flex-1 min-w-0">
-                              <h3 className="font-medium text-xs text-gray-900">
+                              <h3 className="font-semibold text-sm text-gray-900">
                                 {service.title}
                               </h3>
-                              <p className="text-xs text-gray-500 truncate">
+                              <p className="text-[11px] text-gray-500 truncate">
                                 {service.description}
                               </p>
                             </div>

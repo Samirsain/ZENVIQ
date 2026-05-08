@@ -202,14 +202,18 @@ export default function ToolsCarousel() {
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4"
+        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4"
       >
-        {tools.map((tool) => {
+        {tools.map((tool, index) => {
           const Icon = tool.icon
           const isHovered = hoveredId === tool.id
 
           return (
-            <motion.div key={tool.id} variants={cardVariants}>
+            <motion.div
+              key={tool.id}
+              variants={cardVariants}
+              className={index >= 6 ? "hidden sm:block" : ""}
+            >
               <Link href={tool.link} className="block group">
                 <Card
                   className="relative overflow-hidden border-0 bg-white/80 backdrop-blur-sm shadow-stripe-sm hover:shadow-stripe-lg transition-all duration-500 cursor-pointer h-full"
@@ -231,15 +235,15 @@ export default function ToolsCarousel() {
                     )}
                   </AnimatePresence>
 
-                  <CardContent className="relative z-10 p-5 flex flex-col items-center text-center gap-3">
-                    {/* Emoji float on hover */}
+                  <CardContent className="relative z-10 p-3 sm:p-5 flex flex-col items-center text-center gap-2 sm:gap-3">
+                    {/* Icon */}
                     <div className="relative">
                       <motion.div
-                        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center shadow-lg`}
+                        className={`w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center shadow-lg`}
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <Icon className="w-7 h-7 text-white" />
+                        <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                       </motion.div>
 
                       {/* Floating emoji */}
@@ -249,7 +253,7 @@ export default function ToolsCarousel() {
                             initial={{ opacity: 0, y: 5, scale: 0.5 }}
                             animate={{ opacity: 1, y: -10, scale: 1 }}
                             exit={{ opacity: 0, y: 5, scale: 0.5 }}
-                            className="absolute -top-3 -right-3 text-lg"
+                            className="absolute -top-3 -right-3 text-lg hidden sm:block"
                           >
                             {tool.emoji}
                           </motion.span>
@@ -259,16 +263,16 @@ export default function ToolsCarousel() {
 
                     <Badge
                       variant="secondary"
-                      className="text-[10px] px-2 py-0.5 font-medium bg-slate-100 text-slate-500 border-0"
+                      className="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 font-medium bg-slate-100 text-slate-500 border-0"
                     >
                       {tool.badge}
                     </Badge>
 
-                    <h3 className="text-sm font-bold text-slate-900 tracking-tight leading-snug group-hover:text-slate-800 transition-colors">
+                    <h3 className="text-xs sm:text-sm font-bold text-slate-900 tracking-tight leading-snug group-hover:text-slate-800 transition-colors line-clamp-1 sm:line-clamp-none">
                       {tool.title}
                     </h3>
 
-                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">
+                    <p className="text-[10px] sm:text-xs text-slate-500 leading-relaxed line-clamp-2 hidden sm:block">
                       {tool.description}
                     </p>
 
@@ -277,7 +281,7 @@ export default function ToolsCarousel() {
                       initial={{ opacity: 0, y: 8 }}
                       animate={isHovered ? { opacity: 1, y: 0 } : { opacity: 0, y: 8 }}
                       transition={{ duration: 0.2 }}
-                      className="flex items-center gap-1 text-xs font-semibold"
+                      className="hidden sm:flex items-center gap-1 text-xs font-semibold"
                     >
                       <span className={`bg-gradient-to-r ${tool.gradient} bg-clip-text text-transparent`}>
                         Try Now

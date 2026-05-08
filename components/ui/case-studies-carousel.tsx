@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight, Zap, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export interface CaseStudy {
   id: string;
@@ -104,30 +105,32 @@ const CaseStudyCard = React.forwardRef<HTMLAnchorElement, CaseStudyCardProps>(
       href={study.href}
       target={study.href.startsWith("http") ? "_blank" : undefined}
       rel={study.href.startsWith("http") ? "noopener noreferrer" : undefined}
-      className="relative flex-shrink-0 w-[300px] h-[420px] rounded-2xl overflow-hidden group snap-start block bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-shadow"
+      className="relative flex-shrink-0 w-[280px] sm:w-[320px] rounded-2xl overflow-hidden group snap-start block bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-shadow"
       whileHover={{ y: -8 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       {/* Image */}
-      <div className="w-full h-[52%] overflow-hidden">
-        <img
+      <div className="w-full aspect-[16/10] overflow-hidden relative">
+        <Image
           src={study.imageSrc}
           alt={study.imageAlt}
-          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          fill
+          sizes="(max-width: 640px) 280px, 320px"
+          className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
         />
       </div>
 
       {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-white p-5 flex flex-col justify-between border-t border-slate-100">
-        <div className="space-y-2">
+      <div className="p-4 sm:p-5 flex flex-col gap-3 border-t border-slate-100">
+        <div className="space-y-1.5">
           <div className="flex items-center gap-2 text-xs text-slate-500">
             <Zap className="w-3.5 h-3.5 text-indigo-500" />
             <span className="font-semibold uppercase tracking-wider">{study.tag}</span>
           </div>
-          <h3 className="text-lg font-bold text-slate-900 leading-tight tracking-tight">
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-tight tracking-tight">
             {study.title}
           </h3>
-          <p className="text-sm text-slate-500 leading-relaxed line-clamp-2">
+          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-2">
             {study.description}
           </p>
         </div>
@@ -135,10 +138,12 @@ const CaseStudyCard = React.forwardRef<HTMLAnchorElement, CaseStudyCardProps>(
         {/* Footer */}
         <div className="flex items-center justify-between pt-3 border-t border-slate-100">
           <div className="flex items-center gap-2.5">
-            <img
+            <Image
               src={study.brandLogoSrc}
               alt={study.brandName}
-              className="w-7 h-7 rounded-full object-contain bg-slate-100 p-0.5"
+              width={28}
+              height={28}
+              className="rounded-full object-cover bg-slate-100 p-0.5"
             />
             <div>
               <p className="text-xs font-bold text-slate-900">{study.brandName}</p>
@@ -159,6 +164,7 @@ CaseStudyCard.displayName = "CaseStudyCard";
 
 export function CaseStudiesCarousel({ className }: { className?: string }) {
   const scrollRef = React.useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = React.useState(false);
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -168,6 +174,25 @@ export function CaseStudiesCarousel({ className }: { className?: string }) {
       behavior: "smooth",
     });
   };
+
+  // Auto-scroll every 4 seconds
+  React.useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      if (!scrollRef.current) return;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 10;
+
+      if (isAtEnd) {
+        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollRef.current.scrollBy({ left: 330, behavior: "smooth" });
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
 
   return (
     <section id="case-studies" className={cn("py-20 sm:py-28 bg-white", className)}>
@@ -211,11 +236,15 @@ export function CaseStudiesCarousel({ className }: { className?: string }) {
       </div>
 
       {/* Carousel */}
-      <div className="relative group">
+      <div
+        className="relative group"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
         {/* Mobile Arrows */}
         <button
           onClick={() => scroll("left")}
-          className="md:hidden absolute top-1/2 -translate-y-1/2 left-2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+          className="md:hidden absolute top-1/2 -translate-y-1/2 left-2 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 shadow-sm flex items-center justify-center"
           aria-label="Scroll left"
         >
           <ChevronLeft className="w-5 h-5" />
@@ -232,7 +261,7 @@ export function CaseStudiesCarousel({ className }: { className?: string }) {
 
         <button
           onClick={() => scroll("right")}
-          className="md:hidden absolute top-1/2 -translate-y-1/2 right-2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-slate-200 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+          className="md:hidden absolute top-1/2 -translate-y-1/2 right-2 z-10 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm border border-slate-200 shadow-sm flex items-center justify-center"
           aria-label="Scroll right"
         >
           <ChevronRight className="w-5 h-5" />

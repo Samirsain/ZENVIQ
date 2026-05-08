@@ -4,7 +4,7 @@ import blogPosts from '@/content/blog-posts.json'
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://www.zenviqdigital.in'
 
-    // Core pages with strategic priority
+    // Core pages — highest priority
     const corePages = [
         { route: '', priority: 1.0, changeFrequency: 'daily' as const },
         { route: '/services', priority: 0.95, changeFrequency: 'weekly' as const },
@@ -47,13 +47,38 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
     }))
 
-    // Tool pages — high value for organic traffic
+    // AI Tools pages
+    const aiToolPages = [
+        '/ai-tools/chatgpt',
+        '/ai-tools/claude',
+    ].map((route) => ({
+        url: `${baseUrl}${route}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.75,
+    }))
+
+    // Tool pages — all actual tools for organic traffic
     const toolPages = [
         '/tools/social-downloader',
         '/tools/pinterest-downloader',
         '/tools/content-generator',
-        '/tools/color-palette',
-        '/tools/json-formatter',
+        '/tools/ai-content-generator',
+        '/tools/image-generator',
+        '/tools/case-converter',
+        '/tools/css-unit-converter',
+        '/tools/email-tools',
+        '/tools/emi-calculator',
+        '/tools/gst-calculator',
+        '/tools/instagram-tools',
+        '/tools/meta-caption',
+        '/tools/percentage-calculator',
+        '/tools/seo-checker',
+        '/tools/seo-tools',
+        '/tools/sku-generator',
+        '/tools/social-tools',
+        '/tools/speed-tools',
+        '/tools/word-counter',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
@@ -66,7 +91,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/privacy',
         '/terms',
         '/refund',
-        '/sitemap',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
@@ -82,5 +106,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }))
 
-    return [...corePages, ...servicePages, ...cityPages, ...toolPages, ...legalPages, ...blogRoutes]
+    return [
+        ...corePages,
+        ...servicePages,
+        ...cityPages,
+        ...aiToolPages,
+        ...toolPages,
+        ...legalPages,
+        ...blogRoutes,
+    ]
 }
