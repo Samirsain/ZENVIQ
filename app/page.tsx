@@ -8,6 +8,7 @@ import { Sparkles } from "lucide-react"
 import { CaseStudiesCarousel } from "@/components/ui/case-studies-carousel"
 import StackFeatureSection from "@/components/ui/stack-feature-section"
 import RudraShowcase from "@/components/rudra-showcase"
+import TeamShowcase from "@/components/team-showcase"
 
 export default function Home() {
   return (
@@ -52,6 +53,7 @@ export default function Home() {
         </section>
 
         <StackFeatureSection />
+        <TeamShowcase />
 
         {/* SEO Content Section — Keyword-rich visible content for Google */}
         <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-100">
