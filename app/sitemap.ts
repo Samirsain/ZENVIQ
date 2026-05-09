@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://www.zenviqdigital.in'
 
     // Use a stable date — only update when content actually changes
-    const lastUpdated = new Date('2026-05-08')
+    const lastUpdated = new Date('2026-05-09')
 
     // Core pages — highest priority
     const corePages = [

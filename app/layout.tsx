@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     "best website developer near me",
     "hire web developer Hanumangarh",
   ],
-  authors: [{ name: "Samir Sain", url: "https://samirsain.com" }],
+  authors: [{ name: "Samir Sain", url: "https://www.samirsain.com" }],
   creator: "ZENVIQ Digital",
   publisher: "ZENVIQ Digital",
   alternates: {
@@ -165,18 +165,20 @@ const organizationSchema = {
   "founder": {
     "@type": "Person",
     "name": "Samir Sain",
-    "url": "https://samirsain.com"
+    "url": "https://www.samirsain.com",
+    "sameAs": "https://www.samirsain.com"
   },
   "priceRange": "₹₹",
   "currenciesAccepted": "INR",
   "paymentAccepted": "Cash, UPI, Bank Transfer, Online Payment",
   "openingHours": "Mo-Sa 09:00-20:00",
   "sameAs": [
+    "https://www.zenviqdigital.in",
+    "https://www.samirsain.com",
     "https://twitter.com/zenviq",
     "https://linkedin.com/company/zenviq",
     "https://github.com/Samirsain",
-    "https://instagram.com/zenviq",
-    "https://www.zenviqdigital.in"
+    "https://instagram.com/zenviq"
   ],
   "contactPoint": [
     {
@@ -286,6 +288,38 @@ const organizationSchema = {
   }
 }
 
+const founderSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Samir Sain",
+  "alternateName": "Samir",
+  "url": "https://www.samirsain.com",
+  "image": "https://www.samirsain.com/og-image.webp",
+  "description": "Samir Sain is the Founder & CEO of ZENVIQ Digital, a leading web development and AI agency based in Hanumangarh, Rajasthan, India.",
+  "jobTitle": "Founder & CEO",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "ZENVIQ Digital",
+    "url": "https://www.zenviqdigital.in"
+  },
+  "sameAs": [
+    "https://www.samirsain.com",
+    "https://www.zenviqdigital.in",
+    "https://github.com/Samirsain",
+    "https://linkedin.com/in/samirsain",
+    "https://instagram.com/zenviq"
+  ],
+  "knowsAbout": [
+    "Web Development",
+    "Next.js",
+    "React",
+    "SEO",
+    "AI Automation",
+    "Digital Marketing",
+    "UI/UX Design"
+  ]
+}
+
 const siteNavigationSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -333,6 +367,7 @@ export default function RootLayout({
       </head>
       <body className={`font-sans ${GeistMono.variable} ${jost.variable} antialiased`} suppressHydrationWarning>
         <JsonLd data={organizationSchema} />
+        <JsonLd data={founderSchema} />
         <JsonLd data={siteNavigationSchema} />
         <JsonLd data={websiteSchema} />
         <Script

@@ -34,12 +34,12 @@ const whyUs = [
 ]
 
 const faqs = [
-  { q: "Who is the best website developer in Hanumangarh?", a: "ZENVIQ Digital is rated the #1 website developer in Hanumangarh with 50+ projects delivered, a 4.9★ Google rating, and 98% client retention rate. We specialize in Next.js, WordPress, React, and Shopify development." },
-  { q: "How much does a website cost in Hanumangarh?", a: "Website costs in Hanumangarh range from ₹8,000 for a business website to ₹50,000+ for custom web applications and e-commerce stores. ZENVIQ offers transparent, project-based pricing with no hidden fees." },
-  { q: "Which is the best digital marketing company in Hanumangarh?", a: "ZENVIQ Digital is the best digital marketing agency in Hanumangarh offering SEO, Google Ads, social media marketing, WhatsApp marketing, and content strategy. We deliver measurable results with monthly performance reports." },
-  { q: "Can you build an e-commerce website in Hanumangarh?", a: "Yes! We build complete e-commerce stores using Shopify and WooCommerce with Razorpay, UPI, and COD payment integration, inventory management, and shipping automation." },
-  { q: "Do you provide website maintenance in Hanumangarh?", a: "Yes. We offer ongoing maintenance packages including security updates, content changes, performance optimization, SSL management, and priority support for all our clients in Hanumangarh." },
-  { q: "How long does it take to build a website in Hanumangarh?", a: "A standard business website takes 7-14 days. E-commerce stores take 2-4 weeks. Custom web applications may take 4-8 weeks. We share a clear timeline during our initial free consultation." },
+  { q: "Who provides the best web development in Hanumangarh?", a: "ZENVIQ Digital is the top-rated web development company in Hanumangarh with 50+ projects delivered, a 4.9★ Google rating, and 98% client retention. We specialize in Next.js, WordPress, React, and Shopify development for local businesses." },
+  { q: "How much does web development in Hanumangarh cost?", a: "Web development in Hanumangarh starts from ₹8,000 for a basic business website to ₹50,000+ for custom web applications and e-commerce stores. ZENVIQ offers transparent, project-based pricing with zero hidden fees." },
+  { q: "Which is the best web development company in Hanumangarh?", a: "ZENVIQ Digital is ranked the #1 web development company in Hanumangarh. We combine modern frameworks (Next.js, React), SEO-first development, and local support to deliver results that generic agencies can't match." },
+  { q: "Can ZENVIQ build an e-commerce website in Hanumangarh?", a: "Yes! We handle complete e-commerce web development in Hanumangarh using Shopify and WooCommerce — including Razorpay, UPI, and COD payment integration, inventory management, and shipping automation." },
+  { q: "Do you provide support after web development in Hanumangarh?", a: "Absolutely. Every web development project in Hanumangarh includes ongoing maintenance — security updates, content changes, performance optimization, SSL management, and priority support." },
+  { q: "How fast is ZENVIQ's web development turnaround in Hanumangarh?", a: "Standard web development in Hanumangarh takes 7-14 days. E-commerce stores take 2-4 weeks. Custom web applications take 4-8 weeks. We share a clear timeline during the initial free consultation." },
 ]
 
 export default function HanumangarhPage() {
@@ -53,17 +53,16 @@ export default function HanumangarhPage() {
         <div className="container mx-auto px-4 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-full text-xs font-bold mb-8 border border-blue-100">
-              <MapPin className="w-4 h-4" /> Hanumangarh, Rajasthan
+              <MapPin className="w-4 h-4" /> Web Development in Hanumangarh, Rajasthan
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-[1.08] tracking-tight" style={{ letterSpacing: "-2px" }}>
-              Best{" "}
               <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text text-transparent">
-                Website Developer
+                Web Development
               </span>{" "}
               in Hanumangarh
             </h1>
             <p className="text-base sm:text-lg text-slate-500 mb-10 leading-relaxed max-w-xl mx-auto">
-              ZENVIQ Digital is Hanumangarh&apos;s #1 rated web development company. We build blazing-fast websites, provide expert SEO services, and deliver AI-powered solutions trusted by 50+ local businesses.
+              ZENVIQ Digital is Hanumangarh&apos;s #1 rated web development company. We build blazing-fast websites using Next.js, React &amp; WordPress — SEO-optimized and trusted by 50+ local businesses.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button asChild size="lg" className="h-13 px-8 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-semibold shadow-xl shadow-slate-200">
@@ -100,10 +99,10 @@ export default function HanumangarhPage() {
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight" style={{ letterSpacing: "-1px" }}>
-              Our Services in Hanumangarh
+              Web Development Services in Hanumangarh
             </h2>
             <p className="text-slate-500 text-base sm:text-lg">
-              Complete digital solutions for businesses in Hanumangarh — from websites to AI automation.
+              Complete digital solutions for web development in Hanumangarh — from business websites to AI automation.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -127,10 +126,10 @@ export default function HanumangarhPage() {
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight" style={{ letterSpacing: "-1px" }}>
-              Why Hanumangarh Businesses Choose ZENVIQ
+              Why Choose ZENVIQ for Web Development in Hanumangarh?
             </h2>
             <p className="text-slate-400 text-base sm:text-lg">
-              We&apos;re not just another web development company — here&apos;s what makes ZENVIQ the #1 choice in Hanumangarh.
+              We&apos;re not just another web development company in Hanumangarh — here&apos;s what makes ZENVIQ the #1 choice.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -151,7 +150,7 @@ export default function HanumangarhPage() {
           <div className="max-w-3xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 tracking-tight" style={{ letterSpacing: "-1px" }}>
-                Frequently Asked Questions — Hanumangarh
+                Web Development in Hanumangarh — FAQs
               </h2>
             </motion.div>
             <div className="space-y-4">
@@ -175,10 +174,10 @@ export default function HanumangarhPage() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-4xl mx-auto p-10 sm:p-16 rounded-3xl bg-gradient-to-br from-indigo-600 to-blue-700 text-white text-center shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[80px] -mr-32 -mt-32" />
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 leading-tight tracking-tight relative" style={{ letterSpacing: "-1px" }}>
-              Ready to grow your business in Hanumangarh?
+              Need expert web development in Hanumangarh?
             </h2>
             <p className="text-base sm:text-lg text-indigo-100 mb-10 max-w-xl mx-auto leading-relaxed relative">
-              Book a free strategy call with Hanumangarh&apos;s top-rated digital agency. No obligations, no pressure.
+              Book a free strategy call with Hanumangarh&apos;s #1 web development agency. No obligations, no pressure.
             </p>
             <Button asChild size="lg" className="bg-white text-indigo-700 hover:bg-slate-50 px-8 h-13 rounded-full font-bold shadow-xl relative">
               <a href="https://calendly.com/zenviq/30min" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
@@ -193,21 +192,21 @@ export default function HanumangarhPage() {
       <section className="py-14 sm:py-16 bg-white border-t border-slate-100">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto prose prose-slate prose-sm text-slate-500 leading-relaxed">
-            <h3 className="text-xl font-bold text-slate-800 mb-4">Best Website Development Company in Hanumangarh, Rajasthan</h3>
+            <h3 className="text-xl font-bold text-slate-800 mb-4">Web Development in Hanumangarh, Rajasthan</h3>
             <p>
-              <strong>ZENVIQ Digital</strong> is the <strong>best website development company in Hanumangarh</strong>, Rajasthan. Founded by Samir Sain, we specialize in building high-performance websites using <strong>Next.js, WordPress, React, and Shopify</strong>. Unlike traditional <strong>web design companies in Hanumangarh</strong> that use slow WordPress templates, ZENVIQ uses modern frameworks that make your website load in under 1 second — giving you a massive SEO advantage on Google.
+              <strong>ZENVIQ Digital</strong> is the <strong>best web development company in Hanumangarh</strong>, Rajasthan. Founded by Samir Sain, we specialise in professional <strong>web development in Hanumangarh</strong> using modern frameworks like <strong>Next.js, WordPress, React, and Shopify</strong>. Unlike traditional web agencies in Hanumangarh that use slow templates, ZENVIQ builds websites that load in under 1 second — giving you a massive advantage in Google rankings.
             </p>
             <p>
-              We offer complete digital solutions including <strong>website development, SEO, digital marketing, Google Ads, WhatsApp marketing, AI chatbot development, and e-commerce store setup</strong>. Whether you&apos;re a small business in Hanumangarh, a startup looking to establish online presence, or an enterprise brand needing custom web applications — ZENVIQ delivers results that matter.
+              Our <strong>web development services in Hanumangarh</strong> cover everything your business needs: custom website development, e-commerce stores, technical SEO, Google Ads, WhatsApp marketing, AI chatbots, and workflow automation. Whether you are a small business in Hanumangarh or an enterprise brand, ZENVIQ delivers measurable results.
             </p>
             <p>
-              With <strong>50+ projects delivered</strong> and a <strong>4.9★ Google rating</strong>, we&apos;re the most trusted <strong>IT company in Hanumangarh</strong>. Our clients include businesses from Hanumangarh, Sri Ganganagar, Bathinda, Nohar, and across Rajasthan. We provide same-day support, in-person meetings, and ongoing maintenance for all our projects.
+              With <strong>50+ projects delivered</strong> and a <strong>4.9★ Google rating</strong>, we are the most trusted <strong>web development company in Hanumangarh</strong>. Our clients span Hanumangarh, Sri Ganganagar, Bathinda, Nohar, and across Rajasthan. We provide same-day support, in-person meetings, and ongoing maintenance.
             </p>
             <p>
-              <strong>Services we offer in Hanumangarh:</strong> Website Development, Website Design, E-commerce Development, Mobile App Development, SEO Services, Google Ads Management, Social Media Marketing, WhatsApp Marketing, Content Marketing, AI Chatbot Development, Workflow Automation, UI/UX Design, Logo Design, and Graphic Design.
+              <strong>Web development services we offer in Hanumangarh:</strong> Website Development, Website Design, E-commerce Development, Mobile App Development, SEO Services, Google Ads Management, Social Media Marketing, WhatsApp Marketing, Content Marketing, AI Chatbot Development, Workflow Automation, UI/UX Design, Logo Design, and Graphic Design.
             </p>
             <p>
-              <Link href="/contact" className="text-indigo-600 font-semibold hover:text-indigo-700 underline underline-offset-2">Contact ZENVIQ Digital</Link> for a free consultation and transparent quote. We&apos;re based in Hanumangarh and serve businesses across Rajasthan, Punjab, and all of India.
+              <Link href="/contact" className="text-indigo-600 font-semibold hover:text-indigo-700 underline underline-offset-2">Contact ZENVIQ Digital</Link> for a free consultation and transparent quote on web development in Hanumangarh. We serve businesses across Rajasthan, Punjab, and all of India.
             </p>
           </div>
         </div>

@@ -2,27 +2,35 @@ import type { Metadata } from "next"
 import JsonLd from "@/components/json-ld"
 
 export const metadata: Metadata = {
-  title: "Best Website Developer in Hanumangarh | Web Design Company | ZENVIQ",
+  title: "Web Development in Hanumangarh | Best Web Design Company | ZENVIQ Digital",
   description:
-    "Looking for the best website developer in Hanumangarh? ZENVIQ Digital builds fast, SEO-optimized websites using Next.js, WordPress & React. 50+ projects delivered. Free consultation available.",
+    "Top-rated web development in Hanumangarh by ZENVIQ Digital. We build fast, SEO-optimized websites using Next.js, WordPress & React. 50+ projects. Free consultation — call now.",
   keywords: [
-    "website developer Hanumangarh",
-    "best website developer in Hanumangarh",
-    "web development company Hanumangarh",
-    "website design Hanumangarh",
+    "web development in Hanumangarh",
+    "web development company in Hanumangarh",
+    "web development Hanumangarh",
+    "website development in Hanumangarh",
+    "website developer in Hanumangarh",
+    "best web development in Hanumangarh",
+    "web design in Hanumangarh",
     "web design company Hanumangarh",
+    "website design Hanumangarh",
+    "best website developer in Hanumangarh",
     "best IT company Hanumangarh",
     "WordPress developer Hanumangarh",
     "ecommerce website Hanumangarh",
     "digital marketing Hanumangarh",
     "SEO company Hanumangarh",
     "app development Hanumangarh",
-    "website cost Hanumangarh",
-    "affordable website Hanumangarh",
+    "affordable web development Hanumangarh",
+    "Next.js developer Hanumangarh",
+    "React developer Hanumangarh",
   ],
   openGraph: {
-    title: "Best Website Developer in Hanumangarh | ZENVIQ Digital",
-    description: "#1 web development company in Hanumangarh. Next.js, WordPress, React websites. 50+ projects. Free consultation.",
+    title: "Web Development in Hanumangarh | ZENVIQ Digital",
+    description: "#1 web development company in Hanumangarh. Fast, SEO-optimized websites — Next.js, WordPress, React. 50+ projects. Free consultation.",
+    url: "https://www.zenviqdigital.in/web-development-hanumangarh",
+    type: "website",
   },
   alternates: {
     canonical: "https://www.zenviqdigital.in/web-development-hanumangarh",
@@ -41,10 +49,11 @@ const breadcrumbSchema = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "ZENVIQ Digital — Hanumangarh",
-  description: "Best website development company in Hanumangarh, Rajasthan. Custom web development, SEO, digital marketing, and AI automation services.",
+  name: "ZENVIQ Digital",
+  description: "Top-rated web development company in Hanumangarh, Rajasthan. Specialising in custom web development, SEO, digital marketing, e-commerce, and AI automation services.",
   url: "https://www.zenviqdigital.in/web-development-hanumangarh",
   telephone: "+91-9352410667",
+  image: "https://www.zenviqdigital.in/og-image.webp",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Hanumangarh",
@@ -53,7 +62,21 @@ const localBusinessSchema = {
     addressCountry: "IN",
   },
   geo: { "@type": "GeoCoordinates", latitude: "29.5815", longitude: "74.3294" },
-  areaServed: { "@type": "City", name: "Hanumangarh" },
+  areaServed: [
+    { "@type": "City", name: "Hanumangarh" },
+    { "@type": "City", name: "Sri Ganganagar" },
+    { "@type": "City", name: "Bathinda" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Web Development Services in Hanumangarh",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO Services" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "E-commerce Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Digital Marketing" } },
+    ],
+  },
   priceRange: "₹₹",
 }
 
