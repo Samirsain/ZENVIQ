@@ -363,6 +363,8 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.googleadservices.com" />
+        <link rel="dns-prefetch" href="https://www.googleadservices.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className={`font-sans ${GeistMono.variable} ${jost.variable} antialiased`} suppressHydrationWarning>
@@ -375,6 +377,11 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-DMSQMC1Q80"
           strategy="lazyOnload"
         />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18147855663"
+          strategy="lazyOnload"
+        />
         <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -382,6 +389,7 @@ export default function RootLayout({
             gtag('js', new Date());
 
             gtag('config', 'G-DMSQMC1Q80');
+            gtag('config', 'AW-18147855663');
           `}
         </Script>
         <Script id="google-tag-manager" strategy="lazyOnload">
