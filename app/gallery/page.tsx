@@ -53,7 +53,7 @@ const projects: Project[] = [
     src: "/project/relible.png",
     alt: "Reliable Diagnostics Centre",
     category: "Healthcare",
-    href: "https://reliable-diagnostics-centre-4ou3.vercel.app/",
+    href: "https://reliable-diagnostics-centre.vercel.app/",
   },
   {
     src: "/project/typewriter.png",
@@ -72,6 +72,12 @@ const projects: Project[] = [
     alt: "ZENVIQ Meme — Meme Generator",
     category: "Entertainment",
     href: "https://zenviq-meme.vercel.app/",
+  },
+  {
+    src: "/project/zenviq-web-cloner.png",
+    alt: "Zenviq Web Cloner — AI Website Cloner",
+    category: "AI Tool",
+    href: "https://zenviq-web-cloner.vercel.app/",
   },
 ]
 

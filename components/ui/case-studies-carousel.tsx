@@ -78,7 +78,7 @@ const caseStudies: CaseStudy[] = [
     brandLogoSrc: "/project/gmresort.png",
     brandName: "GM Resort",
     metric: "4.9★ Rating",
-    href: "https://gmresort.vercel.app/",
+    href: "https://gmresort-delta.vercel.app/",
   },
   {
     id: "reliable",
@@ -90,7 +90,19 @@ const caseStudies: CaseStudy[] = [
     brandLogoSrc: "/project/relible.png",
     brandName: "Reliable Diagnostics",
     metric: "100+ Tests",
-    href: "https://reliable-diagnostics-centre-4ou3.vercel.app/",
+    href: "https://reliable-diagnostics-centre.vercel.app/",
+  },
+  {
+    id: "web-cloner",
+    imageSrc: "/project/zenviq-web-cloner.png",
+    imageAlt: "Zenviq Web Cloner",
+    tag: "AI Tool",
+    title: "Zenviq Web Cloner — Clone Any Website",
+    description: "AI-powered website cloning engine with one-click HTML/CSS extraction and live preview.",
+    brandLogoSrc: "/project/zenviq-web-cloner.png",
+    brandName: "Zenviq Web Cloner",
+    metric: "1-Click Clone",
+    href: "https://zenviq-web-cloner.vercel.app/",
   },
 ];
 

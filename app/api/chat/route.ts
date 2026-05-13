@@ -79,7 +79,7 @@ const ZENVIQ_KNOWLEDGE = `
 3. **Elite Decors** — Balloon & floral event decor website (5000+ events)
 4. **Helping Hands** — Animal welfare NGO with Razorpay donations (₹8.2L raised)
 5. **GM Resort** — Premium resort booking website (4.9★ rating) — https://gmresort.in
-6. **Reliable Diagnostics** — Medical diagnostics center (100+ tests) — https://reliablediagnostics.in
+6. **Reliable Diagnostics** — Medical diagnostics center (100+ tests) — https://reliable-diagnostics-centre.vercel.app
 7. **Zenviq Meme** — AI meme generator tool
 8. **Zenviq Web Cloner** — Website cloning engine
 
