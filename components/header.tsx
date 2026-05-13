@@ -202,7 +202,7 @@ export default function Header() {
         <div className="hidden md:flex items-center gap-4">
           <Link
             href="/contact"
-            className="items-center gap-2 rounded-full bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 group text-xs px-3.5 py-2 hidden sm:inline-flex"
+            className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 group text-xs px-3.5 py-2"
           >
             Book a call
             <div className="size-6 rounded-full bg-primary-foreground/15 flex items-center justify-center group-hover:bg-primary-foreground/25 transition-colors">

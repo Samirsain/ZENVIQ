@@ -10,6 +10,17 @@ export default function WhatsAppFloat() {
   const [isVisible, setIsVisible] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
   const [pulseCount, setPulseCount] = useState(0)
+  const [aiChatOpen, setAiChatOpen] = useState(false)
+
+  // Listen for AI chat toggle to hide WhatsApp when AI is open
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail
+      setAiChatOpen(detail.isOpen)
+    }
+    window.addEventListener('ai-chat-toggle', handler)
+    return () => window.removeEventListener('ai-chat-toggle', handler)
+  }, [])
 
   useEffect(() => {
     // Show button after a short delay for better UX
@@ -40,7 +51,7 @@ export default function WhatsAppFloat() {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {isVisible && !aiChatOpen && (
         <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3">
           {/* Tooltip */}
           <AnimatePresence>

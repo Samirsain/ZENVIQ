@@ -80,6 +80,8 @@ export default function AIAssistant() {
     } else {
       document.body.style.overflow = ''
     }
+    // Notify WhatsApp float to hide/show
+    window.dispatchEvent(new CustomEvent('ai-chat-toggle', { detail: { isOpen } }))
     return () => { document.body.style.overflow = '' }
   }, [isOpen])
 
