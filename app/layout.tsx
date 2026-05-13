@@ -13,6 +13,7 @@ import { Toaster } from "@/components/toaster"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import LenisProvider from "@/components/lenis-provider"
+import WhatsAppFloat from "@/components/whatsapp-float"
 import "./globals.css"
 
 const jost = Jost({
@@ -424,6 +425,7 @@ export default function RootLayout({
               <Footer />
             </LenisProvider>
             <AIAssistant />
+            <WhatsAppFloat />
             <Toaster />
             <Analytics />
             <SpeedInsights />

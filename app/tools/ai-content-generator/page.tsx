@@ -55,18 +55,41 @@ export default function AIContentGenerator() {
     }
 
     setIsGenerating(true)
+    setGeneratedContent("")
 
-    // Simulate AI content generation
-    setTimeout(() => {
-      const content = generateMockContent(contentType, topic, keywords, tone, length)
-      setGeneratedContent(content)
-      setIsGenerating(false)
-
-      toast({
-        title: "Success!",
-        description: "Content generated successfully",
+    try {
+      const response = await fetch('/api/generate-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ contentType, topic, keywords, tone, length })
       })
-    }, 2000)
+
+      const data = await response.json()
+
+      if (data.error) {
+        toast({
+          title: "Generation Failed",
+          description: data.error,
+          variant: "destructive"
+        })
+        return
+      }
+
+      setGeneratedContent(data.content)
+      toast({
+        title: "✨ Content Generated!",
+        description: "AI-powered content is ready",
+      })
+    } catch (error) {
+      console.error(error)
+      toast({
+        title: "Error",
+        description: "Failed to generate content. Please try again.",
+        variant: "destructive"
+      })
+    } finally {
+      setIsGenerating(false)
+    }
   }
 
   type ContentType = "blog" | "social" | "marketing" | "seo" | "creative"

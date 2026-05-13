@@ -76,8 +76,36 @@ export default function ContentGeneratorPage() {
     setError("")
     setGeneratedContent(null)
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2500))
-      setGeneratedContent(generateMockContent(request))
+      const response = await fetch('/api/generate-content', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contentType: request.type,
+          topic: request.topic,
+          keywords: request.keywords,
+          tone: request.tone.toLowerCase(),
+          length: request.length.includes('Short') ? 'short' : request.length.includes('Long') ? 'long' : request.length.includes('Very') ? 'very-long' : 'medium',
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.error) {
+        setError(data.error)
+        return
+      }
+
+      const kws = request.keywords
+        ? request.keywords.split(",").map((k) => `#${k.trim().replace(/\s+/g, "")}`)
+        : [`#${request.topic.replace(/\s+/g, "")}`]
+
+      setGeneratedContent({
+        title: `${request.topic}`,
+        content: data.content,
+        metaDescription: `Learn everything about ${request.topic}. Discover best practices, benefits, and strategies.`,
+        hashtags: kws,
+        callToAction: `Ready to get started with ${request.topic}? Contact us today!`,
+      })
     } catch {
       setError("Failed to generate content. Please try again.")
     } finally {

@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { MessageCircle, X, Send, Bot } from "lucide-react"
+import { X, Send } from "lucide-react"
 
 interface Message {
   id: string
@@ -56,7 +56,7 @@ export default function AIAssistant() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hi! I'm your Zenviq AI Assistant. 👋\n\nI can help you build premium, fast, and visually powerful digital experiences. How can I assist you today?",
+      text: "Hey there! 👋 I'm Zenviq AI — your digital consultant.\n\nWebsite banana ho, SEO karna ho, ya AI automation — I'm here to help. Ask me anything!",
       isUser: false,
       timestamp: new Date()
     }
@@ -72,6 +72,16 @@ export default function AIAssistant() {
   useEffect(() => {
     scrollToBottom()
   }, [messages, isTyping])
+
+  // Lock body scroll when chat is open to prevent background scrolling
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [isOpen])
 
   const handleSendMessage = async () => {
     if (!inputValue.trim()) return
@@ -91,14 +101,17 @@ export default function AIAssistant() {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage.text })
+        body: JSON.stringify({ 
+          message: userMessage.text,
+          history: messages.map(m => ({ text: m.text, isUser: m.isUser }))
+        })
       })
 
       const data = await response.json()
 
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.text || "I'm having a little trouble thinking clearly. Please try again.",
+        text: data.text || "Hmm, kuch issue aa raha hai 🤔 Ek baar phir try karo!",
         isUser: false,
         timestamp: new Date()
       }
@@ -107,7 +120,7 @@ export default function AIAssistant() {
       console.error(error)
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: "Connection error. Please check your internet or try again later.",
+        text: "Connection issue lag raha hai. Internet check karo ya WhatsApp karo: +91 9311908389",
         isUser: false,
         timestamp: new Date()
       }
@@ -169,21 +182,33 @@ export default function AIAssistant() {
     <>
       <Button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-indigo-600 hover:bg-indigo-700 animate-in zoom-in duration-300"
+        className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 bg-indigo-600 hover:bg-indigo-700 animate-in zoom-in duration-300 p-0 flex items-center justify-center"
         size="lg"
         aria-label="Open AI assistant chat"
       >
-        <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+        <svg width="26" height="26" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.85745 0.0900996C7.2189 -0.107541 13.0469 0.0842893 17.5384 0.0662372C21.6556 0.0289948 25.7732 0.0178913 29.8907 0.0328385C31.8294 0.0380279 33.7762 0.0746498 35.7652 0.0788043C38.0282 -0.197077 39.6411 1.68779 39.5907 3.65463C39.5362 5.78761 36.535 9.19916 35.286 11.0296C33.6322 13.4533 31.9981 15.8616 30.2596 18.1793C29.5994 18.9202 29.0095 19.8796 28.2716 20.7224C28.5968 19.1307 28.7259 15.3218 28.019 13.7806C27.4526 12.5463 26.0071 12.0554 24.7282 11.6266C25.486 10.3837 27.6171 7.85746 28.7626 6.91656C27.5447 7.02272 25.5382 7.01237 24.2646 7.02966C21.6624 7.06663 19.0599 7.09072 16.4574 7.10211L8.29375 7.11172C7.00164 7.11261 2.87356 7.26149 2.03689 6.79311C-0.665086 5.2802 -0.430261 0.908399 2.85745 0.0900996Z" fill="white"/>
+          <path d="M21.0933 14.736C22.4396 14.6467 24.0141 14.6617 25.3809 14.6484C25.4475 16.7121 25.7493 29.1859 25.1107 30.1421C24.3782 30.6655 22.8503 30.5914 21.9114 30.5864C20.4581 29.4764 19.7593 27.7262 19.2909 26.1243C14.9468 29.0011 9.0588 38.4155 4.47809 39.6019C1.09958 39.9396 -1.53674 36.6632 1.03061 34.2443C4.07441 31.3764 6.89926 28.3111 9.6008 25.184C10.7722 23.8279 11.9911 22.7553 13.1128 21.2992C11.7595 20.6303 7.02369 18.4042 8.57809 16.1713C8.99509 15.5723 10.0754 15.4285 10.8531 15.4064C14.2768 15.3096 17.6797 15.0124 21.0933 14.736Z" fill="white"/>
+          <path d="M17.0929 32.6671C18.51 32.5788 21.2888 32.7377 22.8345 32.7626C26.5024 32.825 30.1706 32.8514 33.839 32.8421C35.4628 32.8452 37.6508 32.6762 38.7983 33.7202C39.5902 34.4476 40.0225 35.4285 39.9984 36.4435C39.9159 40.3461 36.0758 40.0362 32.9954 39.9628C28.4895 39.8647 23.9602 39.9498 19.4575 39.938C16.6689 39.9308 12.5229 40.0464 9.85156 39.569C11.3462 37.827 14.9928 33.6899 17.0929 32.6671Z" fill="white"/>
+        </svg>
       </Button>
 
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-96 h-[calc(100vh-8rem)] sm:h-[32rem] bg-white dark:bg-slate-950 rounded-2xl shadow-2xl border border-indigo-100 dark:border-indigo-900 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 ring-4 ring-indigo-500/10">
+        <div 
+          className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-50 w-[calc(100vw-2rem)] sm:w-96 h-[calc(100vh-8rem)] sm:h-[32rem] bg-white dark:bg-slate-950 rounded-2xl shadow-2xl border border-indigo-100 dark:border-indigo-900 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300 ring-4 ring-indigo-500/10"
+          onWheel={(e) => e.stopPropagation()}
+          onTouchMove={(e) => e.stopPropagation()}
+        >
           {/* Header */}
           <CardHeader className="flex flex-row items-center justify-between space-y-0 py-3 px-4 border-b bg-white/50 backdrop-blur-xl dark:bg-slate-900/50 sticky top-0 z-10">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center shadow-md">
-                  <Bot className="w-5 h-5 text-white" />
+                <div className="w-9 h-9 rounded-full bg-indigo-600 flex items-center justify-center shadow-md p-1.5">
+                  <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.85745 0.0900996C7.2189 -0.107541 13.0469 0.0842893 17.5384 0.0662372C21.6556 0.0289948 25.7732 0.0178913 29.8907 0.0328385C31.8294 0.0380279 33.7762 0.0746498 35.7652 0.0788043C38.0282 -0.197077 39.6411 1.68779 39.5907 3.65463C39.5362 5.78761 36.535 9.19916 35.286 11.0296C33.6322 13.4533 31.9981 15.8616 30.2596 18.1793C29.5994 18.9202 29.0095 19.8796 28.2716 20.7224C28.5968 19.1307 28.7259 15.3218 28.019 13.7806C27.4526 12.5463 26.0071 12.0554 24.7282 11.6266C25.486 10.3837 27.6171 7.85746 28.7626 6.91656C27.5447 7.02272 25.5382 7.01237 24.2646 7.02966C21.6624 7.06663 19.0599 7.09072 16.4574 7.10211L8.29375 7.11172C7.00164 7.11261 2.87356 7.26149 2.03689 6.79311C-0.665086 5.2802 -0.430261 0.908399 2.85745 0.0900996Z" fill="white"/>
+                    <path d="M21.0933 14.736C22.4396 14.6467 24.0141 14.6617 25.3809 14.6484C25.4475 16.7121 25.7493 29.1859 25.1107 30.1421C24.3782 30.6655 22.8503 30.5914 21.9114 30.5864C20.4581 29.4764 19.7593 27.7262 19.2909 26.1243C14.9468 29.0011 9.0588 38.4155 4.47809 39.6019C1.09958 39.9396 -1.53674 36.6632 1.03061 34.2443C4.07441 31.3764 6.89926 28.3111 9.6008 25.184C10.7722 23.8279 11.9911 22.7553 13.1128 21.2992C11.7595 20.6303 7.02369 18.4042 8.57809 16.1713C8.99509 15.5723 10.0754 15.4285 10.8531 15.4064C14.2768 15.3096 17.6797 15.0124 21.0933 14.736Z" fill="white"/>
+                    <path d="M17.0929 32.6671C18.51 32.5788 21.2888 32.7377 22.8345 32.7626C26.5024 32.825 30.1706 32.8514 33.839 32.8421C35.4628 32.8452 37.6508 32.6762 38.7983 33.7202C39.5902 34.4476 40.0225 35.4285 39.9984 36.4435C39.9159 40.3461 36.0758 40.0362 32.9954 39.9628C28.4895 39.8647 23.9602 39.9498 19.4575 39.938C16.6689 39.9308 12.5229 40.0464 9.85156 39.569C11.3462 37.827 14.9928 33.6899 17.0929 32.6671Z" fill="white"/>
+                  </svg>
                 </div>
                 <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></div>
               </div>

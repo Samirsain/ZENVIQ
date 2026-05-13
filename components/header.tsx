@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Search, ArrowRight, ChevronDown, BarChart3, Smartphone, Link as LinkIcon, FileText, Globe, Code, Brain, Zap, ShoppingCart, Palette, Terminal } from "lucide-react"
+import { Menu, X, Search, ArrowRight, ArrowUpRight, ChevronDown, BarChart3, Smartphone, Link as LinkIcon, FileText, Globe, Code, Brain, Zap, ShoppingCart, Palette, Terminal } from "lucide-react"
 import Image from "next/image"
 import { Logo } from "@/components/logo"
 
@@ -200,9 +200,15 @@ export default function Header() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <Button asChild className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 font-semibold shadow-indigo-glow transition-all duration-300">
-            <Link href="/contact">Get a Quote</Link>
-          </Button>
+          <Link
+            href="/contact"
+            className="items-center gap-2 rounded-full bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 group text-xs px-3.5 py-2 hidden sm:inline-flex"
+          >
+            Book a call
+            <div className="size-6 rounded-full bg-primary-foreground/15 flex items-center justify-center group-hover:bg-primary-foreground/25 transition-colors">
+              <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:rotate-45" />
+            </div>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -286,11 +292,16 @@ export default function Header() {
               </div>
             ))}
             <div className="px-2 pt-2">
-              <Button asChild className="w-full text-sm">
-                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Get Quote
-                </Link>
-              </Button>
+              <Link
+                href="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 active:scale-[0.97] transition-all duration-200 group text-sm px-5 py-2.5"
+              >
+                Book a call
+                <div className="size-6 rounded-full bg-primary-foreground/15 flex items-center justify-center group-hover:bg-primary-foreground/25 transition-colors">
+                  <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:rotate-45" />
+                </div>
+              </Link>
             </div>
           </nav>
         </div>

@@ -1,12 +1,8 @@
 "use client"
 
-import { Metadata } from "next"
 import { useState } from "react"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Image, Sparkles, Download, Share2, Copy, RefreshCw, ArrowLeft, Loader2 } from "lucide-react"
@@ -31,20 +27,20 @@ export default function ImageGeneratorPage() {
     setGeneratedImage("")
 
     try {
-      // Simulate API call - replace with actual AI service
-      await new Promise(resolve => setTimeout(resolve, 3000))
+      const response = await fetch('/api/generate-image', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt, style })
+      })
 
-      // For demo purposes, use a placeholder image
-      const placeholderImages = [
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1024&h=1024&fit=crop",
-        "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1024&h=1024&fit=crop",
-        "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1024&h=1024&fit=crop",
-        "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1024&h=1024&fit=crop",
-        "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1024&h=1024&fit=crop"
-      ]
+      const data = await response.json()
 
-      const randomImage = placeholderImages[Math.floor(Math.random() * placeholderImages.length)]
-      setGeneratedImage(randomImage)
+      if (data.error) {
+        setError(data.error)
+        return
+      }
+
+      setGeneratedImage(data.imageUrl)
     } catch (err) {
       setError("Failed to generate image. Please try again.")
     } finally {
@@ -56,7 +52,7 @@ export default function ImageGeneratorPage() {
     if (generatedImage) {
       const link = document.createElement('a')
       link.href = generatedImage
-      link.download = `ai-generated-image-${Date.now()}.jpg`
+      link.download = `zenviq-ai-image-${Date.now()}.png`
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
@@ -82,7 +78,6 @@ export default function ImageGeneratorPage() {
   }
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
 
       <main className="flex-1 pt-20">
         {/* Hero Section */}
@@ -412,8 +407,6 @@ export default function ImageGeneratorPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   )
 }

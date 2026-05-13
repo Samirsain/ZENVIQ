@@ -147,7 +147,7 @@ export default function RudraShowcase() {
 
             <div className="relative shadow-stripe-xl rounded-xl overflow-hidden">
               <Safari
-                url="rudra-ebon.vercel.app"
+                url="rudra.zenviqdigital.in/rudra"
                 imageSrc="/rudraa.png"
                 className="w-full"
               />
@@ -211,7 +211,7 @@ export default function RudraShowcase() {
             className="group bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 hover:from-amber-700 hover:via-orange-700 hover:to-red-700 text-white rounded-full px-8 py-3 shadow-lg text-sm font-semibold transition-all duration-300 hover:shadow-xl hover:scale-105"
           >
             <Link
-              href="https://rudra-ebon.vercel.app"
+              href="https://rudra.zenviqdigital.in/rudra"
               target="_blank"
               className="flex items-center gap-2"
             >
