@@ -49,5 +49,23 @@
       "Business Strategy"
     ],
     "image": "/blog-automation.png"
+  },
+  {
+    "id": 4,
+    "title": "Best Free AI Tools in 2025 — Complete Guide",
+    "excerpt": "Discover the most powerful free AI tools available in 2025. From ChatGPT to Claude AI, Midjourney to DALL-E 3 — detailed reviews, features, pricing & expert tips.",
+    "date": "February 5, 2025",
+    "category": "AI Tools",
+    "slug": "free-ai-tools-guide",
+    "author": "Zenviq Team",
+    "readTime": "10 min read",
+    "tags": [
+      "AI Tools",
+      "ChatGPT",
+      "Claude AI",
+      "Free Tools",
+      "Guide"
+    ],
+    "image": "/blog-ai-dev.jpg"
   }
 ]

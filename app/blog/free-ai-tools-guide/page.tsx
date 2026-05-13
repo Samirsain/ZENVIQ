@@ -1,5 +1,3 @@
-import Header from "@/components/header"
-import Footer from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -173,7 +171,6 @@ export default function FreeAIToolsGuide() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
-      <Header />
       
       {/* Hero Section */}
       <section className="pt-20 md:pt-32 pb-16 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
@@ -504,8 +501,6 @@ export default function FreeAIToolsGuide() {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   )
 }

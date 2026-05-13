@@ -4,8 +4,8 @@ import blogPosts from '@/content/blog-posts.json'
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://www.zenviqdigital.in'
 
-    // Use a stable date — only update when content actually changes
-    const lastUpdated = new Date('2026-05-09')
+    // Use current build date for freshness — Google prefers accurate timestamps
+    const lastUpdated = new Date()
 
     // Core pages — highest priority
     const corePages = [
@@ -104,9 +104,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Dynamic blog routes
     const blogRoutes = blogPosts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: new Date(post.date || '2026-05-01'),
+        lastModified: new Date(post.date || '2025-05-01'),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
+    }))
+
+    // Static blog pages not in blog-posts.json
+    const staticBlogPages = [
+        '/blog/free-ai-tools-guide',
+    ].map((route) => ({
+        url: `${baseUrl}${route}`,
+        lastModified: lastUpdated,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }))
+
+    // HTML Sitemap page
+    const utilityPages = [
+        '/sitemap',
+    ].map((route) => ({
+        url: `${baseUrl}${route}`,
+        lastModified: lastUpdated,
+        changeFrequency: 'monthly' as const,
+        priority: 0.3,
     }))
 
     return [
@@ -117,5 +137,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...toolPages,
         ...legalPages,
         ...blogRoutes,
+        ...staticBlogPages,
+        ...utilityPages,
     ]
 }
