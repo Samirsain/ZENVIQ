@@ -376,3 +376,51 @@
 .animate-grid-drift {
   animation: hero-grid-drift 100s linear infinite;
 }
+
+/* Hero entrance — CSS-only, replaces framer-motion to eliminate CLS.
+   Content is visible in initial HTML (no opacity:0 → 1 shift). */
+@keyframes hero-enter {
+  from {
+    opacity: 0.3;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-pill {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-enter {
+  animation: hero-enter 0.6s ease-out both;
+}
+
+.animate-hero-pill {
+  animation: hero-pill 0.4s ease-out both;
+}
+
+/* Fade-in-up for non-critical sections (team cards, etc.) */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}

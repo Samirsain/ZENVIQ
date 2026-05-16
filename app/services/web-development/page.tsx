@@ -7,6 +7,7 @@ import {
   ArrowRight, Check, Star, Globe, Code, Zap, Shield, Calendar,
   CheckCircle, Sparkles, Clock, Server, Smartphone, Search,
 } from "lucide-react"
+import ServiceSchema from "@/components/service-schema"
 
 const features = [
   { icon: Zap, title: "Lightning Fast Performance", description: "Sub-second load times with server-side rendering and edge caching." },
@@ -47,6 +48,11 @@ const faqs = [
 export default function WebDevelopmentPage() {
   return (
     <div className="min-h-screen bg-white">
+      <ServiceSchema
+        name="Web Development Services in Hanumangarh"
+        description="Custom website development using Next.js, WordPress, React, and Shopify. SEO-optimized, blazing-fast websites for businesses in Hanumangarh and Rajasthan."
+        url="/services/web-development"
+      />
       {/* Hero */}
       <section className="relative pt-32 sm:pt-40 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">

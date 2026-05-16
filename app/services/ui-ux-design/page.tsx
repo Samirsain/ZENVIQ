@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, Palette, Layers, MousePointerClick, Calendar, Eye, Layout, Users } from "lucide-react"
+import ServiceSchema from "@/components/service-schema"
 
 const features = [
   { icon: Users, title: "User Research", description: "Deep-dive into your target audience behavior, pain points, and goals to inform every design decision." },
@@ -24,6 +25,12 @@ const faqs = [
 export default function UIUXPage() {
   return (
     <div className="min-h-screen bg-white">
+      <ServiceSchema
+        name="UI/UX Design Services in Hanumangarh"
+        description="Premium user interface and experience design, wireframing, prototyping, and design systems for websites and mobile apps."
+        url="/services/ui-ux-design"
+        priceRange="₹10,000 - ₹60,000"
+      />
       <section className="relative pt-32 sm:pt-40 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-pink-500/5 rounded-full blur-[120px]" />

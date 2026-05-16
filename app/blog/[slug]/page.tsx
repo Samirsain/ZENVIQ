@@ -63,10 +63,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     "headline": post.title,
     "image": [`https://www.zenviqdigital.in${post.image}`],
     "datePublished": post.date,
+    "dateModified": post.date,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://www.zenviqdigital.in/blog/${slug}`
+    },
     "author": {
-      "@type": "Organization",
-      "name": "ZENVIQ Digital",
-      "url": "https://www.zenviqdigital.in"
+      "@type": "Person",
+      "@id": "https://www.samirsain.com/#person",
+      "name": "Samir Sain",
+      "url": "https://www.samirsain.com"
     },
     "publisher": {
       "@type": "Organization",
@@ -76,7 +82,8 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         "url": "https://www.zenviqdigital.in/logo.svg"
       }
     },
-    "description": post.excerpt || post.content?.replace(/<[^>]*>/g, "").substring(0, 160)
+    "description": post.excerpt || post.content?.replace(/<[^>]*>/g, "").substring(0, 160),
+    "wordCount": post.content ? post.content.replace(/<[^>]*>/g, "").split(/\s+/).length : undefined
   }
 
   return (
@@ -107,6 +114,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
             </h1>
 
             <div className="flex flex-wrap items-center gap-6 text-slate-500 dark:text-slate-400 font-bold text-xs uppercase tracking-widest">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                  SS
+                </div>
+                <div className="flex flex-col">
+                  <Link href="https://www.samirsain.com" target="_blank" rel="noopener noreferrer" className="text-slate-800 dark:text-white hover:text-indigo-600 transition-colors normal-case text-sm tracking-normal">
+                    Samir Sain
+                  </Link>
+                  <span className="text-[10px] text-slate-400 normal-case tracking-normal">Founder, ZENVIQ Digital</span>
+                </div>
+              </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-indigo-500" />
                 <span>{post.date}</span>

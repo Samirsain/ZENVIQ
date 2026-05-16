@@ -10,6 +10,7 @@ import Script from "next/script"
 import dynamic from "next/dynamic"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import BreadcrumbSchema from "@/components/breadcrumb-schema"
 import "./globals.css"
 
 // Dynamic imports for code-splitting heavy components
@@ -171,7 +172,7 @@ const organizationSchema = {
   "alternateName": ["ZENVIQ", "Zenviq Digital Agency", "ZENVIQ Web Development"],
   "url": "https://www.zenviqdigital.in",
   "logo": "https://www.zenviqdigital.in/logo.svg",
-  "image": "https://www.zenviqdigital.in/og-image.jpg",
+  "image": "https://www.zenviqdigital.in/og-image.webp",
   "description": "ZENVIQ is Hanumangarh's #1 digital agency offering premium web development, SEO services, AI automation, e-commerce solutions, and digital marketing across Rajasthan and India.",
   "foundingDate": "2023",
   "founder": {
@@ -218,8 +219,15 @@ const organizationSchema = {
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "29.5815",
-    "longitude": "74.3294"
+    "latitude": "29.58150",
+    "longitude": "74.32940"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "32",
+    "bestRating": "5",
+    "worstRating": "1"
   },
   "areaServed": [
     { "@type": "City", "name": "Hanumangarh" },
@@ -303,6 +311,7 @@ const organizationSchema = {
 const founderSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://www.samirsain.com/#person",
   "name": "Samir Sain",
   "alternateName": "Samir",
   "url": "https://www.samirsain.com",
@@ -314,12 +323,16 @@ const founderSchema = {
     "name": "ZENVIQ Digital",
     "url": "https://www.zenviqdigital.in"
   },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "S.K.G.V College, Sangria"
+  },
   "sameAs": [
     "https://www.samirsain.com",
     "https://www.zenviqdigital.in",
     "https://github.com/Samirsain",
     "https://linkedin.com/in/samirsain",
-    "https://instagram.com/zenviq"
+    "https://instagram.com/codexmir"
   ],
   "knowsAbout": [
     "Web Development",
@@ -328,7 +341,9 @@ const founderSchema = {
     "SEO",
     "AI Automation",
     "Digital Marketing",
-    "UI/UX Design"
+    "UI/UX Design",
+    "TypeScript",
+    "Shopify"
   ]
 }
 
@@ -384,26 +399,7 @@ export default function RootLayout({
         <JsonLd data={founderSchema} />
         <JsonLd data={siteNavigationSchema} />
         <JsonLd data={websiteSchema} />
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-DMSQMC1Q80"
-          strategy="lazyOnload"
-        />
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-18147855663"
-          strategy="lazyOnload"
-        />
-        <Script id="google-analytics" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-DMSQMC1Q80');
-            gtag('config', 'AW-18147855663');
-          `}
-        </Script>
+        {/* GTM handles GA4 (G-DMSQMC1Q80) + Google Ads (AW-18147855663) via container */}
         <Script id="google-tag-manager" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -432,6 +428,7 @@ export default function RootLayout({
           >
             <LenisProvider>
               <Header />
+              <BreadcrumbSchema />
               <Suspense fallback={null}>{children}</Suspense>
               <Footer />
             </LenisProvider>

@@ -1,12 +1,9 @@
-'use client';
-
-import React, { useRef } from 'react';
-import { motion, useMotionValue, useMotionTemplate, MotionValue } from 'framer-motion';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Sparkles, CheckCircle } from 'lucide-react';
 
-/* ── Static Grid Pattern (no JS animation — uses CSS keyframe) ── */
+/* ── Static Grid Pattern (CSS-only animation) ── */
 const GridPattern = () => (
   <svg className="w-full h-full">
     <defs>
@@ -30,38 +27,15 @@ const GridPattern = () => (
 );
 
 export default function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { left, top } = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - left);
-    mouseY.set(e.clientY - top);
-  };
-
-  const maskImage = useMotionTemplate`radial-gradient(350px circle at ${mouseX}px ${mouseY}px, black, transparent)`;
-
   return (
     <section
       id="home"
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
       className="relative w-full flex flex-col overflow-hidden bg-white"
     >
-      {/* Grid — subtle base layer with CSS animation instead of JS RAF */}
+      {/* Grid — subtle base layer with CSS animation */}
       <div className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none animate-grid-drift">
         <GridPattern />
       </div>
-
-      {/* Grid — mouse-reveal layer */}
-      <motion.div
-        className="absolute inset-0 z-0 opacity-30 pointer-events-none animate-grid-drift"
-        style={{ maskImage, WebkitMaskImage: maskImage }}
-      >
-        <GridPattern />
-      </motion.div>
 
       {/* Color Glows */}
       <div className="absolute inset-0 pointer-events-none z-0">
@@ -70,20 +44,12 @@ export default function HeroSection() {
         <div className="absolute left-[-10%] bottom-[-15%] w-[30%] h-[30%] rounded-full bg-cyan-500/15 blur-[120px]" />
       </div>
 
-      {/* Main Content */}
+      {/* Main Content — CSS-only animations, no framer-motion */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 pt-36 sm:pt-40 pb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="flex flex-col items-center text-center max-w-4xl gap-8"
-        >
+        <div className="flex flex-col items-center text-center max-w-4xl gap-8 animate-hero-enter">
           {/* Announcement Pill */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center gap-2 border border-slate-200 hover:border-slate-300 rounded-full px-4 py-2 bg-white/60 backdrop-blur-sm shadow-stripe-sm cursor-default transition-all"
+          <div
+            className="flex items-center gap-2 border border-slate-200 hover:border-slate-300 rounded-full px-4 py-2 bg-white/60 backdrop-blur-sm shadow-stripe-sm cursor-default transition-all animate-hero-pill"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
@@ -97,9 +63,9 @@ export default function HeroSection() {
               About us
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
-          </motion.div>
+          </div>
 
-          {/* Title */}
+          {/* Title — rendered server-side, no opacity:0 initial state */}
           <h1
             className="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-900 leading-[1.08] tracking-tight"
             style={{ letterSpacing: '-2px' }}
@@ -153,7 +119,7 @@ export default function HeroSection() {
             *Free strategy consultation — No commitment required
           </p>
 
-          {/* Stats Row — no motion wrapper for each stat (reduce hydration cost) */}
+          {/* Stats Row */}
           <div className="w-full max-w-2xl">
             <div className="flex items-center justify-center gap-4 sm:gap-6">
               {[
@@ -175,7 +141,7 @@ export default function HeroSection() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

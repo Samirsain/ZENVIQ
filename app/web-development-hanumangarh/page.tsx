@@ -188,6 +188,43 @@ export default function HanumangarhPage() {
         </div>
       </section>
 
+      {/* Google Map — Hanumangarh Location */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 tracking-tight text-center" style={{ letterSpacing: "-1px" }}>
+              Find Us in Hanumangarh
+            </h2>
+            <p className="text-slate-500 text-center mb-8 text-sm sm:text-base">
+              Visit our office or book a free consultation — we serve businesses across Hanumangarh, Rajasthan.
+            </p>
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55839.69696489!2d74.28!3d29.58!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39174e4a3e5a5b5d%3A0x9b5e2d1e2d1e2d1e!2sHanumangarh%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1"
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="ZENVIQ Digital - Web Development Agency in Hanumangarh, Rajasthan"
+                className="w-full"
+              />
+            </div>
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-slate-500">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-indigo-500" />
+                <span>Hanumangarh, Rajasthan 335513</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-indigo-500" />
+                <span>Mon-Sat: 9:00 AM - 8:00 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SEO Content */}
       <section className="py-14 sm:py-16 bg-white border-t border-slate-100">
         <div className="container mx-auto px-4">

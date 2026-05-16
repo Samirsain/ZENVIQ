@@ -226,21 +226,21 @@ export default function Home() {
               {/* Service keyword links for internal SEO */}
               <div className="mt-8 flex flex-wrap gap-2">
                 {[
-                  "Web Development Hanumangarh",
-                  "SEO Services Rajasthan",
-                  "Digital Marketing Hanumangarh",
-                  "E-commerce Website",
-                  "AI Automation",
-                  "WordPress Developer",
-                  "UI/UX Design",
-                  "Social Media Marketing",
-                ].map((tag) => (
+                  { tag: "Web Development Hanumangarh", href: "/services/web-development" },
+                  { tag: "SEO Services Rajasthan", href: "/services/seo-optimization" },
+                  { tag: "Digital Marketing Hanumangarh", href: "/services" },
+                  { tag: "E-commerce Website", href: "/services/ecommerce-development" },
+                  { tag: "AI Automation", href: "/services/ai-automation" },
+                  { tag: "WordPress Developer", href: "/services/web-development" },
+                  { tag: "UI/UX Design", href: "/services/ui-ux-design" },
+                  { tag: "Social Media Marketing", href: "/contact" },
+                ].map((item) => (
                   <Link
-                    key={tag}
-                    href="/services"
+                    key={item.tag}
+                    href={item.href}
                     className="px-3 py-1.5 bg-white border border-slate-200 rounded-full text-[11px] font-medium text-slate-500 hover:text-indigo-600 hover:border-indigo-200 transition-colors"
                   >
-                    {tag}
+                    {item.tag}
                   </Link>
                 ))}
               </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, Brain, Bot, Workflow, Zap, Calendar, MessageSquare, BarChart3, Clock, Shield } from "lucide-react"
+import ServiceSchema from "@/components/service-schema"
 
 const capabilities = [
   { icon: Bot, title: "Custom AI Chatbots", description: "24/7 customer support agents trained on your business data. Handle queries, bookings, and support automatically." },
@@ -24,6 +25,12 @@ const faqs = [
 export default function AIAutomationPage() {
   return (
     <div className="min-h-screen bg-white">
+      <ServiceSchema
+        name="AI Automation & Chatbot Development in Hanumangarh"
+        description="Custom AI chatbots, WhatsApp automation, workflow automation, and intelligent business solutions for 24/7 customer support."
+        url="/services/ai-automation"
+        priceRange="₹15,000 - ₹1,00,000"
+      />
       <section className="relative pt-32 sm:pt-40 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-500/5 rounded-full blur-[120px]" />

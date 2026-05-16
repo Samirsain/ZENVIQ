@@ -113,15 +113,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }))
 
-    // Static blog pages not in blog-posts.json
-    const staticBlogPages = [
-        '/blog/free-ai-tools-guide',
-    ].map((route) => ({
-        url: `${baseUrl}${route}`,
-        lastModified: lastUpdated,
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }))
 
     // HTML Sitemap page
     const utilityPages = [
@@ -141,7 +132,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...toolPages,
         ...legalPages,
         ...blogRoutes,
-        ...staticBlogPages,
         ...utilityPages,
     ]
 }
+

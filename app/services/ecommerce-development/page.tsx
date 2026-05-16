@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { ArrowRight, ShoppingCart, CreditCard, Package, Calendar, Truck, BarChart3, Smartphone } from "lucide-react"
+import ServiceSchema from "@/components/service-schema"
 
 const features = [
   { icon: ShoppingCart, title: "Custom Store Design", desc: "Conversion-optimized storefronts designed to showcase products and maximize sales." },
@@ -24,6 +25,12 @@ const faqs = [
 export default function EcommercePage() {
   return (
     <div className="min-h-screen bg-white">
+      <ServiceSchema
+        name="E-commerce Website Development in Hanumangarh"
+        description="Shopify, WooCommerce, and custom e-commerce stores with Razorpay, UPI payment integration for online selling in India."
+        url="/services/ecommerce-development"
+        priceRange="₹15,000 - ₹80,000"
+      />
       <section className="relative pt-32 sm:pt-40 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[120px]" />

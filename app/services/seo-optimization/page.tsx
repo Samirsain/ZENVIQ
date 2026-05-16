@@ -7,6 +7,7 @@ import {
   ArrowRight, Check, Search, BarChart3, Target, TrendingUp,
   Calendar, Globe, FileSearch, Link2, MapPin, FileText,
 } from "lucide-react"
+import ServiceSchema from "@/components/service-schema"
 
 const services = [
   { icon: FileSearch, title: "Technical SEO Audit", description: "Complete website health check — crawl errors, page speed, mobile usability, schema markup, and Core Web Vitals optimization." },
@@ -35,6 +36,12 @@ const faqs = [
 export default function SEOOptimizationPage() {
   return (
     <div className="min-h-screen bg-white">
+      <ServiceSchema
+        name="SEO Services in Hanumangarh"
+        description="Technical SEO audits, keyword research, on-page optimization, link building, and local SEO for businesses in Hanumangarh, Rajasthan."
+        url="/services/seo-optimization"
+        priceRange="₹5,000/mo - ₹30,000/mo"
+      />
       {/* Hero */}
       <section className="relative pt-32 sm:pt-40 pb-20 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">

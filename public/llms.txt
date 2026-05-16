@@ -1,0 +1,34 @@
+# ZENVIQ Digital
+> Hanumangarh's #1 digital agency — premium web development, SEO, AI automation, and digital marketing.
+
+## Core Pages
+- [Home](https://www.zenviqdigital.in/): Full-service digital agency homepage with services, portfolio, testimonials
+- [Services](https://www.zenviqdigital.in/services): Web development, UI/UX, SEO, AI automation, e-commerce
+- [About](https://www.zenviqdigital.in/about): Team, mission, company story
+- [Contact](https://www.zenviqdigital.in/contact): Get in touch, book a free consultation
+- [Gallery](https://www.zenviqdigital.in/gallery): Project showcase and portfolio
+
+## Services
+- [Web Development](https://www.zenviqdigital.in/services/web-development): Next.js, React, WordPress, Shopify websites
+- [UI/UX Design](https://www.zenviqdigital.in/services/ui-ux-design): Product design, prototyping, design systems
+- [SEO Optimization](https://www.zenviqdigital.in/services/seo-optimization): Technical SEO, keyword research, link building
+- [AI Automation](https://www.zenviqdigital.in/services/ai-automation): AI chatbots, workflow automation, custom AI solutions
+- [E-commerce Development](https://www.zenviqdigital.in/services/ecommerce-development): Online stores, payment integration
+
+## Free Tools
+- [EMI Calculator](https://www.zenviqdigital.in/tools/emi-calculator): Loan EMI calculator
+- [Word Counter](https://www.zenviqdigital.in/tools/word-counter): Text analysis tool
+- [QR Code Generator](https://www.zenviqdigital.in/tools/qr-code-generator): Free QR code creation
+- [Color Palette Generator](https://www.zenviqdigital.in/tools/color-palette): Design color tools
+- [SKU Generator](https://www.zenviqdigital.in/tools/sku-generator): Product SKU creation
+
+## Blog
+- [Blog & Insights](https://www.zenviqdigital.in/blog): Digital marketing tips, guides, and industry insights
+
+## Key Facts
+- Founded in Hanumangarh, Rajasthan, India
+- 50+ projects delivered
+- 30+ happy clients
+- 98% client retention rate
+- Technologies: Next.js, React, TypeScript, WordPress, Shopify
+- Contact: contact@zenviqdigital.in
