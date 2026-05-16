@@ -3,11 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Smooth theme transitions */
-* {
-  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-}
-
 :root {
   /* Modern, premium theme */
   --background: oklch(0.99 0 0);
@@ -366,4 +361,18 @@
   right: calc(50% - 6.8px);
   top: calc(50% - 16px);
   animation-delay: 0.16s !important;
+}
+
+/* Hero grid drift — replaced JS useAnimationFrame with pure CSS for perf */
+@keyframes hero-grid-drift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(40px, 40px);
+  }
+}
+
+.animate-grid-drift {
+  animation: hero-grid-drift 100s linear infinite;
 }

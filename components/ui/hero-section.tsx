@@ -1,22 +1,20 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useMotionValue, useMotionTemplate, useAnimationFrame, MotionValue } from 'framer-motion';
+import { motion, useMotionValue, useMotionTemplate, MotionValue } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, Calendar, Sparkles, CheckCircle } from 'lucide-react';
 
-/* ── Animated Grid Pattern ── */
-const GridPattern = ({ offsetX, offsetY }: { offsetX: MotionValue<number>; offsetY: MotionValue<number> }) => (
+/* ── Static Grid Pattern (no JS animation — uses CSS keyframe) ── */
+const GridPattern = () => (
   <svg className="w-full h-full">
     <defs>
-      <motion.pattern
+      <pattern
         id="hero-grid"
         width="40"
         height="40"
         patternUnits="userSpaceOnUse"
-        x={offsetX}
-        y={offsetY}
       >
         <path
           d="M 40 0 L 0 0 0 40"
@@ -25,9 +23,9 @@ const GridPattern = ({ offsetX, offsetY }: { offsetX: MotionValue<number>; offse
           strokeWidth="1"
           className="text-slate-400"
         />
-      </motion.pattern>
+      </pattern>
     </defs>
-    <rect width="100%" height="100%" fill="url(#hero-grid)" />
+    <rect width="200%" height="200%" fill="url(#hero-grid)" />
   </svg>
 );
 
@@ -36,19 +34,12 @@ export default function HeroSection() {
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const gridOffsetX = useMotionValue(0);
-  const gridOffsetY = useMotionValue(0);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top } = e.currentTarget.getBoundingClientRect();
     mouseX.set(e.clientX - left);
     mouseY.set(e.clientY - top);
   };
-
-  useAnimationFrame(() => {
-    gridOffsetX.set((gridOffsetX.get() + 0.4) % 40);
-    gridOffsetY.set((gridOffsetY.get() + 0.4) % 40);
-  });
 
   const maskImage = useMotionTemplate`radial-gradient(350px circle at ${mouseX}px ${mouseY}px, black, transparent)`;
 
@@ -59,17 +50,17 @@ export default function HeroSection() {
       onMouseMove={handleMouseMove}
       className="relative w-full flex flex-col overflow-hidden bg-white"
     >
-      {/* Grid — subtle base layer */}
-      <div className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none">
-        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+      {/* Grid — subtle base layer with CSS animation instead of JS RAF */}
+      <div className="absolute inset-0 z-0 opacity-[0.06] pointer-events-none animate-grid-drift">
+        <GridPattern />
       </div>
 
       {/* Grid — mouse-reveal layer */}
       <motion.div
-        className="absolute inset-0 z-0 opacity-30 pointer-events-none"
+        className="absolute inset-0 z-0 opacity-30 pointer-events-none animate-grid-drift"
         style={{ maskImage, WebkitMaskImage: maskImage }}
       >
-        <GridPattern offsetX={gridOffsetX} offsetY={gridOffsetY} />
+        <GridPattern />
       </motion.div>
 
       {/* Color Glows */}
@@ -127,12 +118,7 @@ export default function HeroSection() {
           </p>
 
           {/* Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto"
-          >
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
             <Button
               asChild
               size="lg"
@@ -160,36 +146,23 @@ export default function HeroSection() {
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
-          </motion.div>
+          </div>
 
           {/* Disclaimer */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-xs text-slate-400 italic"
-          >
+          <p className="text-xs text-slate-400 italic">
             *Free strategy consultation — No commitment required
-          </motion.p>
+          </p>
 
-          {/* Stats Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="w-full max-w-2xl"
-          >
+          {/* Stats Row — no motion wrapper for each stat (reduce hydration cost) */}
+          <div className="w-full max-w-2xl">
             <div className="flex items-center justify-center gap-4 sm:gap-6">
               {[
                 { value: "50+", label: "Projects Delivered", icon: <Sparkles className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />, gradient: "from-amber-50 to-orange-50", border: "border-amber-200/60" },
                 { value: "30+", label: "Happy Clients", icon: <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />, gradient: "from-emerald-50 to-green-50", border: "border-emerald-200/60" },
                 { value: "98%", label: "Client Retention", icon: <CheckCircle className="w-3.5 h-3.5 text-blue-500" />, gradient: "from-blue-50 to-indigo-50", border: "border-blue-200/60" },
-              ].map((stat, i) => (
-                <motion.div
+              ].map((stat) => (
+                <div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 + i * 0.1 }}
                   className={`flex-1 text-center px-3 sm:px-5 py-3 sm:py-4 rounded-2xl bg-gradient-to-br ${stat.gradient} border ${stat.border} backdrop-blur-sm`}
                 >
                   <div className="text-xl sm:text-2xl font-bold text-slate-900 flex items-center justify-center gap-1">
@@ -198,10 +171,10 @@ export default function HeroSection() {
                   <div className="text-[9px] sm:text-[10px] text-slate-500 font-semibold uppercase tracking-wider mt-0.5">
                     {stat.label}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

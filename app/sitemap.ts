@@ -54,6 +54,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const aiToolPages = [
         '/ai-tools/chatgpt',
         '/ai-tools/claude',
+        '/ai-tools/gemini',
+        '/ai-tools/midjourney',
+        '/ai-tools/dalle',
+        '/ai-tools/copilot',
     ].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: lastUpdated,

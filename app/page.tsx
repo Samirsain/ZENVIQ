@@ -1,14 +1,32 @@
-import ParallaxServices from "@/components/parallax-services"
-import ClientFeedback from "@/components/ui/testimonial"
-import FAQSection from "@/components/faq-section"
-import ToolsCarousel from "@/components/tools-carousel"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import Image from "next/image"
 import HeroSection from "@/components/ui/hero-section"
 import { Sparkles, Github, Linkedin, Instagram, Mail, Globe, ArrowRight, Code2, Palette, Cpu } from "lucide-react"
-import { CaseStudiesCarousel } from "@/components/ui/case-studies-carousel"
-import StackFeatureSection from "@/components/ui/stack-feature-section"
-import RudraShowcase from "@/components/rudra-showcase"
+
+// Dynamic imports for below-fold sections — reduces initial JS by ~300KB
+const ParallaxServices = dynamic(() => import("@/components/parallax-services"), {
+  loading: () => <div className="min-h-[60vh]" />,
+})
+const CaseStudiesCarousel = dynamic(
+  () => import("@/components/ui/case-studies-carousel").then((mod) => ({ default: mod.CaseStudiesCarousel })),
+  { loading: () => <div className="min-h-[50vh]" /> }
+)
+const ClientFeedback = dynamic(() => import("@/components/ui/testimonial"), {
+  loading: () => <div className="min-h-[40vh]" />,
+})
+const FAQSection = dynamic(() => import("@/components/faq-section"), {
+  loading: () => <div className="min-h-[40vh]" />,
+})
+const RudraShowcase = dynamic(() => import("@/components/rudra-showcase"), {
+  loading: () => <div className="min-h-[50vh]" />,
+})
+const ToolsCarousel = dynamic(() => import("@/components/tools-carousel"), {
+  loading: () => <div className="min-h-[40vh]" />,
+})
+const StackFeatureSection = dynamic(() => import("@/components/ui/stack-feature-section"), {
+  loading: () => <div className="min-h-[30vh]" />,
+})
 
 export default function Home() {
   return (
@@ -89,7 +107,7 @@ export default function Home() {
                   <div className="p-6 sm:p-8">
                     <div className="relative mb-6">
                       <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-indigo-500/20 shadow-lg group-hover:scale-105 transition-transform duration-500">
-                        <Image src="/team/samirsain.png" alt="Samir Sain — Founder & CEO" width={96} height={96} className="w-full h-full object-cover" />
+                        <Image src="/team/samirsain.png" alt="Samir Sain — Founder & CEO" width={96} height={96} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                       <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-indigo-500/10 border-indigo-500/20 border backdrop-blur-sm flex items-center justify-center shadow-sm">
                         <Code2 className="w-4 h-4 text-indigo-600" />
@@ -119,7 +137,7 @@ export default function Home() {
                   <div className="p-6 sm:p-8">
                     <div className="relative mb-6">
                       <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-violet-500/20 shadow-lg group-hover:scale-105 transition-transform duration-500">
-                        <Image src="/team/aditya.png" alt="Aditya Raj — Product Engineer" width={96} height={96} className="w-full h-full object-cover" />
+                        <Image src="/team/aditya.png" alt="Aditya Raj — Product Engineer" width={96} height={96} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                       <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-violet-500/10 border-violet-500/20 border backdrop-blur-sm flex items-center justify-center shadow-sm">
                         <Cpu className="w-4 h-4 text-violet-600" />
@@ -148,7 +166,7 @@ export default function Home() {
                   <div className="p-6 sm:p-8">
                     <div className="relative mb-6">
                       <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-cyan-500/20 shadow-lg group-hover:scale-105 transition-transform duration-500">
-                        <Image src="/team/yogi-sahu.png" alt="Yogi Sahu — Frontend Developer" width={96} height={96} className="w-full h-full object-cover" />
+                        <Image src="/team/yogi-sahu.png" alt="Yogi Sahu — Frontend Developer" width={96} height={96} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                       <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-cyan-500/10 border-cyan-500/20 border backdrop-blur-sm flex items-center justify-center shadow-sm">
                         <Palette className="w-4 h-4 text-cyan-600" />

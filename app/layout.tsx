@@ -1,6 +1,5 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Jost } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
@@ -8,13 +7,25 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 import Script from "next/script"
-import AIAssistant from "@/components/ai-assistant"
-import { Toaster } from "@/components/toaster"
+import dynamic from "next/dynamic"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import LenisProvider from "@/components/lenis-provider"
-import WhatsAppFloat from "@/components/whatsapp-float"
 import "./globals.css"
+
+// Dynamic imports for code-splitting heavy components
+const AIAssistant = dynamic(() => import("@/components/ai-assistant"), {
+  loading: () => null,
+})
+const WhatsAppFloat = dynamic(() => import("@/components/whatsapp-float"), {
+  loading: () => null,
+})
+const LenisProvider = dynamic(() => import("@/components/lenis-provider"), {
+  loading: () => null,
+})
+const Toaster = dynamic(
+  () => import("@/components/toaster").then((mod) => ({ default: mod.Toaster })),
+  { loading: () => null }
+)
 
 const jost = Jost({
   subsets: ["latin"],

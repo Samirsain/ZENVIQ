@@ -17,7 +17,17 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
-    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      'react-icons',
+      'react-icons/fa',
+      'react-icons/si',
+      '@radix-ui/react-accordion',
+      '@radix-ui/react-toast',
+      '@radix-ui/react-select',
+      'embla-carousel-react',
+    ],
   },
   headers: async () => [
     {
@@ -80,4 +90,3 @@ const nextConfig = {
 }
 
 export default nextConfig
-

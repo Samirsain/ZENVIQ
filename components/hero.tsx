@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Calendar, CheckCircle, Sparkles } from "lucide-react"
 import { motion } from "framer-motion"
 
@@ -116,10 +117,13 @@ export default function Hero() {
                   transition={{ delay: 1 + i * 0.15 }}
                   className="group"
                 >
-                  <img
+                  <Image
                     src={logo.src}
                     alt={logo.alt}
+                    width={120}
+                    height={48}
                     className="h-10 sm:h-12 w-auto object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    loading="lazy"
                   />
                 </motion.div>
               ))}
