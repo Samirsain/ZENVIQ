@@ -78,7 +78,7 @@ export function Safari({
         >
           <img
             src={imageSrc}
-            alt=""
+            alt={url ? `Screenshot preview of ${url}` : "Website preview screenshot by ZENVIQ Digital"}
             className="block size-full object-cover object-top"
           />
         </div>

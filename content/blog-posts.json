@@ -59,13 +59,55 @@
     "slug": "free-ai-tools-guide",
     "author": "Zenviq Team",
     "readTime": "10 min read",
-    "tags": [
-      "AI Tools",
-      "ChatGPT",
-      "Claude AI",
-      "Free Tools",
-      "Guide"
-    ],
+    "tags": ["AI Tools", "ChatGPT", "Claude AI", "Free Tools", "Guide"],
     "image": "/blog-ai-dev.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Best Website Development Company in Hanumangarh 2026 — Complete Guide",
+    "excerpt": "Looking for the best website development company in Hanumangarh? Compare pricing, tech stacks, delivery times, and reviews of top web agencies in Hanumangarh, Rajasthan.",
+    "date": "May 15, 2026",
+    "category": "Web Dev",
+    "slug": "best-website-development-company-hanumangarh-2026",
+    "author": "Samir Sain",
+    "readTime": "8 min read",
+    "tags": ["Web Development", "Hanumangarh", "Agency Comparison", "2026"],
+    "image": "/blog-ai-dev.jpg"
+  },
+  {
+    "id": 6,
+    "title": "How Much Does a Website Cost in Hanumangarh? Complete Pricing Guide",
+    "excerpt": "Transparent breakdown of website development costs in Hanumangarh — from ₹8,000 basic sites to ₹50,000+ custom web apps. Know exactly what you'll pay before you start.",
+    "date": "May 12, 2026",
+    "category": "Web Dev",
+    "slug": "website-cost-hanumangarh-pricing-guide",
+    "author": "Samir Sain",
+    "readTime": "7 min read",
+    "tags": ["Pricing", "Hanumangarh", "Website Cost", "Guide"],
+    "image": "/blog-seo-tips.jpg"
+  },
+  {
+    "id": 7,
+    "title": "SEO vs Google Ads: Which is Better for Local Businesses in Rajasthan?",
+    "excerpt": "Should your Rajasthan business invest in SEO or Google Ads? We break down costs, ROI, timelines, and which strategy works best for different industries in Hanumangarh & beyond.",
+    "date": "May 10, 2026",
+    "category": "SEO",
+    "slug": "seo-vs-google-ads-local-business-rajasthan",
+    "author": "Samir Sain",
+    "readTime": "9 min read",
+    "tags": ["SEO", "Google Ads", "Local Business", "Rajasthan"],
+    "image": "/blog-seo-tips.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Why Every Indian Business Needs an AI Chatbot in 2026",
+    "excerpt": "AI chatbots save 60-80% on support costs and convert 3x more leads. Learn how ZENVIQ deploys WhatsApp & website chatbots for businesses across Hanumangarh and Rajasthan.",
+    "date": "May 8, 2026",
+    "category": "AI",
+    "slug": "ai-chatbot-indian-business-2026",
+    "author": "Samir Sain",
+    "readTime": "8 min read",
+    "tags": ["AI Chatbot", "WhatsApp", "Indian Business", "Automation"],
+    "image": "/blog-automation.png"
   }
 ]

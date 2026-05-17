@@ -8,7 +8,7 @@ const ZENVIQ_KNOWLEDGE = `
 - **Founded:** 2023
 - **Location:** Hanumangarh, Rajasthan, India (serve clients across India & globally)
 - **Founder & CEO:** Samir Sain — Full-stack developer & AI specialist
-- **Team:** Samir Sain (Founder/CEO), Aditya Raj (Product Engineer), Yogi Sahu (Frontend Developer)
+- **Team:** Samir Sain (Founder/CEO), Vikash Sahu (GitaGPT Founder & CEO, sahu4you.com), Yogi Sahu (Frontend Developer)
 - **Website:** https://www.zenviqdigital.in
 - **WhatsApp:** +91 9311908389
 - **Email:** info@zenviqdigital.in

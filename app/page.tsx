@@ -129,7 +129,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Aditya */}
+              {/* Vikash */}
               <div className="group relative animate-fade-in-up" style={{ animationDelay: "0.25s" }}>
                 <div className="relative bg-white rounded-3xl border border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden hover:shadow-xl hover:border-slate-300/80 transition-all duration-500 hover:-translate-y-2">
                   <div className="h-1 w-full bg-gradient-to-r from-violet-500 to-purple-500" />
@@ -137,21 +137,21 @@ export default function Home() {
                   <div className="p-6 sm:p-8">
                     <div className="relative mb-6">
                       <div className="w-24 h-24 rounded-2xl overflow-hidden border-2 border-violet-500/20 shadow-lg group-hover:scale-105 transition-transform duration-500">
-                        <Image src="/team/aditya.png" alt="Aditya Raj — Product Engineer" width={96} height={96} className="w-full h-full object-cover" loading="lazy" />
+                        <Image src="/team/vikas.png" alt="Vikash Sahu — GitaGPT Founder & CEO" width={96} height={96} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                       <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-violet-500/10 border-violet-500/20 border backdrop-blur-sm flex items-center justify-center shadow-sm">
                         <Cpu className="w-4 h-4 text-violet-600" />
                       </div>
                     </div>
                     <div className="mb-5">
-                      <h3 className="text-xl font-bold text-slate-900 tracking-tight mb-1">Aditya Raj</h3>
-                      <p className="text-sm font-semibold text-violet-600 mb-3">Product Engineer</p>
-                      <p className="text-sm text-slate-500 leading-relaxed">SaaS systems, AI workflows & automation. Designs, codes, ships, repeats.</p>
+                      <h3 className="text-xl font-bold text-slate-900 tracking-tight mb-1">Vikash Sahu</h3>
+                      <p className="text-sm font-semibold text-violet-600 mb-3">GitaGPT Founder & CEO</p>
+                      <p className="text-sm text-slate-500 leading-relaxed">Visionary tech leader. Built GitaGPT — AI-powered spiritual wisdom. Full-stack builder & startup founder.</p>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Link href="https://adityaraj.info" target="_blank" rel="noopener noreferrer" aria-label="Portfolio" className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-slate-900 hover:text-white text-slate-500 transition-all duration-300 hover:scale-110"><Globe className="w-4 h-4" /></Link>
-                      <Link href="https://github.com/adityaraj" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-slate-900 hover:text-white text-slate-500 transition-all duration-300 hover:scale-110"><Github className="w-4 h-4" /></Link>
-                      <Link href="https://linkedin.com/in/adityaraj" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-slate-900 hover:text-white text-slate-500 transition-all duration-300 hover:scale-110"><Linkedin className="w-4 h-4" /></Link>
+                      <Link href="https://sahu4you.com" target="_blank" rel="noopener noreferrer" aria-label="Portfolio" className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-slate-900 hover:text-white text-slate-500 transition-all duration-300 hover:scale-110"><Globe className="w-4 h-4" /></Link>
+                      <Link href="https://github.com/sahu4you" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-slate-900 hover:text-white text-slate-500 transition-all duration-300 hover:scale-110"><Github className="w-4 h-4" /></Link>
+                      <Link href="https://linkedin.com/in/sahu4you" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-9 h-9 rounded-xl bg-slate-100 flex items-center justify-center hover:bg-slate-900 hover:text-white text-slate-500 transition-all duration-300 hover:scale-110"><Linkedin className="w-4 h-4" /></Link>
                     </div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-br from-violet-500 to-purple-500 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none rounded-3xl" />

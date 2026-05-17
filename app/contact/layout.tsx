@@ -1,30 +1,25 @@
-import { Metadata } from "next"
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Contact ZENVIQ Digital | Free Consultation in Hanumangarh",
-    description: "Contact ZENVIQ Digital for web development, SEO, and digital marketing services in Hanumangarh, Rajasthan. Book a free strategy call or request a quote. Phone: +91-9352410667.",
-    keywords: [
-        "contact digital agency Hanumangarh",
-        "hire web developer Hanumangarh",
-        "free SEO consultation Rajasthan",
-        "book web design consultation",
-        "ZENVIQ contact number",
-        "website quote Hanumangarh",
-        "digital marketing consultation Rajasthan",
-    ],
-    openGraph: {
-        title: "Contact ZENVIQ | Get Free Digital Consultation in Hanumangarh",
-        description: "Ready to grow your business? Contact Hanumangarh's best digital agency for a free strategy session. Web development, SEO & AI services.",
-    },
-    alternates: {
-        canonical: "https://www.zenviqdigital.in/contact",
-    },
+  title: "Contact ZENVIQ Digital — Free Consultation in Hanumangarh",
+  description:
+    "Get a free consultation from ZENVIQ Digital. Call +91-9352410667 or visit us in Hanumangarh, Rajasthan. Web development, SEO & AI automation quotes within 24h.",
+  alternates: {
+    canonical: "https://www.zenviqdigital.in/contact",
+  },
+  openGraph: {
+    title: "Contact ZENVIQ Digital — Free Consultation in Hanumangarh",
+    description:
+      "Get a free consultation from ZENVIQ Digital. Web development, SEO & AI automation quotes within 24h. Call +91-9352410667.",
+    url: "https://www.zenviqdigital.in/contact",
+    type: "website",
+  },
 }
 
 export default function ContactLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode
 }) {
-    return <>{children}</>
+  return children
 }

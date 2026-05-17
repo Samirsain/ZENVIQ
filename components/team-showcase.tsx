@@ -168,10 +168,10 @@ export default function TeamShowcase() {
           />
           <TeamCard
             index={1}
-            name="Aditya Raj"
-            role="Product Engineer"
-            image="/team/aditya.png"
-            bio="SaaS systems, AI workflows & automation. Designs, codes, ships, repeats."
+            name="Vikash Sahu"
+            role="GitaGPT Founder & CEO"
+            image="/team/vikas.png"
+            bio="Visionary tech leader. Built GitaGPT — AI-powered spiritual wisdom. Full-stack builder & startup founder."
             emoji="⚡"
             accent="from-violet-500 to-purple-500"
             accentBg="bg-violet-500/10"
@@ -179,9 +179,9 @@ export default function TeamShowcase() {
             accentText="text-violet-600"
             RoleIcon={Cpu}
             socials={[
-              { Icon: Globe, url: "https://adityaraj.info", label: "Portfolio" },
-              { Icon: Github, url: "https://github.com/adityaraj", label: "GitHub" },
-              { Icon: Linkedin, url: "https://linkedin.com/in/adityaraj", label: "LinkedIn" },
+              { Icon: Globe, url: "https://sahu4you.com", label: "Portfolio" },
+              { Icon: Github, url: "https://github.com/sahu4you", label: "GitHub" },
+              { Icon: Linkedin, url: "https://linkedin.com/in/sahu4you", label: "LinkedIn" },
             ]}
           />
           <TeamCard

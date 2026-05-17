@@ -38,17 +38,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.9,
     }))
 
-    // City landing pages — critical for local SEO
-    const cityPages = [
-        '/web-development-hanumangarh',
-        '/web-development-ganganagar',
-        '/web-development-bathinda',
-    ].map((route) => ({
-        url: `${baseUrl}${route}`,
-        lastModified: lastUpdated,
-        changeFrequency: 'monthly' as const,
-        priority: 0.9,
-    }))
+    // City landing pages — programmatic SEO (5 services × 6 cities = 30 pages)
+    const services = ['web-development', 'seo-services', 'digital-marketing', 'ecommerce-development', 'ai-automation']
+    const cities = ['hanumangarh', 'ganganagar', 'bathinda', 'nohar', 'bikaner', 'jodhpur']
+    const cityPages = services.flatMap((service) =>
+        cities.map((city) => ({
+            url: `${baseUrl}/${service}-${city}`,
+            lastModified: lastUpdated,
+            changeFrequency: 'monthly' as const,
+            priority: 0.9,
+        }))
+    )
 
     // AI Tools pages
     const aiToolPages = [

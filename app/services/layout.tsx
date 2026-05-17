@@ -38,6 +38,53 @@ const breadcrumbSchema = {
     ],
 }
 
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+        {
+            "@type": "Question",
+            name: "What web development services does ZENVIQ offer in Hanumangarh?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "ZENVIQ offers WordPress development, Next.js & React web apps, e-commerce stores (Shopify, WooCommerce), SEO services, AI automation & chatbots, UI/UX design, and digital marketing in Hanumangarh, Rajasthan.",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "How much does web development cost in Hanumangarh?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "Web development in Hanumangarh starts from ₹8,000 for a basic business website to ₹50,000+ for custom web applications and e-commerce stores. ZENVIQ offers transparent, project-based pricing with zero hidden fees.",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "Which is the best web development company in Hanumangarh?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "ZENVIQ Digital is the #1 rated web development company in Hanumangarh with 50+ projects delivered, 4.9★ Google rating, and 98% client retention. We use modern frameworks like Next.js (used by Netflix & Uber) for blazing-fast websites.",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "Does ZENVIQ provide SEO services in Hanumangarh?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes! ZENVIQ provides comprehensive SEO services in Hanumangarh including technical SEO audits, local SEO, keyword optimization, content strategy, and link building. We help businesses rank on page 1 of Google.",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "Can ZENVIQ build AI chatbots for my business?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "Absolutely. ZENVIQ is the only agency in Hanumangarh offering AI-powered chatbots for WhatsApp, Instagram, and websites. Our chatbots handle customer queries 24/7, qualify leads, and integrate with your existing CRM.",
+            },
+        },
+    ],
+}
+
 export default function ServicesLayout({
     children,
 }: {
@@ -46,6 +93,7 @@ export default function ServicesLayout({
     return (
         <>
             <JsonLd data={breadcrumbSchema} />
+            <JsonLd data={faqSchema} />
             {children}
         </>
     )

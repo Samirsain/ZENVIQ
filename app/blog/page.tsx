@@ -2,13 +2,17 @@ import { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 
 export const metadata: Metadata = {
-  title: "Blog & Insights",
-  description: "Stay ahead of the curve with Zenviq's latest insights on AI trends, modern web development, and actionable SEO strategies for 2025.",
-  keywords: ["AI trends 2025", "web development blog", "SEO strategies", "digital agency insights"],
+  title: "Blog — Web Development, SEO & AI Insights | ZENVIQ Digital Hanumangarh",
+  description: "Expert guides on web development, SEO strategies, AI automation & digital marketing for businesses in Hanumangarh, Rajasthan. Actionable tips by ZENVIQ Digital.",
+  keywords: ["web development blog Hanumangarh", "SEO strategies Rajasthan", "AI trends 2026", "digital marketing tips India", "ZENVIQ blog"],
+  alternates: {
+    canonical: "https://www.zenviqdigital.in/blog",
+  },
   openGraph: {
-    title: "Zenviq Blog | Master the Digital Landscape",
-    description: "Expert advice and deep dives into the technologies driving the future of business and web development.",
-  }
+    title: "ZENVIQ Blog — Web Dev, SEO & AI Insights from Hanumangarh",
+    description: "Expert guides and deep dives on web development, SEO, and AI automation for businesses across Rajasthan and India.",
+    url: "https://www.zenviqdigital.in/blog",
+  },
 }
 
 import { ArrowRight, Calendar, Clock, User, BookOpen } from "lucide-react"
