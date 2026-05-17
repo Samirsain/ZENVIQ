@@ -20,6 +20,7 @@ import {
   Zap,
   X,
   Play,
+  Music,
 } from "lucide-react"
 import Link from "next/link"
 
